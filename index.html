@@ -4,57 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>ارتقاء — كل يوم خطوة للأفضل</title>
-  <meta name="description" content="منصة ارتقاء: نظام متكامل لبناء الانضباط الذاتي، تنظيم ساعات النوم، تطوير المهارات وساعات العمل العميق، مع ورد القرآن الكريم والحديث الشريف." />
+  <meta name="description" content="منصة ارتقاء: نظام بناء العادات، التركيز في العمل، وتعزيز الانضباط الذاتي. عمل خالص لوجه الله تعالى بدون أي اشتراكات." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@700&family=Cairo:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --primary: #10b981;
-      --primary-hover: #059669;
-      --primary-light: rgba(16, 185, 129, 0.08);
+      --primary-dark: #059669;
+      --primary-shadow: #047857;
+      --primary-light: rgba(16, 185, 129, 0.1);
       --navy: #0f172a;
       --navy-elevated: #1e293b;
       --bg: #f8fafc;
       --surface: #ffffff;
-      --surface-border: #e2e8f0;
-      --surface-border-strong: #cbd5e1;
-      --text-main: #0f172a;
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+      --text: #0f172a;
       --text-muted: #475569;
       --text-subtle: #94a3b8;
-      --accent: #3b82f6;
-      --accent-light: rgba(59, 130, 246, 0.08);
-      --warning: #d97706;
+      --accent: #4f46e5;
       --danger: #dc2626;
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
       --radius-full: 9999px;
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
-      --shadow-md: 0 6px 18px -4px rgba(15, 23, 42, 0.06);
-      --shadow-lg: 0 14px 28px -6px rgba(15, 23, 42, 0.09);
-      --font-main: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-ruqaa: 'Aref Ruqaa', serif;
+      --font-ui: 'Cairo', sans-serif;
       --font-quran: 'Amiri', serif;
-      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     [data-theme="dark"] {
-      --bg: #0b1120;
+      --bg: #090d16;
       --surface: #111827;
-      --surface-elevated: #1e293b;
-      --surface-border: #1f2937;
-      --surface-border-strong: #374151;
-      --text-main: #f8fafc;
+      --surface-elevated: #1f2937;
+      --border: #1f2937;
+      --border-dark: #374151;
+      --text: #f8fafc;
       --text-muted: #cbd5e1;
       --text-subtle: #64748b;
       --primary: #10b981;
-      --primary-hover: #34d399;
-      --primary-light: rgba(16, 185, 129, 0.12);
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
-      --shadow-md: 0 6px 18px -4px rgba(0, 0, 0, 0.5);
-      --shadow-lg: 0 14px 28px -6px rgba(0, 0, 0, 0.65);
+      --primary-dark: #059669;
+      --primary-shadow: #064e3b;
+      --primary-light: rgba(16, 185, 129, 0.16);
     }
 
     * {
@@ -66,9 +61,9 @@
     }
 
     body {
-      font-family: var(--font-main);
+      font-family: var(--font-ui);
       background-color: var(--bg);
-      color: var(--text-main);
+      color: var(--text);
       line-height: 1.6;
       direction: rtl;
       min-height: 100vh;
@@ -76,7 +71,6 @@
       flex-direction: column;
       overflow-x: hidden;
       font-weight: 700;
-      -webkit-font-smoothing: antialiased;
     }
 
     .container {
@@ -86,64 +80,72 @@
       padding: 0 1.5rem;
     }
 
-    /* Professional Navigation Header */
+    .font-ruqaa {
+      font-family: var(--font-ruqaa) !important;
+      letter-spacing: 0;
+    }
+
+    /* 3D Header */
     header.main-header {
       background: var(--surface);
-      border-bottom: 1px solid var(--surface-border);
+      border-bottom: 2px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 300;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 76px;
-      gap: 1.5rem;
+      height: 78px;
+      gap: 1.25rem;
     }
 
-    /* 3D Curved Bevel Icon Logo */
-    .brand-container {
+    .brand-box {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.85rem;
       cursor: pointer;
     }
 
-    .logo-3d-box {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, #10b981 0%, #065f46 100%);
-      border-radius: 12px;
+    /* 3D Logo Cube */
+    .logo-3d-cube {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 6px 14px rgba(16, 185, 129, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      flex-shrink: 0;
+      box-shadow: 0 6px 0 var(--primary-shadow), 0 10px 20px rgba(16, 185, 129, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.4);
       position: relative;
+      transform: perspective(400px) rotateX(4deg);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .logo-3d-cube:hover {
+      transform: perspective(400px) rotateX(0deg) translateY(-2px);
+      box-shadow: 0 8px 0 var(--primary-shadow), 0 12px 24px rgba(16, 185, 129, 0.45);
     }
 
-    .brand-titles {
+    .brand-meta-titles {
       display: flex;
       flex-direction: column;
     }
 
     .brand-name {
-      font-weight: 900;
-      font-size: 1.45rem;
-      line-height: 1.15;
-      color: var(--text-main);
-      letter-spacing: -0.5px;
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
     }
 
-    .brand-tagline {
-      font-size: 0.72rem;
+    .brand-slogan {
+      font-size: 0.8rem;
       font-weight: 800;
       color: var(--primary);
-      letter-spacing: 0px;
     }
 
     .nav-menu {
@@ -156,7 +158,7 @@
     .nav-item button {
       background: transparent;
       border: 1px solid transparent;
-      padding: 0.55rem 1.05rem;
+      padding: 0.55rem 1.1rem;
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       font-weight: 800;
@@ -164,11 +166,12 @@
       cursor: pointer;
       display: flex;
       align-items: center;
+      gap: 0.4rem;
       transition: var(--transition);
     }
 
     .nav-item button:hover {
-      color: var(--text-main);
+      color: var(--text);
       background: var(--bg);
     }
 
@@ -185,46 +188,46 @@
       flex-shrink: 0;
     }
 
-    .user-badge-pill {
+    .user-pill {
       display: flex;
       align-items: center;
       gap: 0.6rem;
       background: var(--bg);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-full);
       padding: 0.35rem 0.85rem;
     }
 
     .user-avatar-initial {
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: var(--navy);
-      color: white;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 900;
     }
     [data-theme="dark"] .user-avatar-initial {
       background: var(--primary);
-      color: #0b1120;
+      color: #090d16;
     }
 
     .user-name-label {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 800;
-      max-width: 110px;
+      max-width: 120px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .icon-btn {
-      background: var(--bg);
-      border: 1px solid var(--surface-border);
-      color: var(--text-main);
+    .btn-3d-icon {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      color: var(--text);
       width: 40px;
       height: 40px;
       border-radius: var(--radius-md);
@@ -232,43 +235,95 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      box-shadow: 0 3px 0 var(--border), 0 6px 12px rgba(0, 0, 0, 0.04);
       transition: var(--transition);
     }
-    .icon-btn:hover {
+    .btn-3d-icon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 0 var(--border), 0 8px 16px rgba(0, 0, 0, 0.06);
       border-color: var(--primary);
       color: var(--primary);
     }
+    .btn-3d-icon:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--border);
+    }
 
-    /* Clean Section Headings with Architectural Baseline Bar */
+    /* Primary 3D Push Button */
+    .btn-3d-primary {
+      background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 0 var(--primary-shadow), 0 8px 18px rgba(16, 185, 129, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transition: var(--transition);
+      user-select: none;
+    }
+    .btn-3d-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--primary-shadow), 0 12px 24px rgba(16, 185, 129, 0.45);
+    }
+    .btn-3d-primary:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--primary-shadow), 0 4px 10px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 3px 0 var(--border);
+      transition: var(--transition);
+    }
+    .btn-secondary:hover {
+      background: var(--bg);
+      border-color: var(--border-dark);
+      transform: translateY(-1px);
+    }
+    .btn-secondary:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    /* Section Architecture Title */
     .section-header-block {
       margin-bottom: 1.75rem;
-      position: relative;
     }
-
     .section-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--text-main);
-      display: inline-block;
-      letter-spacing: -0.3px;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
     }
-
     .section-accent-line {
-      width: 48px;
+      width: 52px;
       height: 4px;
-      background: var(--primary);
+      background: linear-gradient(90deg, var(--primary), var(--accent));
       border-radius: var(--radius-full);
-      margin-top: 0.45rem;
+      margin-top: 0.35rem;
     }
 
-    /* Overview Hero Card */
+    /* Overview Dashboard Card */
     .hero-summary-card {
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -277,81 +332,77 @@
     }
 
     .hero-info-text h1 {
-      font-size: 1.95rem;
-      font-weight: 900;
+      font-size: 2.1rem;
+      font-weight: 700;
       margin-bottom: 0.35rem;
-      color: var(--text-main);
+      color: var(--text);
     }
 
     .hero-info-text p {
       font-size: 0.95rem;
       color: var(--text-muted);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .hero-kpi-pill {
       background: var(--bg);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 0.9rem 1.75rem;
+      padding: 0.85rem 1.8rem;
       text-align: center;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
     }
-
     .hero-kpi-value {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 900;
       color: var(--primary);
       line-height: 1.1;
     }
-
     .hero-kpi-label {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       font-weight: 800;
     }
 
-    /* KPI Grid Cards */
+    /* KPI Metrics Cards */
     .kpi-metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.25rem;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2.25rem;
     }
 
     .metric-card {
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       padding: 1.4rem;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
       transition: var(--transition);
     }
     .metric-card:hover {
-      border-color: var(--surface-border-strong);
+      border-color: var(--primary);
       transform: translateY(-2px);
     }
-
     .metric-title {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 800;
       color: var(--text-muted);
       margin-bottom: 0.35rem;
     }
-
     .metric-num {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 900;
-      color: var(--text-main);
+      color: var(--text);
     }
-
     .metric-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-subtle);
       margin-top: 0.25rem;
     }
 
-    /* Habits Grid */
+    /* Habit Cards Grid */
     .habits-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
@@ -360,74 +411,66 @@
 
     .habit-item-card {
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.45rem;
-      box-shadow: var(--shadow-sm);
+      padding: 1.5rem;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: var(--transition);
+      position: relative;
     }
     .habit-item-card:hover {
-      border-color: var(--surface-border-strong);
+      border-color: var(--border-dark);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
     }
 
     .habit-item-card.is-completed {
-      border-color: rgba(16, 185, 129, 0.4);
+      border-color: rgba(16, 185, 129, 0.45);
       background: linear-gradient(180deg, var(--surface) 0%, rgba(16, 185, 129, 0.03) 100%);
     }
 
     .habit-header-row {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.6rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
     }
 
-    .habit-tag {
-      font-size: 0.75rem;
+    .habit-category-badge {
+      font-size: 0.78rem;
       font-weight: 900;
-      padding: 0.25rem 0.65rem;
+      padding: 0.25rem 0.75rem;
       border-radius: var(--radius-full);
       background: var(--bg);
       color: var(--text-muted);
-      border: 1px solid var(--surface-border);
+      border: 1px solid var(--border);
     }
 
     .habit-title-text {
-      font-size: 1.18rem;
+      font-size: 1.25rem;
       font-weight: 900;
-      color: var(--text-main);
-      margin-bottom: 0.4rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
       line-height: 1.3;
     }
 
     .habit-desc-text {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
+      font-weight: 700;
       color: var(--text-muted);
       line-height: 1.55;
-      margin-bottom: 1rem;
-    }
-
-    .habit-advice-box {
-      background: var(--bg);
-      border-right: 3px solid var(--primary);
-      padding: 0.6rem 0.85rem;
-      border-radius: 4px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
       margin-bottom: 1.25rem;
     }
 
     .habit-progress-track {
-      height: 7px;
-      background: var(--surface-border);
+      height: 8px;
+      background: var(--border);
       border-radius: var(--radius-full);
       overflow: hidden;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
     }
-
     .habit-progress-bar {
       height: 100%;
       background: var(--primary);
@@ -438,27 +481,28 @@
     .habit-metric-info {
       display: flex;
       justify-content: space-between;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
     }
 
-    /* Checkmark Action Button */
+    /* 3D Checkmark Action Button */
     .btn-habit-check {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.85rem 1rem;
       border-radius: var(--radius-md);
       font-weight: 900;
-      font-size: 0.95rem;
-      border: 1px solid var(--surface-border);
+      font-size: 1rem;
+      border: 1.5px solid var(--border);
       background: var(--bg);
-      color: var(--text-main);
+      color: var(--text);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      box-shadow: 0 3px 0 var(--border);
       transition: var(--transition);
     }
     .btn-habit-check:hover {
@@ -466,17 +510,25 @@
       color: var(--primary);
       background: var(--primary-light);
     }
+    .btn-habit-check:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--border);
+    }
 
     .btn-habit-check.is-checked {
-      background: var(--primary);
+      background: linear-gradient(180deg, #10b981 0%, #059669 100%);
       color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.28);
+      border-color: var(--primary-shadow);
+      box-shadow: 0 4px 0 var(--primary-shadow), 0 8px 16px rgba(16, 185, 129, 0.3);
+    }
+    .btn-habit-check.is-checked:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--primary-shadow);
     }
 
     .btn-habit-check svg {
-      width: 19px;
-      height: 19px;
+      width: 20px;
+      height: 20px;
       stroke: currentColor;
       stroke-width: 3.5;
       fill: none;
@@ -484,43 +536,48 @@
       stroke-linejoin: round;
     }
 
-    /* Numeric Stepper */
+    /* Stepper Counter */
     .stepper-row {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.5rem;
       width: 100%;
     }
     .stepper-btn {
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--surface-border);
-      background: var(--bg);
-      border-radius: var(--radius-sm);
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      border-radius: var(--radius-md);
       font-weight: 900;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 3px 0 var(--border);
       transition: var(--transition);
     }
     .stepper-btn:hover {
       border-color: var(--primary);
-      background: var(--surface);
+      color: var(--primary);
+    }
+    .stepper-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 var(--border);
     }
     .stepper-count-display {
       flex: 1;
       text-align: center;
       font-weight: 900;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
-    /* Floating Affirmation Toast Notification */
+    /* Floating Motivational Notification */
     #affirmation-shelf {
       position: fixed;
-      bottom: 30px;
-      left: 30px;
+      bottom: 28px;
+      left: 28px;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -532,56 +589,22 @@
       pointer-events: auto;
       background: var(--navy);
       color: #ffffff;
-      border: 1px solid var(--surface-border);
-      border-right: 5px solid var(--primary);
-      padding: 0.85rem 1.4rem;
+      border: 1.5px solid rgba(255, 255, 255, 0.1);
+      border-right: 6px solid var(--primary);
+      padding: 0.9rem 1.5rem;
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      font-size: 0.95rem;
-      font-weight: 900;
-      min-width: 260px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+      font-size: 1.05rem;
+      font-weight: 700;
+      min-width: 250px;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      animation: toastSlide 0.25s ease-out;
+      gap: 0.65rem;
+      animation: toastIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    @keyframes toastSlide {
-      from { transform: translateY(12px); opacity: 0; }
+    @keyframes toastIn {
+      from { transform: translateY(16px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.35rem;
-      border-radius: var(--radius-md);
-      font-weight: 800;
-      font-size: 0.95rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      transition: var(--transition);
-      user-select: none;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff;
-    }
-    .btn-primary:hover {
-      background: var(--primary-hover);
-    }
-
-    .btn-secondary {
-      background: var(--surface);
-      border-color: var(--surface-border);
-      color: var(--text-main);
-    }
-    .btn-secondary:hover {
-      background: var(--bg);
-      border-color: var(--surface-border-strong);
     }
 
     /* Canvas Charts */
@@ -594,15 +617,14 @@
 
     .chart-panel-card {
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 1.75rem;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
     }
-
     .chart-panel-card h3 {
-      font-size: 1.15rem;
-      font-weight: 900;
+      font-size: 1.35rem;
+      font-weight: 700;
       margin-bottom: 1.25rem;
     }
 
@@ -612,21 +634,21 @@
       height: 250px;
     }
 
-    /* Islamic Quran & Recitation Hub */
+    /* Quran Hub */
     .quran-wrapper {
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
+      padding: 2.2rem;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
     }
 
     .quran-audio-strip {
       background: var(--bg);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1rem 1.4rem;
-      margin-bottom: 1.6rem;
+      padding: 1.1rem 1.5rem;
+      margin-bottom: 1.75rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -635,18 +657,18 @@
     }
 
     .quran-script-box {
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
       text-align: justify;
-      line-height: 2.6;
+      line-height: 2.65;
       font-family: var(--font-quran);
-      font-size: 1.65rem;
+      font-size: 1.7rem;
     }
 
     .ayah-word {
       display: inline;
       padding: 2px 5px;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
@@ -664,26 +686,35 @@
       justify-content: center;
       color: var(--primary);
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin: 0 0.35rem;
       user-select: none;
     }
 
-    /* Report an Issue Modal & Trigger */
-    .report-issue-trigger {
-      font-size: 0.85rem;
-      font-weight: 800;
-      color: var(--text-muted);
-      cursor: pointer;
-      display: inline-flex;
+    /* Non-Commercial Dedicated Hero Badge */
+    .free-cause-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(79, 70, 229, 0.05) 100%);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 2rem;
+      margin: 2.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 0.4rem;
-      transition: var(--transition);
-      background: none;
-      border: none;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    .report-issue-trigger:hover {
-      color: var(--danger);
+    .free-cause-card h4 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    .free-cause-card p {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      max-width: 760px;
     }
 
     /* Modal System */
@@ -704,36 +735,34 @@
 
     .modal-box {
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       width: 100%;
-      max-width: 480px;
-      padding: 1.8rem;
-      box-shadow: var(--shadow-lg);
+      max-width: 500px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .modal-head-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.4rem;
     }
-
     .modal-head-row h3 {
-      font-size: 1.3rem;
-      font-weight: 900;
+      font-size: 1.5rem;
+      font-weight: 700;
     }
-
     .modal-close-btn {
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: var(--text-subtle);
       cursor: pointer;
     }
 
     .form-field {
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.25rem;
     }
     .form-field label {
       display: block;
@@ -744,13 +773,13 @@
     }
     .form-input {
       width: 100%;
-      padding: 0.7rem 0.95rem;
+      padding: 0.75rem 1rem;
       border-radius: var(--radius-md);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       background: var(--bg);
       font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-main);
+      font-weight: 800;
+      color: var(--text);
       outline: none;
       transition: var(--transition);
     }
@@ -758,10 +787,27 @@
       border-color: var(--primary);
     }
 
+    /* Report Issue Trigger Button */
+    .report-issue-trigger {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: none;
+      border: none;
+      transition: var(--transition);
+    }
+    .report-issue-trigger:hover {
+      color: var(--danger);
+    }
+
     /* Footer */
     footer.main-footer {
       background: var(--surface);
-      border-top: 1px solid var(--surface-border);
+      border-top: 2px solid var(--border);
       margin-top: auto;
       padding: 3rem 0 2rem 0;
     }
@@ -774,19 +820,18 @@
     }
 
     .footer-col h4 {
-      font-size: 1.15rem;
-      font-weight: 900;
-      margin-bottom: 0.85rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
     }
-
     .footer-col p {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       line-height: 1.7;
     }
 
     .footer-bottom-strip {
-      border-top: 1px solid var(--surface-border);
+      border-top: 1.5px solid var(--border);
       padding-top: 1.5rem;
       display: flex;
       flex-wrap: wrap;
@@ -798,8 +843,8 @@
       color: var(--text-subtle);
     }
 
-    /* Onboarding Instant Sign-in Overlay */
-    #quick-start-overlay {
+    /* Onboarding Instant Modal */
+    #instant-access-overlay {
       position: fixed;
       inset: 0;
       background: var(--bg);
@@ -809,18 +854,18 @@
       justify-content: center;
       padding: 1.5rem;
     }
-    #quick-start-overlay.is-visible {
+    #instant-access-overlay.is-visible {
       display: flex;
     }
 
-    .quick-start-panel {
+    .instant-access-card {
       width: 100%;
       max-width: 440px;
       background: var(--surface);
-      border: 1px solid var(--surface-border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-lg);
       padding: 2.4rem;
-      box-shadow: var(--shadow-lg);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
       text-align: center;
     }
 
@@ -831,26 +876,26 @@
 </head>
 <body>
 
-  <div id="quick-start-overlay">
-    <div class="quick-start-panel">
-      <div style="display:flex;justify-content:center;margin-bottom:1rem">
-        <div class="logo-3d-box" style="width:56px;height:56px">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <div id="instant-access-overlay">
+    <div class="instant-access-card">
+      <div style="display:flex;justify-content:center;margin-bottom:1.2rem">
+        <div class="logo-3d-cube" style="width:58px;height:58px">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 17L17 7" />
             <path d="M7 7h10v10" />
           </svg>
         </div>
       </div>
-      <h2 style="font-size:1.7rem;font-weight:900;margin-bottom:0.4rem">ارتقاء</h2>
-      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.6rem">سجل اسمك الآن للبدء. بياناتك تُحفظ على جهازك فقط وفي سرية كاملة وبدون إنشاء حسابات معقدة.</p>
+      <h2 class="font-ruqaa" style="font-size:2rem;margin-bottom:0.35rem">ارتقاء</h2>
+      <p style="font-size:0.92rem;color:var(--text-muted);font-weight:700;margin-bottom:1.6rem">سجل اسمك الآن للبدء. بياناتك تُحفظ على جهازك فقط في سرية كاملة، لوجه الله وبدون أي اشتراكات نهائياً.</p>
 
-      <form onsubmit="handleQuickStart(event)">
+      <form onsubmit="handleQuickRegister(event)">
         <div class="form-field" style="text-align:right">
-          <label>اسمك الكريم للبدء:</label>
-          <input type="text" id="quick-user-name" class="form-input" required placeholder="اكتب اسمك..." autocomplete="name" />
+          <label>اسمك الكريم:</label>
+          <input type="text" id="input-register-name" class="form-input" required placeholder="اكتب اسمك للبدء..." autocomplete="name" />
         </div>
-        <button type="submit" class="btn btn-primary" style="width:100%;padding:0.8rem;font-weight:900">
-          ابدأ رحلة ارتقاء
+        <button type="submit" class="btn-3d-primary" style="width:100%;padding:0.85rem">
+          سجل الآن وابدأ الارتقاء
         </button>
       </form>
     </div>
@@ -858,16 +903,16 @@
 
   <header class="main-header">
     <div class="container header-inner">
-      <div class="brand-container" onclick="switchMainTab('habits')">
-        <div class="logo-3d-box">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <div class="brand-box" onclick="switchMainTab('habits')">
+        <div class="logo-3d-cube">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 17L17 7" />
             <path d="M7 7h10v10" />
           </svg>
         </div>
-        <div class="brand-titles">
-          <span class="brand-name">ارتقاء</span>
-          <span class="brand-tagline">كل يوم خطوة للأفضل</span>
+        <div class="brand-meta-titles">
+          <span class="brand-name font-ruqaa">ارتقاء</span>
+          <span class="brand-slogan">كل يوم خطوة للأفضل</span>
         </div>
       </div>
 
@@ -878,12 +923,12 @@
       </ul>
 
       <div class="header-actions">
-        <div class="user-badge-pill">
+        <div class="user-pill">
           <div class="user-avatar-initial" id="header-user-avatar">م</div>
           <span class="user-name-label" id="header-user-name">محمد</span>
         </div>
 
-        <button class="icon-btn" onclick="toggleThemeMode()" title="تبديل الوضع">
+        <button class="btn-3d-icon" onclick="toggleThemeMode()" title="تبديل الوضع">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
           </svg>
@@ -897,8 +942,8 @@
     <section id="view-habits">
       <div class="hero-summary-card">
         <div class="hero-info-text">
-          <h1 id="user-greeting-txt">مرحباً بك</h1>
-          <p>خطواتك اليومية الصغيرة تصنع فارقاً حقيقياً في مستقبلك وراحة بالك.</p>
+          <h1 class="font-ruqaa" id="user-greeting-txt">مرحباً بك</h1>
+          <p>خطواتك اليومية في العمل، المذاكرة، وتطوير نفسك تصنع فارقاً حقيقياً في مستقبلك.</p>
         </div>
         <div class="hero-kpi-pill">
           <div class="hero-kpi-value" id="overall-completion-rate">0%</div>
@@ -908,7 +953,7 @@
 
       <div class="kpi-metrics-grid">
         <div class="metric-card">
-          <div class="metric-title">العادات المكتملة</div>
+          <div class="metric-title">العادات المنجزة</div>
           <div class="metric-num" id="kpi-done-count">0</div>
           <div class="metric-sub">عادات تم وضع علامة الصح لها</div>
         </div>
@@ -919,36 +964,48 @@
         </div>
         <div class="metric-card">
           <div class="metric-title">الرتبة والانضباط</div>
-          <div class="metric-num" style="font-size:1.4rem" id="kpi-rank-title">مبتدئ واعد</div>
-          <div class="metric-sub">مكافأة ارتقاء التالية: وسام الالتزام الأسبوعي</div>
+          <div class="metric-num font-ruqaa" style="font-size:1.6rem" id="kpi-rank-title">مبتدئ واعد</div>
+          <div class="metric-sub">المكافأة التالية: وسام أسبوع العمل العميق</div>
         </div>
       </div>
 
-      <div class="section-header-block">
-        <h2 class="section-title">عادات اليوم المسجلة</h2>
-        <div class="section-accent-line"></div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.5rem">
+        <div class="section-header-block" style="margin-bottom:0">
+          <h2 class="section-title font-ruqaa">عادات اليوم المسجلة</h2>
+          <div class="section-accent-line"></div>
+        </div>
+        <button class="btn-3d-primary" onclick="openAddHabitModal()">
+          + إضافة عادة جديدة
+        </button>
       </div>
 
       <div class="habits-grid" id="habits-container-element">
         </div>
+
+      <div class="free-cause-card">
+        <div>
+          <h4 class="font-ruqaa">مشروع مجاني خالص لوجه الله تعالى</h4>
+          <p>تم بناء وتطوير منصة ارتقاء كصدقة جارية ومساهمة نافعة للشباب في إدارة يومهم وعملهم وانضباطهم، خالية تماماً وإلى الأبد من أي اشتراكات، مدفوعات، أو إعلانات.</p>
+        </div>
+      </div>
     </section>
 
     <section id="view-analytics" style="display:none">
       <div class="section-header-block">
-        <h2 class="section-title">لوحة التحليلات ومؤشرات الأداء</h2>
+        <h2 class="section-title font-ruqaa">لوحة التحليلات ومؤشرات الأداء</h2>
         <div class="section-accent-line"></div>
       </div>
 
       <div class="charts-duo-grid">
         <div class="chart-panel-card">
-          <h3>نسبة الالتزام اليومي خلال آخر 7 أيام</h3>
+          <h3 class="font-ruqaa">نسبة الالتزام اليومي خلال آخر 7 أيام</h3>
           <div class="canvas-container">
             <canvas id="canvas-7days-chart"></canvas>
           </div>
         </div>
 
         <div class="chart-panel-card">
-          <h3>توزيع العادات حسب المجالات الأساسية</h3>
+          <h3 class="font-ruqaa">توزيع العادات حسب المجالات والعمل</h3>
           <div class="canvas-container">
             <canvas id="canvas-categories-chart"></canvas>
           </div>
@@ -956,7 +1013,7 @@
       </div>
 
       <div class="section-header-block">
-        <h2 class="section-title">مكافآت ارتقاء والإنجازات</h2>
+        <h2 class="section-title font-ruqaa">مكافآت ارتقاء والإنجازات</h2>
         <div class="section-accent-line"></div>
       </div>
 
@@ -966,7 +1023,7 @@
 
     <section id="view-islamic" style="display:none">
       <div class="section-header-block">
-        <h2 class="section-title">المصحف الشريف والورد اليومي</h2>
+        <h2 class="section-title font-ruqaa">المصحف الشريف والورد اليومي</h2>
         <div class="section-accent-line"></div>
       </div>
 
@@ -974,12 +1031,12 @@
         <div class="quran-audio-strip">
           <div>
             <div style="font-weight:900;font-size:1.05rem">التلاوة الصوتية المتزامنة</div>
-            <div style="font-size:0.82rem;color:var(--text-muted)">بصوت الشيخ مشاري راشد العفاسي</div>
+            <div style="font-size:0.85rem;color:var(--text-muted)">بصوت الشيخ مشاري راشد العفاسي</div>
           </div>
           <div style="display:flex;align-items:center;gap:0.5rem">
-            <button class="btn btn-secondary" onclick="stepAyahRecitation(-1)">السابق</button>
-            <button class="btn btn-primary" id="btn-quran-audio" onclick="toggleQuranRecitation()">تشغيل التلاوة</button>
-            <button class="btn btn-secondary" onclick="stepAyahRecitation(1)">التالي</button>
+            <button class="btn-secondary" onclick="stepAyahRecitation(-1)">السابق</button>
+            <button class="btn-3d-primary" id="btn-quran-audio" onclick="toggleQuranRecitation()">تشغيل التلاوة</button>
+            <button class="btn-secondary" onclick="stepAyahRecitation(1)">التالي</button>
           </div>
         </div>
 
@@ -990,8 +1047,8 @@
               </select>
           </div>
           <div style="display:flex;gap:0.4rem">
-            <button class="btn btn-secondary" onclick="adjustScriptSize(-2)">A-</button>
-            <button class="btn btn-secondary" onclick="adjustScriptSize(2)">A+</button>
+            <button class="btn-secondary" onclick="adjustScriptSize(-2)">A-</button>
+            <button class="btn-secondary" onclick="adjustScriptSize(2)">A+</button>
           </div>
         </div>
 
@@ -1004,30 +1061,77 @@
 
   <div id="affirmation-shelf"></div>
 
+  <div class="modal-backdrop" id="modal-add-habit">
+    <div class="modal-box">
+      <div class="modal-head-row">
+        <h3 class="font-ruqaa">إضافة عادة جديدة</h3>
+        <button class="modal-close-btn" onclick="closeAddHabitModal()">&times;</button>
+      </div>
+
+      <form onsubmit="handleSaveCustomHabit(event)">
+        <div class="form-field">
+          <label>اسم العادة (المهمة أو الهدف):</label>
+          <input type="text" id="habit-name-input" class="form-input" required placeholder="مثال: برمجة مشروع جديد، مذاكرة تقنية..." />
+        </div>
+
+        <div class="form-field">
+          <label>مجال العادة:</label>
+          <select id="habit-category-input" class="form-input">
+            <option value="العمل والمشاريع">العمل والمشاريع</option>
+            <option value="البرمجة والتقنية">البرمجة والتقنية</option>
+            <option value="التطوير والمذاكرة">التطوير والمذاكرة</option>
+            <option value="الروحانيات والسكينة">الروحانيات والسكينة</option>
+            <option value="النوم والطاقة">النوم والطاقة</option>
+            <option value="الصحة واللياقة">الصحة واللياقة</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label>نوع التتبع:</label>
+          <select id="habit-type-input" class="form-input" onchange="handleHabitTypeChange(this.value)">
+            <option value="boolean">إنجاز مباشر (علامة صح)</option>
+            <option value="duration">مدة زمنية (دقائق)</option>
+            <option value="numeric">معدود رقمي</option>
+          </select>
+        </div>
+
+        <div class="form-field" id="habit-target-row" style="display:none">
+          <label id="habit-target-label">الهدف اليومي:</label>
+          <input type="number" id="habit-target-input" class="form-input" min="1" value="30" />
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:0.6rem;margin-top:1.5rem">
+          <button type="button" class="btn-secondary" onclick="closeAddHabitModal()">إلغاء</button>
+          <button type="submit" class="btn-3d-primary">حفظ العادة</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="modal-backdrop" id="modal-report-issue">
     <div class="modal-box">
       <div class="modal-head-row">
-        <h3>الإبلاغ عن مشكلة أو اقتراح</h3>
+        <h3 class="font-ruqaa">الإبلاغ عن مشكلة أو اقتراح</h3>
         <button class="modal-close-btn" onclick="closeIssueModal()">&times;</button>
       </div>
-      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.25rem">نحن حريصون على تحسين منصة ارتقاء باستمرار لتكون عوناً حقيقياً لك. اكتب ملاحظتك وسنعمل على تطويرها فوراً.</p>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.25rem">نحن حريصون على أن تكون منصة ارتقاء ركيزة أساسية لك. اكتب ملاحظتك وسنعمل على حلها وتطويرها فوراً.</p>
       <form onsubmit="handleSendIssue(event)">
         <div class="form-field">
           <label>نوع الملاحظة:</label>
           <select id="issue-type" class="form-input">
-            <option value="مشكلة تقنية في الموقع">مشكلة تقنية في الموقع</option>
-            <option value="اقتراح عادة أو ميزة جديدة">اقتراح عادة أو ميزة جديدة</option>
-            <option value="ملاحظة في الخطوط أو التصميم">ملاحظة في الخطوط أو التصميم</option>
+            <option value="مشكلة تقنية أو خطأ في العداد">مشكلة تقنية أو خطأ في العداد</option>
+            <option value="اقتراح تطوير في واجهة الموقع">اقتراح تطوير في واجهة الموقع</option>
+            <option value="اقتراح عادة أو فكرة جديدة">اقتراح عادة أو فكرة جديدة</option>
             <option value="أخرى">أخرى</option>
           </select>
         </div>
         <div class="form-field">
           <label>التفاصيل:</label>
-          <textarea id="issue-details" class="form-input" rows="4" required placeholder="اكتب ما واجهته أو ما تود إضافته..."></textarea>
+          <textarea id="issue-details" class="form-input" rows="4" required placeholder="اكتب ملاحظتك هنا..."></textarea>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:0.6rem">
-          <button type="button" class="btn btn-secondary" onclick="closeIssueModal()">إلغاء</button>
-          <button type="submit" class="btn btn-primary">إرسال الملاحظة</button>
+          <button type="button" class="btn-secondary" onclick="closeIssueModal()">إلغاء</button>
+          <button type="submit" class="btn-3d-primary">إرسال</button>
         </div>
       </form>
     </div>
@@ -1037,16 +1141,16 @@
     <div class="container">
       <div class="footer-content-grid">
         <div class="footer-col">
-          <h4>منصة ارتقاء</h4>
+          <h4 class="font-ruqaa">منصة ارتقاء</h4>
           <p>أداة شخصية احترافية بنيت لتكون ركيزة أساسية في يومك؛ تساعدك على الارتقاء المهني، الذهني، والديني عبر خطوات بسيطة ومستمرة.</p>
         </div>
         <div class="footer-col">
-          <h4>رسالة المؤسس</h4>
+          <h4 class="font-ruqaa">رسالة المؤسس</h4>
           <p>أخوكم محمد عادل. هذا الموقع عمل خالص لوجه الله تعالى بدون أي اشتراكات أو جمع لبياناتكم الشخصية. نسألكم صالح الدعاء بظهر الغيب.</p>
         </div>
         <div class="footer-col">
-          <h4>الدعم والمساعدة</h4>
-          <p>بياناتك محفوظة محلياً على متصفحك ولا يمكن لأي طرف الاطلاع عليها.</p>
+          <h4 class="font-ruqaa">الدعم والمساعدة</h4>
+          <p>بياناتك محفوظة محلياً على متصفحك فقط، ولا يمكن لأي طرف الاطلاع عليها.</p>
           <div style="margin-top:1rem">
             <button class="report-issue-trigger" onclick="openIssueModal()">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1062,7 +1166,7 @@
 
       <div class="footer-bottom-strip">
         <span>ارتقاء — كل يوم خطوة للأفضل</span>
-        <span>حفظ محلي مستقل 100%</span>
+        <span>عمل خالص لوجه الله تعالى 100%</span>
       </div>
     </div>
   </footer>
@@ -1071,50 +1175,55 @@
 
   <script>
     /* ==========================================================
-       0. PERSISTENCE & DATA CORE (Local & Private)
+       0. LOCAL STORAGE CORE & DATA ENGINE
        ========================================================== */
-    const STORAGE_KEY = 'IRTIQAA_MASTER_STORE_V1';
+    const STORAGE_KEY = 'IRTIQAA_PERMANENT_STORE_V2';
 
-    // Affirmation words for micro-interactions
+    // Positive Micro-Interaction Affirmations
     const AFFIRMATIONS = [
       "عاش يا بطل",
       "كمّل، خطوة ثابتة",
-      "وحش، استمر",
       "ثبات عالي",
-      "عاش جداً",
-      "الانضباط بيبان في النتيجة",
       "الله ينور عليك",
+      "عاش جداً",
+      "الانضباط أساس النجاح",
       "خطوة كمان للهدف"
     ];
 
-    // Core Habits: Real-life adult discipline
+    // Practical Work, Career & Learning Habits
     const INITIAL_HABITS = [
       {
         id: 'hab_deep_work',
         title: 'ساعتين عمل عميق وتركيز',
-        category: 'الشغل والمشاريع',
-        desc: 'إنجاز المهام الكبرى بدون تشتت أو سوشيال ميديا.',
-        advice: 'نصيحة: ابدأ بأصعب مهمة في أول ساعات الصباح والذهن صافي.',
+        category: 'العمل والمشاريع',
+        desc: 'إنجاز مهام الشغل والمشاريع الكبرى بدون تشتت أو سوشيال ميديا.',
         type: 'duration',
         target: 120,
         unit: 'دقيقة'
       },
       {
         id: 'hab_skill_course',
-        title: 'مذاكرة كورس أو مهارة مهنية',
-        category: 'التطوير والدراسة',
-        desc: '45 دقيقة يومياً لبناء خبرة عملية تجعل منك شخصاً مطلوباً.',
-        advice: 'نصيحة: لخص ما تتعلمه وطبقه عملياً بدل المشاهدة السلبية.',
+        title: 'مذاكرة كورس أو مهارة برمجية',
+        category: 'البرمجة والتقنية',
+        desc: '45 دقيقة يومياً لبناء خبرة برمجية ومهنية حقيقية.',
         type: 'duration',
         target: 45,
         unit: 'دقيقة'
       },
       {
+        id: 'hab_client_management',
+        title: 'متابعة العملاء وتسليم المهام',
+        category: 'العمل والمشاريع',
+        desc: 'مراجعة رسائل العمل، تسليم المتطلبات، وتنظيم جدول الغد.',
+        type: 'boolean',
+        target: 1,
+        unit: 'مرة'
+      },
+      {
         id: 'hab_podcast_reading',
-        title: 'بودكاست معرفي أو قراءة كتاب',
-        category: 'تغذية العقل',
-        desc: 'قراءة 15 صفحة أو الاستماع لحوار متخصص.',
-        advice: 'نصيحة: استمع أثناء المشي أو المواصلات لاستغلال الوقت الضائع.',
+        title: 'بودكاست معرفي أو قراءة متخصصة',
+        category: 'التطوير والمذاكرة',
+        desc: 'قراءة 20 صفحة في مجالك أو الاستماع لحوار تقني متخصص.',
         type: 'boolean',
         target: 1,
         unit: 'مرة'
@@ -1123,8 +1232,7 @@
         id: 'hab_sleep_schedule',
         title: 'نوم مبكر ومنتظم قبل 11:30 مساءً',
         category: 'النوم والطاقة',
-        desc: 'ضبط الساعة البيولوجية للاستيقاظ بنشاط كامل.',
-        advice: 'نصيحة: ابعد شاشات الهاتف عن السرير بـ 30 دقيقة قبل النوم.',
+        desc: 'المحافظة على 7-8 ساعات نوم عميق للاستيقاظ بكامل الطاقة.',
         type: 'boolean',
         target: 1,
         unit: 'مرة'
@@ -1133,21 +1241,10 @@
         id: 'hab_fajr_quran',
         title: 'صلاة الفجر والورد القرآني',
         category: 'الروحانيات والسكينة',
-        desc: 'بداية اليوم بركعتين وتلاوة صفحتين بتدبر.',
-        advice: 'نصيحة: هيئ نيتك من الليل لتبدأ يومك ببركة وهدوء داخلي.',
+        desc: 'بداية اليوم بركعتين وتلاوة صفحتين بتدبر وهدوء نفسي.',
         type: 'boolean',
         target: 1,
         unit: 'مرة'
-      },
-      {
-        id: 'hab_hydration_movement',
-        title: 'شرب 3 لتر ماء وحركة بدنية',
-        category: 'الصحة والنشاط',
-        desc: 'المحافظة على طاقة الجسم وتنشيط الدورة الدموية.',
-        advice: 'نصيحة: اجعل زجاجة الماء دائماً أمام عينيك على مكتب العمل.',
-        type: 'numeric',
-        target: 8,
-        unit: 'أكواب'
       }
     ];
 
@@ -1171,18 +1268,22 @@
         if (raw) {
           const parsed = JSON.parse(raw);
           appState = Object.assign(appState, parsed);
+        } else {
+          // Check legacy key for auto-migration
+          const legacy = localStorage.getItem('IRTIQAA_MASTER_STORE_V1');
+          if (legacy) {
+            const parsed = JSON.parse(legacy);
+            appState = Object.assign(appState, parsed);
+            saveStore();
+          }
         }
-      } catch (e) {
-        console.warn('Store load fallback');
-      }
+      } catch (e) {}
     }
 
     function saveStore() {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
-      } catch (e) {
-        console.warn('Store save fallback');
-      }
+      } catch (e) {}
     }
 
     function getTodayKey() {
@@ -1190,7 +1291,7 @@
       return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     }
 
-    /* Sound Synthesis (Light chime) */
+    /* Sound Synthesis (Light Chime) */
     function playChimeSound() {
       try {
         if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1210,12 +1311,12 @@
       } catch (e) {}
     }
 
-    /* Floating Affirmation Display */
+    /* Affirmation Notification */
     function triggerAffirmation() {
       playChimeSound();
       const shelf = document.getElementById('affirmation-shelf');
       const card = document.createElement('div');
-      card.className = 'affirmation-card';
+      card.className = 'affirmation-card font-ruqaa';
       const randomWord = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
       card.innerHTML = `<span>✓</span> <span>${randomWord}</span>`;
       shelf.appendChild(card);
@@ -1237,7 +1338,6 @@
       const active = appState.habits;
       if (active.length === 0) return 0;
 
-      // Check today first
       let todayDone = true;
       active.forEach(h => {
         const val = appState.completions[today]?.[h.id] || 0;
@@ -1282,11 +1382,10 @@
         card.innerHTML = `
           <div>
             <div class="habit-header-row">
-              <span class="habit-tag">${habit.category}</span>
+              <span class="habit-category-badge">${habit.category}</span>
             </div>
             <h3 class="habit-title-text">${habit.title}</h3>
             <p class="habit-desc-text">${habit.desc}</p>
-            <div class="habit-advice-box">${habit.advice}</div>
 
             <div class="habit-progress-track">
               <div class="habit-progress-bar" style="width:${pct}%"></div>
@@ -1316,15 +1415,13 @@
         container.appendChild(card);
       });
 
-      // Update KPIs
-      const rate = Math.round((completedCount / appState.habits.length) * 100) || 0;
+      const rate = Math.round((completedCount / (appState.habits.length || 1)) * 100) || 0;
       document.getElementById('overall-completion-rate').textContent = `${rate}%`;
       document.getElementById('kpi-done-count').textContent = `${completedCount} / ${appState.habits.length}`;
 
       const streak = calculateStreak();
       document.getElementById('kpi-streak-val').textContent = `${streak} أيام`;
 
-      // Psychological Rank
       let rank = "مبتدئ واعد";
       if (streak >= 30) rank = "رمز الاستمرارية";
       else if (streak >= 14) rank = "قائد الانضباط";
@@ -1363,7 +1460,72 @@
     }
 
     /* ==========================================================
-       2. REFINED CHARTS (Canvas Native & Visual Balance)
+       2. ADD CUSTOM HABIT MODAL LOGIC
+       ========================================================== */
+    function openAddHabitModal() {
+      document.getElementById('modal-add-habit').classList.add('is-active');
+      document.getElementById('habit-name-input').focus();
+    }
+
+    function closeAddHabitModal() {
+      document.getElementById('modal-add-habit').classList.remove('is-active');
+    }
+
+    function handleHabitTypeChange(type) {
+      const targetRow = document.getElementById('habit-target-row');
+      const targetLabel = document.getElementById('habit-target-label');
+      const targetInput = document.getElementById('habit-target-input');
+
+      if (type === 'boolean') {
+        targetRow.style.display = 'none';
+      } else if (type === 'duration') {
+        targetRow.style.display = 'block';
+        targetLabel.textContent = 'الهدف بالدقائق:';
+        targetInput.value = 30;
+      } else {
+        targetRow.style.display = 'block';
+        targetLabel.textContent = 'العدد المطلوب:';
+        targetInput.value = 5;
+      }
+    }
+
+    function handleSaveCustomHabit(e) {
+      e.preventDefault();
+      const title = document.getElementById('habit-name-input').value.trim();
+      const category = document.getElementById('habit-category-input').value;
+      const type = document.getElementById('habit-type-input').value;
+      let target = 1;
+      let unit = 'مرة';
+
+      if (type === 'duration') {
+        target = parseInt(document.getElementById('habit-target-input').value, 10) || 30;
+        unit = 'دقيقة';
+      } else if (type === 'numeric') {
+        target = parseInt(document.getElementById('habit-target-input').value, 10) || 5;
+        unit = 'مرات';
+      }
+
+      if (!title) return;
+
+      const newHabit = {
+        id: 'hab_custom_' + Date.now(),
+        title,
+        category,
+        desc: 'الاستمرار اليومي والمتابعة المنتظمة.',
+        type,
+        target,
+        unit
+      };
+
+      appState.habits.push(newHabit);
+      saveStore();
+      closeAddHabitModal();
+      renderHabitsView();
+      triggerAffirmation();
+    }
+
+    /* ==========================================================
+       3. REFINED CHARTS (Native Canvas)
        ========================================================== */
     function renderCharts() {
       drawAdherenceChart();
@@ -1385,7 +1547,7 @@
 
       const days = [];
       const rates = [];
-      const totalHabits = appState.habits.length;
+      const totalHabits = appState.habits.length || 1;
 
       for (let i = 6; i >= 0; i--) {
         const d = new Date();
@@ -1399,7 +1561,7 @@
         rates.push(Math.round((done / totalHabits) * 100));
       }
 
-      const barWidth = 30;
+      const barWidth = 32;
       const sidePad = 40;
       const gap = (w - (sidePad * 2) - (barWidth * 7)) / 6;
 
@@ -1416,19 +1578,19 @@
         ctx.fill();
 
         // Active Bar
-        ctx.fillStyle = rate === 100 ? '#10b981' : (rate > 0 ? '#3b82f6' : 'rgba(148,163,184,0.3)');
+        ctx.fillStyle = rate === 100 ? '#10b981' : (rate > 0 ? '#4f46e5' : 'rgba(148,163,184,0.3)');
         ctx.beginPath();
         ctx.roundRect(x, y, barWidth, barH, [6, 6, 6, 6]);
         ctx.fill();
 
-        // Rate Label
+        // Rate
         ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-muted').trim();
         ctx.font = '800 11px Cairo';
         ctx.textAlign = 'center';
         ctx.fillText(`${rate}%`, x + barWidth / 2, y - 6);
 
-        // Day Label
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+        // Day
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
         ctx.font = '900 12px Cairo';
         ctx.fillText(days[idx], x + barWidth / 2, 210);
       });
@@ -1449,10 +1611,10 @@
       const counts = {};
       appState.habits.forEach(h => counts[h.category] = (counts[h.category] || 0) + 1);
       const categories = Object.keys(counts);
-      const total = appState.habits.length;
-      if (total === 0) return;
+      const total = appState.habits.length || 1;
+      if (categories.length === 0) return;
 
-      const colors = ['#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#06b6d4', '#ec4899'];
+      const colors = ['#10b981', '#4f46e5', '#f59e0b', '#06b6d4', '#ec4899', '#8b5cf6'];
       let startAngle = 0;
       const cx = w * 0.35;
       const cy = h / 2;
@@ -1471,7 +1633,7 @@
         // Legend
         const legY = 40 + idx * 26;
         ctx.fillRect(w * 0.65, legY - 10, 12, 12);
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
         ctx.font = '800 12px Cairo';
         ctx.textAlign = 'right';
         ctx.fillText(`${cat} (${counts[cat]})`, w - 20, legY);
@@ -1493,7 +1655,7 @@
         card.className = 'metric-card';
         card.innerHTML = `
           <div class="metric-title">مكافأة المستوى ${idx + 1}</div>
-          <div style="font-size:1.15rem;font-weight:900;color:var(--text-main);margin-bottom:0.25rem">${r.title}</div>
+          <div class="font-ruqaa" style="font-size:1.35rem;color:var(--text);margin-bottom:0.25rem">${r.title}</div>
           <div class="metric-sub">${r.desc}</div>
         `;
         grid.appendChild(card);
@@ -1501,7 +1663,7 @@
     }
 
     /* ==========================================================
-       3. 114 SURAHS QURAN & RECITATION HUB
+       4. QURAN 114 SURAHS & RECITATION
        ========================================================== */
     const SURAH_DIRECTORY_114 = [
       { n: 1, name: "الفاتحة", ayahs: 7 }, { n: 2, name: "البقرة", ayahs: 286 }, { n: 3, name: "آل عمران", ayahs: 200 },
@@ -1656,8 +1818,8 @@
     }
 
     /* ==========================================================
-       4. NAVIGATION & SINGLE ACCESS ONBOARDING
-       ========================================================= */
+       5. NAVIGATION & ONBOARDING
+       ========================================================== */
     function switchMainTab(tab) {
       document.querySelectorAll('.nav-item button').forEach(b => b.classList.remove('active'));
       document.getElementById('view-habits').style.display = tab === 'habits' ? 'block' : 'none';
@@ -1671,21 +1833,22 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function handleQuickStart(e) {
+    function handleQuickRegister(e) {
       e.preventDefault();
-      const name = document.getElementById('quick-user-name').value.trim();
+      const name = document.getElementById('input-register-name').value.trim();
       if (!name) return;
       appState.user = { name };
       saveStore();
-      document.getElementById('quick-start-overlay').classList.remove('is-visible');
+      document.getElementById('instant-access-overlay').classList.remove('is-visible');
       applyUserIdentity();
+      renderHabitsView();
     }
 
     function applyUserIdentity() {
       const name = appState.user?.name || 'يا بطل';
       document.getElementById('header-user-name').textContent = name;
       document.getElementById('header-user-avatar').textContent = name.charAt(0).toUpperCase();
-      document.getElementById('user-greeting-txt').textContent = `أهلاً بك يا ${name}`;
+      document.getElementById('user-greeting-txt').textContent = `مرحباً بك يا ${name}`;
     }
 
     function toggleThemeMode() {
@@ -1713,20 +1876,20 @@
       triggerAffirmation();
       const shelf = document.getElementById('affirmation-shelf');
       const card = document.createElement('div');
-      card.className = 'affirmation-card';
-      card.innerHTML = `<span>✓</span> <span>شكراً لك! تم استلام ملاحظتك بنجاح</span>`;
+      card.className = 'affirmation-card font-ruqaa';
+      card.innerHTML = `<span>✓</span> <span>تم استلام ملاحظتك بنجاح، شكراً لك</span>`;
       shelf.appendChild(card);
       setTimeout(() => card.remove(), 2500);
     }
 
     /* ==========================================================
-       5. INITIALIZATION
+       6. APP BOOTSTRAP
        ========================================================== */
     window.addEventListener('DOMContentLoaded', () => {
       loadStore();
 
       if (!appState.user) {
-        document.getElementById('quick-start-overlay').classList.add('is-visible');
+        document.getElementById('instant-access-overlay').classList.add('is-visible');
       } else {
         applyUserIdentity();
       }
