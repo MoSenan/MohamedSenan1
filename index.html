@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>ارتقاء — كل يوم خطوة للأفضل</title>
-  <meta name="description" content="منصة ارتقاء: نظام الانضباط والعمل العميق، ومتابعة العادات وتلاوة القرآن الكريم. عمل خالص لوجه الله تعالى." />
+  <meta name="description" content="منصة ارتقاء: نظام احترافي متكامل لبناء العادات، التركيز في العمل، وتعزيز الانضباط الذاتي. عمل خالص لوجه الله تعالى." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,6 +27,7 @@
       --text-subtle: #94a3b8;
       --accent: #4f46e5;
       --accent-shadow: #3730a3;
+      --accent-light: rgba(79, 70, 229, 0.12);
       --danger: #dc2626;
       --radius-sm: 10px;
       --radius-md: 16px;
@@ -81,7 +82,16 @@
       padding: 0 1.5rem;
     }
 
-    /* 3D Tactile Header */
+    #fx-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 99999;
+    }
+
+    /* 3D Navigation Header */
     header.main-header {
       background: var(--surface);
       border-bottom: 2px solid var(--border);
@@ -99,14 +109,15 @@
       gap: 1.5rem;
     }
 
-    /* Concept 1: 3D Isometric Ascending Logo */
     .brand-box {
       display: flex;
       align-items: center;
       gap: 0.9rem;
       cursor: pointer;
+      user-select: none;
     }
 
+    /* Concept 1: 3D Isometric Logo Badge */
     .logo-3d-badge {
       width: 50px;
       height: 50px;
@@ -244,7 +255,7 @@
       background: rgba(220, 38, 38, 0.1);
     }
 
-    /* 3D Push Buttons */
+    /* 3D Push Button System */
     .btn-3d {
       position: relative;
       border: none;
@@ -315,7 +326,7 @@
       box-shadow: 0 1px 0 var(--border);
     }
 
-    /* Section Architecture Header */
+    /* Section Header */
     .section-header-block {
       margin-bottom: 1.75rem;
     }
@@ -333,7 +344,7 @@
       margin-top: 0.35rem;
     }
 
-    /* Dashboard Summary Card */
+    /* Dashboard Summary & XP Level Card */
     .hero-summary-card {
       background: var(--surface);
       border: 2px solid var(--border);
@@ -361,6 +372,32 @@
       font-weight: 600;
     }
 
+    .xp-meter-box {
+      margin-top: 0.85rem;
+      width: 100%;
+      max-width: 380px;
+    }
+    .xp-meter-track {
+      height: 10px;
+      background: var(--border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 0.35rem;
+    }
+    .xp-meter-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: var(--radius-full);
+      transition: width 0.4s ease;
+    }
+    .xp-meter-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+
     .hero-kpi-pill {
       background: var(--bg);
       border: 2px solid var(--border);
@@ -381,7 +418,7 @@
       font-weight: 700;
     }
 
-    /* KPI Metrics Cards with 3D Depth */
+    /* KPI Grid Cards */
     .kpi-metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -419,7 +456,7 @@
       margin-top: 0.25rem;
     }
 
-    /* Habits Grid */
+    /* Habits Cards */
     .habits-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
@@ -589,7 +626,7 @@
       font-size: 1rem;
     }
 
-    /* 3D Floating Motivational Affirmation Badge */
+    /* 3D Floating Notification Badge */
     #affirmation-shelf {
       position: fixed;
       bottom: 30px;
@@ -707,7 +744,7 @@
       user-select: none;
     }
 
-    /* Non-Commercial Dedicated Hero Card */
+    /* Dedicated Non-Commercial Card */
     .free-cause-card {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(79, 70, 229, 0.05) 100%);
       border: 2px solid var(--border);
@@ -733,7 +770,7 @@
       max-width: 780px;
     }
 
-    /* Modals System */
+    /* Modal Backdrop & Windows */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -803,7 +840,6 @@
       border-color: var(--primary);
     }
 
-    /* Report Issue Trigger Button */
     .report-issue-trigger {
       font-size: 0.88rem;
       font-weight: 800;
@@ -918,12 +954,14 @@
 </head>
 <body>
 
-  <!-- Name & Password Login/Register Modal -->
+  <!-- Particle FX Canvas -->
+  <canvas id="fx-canvas"></canvas>
+
+  <!-- Login & Register Modal -->
   <div id="auth-screen-overlay">
     <div class="auth-card-3d">
       <div style="display:flex;justify-content:center;margin-bottom:1.2rem">
         <div class="logo-3d-badge" style="width:58px;height:58px">
-          <!-- Ascent Vector Arrow integrated in logo -->
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 17L17 7" />
             <path d="M7 7h10v10" />
@@ -931,14 +969,14 @@
         </div>
       </div>
       <h2 style="font-size:1.9rem;font-weight:800;margin-bottom:0.25rem">ارتقاء</h2>
-      <p style="font-size:0.92rem;color:var(--text-muted);font-weight:600;margin-bottom:1.4rem">سجل دخولك أو أنشئ حسابك لحفظ تقدمك وعاداتك محلياً بسرية كاملة وبدون أي اشتراكات.</p>
+      <p style="font-size:0.92rem;color:var(--text-muted);font-weight:600;margin-bottom:1.4rem">سجل دخولك أو أنشئ حسابك لحفظ تقدمك وعاداتك محلياً بسرية تامة.</p>
 
       <div class="auth-tab-switch">
-        <button type="button" class="auth-tab-btn active" id="btn-auth-mode-login" onclick="switchAuthFormMode('login')">تسجيل الدخول</button>
-        <button type="button" class="auth-tab-btn" id="btn-auth-mode-register" onclick="switchAuthFormMode('register')">سجل الآن</button>
+        <button type="button" class="auth-tab-btn active" id="btn-auth-mode-login" onclick="UIController.switchAuthMode('login')">تسجيل الدخول</button>
+        <button type="button" class="auth-tab-btn" id="btn-auth-mode-register" onclick="UIController.switchAuthMode('register')">سجل الآن</button>
       </div>
 
-      <form onsubmit="handleAuthSubmit(event)">
+      <form onsubmit="UIController.handleAuthSubmit(event)">
         <div class="form-field" style="text-align:right">
           <label>اسم المستخدم:</label>
           <input type="text" id="auth-username" class="form-input" required placeholder="اكتب اسمك..." autocomplete="username" />
@@ -959,7 +997,7 @@
   <!-- Header -->
   <header class="main-header">
     <div class="container header-inner">
-      <div class="brand-box" onclick="switchMainTab('habits', document.getElementById('tab-btn-habits'))">
+      <div class="brand-box" onclick="UIController.switchTab('habits', document.getElementById('tab-btn-habits'))">
         <div class="logo-3d-badge">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 17L17 7" />
@@ -975,19 +1013,19 @@
       <!-- 3D Sliding Navigation -->
       <nav class="nav-3d-track" id="nav-track">
         <div class="nav-slider-pill" id="nav-slider-pill"></div>
-        <button class="nav-btn-item active" id="tab-btn-habits" onclick="switchMainTab('habits', this)">عادات اليوم</button>
-        <button class="nav-btn-item" id="tab-btn-analytics" onclick="switchMainTab('analytics', this)">التحليلات والمكافآت</button>
-        <button class="nav-btn-item" id="tab-btn-islamic" onclick="switchMainTab('islamic', this)">القرآن والحديث</button>
+        <button class="nav-btn-item active" id="tab-btn-habits" onclick="UIController.switchTab('habits', this)">عادات اليوم</button>
+        <button class="nav-btn-item" id="tab-btn-analytics" onclick="UIController.switchTab('analytics', this)">التحليلات والمكافآت</button>
+        <button class="nav-btn-item" id="tab-btn-islamic" onclick="UIController.switchTab('islamic', this)">القرآن والحديث</button>
       </nav>
 
       <div class="header-actions">
         <div class="user-pill">
           <div class="user-avatar-initial" id="header-user-avatar">م</div>
           <span class="user-name-label" id="header-user-name">محمد</span>
-          <button class="btn-logout-tiny" onclick="handleLogout()" title="تسجيل الخروج">خروج</button>
+          <button class="btn-logout-tiny" onclick="UIController.handleLogout()" title="تسجيل الخروج">خروج</button>
         </div>
 
-        <button class="btn-3d-icon" onclick="toggleThemeMode()" title="تبديل الوضع">
+        <button class="btn-3d-icon" onclick="UIController.toggleTheme()" title="تبديل الوضع">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
           </svg>
@@ -1005,6 +1043,15 @@
         <div class="hero-info-text">
           <h1 id="user-greeting-txt">مرحباً بك</h1>
           <p>خطواتك اليومية في العمل العميق، المذاكرة، وتطوير نفسك تصنع فارقاً حقيقياً في مستقبلك.</p>
+          <div class="xp-meter-box">
+            <div class="xp-meter-track">
+              <div class="xp-meter-fill" id="user-xp-fill" style="width: 20%"></div>
+            </div>
+            <div class="xp-meter-label">
+              <span id="user-level-tag">المستوى 1: مبتدئ واعد</span>
+              <span id="user-xp-counter">0 / 250 XP</span>
+            </div>
+          </div>
         </div>
         <div class="hero-kpi-pill">
           <div class="hero-kpi-value" id="overall-completion-rate">0%</div>
@@ -1036,13 +1083,13 @@
           <h2 class="section-title">عادات اليوم المسجلة</h2>
           <div class="section-accent-line"></div>
         </div>
-        <button class="btn-3d btn-3d-primary" onclick="openAddHabitModal()">
+        <button class="btn-3d btn-3d-primary" onclick="UIController.openAddHabitModal()">
           + إضافة عادة جديدة
         </button>
       </div>
 
       <div class="habits-grid" id="habits-container-element">
-        <!-- Habits Rendered Here -->
+        <!-- Habits Injected -->
       </div>
 
       <!-- Non-commercial Cause Banner -->
@@ -1083,7 +1130,7 @@
       </div>
 
       <div class="kpi-metrics-grid" id="rewards-container-grid">
-        <!-- Rewards Rendered Here -->
+        <!-- Rewards Injected -->
       </div>
     </section>
 
@@ -1101,22 +1148,22 @@
             <div style="font-size:0.85rem;color:var(--text-muted)">بصوت الشيخ مشاري راشد العفاسي</div>
           </div>
           <div style="display:flex;align-items:center;gap:0.5rem">
-            <button class="btn-3d btn-3d-secondary" onclick="stepAyahRecitation(-1)">السابق</button>
-            <button class="btn-3d btn-3d-primary" id="btn-quran-audio" onclick="toggleQuranRecitation()">تشغيل التلاوة</button>
-            <button class="btn-3d btn-3d-secondary" onclick="stepAyahRecitation(1)">التالي</button>
+            <button class="btn-3d btn-3d-secondary" onclick="QuranEngine.stepAyah(-1)">السابق</button>
+            <button class="btn-3d btn-3d-primary" id="btn-quran-audio" onclick="QuranEngine.togglePlay()">تشغيل التلاوة</button>
+            <button class="btn-3d btn-3d-secondary" onclick="QuranEngine.stepAyah(1)">التالي</button>
           </div>
         </div>
 
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6rem;flex-wrap:wrap;gap:1rem">
           <div>
             <label style="font-weight:800;font-size:0.9rem;margin-left:0.5rem">اختر السورة:</label>
-            <select id="select-surah-picker" class="form-input" style="width:auto;display:inline-block" onchange="loadQuranSurah(this.value)">
+            <select id="select-surah-picker" class="form-input" style="width:auto;display:inline-block" onchange="QuranEngine.loadSurah(this.value)">
               <!-- 114 Surahs injected dynamically -->
             </select>
           </div>
           <div style="display:flex;gap:0.4rem">
-            <button class="btn-3d btn-3d-secondary" onclick="adjustScriptSize(-2)">A-</button>
-            <button class="btn-3d btn-3d-secondary" onclick="adjustScriptSize(2)">A+</button>
+            <button class="btn-3d btn-3d-secondary" onclick="QuranEngine.adjustFontSize(-2)">A-</button>
+            <button class="btn-3d btn-3d-secondary" onclick="QuranEngine.adjustFontSize(2)">A+</button>
           </div>
         </div>
 
@@ -1136,10 +1183,10 @@
     <div class="modal-box">
       <div class="modal-head-row">
         <h3>إضافة عادة جديدة</h3>
-        <button class="modal-close-btn" onclick="closeAddHabitModal()">&times;</button>
+        <button class="modal-close-btn" onclick="UIController.closeAddHabitModal()">&times;</button>
       </div>
 
-      <form onsubmit="handleSaveCustomHabit(event)">
+      <form onsubmit="UIController.handleSaveCustomHabit(event)">
         <div class="form-field">
           <label>اسم العادة (المهمة أو الهدف):</label>
           <input type="text" id="habit-name-input" class="form-input" required placeholder="مثال: برمجة واجهة مستخدم، مذاكرة مهارة..." />
@@ -1159,7 +1206,7 @@
 
         <div class="form-field">
           <label>نوع التتبع:</label>
-          <select id="habit-type-input" class="form-input" onchange="handleHabitTypeChange(this.value)">
+          <select id="habit-type-input" class="form-input" onchange="UIController.handleHabitTypeChange(this.value)">
             <option value="boolean">إنجاز مباشر (علامة صح)</option>
             <option value="duration">مدة زمنية (دقائق)</option>
             <option value="numeric">معدود رقمي</option>
@@ -1172,7 +1219,7 @@
         </div>
 
         <div style="display:flex;justify-content:flex-end;gap:0.6rem;margin-top:1.5rem">
-          <button type="button" class="btn-3d btn-3d-secondary" onclick="closeAddHabitModal()">إلغاء</button>
+          <button type="button" class="btn-3d btn-3d-secondary" onclick="UIController.closeAddHabitModal()">إلغاء</button>
           <button type="submit" class="btn-3d btn-3d-primary">حفظ العادة</button>
         </div>
       </form>
@@ -1184,12 +1231,12 @@
     <div class="modal-box">
       <div class="modal-head-row">
         <h3>الإبلاغ عن مشكلة أو اقتراح</h3>
-        <button class="modal-close-btn" onclick="closeIssueModal()">&times;</button>
+        <button class="modal-close-btn" onclick="UIController.closeIssueModal()">&times;</button>
       </div>
       <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:1.3rem">
         سيتم إرسال بلاغك مباشرة إلى المهندس محمد عادل على البريد الرسمي: <strong>mohamedsenanofficial@gmail.com</strong>
       </p>
-      <form onsubmit="handleSendIssue(event)">
+      <form onsubmit="UIController.handleSendIssue(event)">
         <div class="form-field">
           <label>نوع الملاحظة:</label>
           <select id="issue-type" class="form-input">
@@ -1204,7 +1251,7 @@
           <textarea id="issue-details" class="form-input" rows="4" required placeholder="اشرح ما واجهته بالتفصيل..."></textarea>
         </div>
         <div style="display:flex;justify-content:flex-end;gap:0.6rem">
-          <button type="button" class="btn-3d btn-3d-secondary" onclick="closeIssueModal()">إلغاء</button>
+          <button type="button" class="btn-3d btn-3d-secondary" onclick="UIController.closeIssueModal()">إلغاء</button>
           <button type="submit" class="btn-3d btn-3d-primary">إرسال البلاغ</button>
         </div>
       </form>
@@ -1227,7 +1274,7 @@
           <h4>الدعم والمساعدة</h4>
           <p>بياناتك محفوظة محلياً على جهازك فقط وفي سرية تامة.</p>
           <div style="margin-top:1rem">
-            <button class="report-issue-trigger" onclick="openIssueModal()">
+            <button class="report-issue-trigger" onclick="UIController.openIssueModal()">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="12" y1="8" x2="12" y2="12" />
@@ -1249,806 +1296,963 @@
   <audio id="audio-streamer" preload="none"></audio>
 
   <script>
-    /* ==========================================================
-       0. PERMANENT DATA CORE WITH USERNAME & PASSWORD
-       ========================================================== */
-    const MASTER_USERS_KEY = 'IRTIQAA_ACCOUNTS_VAULT';
-    const ACTIVE_SESSION_USER_KEY = 'IRTIQAA_ACTIVE_USER_SESSION';
-
-    const MOTIVATIONAL_WORDS = [
-      "عاش يا بطل!",
-      "برافو عليك!",
-      "هانت والقمة قريبة!",
-      "وحش.. استمر!",
-      "خطوة عظيمة للأفضل!",
-      "ثبات عالي ما شاء الله!"
-    ];
-
-    const INITIAL_DEFAULT_HABITS = [
-      {
-        id: 'hab_deep_work',
-        title: 'ساعتين عمل عميق وتركيز',
-        category: 'العمل والمشاريع',
-        desc: 'إنجاز مهام ومشاريع الشغل الأساسية بدون تشتت أو سوشيال ميديا.',
-        type: 'duration',
-        target: 120,
-        unit: 'دقيقة'
-      },
-      {
-        id: 'hab_tech_skill',
-        title: 'مذاكرة وتطبيق مهارة برمجية',
-        category: 'البرمجة والتقنية',
-        desc: '45 دقيقة يومياً لبناء خبرة برمجية ومشاريع حقيقية.',
-        type: 'duration',
-        target: 45,
-        unit: 'دقيقة'
-      },
-      {
-        id: 'hab_client_tasks',
-        title: 'متابعة تسليمات الشغل والعملاء',
-        category: 'العمل والمشاريع',
-        desc: 'مراجعة الرسائل وتسليم متطلبات اليوم بدقة والتزام.',
-        type: 'boolean',
-        target: 1,
-        unit: 'مرة'
-      },
-      {
-        id: 'hab_industry_podcast',
-        title: 'بودكاست تقني أو قراءة متخصصة',
-        category: 'التطوير والمذاكرة',
-        desc: 'قراءة 20 صفحة في مجالك أو الاستماع لحوار تقني متخصص.',
-        type: 'boolean',
-        target: 1,
-        unit: 'مرة'
-      },
-      {
-        id: 'hab_sleep_schedule',
-        title: 'نوم مبكر ومنتظم قبل 11:30 مساءً',
-        category: 'النوم والطاقة',
-        desc: 'المحافظة على 7-8 ساعات نوم عميق للاستيقاظ بكامل الطاقة.',
-        type: 'boolean',
-        target: 1,
-        unit: 'مرة'
-      },
-      {
-        id: 'hab_fajr_quran',
-        title: 'صلاة الفجر والورد القرآني',
-        category: 'الروحانيات والسكينة',
-        desc: 'بداية اليوم بركعتين وتلاوة صفحتين بتدبر وهدوء نفسي.',
-        type: 'boolean',
-        target: 1,
-        unit: 'مرة'
-      }
-    ];
-
-    let currentAuthMode = 'login';
-    let currentUserData = null;
-    let audioContext = null;
-    let audioVerses = [];
-    let currentVerseIdx = 0;
-    let isReciting = false;
-    const audioElement = document.getElementById('audio-streamer');
-
-    function getUsersVault() {
-      try {
-        const raw = localStorage.getItem(MASTER_USERS_KEY);
-        return raw ? JSON.parse(raw) : {};
-      } catch (e) {
-        return {};
-      }
-    }
-
-    function saveUsersVault(vault) {
-      try {
-        localStorage.setItem(MASTER_USERS_KEY, JSON.stringify(vault));
-      } catch (e) {}
-    }
-
-    function hashPassword(pass) {
-      let hash = 0;
-      for (let i = 0; i < pass.length; i++) {
-        const char = pass.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash |= 0;
-      }
-      return 'pw_' + Math.abs(hash).toString(36);
-    }
-
-    function switchAuthFormMode(mode) {
-      currentAuthMode = mode;
-      document.getElementById('btn-auth-mode-login').classList.toggle('active', mode === 'login');
-      document.getElementById('btn-auth-mode-register').classList.toggle('active', mode === 'register');
-      document.getElementById('auth-submit-btn').textContent = mode === 'login' ? 'دخول للنظام' : 'تسجيل والبدء فوراً';
-    }
-
-    function handleAuthSubmit(e) {
-      e.preventDefault();
-      const username = document.getElementById('auth-username').value.trim();
-      const password = document.getElementById('auth-password').value;
-
-      if (!username || !password) return;
-
-      const vault = getUsersVault();
-      const hashed = hashPassword(password);
-
-      if (currentAuthMode === 'register') {
-        if (vault[username]) {
-          alert('هذا الاسم مسجل مسبقاً! يمكنك تسجيل الدخول به.');
-          return;
+    /**
+     * ==========================================================
+     * 1. CONFIGURATION & CORE CONSTANTS
+     * ==========================================================
+     */
+    const Config = {
+      MASTER_VAULT_KEY: 'IRTIQAA_VAULT_PRODUCTION',
+      SESSION_USER_KEY: 'IRTIQAA_ACTIVE_SESSION_USER',
+      TARGET_EMAIL: 'mohamedsenanofficial@gmail.com',
+      MOTIVATIONS: [
+        "عاش يا بطل!",
+        "برافو عليك!",
+        "هانت والقمة قريبة!",
+        "وحش.. استمر!",
+        "خطوة عظيمة للأفضل!",
+        "ثبات عالي ما شاء الله!"
+      ],
+      DEFAULT_HABITS: [
+        {
+          id: 'hab_deep_work',
+          title: 'ساعتين عمل عميق وتركيز',
+          category: 'العمل والمشاريع',
+          desc: 'إنجاز مهام ومشاريع الشغل الأساسية بدون تشتت أو سوشيال ميديا.',
+          type: 'duration',
+          target: 120,
+          unit: 'دقيقة'
+        },
+        {
+          id: 'hab_tech_skill',
+          title: 'مذاكرة وتطبيق مهارة برمجية',
+          category: 'البرمجة والتقنية',
+          desc: '45 دقيقة يومياً لبناء خبرة برمجية ومشاريع حقيقية.',
+          type: 'duration',
+          target: 45,
+          unit: 'دقيقة'
+        },
+        {
+          id: 'hab_client_tasks',
+          title: 'متابعة تسليمات الشغل والعملاء',
+          category: 'العمل والمشاريع',
+          desc: 'مراجعة الرسائل وتسليم متطلبات اليوم بدقة والتزام.',
+          type: 'boolean',
+          target: 1,
+          unit: 'مرة'
+        },
+        {
+          id: 'hab_industry_podcast',
+          title: 'بودكاست تقني أو قراءة متخصصة',
+          category: 'التطوير والمذاكرة',
+          desc: 'قراءة 20 صفحة في مجالك أو الاستماع لحوار تقني متخصص.',
+          type: 'boolean',
+          target: 1,
+          unit: 'مرة'
+        },
+        {
+          id: 'hab_sleep_schedule',
+          title: 'نوم مبكر ومنتظم قبل 11:30 مساءً',
+          category: 'النوم والطاقة',
+          desc: 'المحافظة على 7-8 ساعات نوم عميق للاستيقاظ بكامل الطاقة.',
+          type: 'boolean',
+          target: 1,
+          unit: 'مرة'
+        },
+        {
+          id: 'hab_fajr_quran',
+          title: 'صلاة الفجر والورد القرآني',
+          category: 'الروحانيات والسكينة',
+          desc: 'بداية اليوم بركعتين وتلاوة صفحتين بتدبر وهدوء نفسي.',
+          type: 'boolean',
+          target: 1,
+          unit: 'مرة'
         }
-        vault[username] = {
-          username,
-          passwordHash: hashed,
-          habits: INITIAL_DEFAULT_HABITS,
-          completions: {},
-          scriptFontSize: 26,
-          currentSurah: 1,
-          createdAt: new Date().toISOString()
-        };
-        saveUsersVault(vault);
-      } else {
-        if (!vault[username]) {
-          alert('اسم المستخدم غير مسجل، يرجى النقر على "سجل الآن" أولاً.');
-          return;
+      ],
+      SURAHS: [
+        { n: 1, name: "الفاتحة", ayahs: 7 }, { n: 2, name: "البقرة", ayahs: 286 }, { n: 3, name: "آل عمران", ayahs: 200 },
+        { n: 4, name: "النساء", ayahs: 176 }, { n: 5, name: "المائدة", ayahs: 120 }, { n: 6, name: "الأنعام", ayahs: 165 },
+        { n: 7, name: "الأعراف", ayahs: 206 }, { n: 8, name: "الأنفال", ayahs: 75 }, { n: 9, name: "التوبة", ayahs: 129 },
+        { n: 10, name: "يونس", ayahs: 109 }, { n: 11, name: "هود", ayahs: 123 }, { n: 12, name: "يوسف", ayahs: 111 },
+        { n: 13, name: "الرعد", ayahs: 43 }, { n: 14, name: "إبراهيم", ayahs: 52 }, { n: 15, name: "الحجر", ayahs: 99 },
+        { n: 16, name: "النحل", ayahs: 128 }, { n: 17, name: "الإسراء", ayahs: 111 }, { n: 18, name: "الكهف", ayahs: 110 },
+        { n: 19, name: "مريم", ayahs: 98 }, { n: 20, name: "طه", ayahs: 135 }, { n: 21, name: "الأنبياء", ayahs: 112 },
+        { n: 22, name: "الحج", ayahs: 78 }, { n: 23, name: "المؤمنون", ayahs: 118 }, { n: 24, name: "النور", ayahs: 64 },
+        { n: 25, name: "الفرقان", ayahs: 77 }, { n: 26, name: "الشعراء", ayahs: 227 }, { n: 27, name: "النمل", ayahs: 93 },
+        { n: 28, name: "القصص", ayahs: 88 }, { n: 29, name: "العنكبوت", ayahs: 69 }, { n: 30, name: "الروم", ayahs: 60 },
+        { n: 31, name: "لقمان", ayahs: 34 }, { n: 32, name: "السجدة", ayahs: 30 }, { n: 33, name: "الأحزاب", ayahs: 73 },
+        { n: 34, name: "سبأ", ayahs: 54 }, { n: 35, name: "فاطر", ayahs: 45 }, { n: 36, name: "يس", ayahs: 83 },
+        { n: 37, name: "الصافات", ayahs: 182 }, { n: 38, name: "ص", ayahs: 88 }, { n: 39, name: "الزمر", ayahs: 75 },
+        { n: 40, name: "غافر", ayahs: 85 }, { n: 41, name: "فصلت", ayahs: 54 }, { n: 42, name: "الشورى", ayahs: 53 },
+        { n: 43, name: "الزخرف", ayahs: 89 }, { n: 44, name: "الدخان", ayahs: 59 }, { n: 45, name: "الجاثية", ayahs: 37 },
+        { n: 46, name: "الأحقاف", ayahs: 35 }, { n: 47, name: "محمد", ayahs: 38 }, { n: 48, name: "الفتح", ayahs: 29 },
+        { n: 49, name: "الحجرات", ayahs: 18 }, { n: 50, name: "ق", ayahs: 45 }, { n: 51, name: "الذاريات", ayahs: 60 },
+        { n: 52, name: "الطور", ayahs: 49 }, { n: 53, name: "النجم", ayahs: 62 }, { n: 54, name: "القمر", ayahs: 55 },
+        { n: 55, name: "الرحمن", ayahs: 78 }, { n: 56, name: "الواقعة", ayahs: 96 }, { n: 57, name: "الحديد", ayahs: 29 },
+        { n: 58, name: "المجادلة", ayahs: 22 }, { n: 59, name: "الحشر", ayahs: 24 }, { n: 60, name: "الممتحنة", ayahs: 13 },
+        { n: 61, name: "الصف", ayahs: 14 }, { n: 62, name: "الجمعة", ayahs: 11 }, { n: 63, name: "المنافقون", ayahs: 11 },
+        { n: 64, name: "التغابن", ayahs: 18 }, { n: 65, name: "الطلاق", ayahs: 12 }, { n: 66, name: "التحريم", ayahs: 12 },
+        { n: 67, name: "الملك", ayahs: 30 }, { n: 68, name: "القلم", ayahs: 52 }, { n: 69, name: "الحاقة", ayahs: 52 },
+        { n: 70, name: "المعارج", ayahs: 44 }, { n: 71, name: "نوح", ayahs: 28 }, { n: 72, name: "الجن", ayahs: 28 },
+        { n: 73, name: "المزمل", ayahs: 20 }, { n: 74, name: "المدثر", ayahs: 56 }, { n: 75, name: "القيامة", ayahs: 40 },
+        { n: 76, name: "الإنسان", ayahs: 31 }, { n: 77, name: "المرسلات", ayahs: 50 }, { n: 78, name: "النبأ", ayahs: 40 },
+        { n: 79, name: "النازعات", ayahs: 46 }, { n: 80, name: "عبس", ayahs: 42 }, { n: 81, name: "التكوير", ayahs: 29 },
+        { n: 82, name: "الانفطار", ayahs: 19 }, { n: 83, name: "المطففين", ayahs: 36 }, { n: 84, name: "الانشقاق", ayahs: 25 },
+        { n: 85, name: "البروج", ayahs: 22 }, { n: 86, name: "الطارق", ayahs: 17 }, { n: 87, name: "الأعلى", ayahs: 19 },
+        { n: 88, name: "الغاشية", ayahs: 26 }, { n: 89, name: "الفجر", ayahs: 30 }, { n: 90, name: "البلد", ayahs: 20 },
+        { n: 91, name: "الشمس", ayahs: 15 }, { n: 92, name: "الليل", ayahs: 21 }, { n: 93, name: "الضحى", ayahs: 11 },
+        { n: 94, name: "الشرح", ayahs: 8 }, { n: 95, name: "التين", ayahs: 8 }, { n: 96, name: "العلق", ayahs: 19 },
+        { n: 97, name: "القدر", ayahs: 5 }, { n: 98, name: "البينة", ayahs: 8 }, { n: 99, name: "الزلزلة", ayahs: 8 },
+        { n: 100, name: "العاديات", ayahs: 11 }, { n: 101, name: "القارعة", ayahs: 11 }, { n: 102, name: "التكاثر", ayahs: 8 },
+        { n: 103, name: "العصر", ayahs: 3 }, { n: 104, name: "الهمزة", ayahs: 9 }, { n: 105, name: "الفيل", ayahs: 5 },
+        { n: 106, name: "قريش", ayahs: 4 }, { n: 107, name: "الماعون", ayahs: 7 }, { n: 108, name: "الكوثر", ayahs: 3 },
+        { n: 109, name: "الكافرون", ayahs: 6 }, { n: 110, name: "النصر", ayahs: 3 }, { n: 111, name: "المسد", ayahs: 5 },
+        { n: 112, name: "الإخلاص", ayahs: 4 }, { n: 113, name: "الفلق", ayahs: 5 }, { n: 114, name: "الناس", ayahs: 6 }
+      ]
+    };
+
+    /**
+     * ==========================================================
+     * 2. AUDIO SYNTH ENGINE (Web Audio API)
+     * ==========================================================
+     */
+    const AudioEngine = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
         }
-        if (vault[username].passwordHash !== hashed) {
-          alert('كلمة المرور غير صحيحة!');
-          return;
+      },
+      playSuccessChime() {
+        try {
+          this.init();
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const now = this.ctx.currentTime;
+          
+          // Harmonic Chord Arpeggio (E5 -> G#5 -> B5)
+          const notes = [659.25, 830.61, 987.77];
+          notes.forEach((freq, i) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now + i * 0.06);
+            gain.gain.setValueAtTime(0.08, now + i * 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.06 + 0.35);
+            
+            osc.start(now + i * 0.06);
+            osc.stop(now + i * 0.06 + 0.35);
+          });
+        } catch (e) {}
+      }
+    };
+
+    /**
+     * ==========================================================
+     * 3. PARTICLE FX ENGINE (Canvas Particle Burst)
+     * ==========================================================
+     */
+    const FXEngine = {
+      canvas: document.getElementById('fx-canvas'),
+      ctx: null,
+      particles: [],
+      animId: null,
+      init() {
+        this.ctx = this.canvas.getContext('2d');
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+      },
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      },
+      burst(x = window.innerWidth / 2, y = window.innerHeight / 2) {
+        const colors = ['#10b981', '#4f46e5', '#f59e0b', '#06b6d4', '#ec4899'];
+        for (let i = 0; i < 45; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 8 + 3;
+          this.particles.push({
+            x,
+            y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 2,
+            size: Math.random() * 6 + 3,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: 1,
+            decay: Math.random() * 0.02 + 0.015
+          });
         }
-      }
-
-      localStorage.setItem(ACTIVE_SESSION_USER_KEY, username);
-      currentUserData = vault[username];
-      document.getElementById('auth-screen-overlay').classList.remove('is-active');
-      initAppSession();
-    }
-
-    function handleLogout() {
-      if (confirm("هل تريد تسجيل الخروج؟ بياناتك تظل محفوظة في المتصفح.")) {
-        localStorage.removeItem(ACTIVE_SESSION_USER_KEY);
-        currentUserData = null;
-        document.getElementById('auth-screen-overlay').classList.add('is-active');
-      }
-    }
-
-    function syncUserData() {
-      if (!currentUserData) return;
-      const vault = getUsersVault();
-      vault[currentUserData.username] = currentUserData;
-      saveUsersVault(vault);
-    }
-
-    function getTodayKey() {
-      const d = new Date();
-      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    }
-
-    /* Web Audio API Chime Synth */
-    function playChimeSound() {
-      try {
-        if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        if (audioContext.state === 'suspended') audioContext.resume();
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        osc.connect(gain);
-        gain.connect(audioContext.destination);
-        const now = audioContext.currentTime;
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(659.25, now);
-        osc.frequency.setValueAtTime(880.00, now + 0.08);
-        gain.gain.setValueAtTime(0.08, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-        osc.start(now);
-        osc.stop(now + 0.25);
-      } catch (e) {}
-    }
-
-    /* 3D Motivational Floating Notification */
-    function triggerMotivationalAffirmation() {
-      playChimeSound();
-      const shelf = document.getElementById('affirmation-shelf');
-      const card = document.createElement('div');
-      card.className = 'affirmation-card';
-      const randomWord = MOTIVATIONAL_WORDS[Math.floor(Math.random() * MOTIVATIONAL_WORDS.length)];
-      card.innerHTML = `<span>✓</span> <span>${randomWord}</span>`;
-      shelf.appendChild(card);
-      setTimeout(() => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(-12px)';
-        card.style.transition = 'all 0.25s ease';
-        setTimeout(() => card.remove(), 250);
-      }, 2300);
-    }
-
-    /* ==========================================================
-       1. HABIT METRICS & ACTIONS
-       ========================================================== */
-    function calculateStreak() {
-      let streak = 0;
-      let d = new Date();
-      const today = getTodayKey();
-      const active = currentUserData.habits;
-      if (active.length === 0) return 0;
-
-      let todayDone = true;
-      active.forEach(h => {
-        const val = currentUserData.completions[today]?.[h.id] || 0;
-        if (val < h.target) todayDone = false;
-      });
-
-      if (!todayDone) d.setDate(d.getDate() - 1);
-
-      while (true) {
-        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-        const dayRecord = currentUserData.completions[key];
-        if (!dayRecord) break;
-        let dayComplete = true;
-        active.forEach(h => {
-          if ((dayRecord[h.id] || 0) < h.target) dayComplete = false;
-        });
-        if (dayComplete) {
-          streak++;
-          d.setDate(d.getDate() - 1);
+        if (!this.animId) this.loop();
+      },
+      loop() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+          const p = this.particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.25; // gravity
+          p.alpha -= p.decay;
+          
+          if (p.alpha <= 0) {
+            this.particles.splice(i, 1);
+            continue;
+          }
+          
+          this.ctx.save();
+          this.ctx.globalAlpha = p.alpha;
+          this.ctx.fillStyle = p.color;
+          this.ctx.beginPath();
+          this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          this.ctx.fill();
+          this.ctx.restore();
+        }
+        
+        if (this.particles.length > 0) {
+          this.animId = requestAnimationFrame(() => this.loop());
         } else {
-          break;
+          this.animId = null;
         }
       }
-      return streak;
-    }
+    };
 
-    function renderHabitsView() {
-      const container = document.getElementById('habits-container-element');
-      container.innerHTML = '';
-      const today = getTodayKey();
-      let completedCount = 0;
-
-      currentUserData.habits.forEach(habit => {
-        const currentVal = currentUserData.completions[today]?.[habit.id] || 0;
-        const isDone = currentVal >= habit.target;
-        if (isDone) completedCount++;
-
-        const pct = Math.min(100, Math.round((currentVal / habit.target) * 100));
-        const card = document.createElement('div');
-        card.className = `habit-item-card ${isDone ? 'is-completed' : ''}`;
-
-        card.innerHTML = `
-          <div>
-            <div class="habit-header-row">
-              <span class="habit-3d-tag">${habit.category}</span>
-            </div>
-            <h3 class="habit-title-text">${habit.title}</h3>
-            <p class="habit-desc-text">${habit.desc}</p>
-
-            <div class="habit-progress-track">
-              <div class="habit-progress-bar" style="width:${pct}%"></div>
-            </div>
-
-            <div class="habit-metric-info">
-              <span>الإنجاز: ${currentVal} من ${habit.target} ${habit.unit}</span>
-              <span style="color:${isDone ? 'var(--primary)' : 'var(--text-muted)'}">${isDone ? 'مكتمل بنجاح' : pct + '%'}</span>
-            </div>
-          </div>
-
-          <div>
-            ${habit.type === 'boolean' ? `
-              <button class="btn-habit-check ${isDone ? 'is-checked' : ''}" onclick="toggleHabitStatus('${habit.id}')">
-                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>${isDone ? 'تم الإنجاز بنجاح' : 'تسجيل الإنجاز'}</span>
-              </button>
-            ` : `
-              <div class="stepper-row">
-                <button class="stepper-btn" onclick="stepHabitValue('${habit.id}', -15)">-</button>
-                <div class="stepper-count-display">${currentVal} ${habit.unit}</div>
-                <button class="stepper-btn" onclick="stepHabitValue('${habit.id}', 15)">+</button>
-              </div>
-            `}
-          </div>
-        `;
-        container.appendChild(card);
-      });
-
-      const rate = Math.round((completedCount / (currentUserData.habits.length || 1)) * 100) || 0;
-      document.getElementById('overall-completion-rate').textContent = `${rate}%`;
-      document.getElementById('kpi-done-count').textContent = `${completedCount} / ${currentUserData.habits.length}`;
-
-      const streak = calculateStreak();
-      document.getElementById('kpi-streak-val').textContent = `${streak} أيام`;
-
-      let rank = "مبتدئ واعد";
-      if (streak >= 30) rank = "رمز الاستمرارية";
-      else if (streak >= 14) rank = "قائد الانضباط";
-      else if (streak >= 7) rank = "ثابت على المسار";
-      else if (streak >= 3) rank = "شعلة البداية";
-      document.getElementById('kpi-rank-title').textContent = rank;
-    }
-
-    function toggleHabitStatus(id) {
-      const today = getTodayKey();
-      if (!currentUserData.completions[today]) currentUserData.completions[today] = {};
-      const cur = currentUserData.completions[today][id] || 0;
-      if (cur >= 1) {
-        currentUserData.completions[today][id] = 0;
-      } else {
-        currentUserData.completions[today][id] = 1;
-        triggerMotivationalAffirmation();
+    /**
+     * ==========================================================
+     * 4. STORAGE & SECURITY ENGINE (Password Hash & Migration)
+     * ==========================================================
+     */
+    const StorageEngine = {
+      getVault() {
+        try {
+          const raw = localStorage.getItem(Config.MASTER_VAULT_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      },
+      saveVault(vault) {
+        try {
+          localStorage.setItem(Config.MASTER_VAULT_KEY, JSON.stringify(vault));
+        } catch (e) {}
+      },
+      hashPassword(pass) {
+        let hash = 0;
+        for (let i = 0; i < pass.length; i++) {
+          const char = pass.charCodeAt(i);
+          hash = ((hash << 5) - hash) + char;
+          hash |= 0;
+        }
+        return 'ir_' + Math.abs(hash).toString(36);
+      },
+      getActiveUserSession() {
+        return localStorage.getItem(Config.SESSION_USER_KEY);
+      },
+      setActiveUserSession(username) {
+        localStorage.setItem(Config.SESSION_USER_KEY, username);
+      },
+      clearActiveUserSession() {
+        localStorage.removeItem(Config.SESSION_USER_KEY);
+      },
+      migrateLegacy() {
+        // Automatic migration of older databases if found
+        const vault = this.getVault();
+        ['IRTIQAA_ACCOUNTS_VAULT', 'IRTIQAA_PERMANENT_STORE_V2', 'IRTIQAA_MASTER_STORE_V1'].forEach(k => {
+          try {
+            const raw = localStorage.getItem(k);
+            if (raw) {
+              const parsed = JSON.parse(raw);
+              if (parsed && typeof parsed === 'object') {
+                Object.keys(parsed).forEach(userKey => {
+                  if (!vault[userKey] && parsed[userKey].habits) {
+                    vault[userKey] = parsed[userKey];
+                  }
+                });
+              }
+            }
+          } catch (e) {}
+        });
+        this.saveVault(vault);
       }
-      syncUserData();
-      renderHabitsView();
-    }
+    };
 
-    function stepHabitValue(id, delta) {
-      const today = getTodayKey();
-      if (!currentUserData.completions[today]) currentUserData.completions[today] = {};
-      const habit = currentUserData.habits.find(h => h.id === id);
-      if (!habit) return;
-      let val = (currentUserData.completions[today][id] || 0) + delta;
-      val = Math.max(0, val);
-      currentUserData.completions[today][id] = val;
-      if (val >= habit.target && delta > 0) {
-        triggerMotivationalAffirmation();
-      }
-      syncUserData();
-      renderHabitsView();
-    }
-
-    /* ==========================================================
-       2. ADD CUSTOM HABIT
-       ========================================================== */
-    function openAddHabitModal() {
-      document.getElementById('modal-add-habit').classList.add('is-active');
-      document.getElementById('habit-name-input').focus();
-    }
-
-    function closeAddHabitModal() {
-      document.getElementById('modal-add-habit').classList.remove('is-active');
-    }
-
-    function handleHabitTypeChange(type) {
-      const targetRow = document.getElementById('habit-target-row');
-      const targetLabel = document.getElementById('habit-target-label');
-      const targetInput = document.getElementById('habit-target-input');
-
-      if (type === 'boolean') {
-        targetRow.style.display = 'none';
-      } else if (type === 'duration') {
-        targetRow.style.display = 'block';
-        targetLabel.textContent = 'الهدف بالدقائق:';
-        targetInput.value = 30;
-      } else {
-        targetRow.style.display = 'block';
-        targetLabel.textContent = 'العدد المطلوب:';
-        targetInput.value = 5;
-      }
-    }
-
-    function handleSaveCustomHabit(e) {
-      e.preventDefault();
-      const title = document.getElementById('habit-name-input').value.trim();
-      const category = document.getElementById('habit-category-input').value;
-      const type = document.getElementById('habit-type-input').value;
-      let target = 1;
-      let unit = 'مرة';
-
-      if (type === 'duration') {
-        target = parseInt(document.getElementById('habit-target-input').value, 10) || 30;
-        unit = 'دقيقة';
-      } else if (type === 'numeric') {
-        target = parseInt(document.getElementById('habit-target-input').value, 10) || 5;
-        unit = 'مرات';
-      }
-
-      if (!title) return;
-
-      const newHabit = {
-        id: 'hab_c_' + Date.now(),
-        title,
-        category,
-        desc: 'المتابعة اليومية والانضباط المستمر في إنجاز المهمة.',
-        type,
-        target,
-        unit
-      };
-
-      currentUserData.habits.push(newHabit);
-      syncUserData();
-      closeAddHabitModal();
-      renderHabitsView();
-      triggerMotivationalAffirmation();
-    }
-
-    /* ==========================================================
-       3. 3D SLIDING NAVIGATION TRACK
-       ========================================================== */
-    function updateSlidingPill(btnElement) {
-      const pill = document.getElementById('nav-slider-pill');
-      if (!btnElement || !pill) return;
-      pill.style.left = btnElement.offsetLeft + 'px';
-      pill.style.width = btnElement.offsetWidth + 'px';
-    }
-
-    function switchMainTab(tab, btn) {
-      document.querySelectorAll('.nav-btn-item').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      updateSlidingPill(btn);
-
-      document.getElementById('view-habits').style.display = tab === 'habits' ? 'block' : 'none';
-      document.getElementById('view-analytics').style.display = tab === 'analytics' ? 'block' : 'none';
-      document.getElementById('view-islamic').style.display = tab === 'islamic' ? 'block' : 'none';
-
-      if (tab === 'analytics') renderCharts();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    /* ==========================================================
-       4. ANALYTICS & CANVAS
-       ========================================================== */
-    function renderCharts() {
-      drawAdherenceChart();
-      drawCategoriesChart();
-      renderRewards();
-    }
-
-    function drawAdherenceChart() {
-      const canvas = document.getElementById('canvas-7days-chart');
-      if (!canvas || !currentUserData) return;
-      const ctx = canvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      const w = canvas.parentElement.clientWidth;
-      const h = 250;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, w, h);
-
-      const days = [];
-      const rates = [];
-      const totalHabits = currentUserData.habits.length || 1;
-
-      for (let i = 6; i >= 0; i--) {
+    /**
+     * ==========================================================
+     * 5. CENTRAL APP STATE
+     * ==========================================================
+     */
+    const AppState = {
+      user: null,
+      todayKey: '',
+      init(userData) {
+        this.user = userData;
+        this.user.xp = this.user.xp || 0;
+        this.user.habits = this.user.habits || Config.DEFAULT_HABITS;
+        this.user.completions = this.user.completions || {};
+        this.user.scriptFontSize = this.user.scriptFontSize || 26;
+        this.user.currentSurah = this.user.currentSurah || 1;
+        this.todayKey = this.computeTodayKey();
+      },
+      computeTodayKey() {
         const d = new Date();
-        d.setDate(d.getDate() - i);
-        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-        days.push(String(d.getDate()).padStart(2,'0'));
-        let done = 0;
-        currentUserData.habits.forEach(h => {
-          if ((currentUserData.completions[key]?.[h.id] || 0) >= h.target) done++;
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+      },
+      sync() {
+        if (!this.user) return;
+        const vault = StorageEngine.getVault();
+        vault[this.user.username] = this.user;
+        StorageEngine.saveVault(vault);
+      },
+      addXP(amount) {
+        this.user.xp = (this.user.xp || 0) + amount;
+        this.sync();
+      },
+      getRankInfo() {
+        const xp = this.user.xp || 0;
+        if (xp >= 1500) return { level: 5, title: 'رمز الاستمرارية والقمة', maxXP: 3000 };
+        if (xp >= 800) return { level: 4, title: 'قائد الانضباط والعمل', maxXP: 1500 };
+        if (xp >= 400) return { level: 3, title: 'فارس العزيمة المتقن', maxXP: 800 };
+        if (xp >= 150) return { level: 2, title: 'شعلة الطموح والتركيز', maxXP: 400 };
+        return { level: 1, title: 'مبتدئ واعد', maxXP: 150 };
+      }
+    };
+
+    /**
+     * ==========================================================
+     * 6. QURAN RECITATION ENGINE
+     * ==========================================================
+     */
+    const QuranEngine = {
+      verses: [],
+      currentIndex: 0,
+      isPlaying: false,
+      audioEl: document.getElementById('audio-streamer'),
+      init() {
+        const select = document.getElementById('select-surah-picker');
+        select.innerHTML = '';
+        Config.SURAHS.forEach(s => {
+          const opt = document.createElement('option');
+          opt.value = s.n;
+          opt.textContent = `${s.n}. سورة ${s.name} (${s.ayahs} آية)`;
+          select.appendChild(opt);
         });
-        rates.push(Math.round((done / totalHabits) * 100));
+        this.loadSurah(AppState.user?.currentSurah || 1);
+        
+        this.audioEl.onended = () => {
+          this.stepAyah(1);
+        };
+      },
+      async loadSurah(surahNum) {
+        surahNum = parseInt(surahNum, 10);
+        AppState.user.currentSurah = surahNum;
+        AppState.sync();
+
+        this.pause();
+        this.currentIndex = 0;
+
+        const container = document.getElementById('quran-text-container');
+        container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">جاري تحميل السورة الكريمة...</div>';
+
+        try {
+          const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.alafasy`);
+          const json = await res.json();
+          if (json.code === 200 && json.data?.ayahs) {
+            this.verses = json.data.ayahs.map(a => ({
+              num: a.numberInSurah,
+              text: a.text,
+              audio: a.audio
+            }));
+            this.renderScript();
+          } else {
+            throw new Error('Fallback error');
+          }
+        } catch (err) {
+          container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">يرجى الاتصال بالإنترنت لتحميل تلاوة ونصوص هذه السورة الكريمة.</div>';
+        }
+      },
+      renderScript() {
+        const container = document.getElementById('quran-text-container');
+        container.innerHTML = '';
+        container.style.fontSize = `${AppState.user.scriptFontSize}px`;
+
+        this.verses.forEach((v, idx) => {
+          const span = document.createElement('span');
+          span.className = 'ayah-word';
+          span.id = `ayah-node-${idx}`;
+          span.textContent = v.text;
+          span.onclick = () => this.playAyah(idx);
+
+          const sym = document.createElement('span');
+          sym.className = 'ayah-symbol';
+          sym.textContent = ` ﴿${v.num}﴾ `;
+
+          container.appendChild(span);
+          container.appendChild(sym);
+        });
+      },
+      togglePlay() {
+        if (this.isPlaying) this.pause();
+        else this.playAyah(this.currentIndex);
+      },
+      playAyah(index) {
+        if (!this.verses || this.verses.length === 0) return;
+        if (index >= this.verses.length) {
+          this.pause();
+          return;
+        }
+
+        this.currentIndex = index;
+        const v = this.verses[index];
+
+        document.querySelectorAll('.ayah-word').forEach(el => el.classList.remove('current-reciting'));
+        const activeNode = document.getElementById(`ayah-node-${index}`);
+        if (activeNode) {
+          activeNode.classList.add('current-reciting');
+          activeNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        this.audioEl.src = v.audio;
+        this.audioEl.play().then(() => {
+          this.isPlaying = true;
+          document.getElementById('btn-quran-audio').textContent = 'إيقاف مؤقت';
+        }).catch(() => {});
+      },
+      pause() {
+        this.audioEl.pause();
+        this.isPlaying = false;
+        document.getElementById('btn-quran-audio').textContent = 'تشغيل التلاوة';
+      },
+      stepAyah(delta) {
+        const target = this.currentIndex + delta;
+        if (target >= 0 && target < this.verses.length) {
+          this.playAyah(target);
+        }
+      },
+      adjustFontSize(delta) {
+        AppState.user.scriptFontSize = Math.min(38, Math.max(20, (AppState.user.scriptFontSize || 26) + delta));
+        document.getElementById('quran-text-container').style.fontSize = `${AppState.user.scriptFontSize}px`;
+        AppState.sync();
       }
+    };
 
-      const barWidth = 32;
-      const sidePad = 40;
-      const gap = (w - (sidePad * 2) - (barWidth * 7)) / 6;
+    /**
+     * ==========================================================
+     * 7. UI CONTROLLER (DOM Management & Interactions)
+     * ==========================================================
+     */
+    const UIController = {
+      authMode: 'login',
+      activeTab: 'habits',
 
-      rates.forEach((rate, idx) => {
-        const x = sidePad + idx * (barWidth + gap);
-        const maxBarH = 140;
-        const barH = Math.max(6, (rate / 100) * maxBarH);
-        const y = 40 + (maxBarH - barH);
+      init() {
+        StorageEngine.migrateLegacy();
+        FXEngine.init();
 
-        // Pillar Track
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg').trim();
-        ctx.beginPath();
-        ctx.roundRect(x, 40, barWidth, maxBarH, [6, 6, 6, 6]);
-        ctx.fill();
+        const activeSessionName = StorageEngine.getActiveUserSession();
+        const vault = StorageEngine.getVault();
 
-        // 3D-effect Active Bar
-        ctx.fillStyle = rate === 100 ? '#10b981' : (rate > 0 ? '#4f46e5' : 'rgba(148,163,184,0.3)');
-        ctx.beginPath();
-        ctx.roundRect(x, y, barWidth, barH, [6, 6, 6, 6]);
-        ctx.fill();
-
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-muted').trim();
-        ctx.font = '700 11px IBM Plex Sans Arabic';
-        ctx.textAlign = 'center';
-        ctx.fillText(`${rate}%`, x + barWidth / 2, y - 6);
-
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
-        ctx.font = '800 12px IBM Plex Sans Arabic';
-        ctx.fillText(days[idx], x + barWidth / 2, 210);
-      });
-    }
-
-    function drawCategoriesChart() {
-      const canvas = document.getElementById('canvas-categories-chart');
-      if (!canvas || !currentUserData) return;
-      const ctx = canvas.getContext('2d');
-      const dpr = window.devicePixelRatio || 1;
-      const w = canvas.parentElement.clientWidth;
-      const h = 250;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.scale(dpr, dpr);
-      ctx.clearRect(0, 0, w, h);
-
-      const counts = {};
-      currentUserData.habits.forEach(h => counts[h.category] = (counts[h.category] || 0) + 1);
-      const categories = Object.keys(counts);
-      const total = currentUserData.habits.length || 1;
-      if (categories.length === 0) return;
-
-      const colors = ['#10b981', '#4f46e5', '#f59e0b', '#06b6d4', '#ec4899', '#8b5cf6'];
-      let startAngle = 0;
-      const cx = w * 0.35;
-      const cy = h / 2;
-      const radius = 68;
-
-      categories.forEach((cat, idx) => {
-        const sliceAngle = (counts[cat] / total) * 2 * Math.PI;
-        ctx.fillStyle = colors[idx % colors.length];
-        ctx.beginPath();
-        ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, radius, startAngle, startAngle + sliceAngle);
-        ctx.closePath();
-        ctx.fill();
-        startAngle += sliceAngle;
-
-        const legY = 40 + idx * 26;
-        ctx.fillRect(w * 0.65, legY - 10, 12, 12);
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
-        ctx.font = '700 12px IBM Plex Sans Arabic';
-        ctx.textAlign = 'right';
-        ctx.fillText(`${cat} (${counts[cat]})`, w - 20, legY);
-      });
-    }
-
-    function renderRewards() {
-      const grid = document.getElementById('rewards-container-grid');
-      grid.innerHTML = '';
-      const rewards = [
-        { title: 'بداية الارتقاء', desc: 'تسجيل أول إنجاز في حسابك بنجاح' },
-        { title: 'ثبات الـ 3 أيام', desc: 'الالتزام بدون أي انقطاع لثلاثة أيام متتالية' },
-        { title: 'أسبوع العمل العميق', desc: 'إتمام 7 أيام كاملة من التركيز والإنتاج' },
-        { title: 'شهر التمكين والإتقان', desc: 'الوصول لـ 30 يوماً من الانضباط الراسخ' }
-      ];
-
-      rewards.forEach((r, idx) => {
-        const card = document.createElement('div');
-        card.className = 'metric-card';
-        card.innerHTML = `
-          <div class="metric-title">مكافأة المستوى ${idx + 1}</div>
-          <div style="font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:0.25rem">${r.title}</div>
-          <div class="metric-sub">${r.desc}</div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    /* ==========================================================
-       5. 114 SURAHS QURAN
-       ========================================================== */
-    const SURAH_DIRECTORY_114 = [
-      { n: 1, name: "الفاتحة", ayahs: 7 }, { n: 2, name: "البقرة", ayahs: 286 }, { n: 3, name: "آل عمران", ayahs: 200 },
-      { n: 4, name: "النساء", ayahs: 176 }, { n: 5, name: "المائدة", ayahs: 120 }, { n: 6, name: "الأنعام", ayahs: 165 },
-      { n: 7, name: "الأعراف", ayahs: 206 }, { n: 8, name: "الأنفال", ayahs: 75 }, { n: 9, name: "التوبة", ayahs: 129 },
-      { n: 10, name: "يونس", ayahs: 109 }, { n: 11, name: "هود", ayahs: 123 }, { n: 12, name: "يوسف", ayahs: 111 },
-      { n: 13, name: "الرعد", ayahs: 43 }, { n: 14, name: "إبراهيم", ayahs: 52 }, { n: 15, name: "الحجر", ayahs: 99 },
-      { n: 16, name: "النحل", ayahs: 128 }, { n: 17, name: "الإسراء", ayahs: 111 }, { n: 18, name: "الكهف", ayahs: 110 },
-      { n: 19, name: "مريم", ayahs: 98 }, { n: 20, name: "طه", ayahs: 135 }, { n: 21, name: "الأنبياء", ayahs: 112 },
-      { n: 22, name: "الحج", ayahs: 78 }, { n: 23, name: "المؤمنون", ayahs: 118 }, { n: 24, name: "النور", ayahs: 64 },
-      { n: 25, name: "الفرقان", ayahs: 77 }, { n: 26, name: "الشعراء", ayahs: 227 }, { n: 27, name: "النمل", ayahs: 93 },
-      { n: 28, name: "القصص", ayahs: 88 }, { n: 29, name: "العنكبوت", ayahs: 69 }, { n: 30, name: "الروم", ayahs: 60 },
-      { n: 31, name: "لقمان", ayahs: 34 }, { n: 32, name: "السجدة", ayahs: 30 }, { n: 33, name: "الأحزاب", ayahs: 73 },
-      { n: 34, name: "سبأ", ayahs: 54 }, { n: 35, name: "فاطر", ayahs: 45 }, { n: 36, name: "يس", ayahs: 83 },
-      { n: 37, name: "الصافات", ayahs: 182 }, { n: 38, name: "ص", ayahs: 88 }, { n: 39, name: "الزمر", ayahs: 75 },
-      { n: 40, name: "غافر", ayahs: 85 }, { n: 41, name: "فصلت", ayahs: 54 }, { n: 42, name: "الشورى", ayahs: 53 },
-      { n: 43, name: "الزخرف", ayahs: 89 }, { n: 44, name: "الدخان", ayahs: 59 }, { n: 45, name: "الجاثية", ayahs: 37 },
-      { n: 46, name: "الأحقاف", ayahs: 35 }, { n: 47, name: "محمد", ayahs: 38 }, { n: 48, name: "الفتح", ayahs: 29 },
-      { n: 49, name: "الحجرات", ayahs: 18 }, { n: 50, name: "ق", ayahs: 45 }, { n: 51, name: "الذاريات", ayahs: 60 },
-      { n: 52, name: "الطور", ayahs: 49 }, { n: 53, name: "النجم", ayahs: 62 }, { n: 54, name: "القمر", ayahs: 55 },
-      { n: 55, name: "الرحمن", ayahs: 78 }, { n: 56, name: "الواقعة", ayahs: 96 }, { n: 57, name: "الحديد", ayahs: 29 },
-      { n: 58, name: "المجادلة", ayahs: 22 }, { n: 59, name: "الحشر", ayahs: 24 }, { n: 60, name: "الممتحنة", ayahs: 13 },
-      { n: 61, name: "الصف", ayahs: 14 }, { n: 62, name: "الجمعة", ayahs: 11 }, { n: 63, name: "المنافقون", ayahs: 11 },
-      { n: 64, name: "التغابن", ayahs: 18 }, { n: 65, name: "الطلاق", ayahs: 12 }, { n: 66, name: "التحريم", ayahs: 12 },
-      { n: 67, name: "الملك", ayahs: 30 }, { n: 68, name: "القلم", ayahs: 52 }, { n: 69, name: "الحاقة", ayahs: 52 },
-      { n: 70, name: "المعارج", ayahs: 44 }, { n: 71, name: "نوح", ayahs: 28 }, { n: 72, name: "الجن", ayahs: 28 },
-      { n: 73, name: "المزمل", ayahs: 20 }, { n: 74, name: "المدثر", ayahs: 56 }, { n: 75, name: "القيامة", ayahs: 40 },
-      { n: 76, name: "الإنسان", ayahs: 31 }, { n: 77, name: "المرسلات", ayahs: 50 }, { n: 78, name: "النبأ", ayahs: 40 },
-      { n: 79, name: "النازعات", ayahs: 46 }, { n: 80, name: "عبس", ayahs: 42 }, { n: 81, name: "التكوير", ayahs: 29 },
-      { n: 82, name: "الانفطار", ayahs: 19 }, { n: 83, name: "المطففين", ayahs: 36 }, { n: 84, name: "الانشقاق", ayahs: 25 },
-      { n: 85, name: "البروج", ayahs: 22 }, { n: 86, name: "الطارق", ayahs: 17 }, { n: 87, name: "الأعلى", ayahs: 19 },
-      { n: 88, name: "الغاشية", ayahs: 26 }, { n: 89, name: "الفجر", ayahs: 30 }, { n: 90, name: "البلد", ayahs: 20 },
-      { n: 91, name: "الشمس", ayahs: 15 }, { n: 92, name: "الليل", ayahs: 21 }, { n: 93, name: "الضحى", ayahs: 11 },
-      { n: 94, name: "الشرح", ayahs: 8 }, { n: 95, name: "التين", ayahs: 8 }, { n: 96, name: "العلق", ayahs: 19 },
-      { n: 97, name: "القدر", ayahs: 5 }, { n: 98, name: "البينة", ayahs: 8 }, { n: 99, name: "الزلزلة", ayahs: 8 },
-      { n: 100, name: "العاديات", ayahs: 11 }, { n: 101, name: "القارعة", ayahs: 11 }, { n: 102, name: "التكاثر", ayahs: 8 },
-      { n: 103, name: "العصر", ayahs: 3 }, { n: 104, name: "الهمزة", ayahs: 9 }, { n: 105, name: "الفيل", ayahs: 5 },
-      { n: 106, name: "قريش", ayahs: 4 }, { n: 107, name: "الماعون", ayahs: 7 }, { n: 108, name: "الكوثر", ayahs: 3 },
-      { n: 109, name: "الكافرون", ayahs: 6 }, { n: 110, name: "النصر", ayahs: 3 }, { n: 111, name: "المسد", ayahs: 5 },
-      { n: 112, name: "الإخلاص", ayahs: 4 }, { n: 113, name: "الفلق", ayahs: 5 }, { n: 114, name: "الناس", ayahs: 6 }
-    ];
-
-    function initSurahDirectory() {
-      const select = document.getElementById('select-surah-picker');
-      select.innerHTML = '';
-      SURAH_DIRECTORY_114.forEach(s => {
-        const opt = document.createElement('option');
-        opt.value = s.n;
-        opt.textContent = `${s.n}. سورة ${s.name} (${s.ayahs} آية)`;
-        select.appendChild(opt);
-      });
-      loadQuranSurah(currentUserData?.currentSurah || 1);
-    }
-
-    async function loadQuranSurah(surahNum) {
-      if (!currentUserData) return;
-      surahNum = parseInt(surahNum, 10);
-      currentUserData.currentSurah = surahNum;
-      syncUserData();
-
-      pauseRecitation();
-      currentVerseIdx = 0;
-
-      const container = document.getElementById('quran-text-container');
-      container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">جاري تحميل السورة الكريمة...</div>';
-
-      try {
-        const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.alafasy`);
-        const json = await res.json();
-        if (json.code === 200 && json.data?.ayahs) {
-          audioVerses = json.data.ayahs.map(a => ({
-            num: a.numberInSurah,
-            text: a.text,
-            audio: a.audio
-          }));
-          renderVersesScript();
+        if (activeSessionName && vault[activeSessionName]) {
+          AppState.init(vault[activeSessionName]);
+          document.getElementById('auth-screen-overlay').classList.remove('is-active');
+          this.bootstrapSession();
         } else {
-          throw new Error('Fallback');
+          document.getElementById('auth-screen-overlay').classList.add('is-active');
         }
-      } catch (err) {
-        container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">يرجى الاتصال بالإنترنت لتحميل تلاوة ونصوص هذه السورة الكريمة.</div>';
-      }
-    }
 
-    function renderVersesScript() {
-      const container = document.getElementById('quran-text-container');
-      container.innerHTML = '';
-      container.style.fontSize = `${currentUserData.scriptFontSize || 26}px`;
+        // Window resize events
+        window.addEventListener('resize', () => {
+          const activeBtn = document.querySelector('.nav-btn-item.active');
+          if (activeBtn) this.updateSlidingPill(activeBtn);
+          if (this.activeTab === 'analytics') this.renderCharts();
+        });
+      },
 
-      audioVerses.forEach((v, idx) => {
-        const span = document.createElement('span');
-        span.className = 'ayah-word';
-        span.id = `ayah-node-${idx}`;
-        span.textContent = v.text;
-        span.onclick = () => playVerseByIndex(idx);
+      bootstrapSession() {
+        const username = AppState.user.username;
+        document.getElementById('header-user-name').textContent = username;
+        document.getElementById('header-user-avatar').textContent = username.charAt(0).toUpperCase();
+        document.getElementById('user-greeting-txt').textContent = `مرحباً بك يا ${username}`;
 
-        const sym = document.createElement('span');
-        sym.className = 'ayah-symbol';
-        sym.textContent = ` ﴿${v.num}﴾ `;
+        this.renderHabits();
+        QuranEngine.init();
 
-        container.appendChild(span);
-        container.appendChild(sym);
-      });
-    }
+        setTimeout(() => {
+          const defaultTabBtn = document.getElementById('tab-btn-habits');
+          this.updateSlidingPill(defaultTabBtn);
+        }, 60);
+      },
 
-    function toggleQuranRecitation() {
-      if (isReciting) pauseRecitation();
-      else playVerseByIndex(currentVerseIdx);
-    }
+      switchAuthMode(mode) {
+        this.authMode = mode;
+        document.getElementById('btn-auth-mode-login').classList.toggle('active', mode === 'login');
+        document.getElementById('btn-auth-mode-register').classList.toggle('active', mode === 'register');
+        document.getElementById('auth-submit-btn').textContent = mode === 'login' ? 'دخول للنظام' : 'تسجيل والبدء فوراً';
+      },
 
-    function playVerseByIndex(idx) {
-      if (!audioVerses || audioVerses.length === 0) return;
-      if (idx >= audioVerses.length) {
-        pauseRecitation();
-        return;
-      }
-      currentVerseIdx = idx;
-      const v = audioVerses[idx];
+      handleAuthSubmit(e) {
+        e.preventDefault();
+        const username = document.getElementById('auth-username').value.trim();
+        const password = document.getElementById('auth-password').value;
 
-      document.querySelectorAll('.ayah-word').forEach(el => el.classList.remove('current-reciting'));
-      const activeNode = document.getElementById(`ayah-node-${idx}`);
-      if (activeNode) {
-        activeNode.classList.add('current-reciting');
-        activeNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+        if (!username || !password) return;
 
-      audioElement.src = v.audio;
-      audioElement.play().then(() => {
-        isReciting = true;
-        document.getElementById('btn-quran-audio').textContent = 'إيقاف مؤقت';
-      }).catch(() => {});
+        const vault = StorageEngine.getVault();
+        const hashed = StorageEngine.hashPassword(password);
 
-      audioElement.onended = () => playVerseByIndex(currentVerseIdx + 1);
-    }
+        if (this.authMode === 'register') {
+          if (vault[username]) {
+            alert('اسم المستخدم مسجل مسبقاً! يرجى اختيار تسجيل الدخول.');
+            return;
+          }
+          vault[username] = {
+            username,
+            passwordHash: hashed,
+            habits: Config.DEFAULT_HABITS,
+            completions: {},
+            xp: 0,
+            scriptFontSize: 26,
+            currentSurah: 1,
+            createdAt: new Date().toISOString()
+          };
+          StorageEngine.saveVault(vault);
+        } else {
+          if (!vault[username]) {
+            alert('اسم المستخدم غير موجود، انقر على "سجل الآن" لإنشاء الحساب.');
+            return;
+          }
+          if (vault[username].passwordHash !== hashed) {
+            alert('كلمة المرور غير صحيحة!');
+            return;
+          }
+        }
 
-    function pauseRecitation() {
-      audioElement.pause();
-      isReciting = false;
-      document.getElementById('btn-quran-audio').textContent = 'تشغيل التلاوة';
-    }
-
-    function stepAyahRecitation(delta) {
-      const next = currentVerseIdx + delta;
-      if (next >= 0 && next < audioVerses.length) {
-        playVerseByIndex(next);
-      }
-    }
-
-    function adjustScriptSize(delta) {
-      if (!currentUserData) return;
-      currentUserData.scriptFontSize = Math.min(36, Math.max(20, (currentUserData.scriptFontSize || 26) + delta));
-      document.getElementById('quran-text-container').style.fontSize = `${currentUserData.scriptFontSize}px`;
-      syncUserData();
-    }
-
-    /* ==========================================================
-       6. REPORT ISSUE TO EMAIL
-       ========================================================== */
-    function openIssueModal() {
-      document.getElementById('modal-report-issue').classList.add('is-active');
-    }
-
-    function closeIssueModal() {
-      document.getElementById('modal-report-issue').classList.remove('is-active');
-    }
-
-    function handleSendIssue(e) {
-      e.preventDefault();
-      const type = document.getElementById('issue-type').value;
-      const details = document.getElementById('issue-details').value.trim();
-      const targetEmail = "mohamedsenanofficial@gmail.com";
-
-      // Formulate Direct Mailto to Mohamed Adel
-      const subject = encodeURIComponent(`[بلاغ منصة ارتقاء] - ${type}`);
-      const body = encodeURIComponent(`نوع المشكلة: ${type}\nالمستخدم: ${currentUserData?.username || 'مستخدم'}\nالتاريخ: ${new Date().toLocaleString('ar-EG')}\n\nالتفاصيل:\n${details}`);
-
-      window.location.href = `mailto:${targetEmail}?subject=${subject}&body=${body}`;
-
-      closeIssueModal();
-      triggerMotivationalAffirmation();
-      alert('تم فتح برنامج البريد الخاص بك لإرسال الملاحظة مباشرة إلى: ' + targetEmail);
-    }
-
-    function toggleThemeMode() {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      }
-      if (document.getElementById('view-analytics').style.display !== 'none') {
-        renderCharts();
-      }
-    }
-
-    /* ==========================================================
-       7. SESSION INITIALIZATION
-       ========================================================== */
-    function initAppSession() {
-      const name = currentUserData.username;
-      document.getElementById('header-user-name').textContent = name;
-      document.getElementById('header-user-avatar').textContent = name.charAt(0).toUpperCase();
-      document.getElementById('user-greeting-txt').textContent = `مرحباً بك يا ${name}`;
-
-      renderHabitsView();
-      initSurahDirectory();
-
-      // Initialize sliding pill position
-      setTimeout(() => {
-        const activeBtn = document.getElementById('tab-btn-habits');
-        updateSlidingPill(activeBtn);
-      }, 50);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const vault = getUsersVault();
-      const activeSession = localStorage.getItem(ACTIVE_SESSION_USER_KEY);
-
-      if (activeSession && vault[activeSession]) {
-        currentUserData = vault[activeSession];
+        StorageEngine.setActiveUserSession(username);
+        AppState.init(vault[username]);
         document.getElementById('auth-screen-overlay').classList.remove('is-active');
-        initAppSession();
-      } else {
-        document.getElementById('auth-screen-overlay').classList.add('is-active');
-      }
+        this.bootstrapSession();
+      },
 
-      window.addEventListener('resize', () => {
-        const activeBtn = document.querySelector('.nav-btn-item.active');
-        if (activeBtn) updateSlidingPill(activeBtn);
-        if (document.getElementById('view-analytics').style.display !== 'none') {
-          renderCharts();
+      handleLogout() {
+        if (confirm("هل تود تسجيل الخروج؟ بياناتك ستظل محفوظة ومحمية على هذا الجهاز.")) {
+          StorageEngine.clearActiveUserSession();
+          document.getElementById('auth-screen-overlay').classList.add('is-active');
         }
-      });
+      },
+
+      updateSlidingPill(btnEl) {
+        const pill = document.getElementById('nav-slider-pill');
+        if (!btnEl || !pill) return;
+        pill.style.left = btnEl.offsetLeft + 'px';
+        pill.style.width = btnEl.offsetWidth + 'px';
+      },
+
+      switchTab(tab, btn) {
+        this.activeTab = tab;
+        document.querySelectorAll('.nav-btn-item').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.updateSlidingPill(btn);
+
+        document.getElementById('view-habits').style.display = tab === 'habits' ? 'block' : 'none';
+        document.getElementById('view-analytics').style.display = tab === 'analytics' ? 'block' : 'none';
+        document.getElementById('view-islamic').style.display = tab === 'islamic' ? 'block' : 'none';
+
+        if (tab === 'analytics') this.renderCharts();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      },
+
+      renderHabits() {
+        const container = document.getElementById('habits-container-element');
+        container.innerHTML = '';
+        const today = AppState.todayKey;
+        let doneCount = 0;
+
+        AppState.user.habits.forEach(habit => {
+          const currentVal = AppState.user.completions[today]?.[habit.id] || 0;
+          const isDone = currentVal >= habit.target;
+          if (isDone) doneCount++;
+
+          const pct = Math.min(100, Math.round((currentVal / habit.target) * 100));
+          const card = document.createElement('div');
+          card.className = `habit-item-card ${isDone ? 'is-completed' : ''}`;
+
+          card.innerHTML = `
+            <div>
+              <div class="habit-header-row">
+                <span class="habit-3d-tag">${habit.category}</span>
+              </div>
+              <h3 class="habit-title-text">${habit.title}</h3>
+              <p class="habit-desc-text">${habit.desc}</p>
+
+              <div class="habit-progress-track">
+                <div class="habit-progress-bar" style="width:${pct}%"></div>
+              </div>
+
+              <div class="habit-metric-info">
+                <span>الإنجاز: ${currentVal} من ${habit.target} ${habit.unit}</span>
+                <span style="color:${isDone ? 'var(--primary)' : 'var(--text-muted)'}">${isDone ? 'مكتمل بنجاح' : pct + '%'}</span>
+              </div>
+            </div>
+
+            <div>
+              ${habit.type === 'boolean' ? `
+                <button class="btn-habit-check ${isDone ? 'is-checked' : ''}" onclick="UIController.toggleHabit('${habit.id}')">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>${isDone ? 'تم الإنجاز بنجاح' : 'تسجيل الإنجاز'}</span>
+                </button>
+              ` : `
+                <div class="stepper-row">
+                  <button class="stepper-btn" onclick="UIController.stepHabit('${habit.id}', -15)">-</button>
+                  <div class="stepper-count-display">${currentVal} ${habit.unit}</div>
+                  <button class="stepper-btn" onclick="UIController.stepHabit('${habit.id}', 15)">+</button>
+                </div>
+              `}
+            </div>
+          `;
+          container.appendChild(card);
+        });
+
+        // Compute Overview
+        const total = AppState.user.habits.length || 1;
+        const rate = Math.round((doneCount / total) * 100);
+        document.getElementById('overall-completion-rate').textContent = `${rate}%`;
+        document.getElementById('kpi-done-count').textContent = `${doneCount} / ${total}`;
+
+        const streak = this.computeStreak();
+        document.getElementById('kpi-streak-val').textContent = `${streak} أيام`;
+
+        // Update Level & XP Meter
+        const rank = AppState.getRankInfo();
+        document.getElementById('kpi-rank-title').textContent = rank.title;
+        document.getElementById('user-level-tag').textContent = `المستوى ${rank.level}: ${rank.title}`;
+        document.getElementById('user-xp-counter').textContent = `${AppState.user.xp || 0} / ${rank.maxXP} XP`;
+        
+        const xpPercent = Math.min(100, Math.round(((AppState.user.xp || 0) / rank.maxXP) * 100));
+        document.getElementById('user-xp-fill').style.width = `${xpPercent}%`;
+      },
+
+      computeStreak() {
+        let streak = 0;
+        let d = new Date();
+        const today = AppState.todayKey;
+        const active = AppState.user.habits;
+        if (active.length === 0) return 0;
+
+        let todayComplete = true;
+        active.forEach(h => {
+          if ((AppState.user.completions[today]?.[h.id] || 0) < h.target) todayComplete = false;
+        });
+
+        if (!todayComplete) d.setDate(d.getDate() - 1);
+
+        while (true) {
+          const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+          const dayData = AppState.user.completions[key];
+          if (!dayData) break;
+          let allDone = true;
+          active.forEach(h => {
+            if ((dayData[h.id] || 0) < h.target) allDone = false;
+          });
+          if (allDone) {
+            streak++;
+            d.setDate(d.getDate() - 1);
+          } else {
+            break;
+          }
+        }
+        return streak;
+      },
+
+      toggleHabit(id) {
+        const today = AppState.todayKey;
+        if (!AppState.user.completions[today]) AppState.user.completions[today] = {};
+        const cur = AppState.user.completions[today][id] || 0;
+
+        if (cur >= 1) {
+          AppState.user.completions[today][id] = 0;
+        } else {
+          AppState.user.completions[today][id] = 1;
+          AppState.addXP(50);
+          this.triggerPraiseFeedback();
+        }
+        AppState.sync();
+        this.renderHabits();
+      },
+
+      stepHabit(id, delta) {
+        const today = AppState.todayKey;
+        if (!AppState.user.completions[today]) AppState.user.completions[today] = {};
+        const habit = AppState.user.habits.find(h => h.id === id);
+        if (!habit) return;
+
+        let val = (AppState.user.completions[today][id] || 0) + delta;
+        val = Math.max(0, val);
+        AppState.user.completions[today][id] = val;
+
+        if (val >= habit.target && delta > 0) {
+          AppState.addXP(50);
+          this.triggerPraiseFeedback();
+        }
+        AppState.sync();
+        this.renderHabits();
+      },
+
+      triggerPraiseFeedback() {
+        AudioEngine.playSuccessChime();
+        FXEngine.burst();
+        
+        const shelf = document.getElementById('affirmation-shelf');
+        const card = document.createElement('div');
+        card.className = 'affirmation-card';
+        const word = Config.MOTIVATIONS[Math.floor(Math.random() * Config.MOTIVATIONS.length)];
+        card.innerHTML = `<span>✓</span> <span>${word} (+50 XP)</span>`;
+        shelf.appendChild(card);
+        
+        setTimeout(() => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(-15px)';
+          card.style.transition = 'all 0.25s ease';
+          setTimeout(() => card.remove(), 250);
+        }, 2200);
+      },
+
+      openAddHabitModal() {
+        document.getElementById('modal-add-habit').classList.add('is-active');
+        document.getElementById('habit-name-input').focus();
+      },
+
+      closeAddHabitModal() {
+        document.getElementById('modal-add-habit').classList.remove('is-active');
+      },
+
+      handleHabitTypeChange(type) {
+        const targetRow = document.getElementById('habit-target-row');
+        const targetLabel = document.getElementById('habit-target-label');
+        const targetInput = document.getElementById('habit-target-input');
+
+        if (type === 'boolean') {
+          targetRow.style.display = 'none';
+        } else if (type === 'duration') {
+          targetRow.style.display = 'block';
+          targetLabel.textContent = 'الهدف بالدقائق:';
+          targetInput.value = 30;
+        } else {
+          targetRow.style.display = 'block';
+          targetLabel.textContent = 'العدد المطلوب:';
+          targetInput.value = 5;
+        }
+      },
+
+      handleSaveCustomHabit(e) {
+        e.preventDefault();
+        const title = document.getElementById('habit-name-input').value.trim();
+        const category = document.getElementById('habit-category-input').value;
+        const type = document.getElementById('habit-type-input').value;
+        let target = 1;
+        let unit = 'مرة';
+
+        if (type === 'duration') {
+          target = parseInt(document.getElementById('habit-target-input').value, 10) || 30;
+          unit = 'دقيقة';
+        } else if (type === 'numeric') {
+          target = parseInt(document.getElementById('habit-target-input').value, 10) || 5;
+          unit = 'مرات';
+        }
+
+        if (!title) return;
+
+        AppState.user.habits.push({
+          id: 'hab_c_' + Date.now(),
+          title,
+          category,
+          desc: 'المتابعة اليومية والانضباط المستمر في إنجاز المهمة.',
+          type,
+          target,
+          unit
+        });
+
+        AppState.sync();
+        this.closeAddHabitModal();
+        this.renderHabits();
+        this.triggerPraiseFeedback();
+      },
+
+      renderCharts() {
+        this.drawAdherence();
+        this.drawCategories();
+        this.renderRewards();
+      },
+
+      drawAdherence() {
+        const canvas = document.getElementById('canvas-7days-chart');
+        if (!canvas || !AppState.user) return;
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const w = canvas.parentElement.clientWidth;
+        const h = 250;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, w, h);
+
+        const days = [];
+        const rates = [];
+        const total = AppState.user.habits.length || 1;
+
+        for (let i = 6; i >= 0; i--) {
+          const d = new Date();
+          d.setDate(d.getDate() - i);
+          const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+          days.push(String(d.getDate()).padStart(2,'0'));
+          let done = 0;
+          AppState.user.habits.forEach(h => {
+            if ((AppState.user.completions[key]?.[h.id] || 0) >= h.target) done++;
+          });
+          rates.push(Math.round((done / total) * 100));
+        }
+
+        const barWidth = 32;
+        const sidePad = 36;
+        const gap = (w - (sidePad * 2) - (barWidth * 7)) / 6;
+
+        rates.forEach((rate, idx) => {
+          const x = sidePad + idx * (barWidth + gap);
+          const maxBarH = 140;
+          const barH = Math.max(6, (rate / 100) * maxBarH);
+          const y = 40 + (maxBarH - barH);
+
+          // Pillar background track
+          ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg').trim();
+          ctx.beginPath();
+          ctx.roundRect(x, 40, barWidth, maxBarH, [6, 6, 6, 6]);
+          ctx.fill();
+
+          // Active 3D-styled Bar
+          ctx.fillStyle = rate === 100 ? '#10b981' : (rate > 0 ? '#4f46e5' : 'rgba(148,163,184,0.3)');
+          ctx.beginPath();
+          ctx.roundRect(x, y, barWidth, barH, [6, 6, 6, 6]);
+          ctx.fill();
+
+          ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-muted').trim();
+          ctx.font = '700 11px IBM Plex Sans Arabic';
+          ctx.textAlign = 'center';
+          ctx.fillText(`${rate}%`, x + barWidth / 2, y - 6);
+
+          ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
+          ctx.font = '800 12px IBM Plex Sans Arabic';
+          ctx.fillText(days[idx], x + barWidth / 2, 210);
+        });
+      },
+
+      drawCategories() {
+        const canvas = document.getElementById('canvas-categories-chart');
+        if (!canvas || !AppState.user) return;
+        const ctx = canvas.getContext('2d');
+        const dpr = window.devicePixelRatio || 1;
+        const w = canvas.parentElement.clientWidth;
+        const h = 250;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, w, h);
+
+        const counts = {};
+        AppState.user.habits.forEach(h => counts[h.category] = (counts[h.category] || 0) + 1);
+        const categories = Object.keys(counts);
+        const total = AppState.user.habits.length || 1;
+        if (categories.length === 0) return;
+
+        const colors = ['#10b981', '#4f46e5', '#f59e0b', '#06b6d4', '#ec4899', '#8b5cf6'];
+        let startAngle = 0;
+        const cx = w * 0.35;
+        const cy = h / 2;
+        const radius = 68;
+
+        categories.forEach((cat, idx) => {
+          const sliceAngle = (counts[cat] / total) * 2 * Math.PI;
+          ctx.fillStyle = colors[idx % colors.length];
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, radius, startAngle, startAngle + sliceAngle);
+          ctx.closePath();
+          ctx.fill();
+          startAngle += sliceAngle;
+
+          const legY = 40 + idx * 26;
+          ctx.fillRect(w * 0.65, legY - 10, 12, 12);
+          ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
+          ctx.font = '700 12px IBM Plex Sans Arabic';
+          ctx.textAlign = 'right';
+          ctx.fillText(`${cat} (${counts[cat]})`, w - 20, legY);
+        });
+      },
+
+      renderRewards() {
+        const grid = document.getElementById('rewards-container-grid');
+        grid.innerHTML = '';
+        const currentXP = AppState.user.xp || 0;
+        const rewards = [
+          { title: 'بداية الارتقاء', desc: 'تسجيل أول إنجاز في حسابك بنجاح', reqXP: 50 },
+          { title: 'ثبات الـ 3 أيام', desc: 'الالتزام بدون أي انقطاع لثلاثة أيام متتالية', reqXP: 150 },
+          { title: 'أسبوع العمل العميق', desc: 'إتمام 7 أيام كاملة من التركيز والإنتاج', reqXP: 400 },
+          { title: 'شهر التمكين والإتقان', desc: 'الوصول لـ 30 يوماً من الانضباط الراسخ', reqXP: 800 }
+        ];
+
+        rewards.forEach((r, idx) => {
+          const unlocked = currentXP >= r.reqXP;
+          const card = document.createElement('div');
+          card.className = 'metric-card';
+          card.style.opacity = unlocked ? '1' : '0.6';
+          card.innerHTML = `
+            <div class="metric-title">${unlocked ? 'وسام مكتسب ✓' : 'مغلق (يتطلب ' + r.reqXP + ' XP)'}</div>
+            <div style="font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:0.25rem">${r.title}</div>
+            <div class="metric-sub">${r.desc}</div>
+          `;
+          grid.appendChild(card);
+        });
+      },
+
+      openIssueModal() {
+        document.getElementById('modal-report-issue').classList.add('is-active');
+      },
+
+      closeIssueModal() {
+        document.getElementById('modal-report-issue').classList.remove('is-active');
+      },
+
+      handleSendIssue(e) {
+        e.preventDefault();
+        const type = document.getElementById('issue-type').value;
+        const details = document.getElementById('issue-details').value.trim();
+
+        const subject = encodeURIComponent(`[بلاغ منصة ارتقاء] - ${type}`);
+        const body = encodeURIComponent(`نوع الملاحظة: ${type}\nالمستخدم: ${AppState.user?.username || 'مستخدم'}\nالتاريخ: ${new Date().toLocaleString('ar-EG')}\n\nالتفاصيل:\n${details}`);
+
+        window.location.href = `mailto:${Config.TARGET_EMAIL}?subject=${subject}&body=${body}`;
+
+        this.closeIssueModal();
+        this.triggerPraiseFeedback();
+        alert('تم فتح برنامج البريد الإلكتروني لإرسال رسالتك مباشرة إلى المهندس محمد عادل.');
+      },
+
+      toggleTheme() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        if (this.activeTab === 'analytics') this.renderCharts();
+      }
+    };
+
+    /**
+     * ==========================================================
+     * 8. APPLICATION ENTRY POINT
+     * ==========================================================
+     */
+    window.addEventListener('DOMContentLoaded', () => {
+      UIController.init();
     });
   </script>
 </body>
