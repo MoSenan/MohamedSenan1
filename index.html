@@ -15,49 +15,49 @@
       --bg: #f8fafc;
       --surface: #ffffff;
       --surface-elevated: #ffffff;
-      --border: #cbd5e1;
-      --border-dark: #94a3b8;
-      --text: #020617;
-      --text-secondary: #334155;
+      --border: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --text: #0f172a;
+      --text-secondary: #475569;
       --muted: #64748b;
       --primary: #059669;
       --primary-hover: #047857;
-      --primary-light: rgba(5, 150, 105, 0.12);
+      --primary-light: #ecfdf5;
       --accent: #4f46e5;
       --accent-hover: #4338ca;
-      --accent-light: rgba(79, 70, 229, 0.12);
+      --accent-light: #eef2ff;
       --warning: #d97706;
       --danger: #dc2626;
-      --radius-sm: 10px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
       --radius-full: 9999px;
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.07);
-      --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.12);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
       --font-main: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-quran: 'Amiri', serif;
-      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     [data-theme="dark"] {
-      --bg: #060911;
-      --surface: #0f172a;
-      --surface-elevated: #1e293b;
-      --border: #334155;
-      --border-dark: #475569;
-      --text: #ffffff;
+      --bg: #090d16;
+      --surface: #111827;
+      --surface-elevated: #1f2937;
+      --border: #1f2937;
+      --border-hover: #374151;
+      --text: #f8fafc;
       --text-secondary: #cbd5e1;
       --muted: #94a3b8;
       --primary: #10b981;
       --primary-hover: #34d399;
-      --primary-light: rgba(16, 185, 129, 0.18);
+      --primary-light: rgba(16, 185, 129, 0.15);
       --accent: #6366f1;
       --accent-hover: #818cf8;
-      --accent-light: rgba(99, 102, 241, 0.18);
-      --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.45);
-      --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
-      --shadow-lg: 0 25px 40px -10px rgba(0, 0, 0, 0.8);
+      --accent-light: rgba(99, 102, 241, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.6);
     }
 
     * {
@@ -65,7 +65,6 @@
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
-      -webkit-font-smoothing: antialiased;
       text-decoration: none !important;
     }
 
@@ -84,64 +83,61 @@
 
     .container {
       width: 100%;
-      max-width: 1340px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 0 1.25rem;
     }
 
     .heavy-title {
       font-weight: 900 !important;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.3px;
     }
 
-    /* Header & Navigation */
+    /* Clean, Professional Header */
     header.main-header {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 2px solid var(--border);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 300;
       box-shadow: var(--shadow-sm);
-    }
-    [data-theme="dark"] header.main-header {
-      background: rgba(15, 23, 42, 0.94);
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 78px;
+      height: 74px;
       gap: 1rem;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       font-weight: 900;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--primary);
       cursor: pointer;
+      flex-shrink: 0;
     }
     .brand-logo svg {
-      width: 36px;
-      height: 36px;
+      width: 32px;
+      height: 32px;
       fill: var(--primary);
     }
 
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.25rem;
       list-style: none;
     }
 
     .nav-item button {
       background: transparent;
-      border: none;
-      padding: 0.65rem 1rem;
+      border: 1px solid transparent;
+      padding: 0.55rem 0.9rem;
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       font-weight: 800;
@@ -149,68 +145,54 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       transition: var(--transition);
     }
 
-    .nav-item button:hover, .nav-item button.active {
+    .nav-item button:hover {
       color: var(--primary);
       background: var(--primary-light);
     }
 
-    .nav-item.youth-highlight button {
-      color: var(--accent);
-      background: var(--accent-light);
-      border: 1.5px solid rgba(79, 70, 229, 0.25);
-    }
-    .nav-item.youth-highlight button.active, .nav-item.youth-highlight button:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .nav-item.islamic-tab button {
-      color: #0d9488;
-      background: rgba(13, 148, 136, 0.1);
-      border: 1.5px solid rgba(13, 148, 136, 0.25);
-    }
-    .nav-item.islamic-tab button.active, .nav-item.islamic-tab button:hover {
-      background: #0d9488;
-      color: #fff;
+    .nav-item button.active {
+      color: var(--primary);
+      background: var(--primary-light);
+      border-color: rgba(5, 150, 105, 0.2);
     }
 
     .header-actions {
       display: flex;
       align-items: center;
       gap: 0.65rem;
+      flex-shrink: 0;
     }
 
     .user-auth-pill {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      background: var(--surface);
-      border: 2px solid var(--border);
+      gap: 0.55rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: var(--radius-full);
-      padding: 0.35rem 0.85rem;
-      box-shadow: var(--shadow-sm);
+      padding: 0.3rem 0.75rem;
     }
     .user-avatar-badge {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       background: var(--primary);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 900;
     }
     .user-name-text {
       font-size: 0.88rem;
       font-weight: 900;
       color: var(--text);
-      max-width: 120px;
+      max-width: 110px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -230,11 +212,11 @@
     }
 
     .live-clock-badge {
-      font-size: 0.88rem;
-      font-weight: 900;
-      padding: 0.45rem 0.95rem;
-      background: var(--surface);
-      border: 2px solid var(--border);
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.4rem 0.8rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
       border-radius: var(--radius-full);
       color: var(--text-secondary);
       display: flex;
@@ -243,11 +225,11 @@
     }
 
     .icon-btn {
-      background: var(--surface);
-      border: 2px solid var(--border);
+      background: var(--bg);
+      border: 1px solid var(--border);
       color: var(--text);
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -261,159 +243,154 @@
       background: var(--primary-light);
     }
 
-    /* 3D Social Buttons */
+    /* 3D Social Icons */
     .social-btn-3d {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       color: white;
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      transition: transform 180ms ease;
       cursor: pointer;
     }
-    .social-btn-3d:hover { transform: translateY(-2px) scale(1.05); }
-    .social-btn-3d svg { width: 22px; height: 22px; fill: currentColor; }
+    .social-btn-3d:hover { transform: translateY(-2px); }
+    .social-btn-3d svg { width: 18px; height: 18px; fill: currentColor; }
     .social-btn-3d.instagram {
       background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
-      box-shadow: 0 4px 12px rgba(220, 39, 67, 0.35);
+      box-shadow: 0 3px 8px rgba(220, 39, 67, 0.3);
     }
     .social-btn-3d.facebook {
       background: linear-gradient(180deg, #1877f2 0%, #0d5cb6 100%);
-      box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
+      box-shadow: 0 3px 8px rgba(24, 119, 242, 0.3);
     }
 
-    /* Tab Contents */
+    /* Tab Switcher */
     .tab-content {
       display: none;
-      padding: 2rem 0 4rem 0;
+      padding: 1.8rem 0 3.5rem 0;
     }
     .tab-content.active {
       display: block;
-      animation: tabFadeIn 0.25s ease-out;
+      animation: tabFadeIn 0.22s ease-out;
     }
     @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Dashboard Hero Banner */
+    /* Youth Hero Banner */
     .youth-hero {
-      background: linear-gradient(135deg, rgba(5, 150, 105, 0.12) 0%, rgba(79, 70, 229, 0.1) 100%);
-      border: 2px solid var(--border);
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(79, 70, 229, 0.06) 100%);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      margin-bottom: 2rem;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
-      position: relative;
-      overflow: hidden;
       box-shadow: var(--shadow-sm);
     }
 
     .hero-content h1 {
-      font-size: 2.25rem;
+      font-size: 2rem;
       font-weight: 900;
-      margin-bottom: 0.4rem;
-      line-height: 1.25;
+      margin-bottom: 0.3rem;
     }
     .hero-quote-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.95rem;
-      font-weight: 900;
+      font-size: 0.92rem;
+      font-weight: 800;
       color: var(--primary);
       background: var(--surface);
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.85rem;
       border-radius: var(--radius-full);
-      border: 2px solid var(--border);
-      margin-bottom: 0.85rem;
-      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      margin-bottom: 0.75rem;
     }
 
     .rank-card {
       background: var(--surface);
-      border: 2px solid var(--border);
-      padding: 1.1rem 2rem;
+      border: 1px solid var(--border);
+      padding: 0.9rem 1.6rem;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1rem;
     }
     .rank-icon-wrapper {
-      width: 58px;
-      height: 58px;
-      border-radius: 16px;
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
       background: var(--accent-light);
       color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.85rem;
+      font-size: 1.65rem;
     }
-    .rank-meta .rank-lvl { font-size: 0.85rem; font-weight: 800; color: var(--muted); }
-    .rank-meta .rank-title { font-size: 1.35rem; font-weight: 900; color: var(--text); }
+    .rank-meta .rank-lvl { font-size: 0.8rem; font-weight: 800; color: var(--muted); }
+    .rank-meta .rank-title { font-size: 1.2rem; font-weight: 900; color: var(--text); }
 
-    /* KPI Grid */
+    /* KPI Metrics */
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.15rem;
+      margin-bottom: 2rem;
     }
 
     .kpi-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.5rem;
+      padding: 1.35rem;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
-      position: relative;
     }
     .kpi-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-md);
       border-color: var(--primary);
     }
-    .kpi-title { font-size: 0.9rem; font-weight: 800; color: var(--text-secondary); margin-bottom: 0.4rem; }
-    .kpi-value { font-size: 2.1rem; font-weight: 900; color: var(--text); }
-    .kpi-subtitle { font-size: 0.8rem; font-weight: 700; color: var(--muted); margin-top: 0.35rem; }
+    .kpi-title { font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); margin-bottom: 0.35rem; }
+    .kpi-value { font-size: 1.95rem; font-weight: 900; color: var(--text); }
+    .kpi-subtitle { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-top: 0.25rem; }
 
-    /* Action Buttons & Toolbars */
+    /* Action Buttons */
     .section-toolbar {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
     }
 
     .toolbar-title {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 900;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.6rem;
+      gap: 0.45rem;
+      padding: 0.65rem 1.4rem;
       border-radius: var(--radius-md);
-      font-weight: 900;
-      font-size: 1rem;
-      border: 2px solid transparent;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
       cursor: pointer;
       transition: var(--transition);
       user-select: none;
@@ -421,7 +398,7 @@
     .btn-primary {
       background: var(--primary);
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.32);
+      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.25);
     }
     .btn-primary:hover {
       background: var(--primary-hover);
@@ -435,31 +412,27 @@
     }
     .btn-secondary:hover {
       background: var(--bg);
-      border-color: var(--border-dark);
+      border-color: var(--border-hover);
     }
     .btn-accent {
       background: var(--accent);
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.32);
     }
-    .btn-accent:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-    }
+    .btn-accent:hover { background: var(--accent-hover); }
     .btn-danger { background: var(--danger); color: white; }
 
-    /* Habits Cards */
+    /* Habit Cards */
     .habits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
     }
 
     .habit-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.5rem;
+      padding: 1.35rem;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
@@ -472,85 +445,85 @@
     }
 
     .habit-card.is-completed {
-      border-color: var(--primary);
-      background: linear-gradient(180deg, var(--surface) 0%, rgba(5, 150, 105, 0.05) 100%);
+      border-color: rgba(5, 150, 105, 0.35);
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(5, 150, 105, 0.04) 100%);
     }
 
     .habit-top {
       display: flex;
       align-items: flex-start;
-      gap: 0.9rem;
-      margin-bottom: 0.85rem;
+      gap: 0.85rem;
+      margin-bottom: 0.75rem;
     }
 
     .habit-icon-box {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       background: var(--primary-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.75rem;
+      font-size: 1.6rem;
       flex-shrink: 0;
     }
 
     .habit-info { flex: 1; }
-    .habit-title { font-size: 1.25rem; font-weight: 900; color: var(--text); line-height: 1.3; }
-    .habit-meta-tag { font-size: 0.82rem; font-weight: 800; color: var(--muted); margin-top: 0.2rem; }
+    .habit-title { font-size: 1.18rem; font-weight: 900; color: var(--text); line-height: 1.3; }
+    .habit-meta-tag { font-size: 0.78rem; font-weight: 800; color: var(--muted); margin-top: 0.15rem; }
 
     .habit-card-desc {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: var(--text-secondary);
-      margin-bottom: 1.3rem;
-      line-height: 1.6;
+      margin-bottom: 1.15rem;
+      line-height: 1.55;
     }
 
     .habit-progress-track {
-      height: 10px;
+      height: 8px;
       background: var(--border);
       border-radius: var(--radius-full);
       overflow: hidden;
-      margin-bottom: 0.7rem;
+      margin-bottom: 0.6rem;
     }
     .habit-progress-bar {
       height: 100%;
       background: var(--primary);
       border-radius: var(--radius-full);
-      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.3s ease;
     }
 
     .habit-status-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.88rem;
-      font-weight: 900;
+      font-size: 0.82rem;
+      font-weight: 800;
       color: var(--text-secondary);
-      margin-bottom: 1.3rem;
+      margin-bottom: 1.15rem;
     }
 
     .streak-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      font-size: 0.82rem;
-      font-weight: 900;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      font-weight: 800;
       color: #b45309;
       background: #fef3c7;
-      padding: 0.3rem 0.75rem;
+      padding: 0.25rem 0.65rem;
       border-radius: var(--radius-full);
     }
     [data-theme="dark"] .streak-badge { background: #78350f; color: #fef08a; }
 
     .btn-check-habit {
       width: 100%;
-      padding: 0.85rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: var(--radius-md);
-      font-weight: 900;
-      font-size: 1rem;
-      border: 2px solid var(--border);
+      font-weight: 800;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
       background: var(--bg);
       color: var(--text);
       cursor: pointer;
@@ -570,12 +543,12 @@
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
-      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.3);
     }
 
     .check-svg {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       fill: none;
       stroke: currentColor;
       stroke-width: 3.5;
@@ -590,13 +563,13 @@
       width: 100%;
     }
     .stepper-btn {
-      width: 44px;
-      height: 44px;
-      border: 2px solid var(--border);
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
       background: var(--bg);
       border-radius: var(--radius-sm);
       font-weight: 900;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -607,105 +580,99 @@
     .stepper-display {
       flex: 1;
       text-align: center;
-      font-weight: 900;
-      font-size: 1rem;
+      font-weight: 800;
+      font-size: 0.95rem;
     }
 
-    /* =========================================================
-       YOUTH MOTIVATION HUB (طوّر نفسك) SPECIFIC STYLES
-       ========================================================= */
+    /* Youth Hub */
     .youth-hub-hero {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #064e3b 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #064e3b 100%);
       color: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 2.5rem 2.2rem;
-      margin-bottom: 2rem;
-      position: relative;
-      overflow: hidden;
+      padding: 2.2rem;
+      margin-bottom: 1.8rem;
       box-shadow: var(--shadow-md);
-      border: 2px solid rgba(255, 255, 255, 0.1);
     }
     .youth-hub-hero h2 {
-      font-size: 2.4rem;
+      font-size: 2.1rem;
       font-weight: 900;
-      margin-bottom: 0.5rem;
-      line-height: 1.25;
+      margin-bottom: 0.4rem;
     }
     .youth-hub-hero p {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       opacity: 0.95;
-      max-width: 780px;
+      max-width: 760px;
       font-weight: 700;
       line-height: 1.7;
     }
     .time-period-badge {
       display: inline-block;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.15);
       backdrop-filter: blur(8px);
-      padding: 0.35rem 0.9rem;
+      padding: 0.3rem 0.8rem;
       border-radius: var(--radius-full);
-      font-size: 0.85rem;
-      font-weight: 900;
+      font-size: 0.82rem;
+      font-weight: 800;
       margin-bottom: 0.75rem;
       color: #fef08a;
     }
 
     .interactive-tools-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.35rem;
+      margin-bottom: 2rem;
     }
 
     .tool-box-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.8rem;
+      padding: 1.6rem;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
     .tool-box-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 900;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
     .tool-box-card p {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.15rem;
     }
 
     .timer-display-big {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 900;
       text-align: center;
       color: var(--primary);
-      margin: 1rem 0;
+      margin: 0.85rem 0;
       font-variant-numeric: tabular-nums;
       background: var(--bg);
       border-radius: var(--radius-md);
-      padding: 0.5rem;
-      border: 2px solid var(--border);
+      padding: 0.4rem;
+      border: 1px solid var(--border);
     }
 
     .lessons-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.35rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
       margin-bottom: 2rem;
     }
 
     .lesson-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.5rem;
+      padding: 1.4rem;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       display: flex;
@@ -717,33 +684,33 @@
       transform: translateY(-2px);
     }
     .lesson-cat-tag {
-      font-size: 0.8rem;
-      font-weight: 900;
+      font-size: 0.78rem;
+      font-weight: 800;
       color: var(--accent);
       background: var(--accent-light);
-      padding: 0.25rem 0.65rem;
+      padding: 0.2rem 0.6rem;
       border-radius: var(--radius-full);
       display: inline-block;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
       width: fit-content;
     }
     .lesson-card h4 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 900;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
     .lesson-card p {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 1rem;
+      line-height: 1.6;
+      margin-bottom: 0.9rem;
     }
     .lesson-action-box {
       background: var(--bg);
-      border: 1.5px dashed var(--border);
+      border: 1px dashed var(--border);
       border-radius: var(--radius-sm);
-      padding: 0.75rem;
-      font-size: 0.85rem;
+      padding: 0.65rem;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--primary);
     }
@@ -751,37 +718,37 @@
     /* Calendar Grid */
     .calendar-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.8rem;
+      padding: 1.6rem;
       box-shadow: var(--shadow-sm);
     }
     .cal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.4rem;
     }
-    .cal-title { font-size: 1.5rem; font-weight: 900; }
+    .cal-title { font-size: 1.4rem; font-weight: 900; }
     .cal-days-grid-head {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       text-align: center;
-      font-weight: 900;
+      font-weight: 800;
       color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 0.85rem;
+      font-size: 0.88rem;
+      margin-bottom: 0.75rem;
     }
     .cal-cells-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 0.55rem;
+      gap: 0.5rem;
     }
     .cal-cell {
-      min-height: 90px;
-      border: 2px solid var(--border);
+      min-height: 85px;
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 0.6rem;
+      padding: 0.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -789,100 +756,88 @@
       cursor: pointer;
       transition: var(--transition);
     }
-    .cal-cell:hover { border-color: var(--primary); transform: scale(1.02); }
-    .cal-cell.is-today { border: 2.5px solid var(--primary); }
+    .cal-cell:hover { border-color: var(--primary); transform: scale(1.01); }
+    .cal-cell.is-today { border: 2px solid var(--primary); }
     .cal-cell.is-perfect {
-      background: rgba(5, 150, 105, 0.14);
+      background: rgba(5, 150, 105, 0.12);
       border-color: var(--primary);
     }
-    .cal-cell-dots { display: flex; gap: 4px; flex-wrap: wrap; }
+    .cal-cell-dots { display: flex; gap: 3px; flex-wrap: wrap; }
     .cal-cell-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--primary);
     }
 
-    /* Charts */
+    /* Charts Section */
     .charts-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
       margin-bottom: 2rem;
     }
     .chart-box {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.8rem;
+      padding: 1.6rem;
       box-shadow: var(--shadow-sm);
     }
-    .chart-box h3 { font-size: 1.25rem; font-weight: 900; margin-bottom: 1.3rem; }
+    .chart-box h3 { font-size: 1.15rem; font-weight: 900; margin-bottom: 1.2rem; }
     .canvas-wrapper { position: relative; width: 100%; height: 260px; }
 
     /* Achievements */
     .achievements-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
     }
     .achievement-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.5rem;
+      padding: 1.35rem;
       display: flex;
       align-items: center;
-      gap: 1.2rem;
+      gap: 1.1rem;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
     }
-    .achievement-card.locked { opacity: 0.55; filter: grayscale(1); }
+    .achievement-card.locked { opacity: 0.5; filter: grayscale(1); }
     .ach-icon-wrapper {
-      width: 64px;
-      height: 64px;
+      width: 58px;
+      height: 58px;
       border-radius: var(--radius-md);
       background: var(--primary-light);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       flex-shrink: 0;
     }
-    .ach-info h4 { font-size: 1.15rem; font-weight: 900; }
-    .ach-info p { font-size: 0.88rem; font-weight: 700; color: var(--text-secondary); margin-top: 0.25rem; }
-    .ach-status { font-size: 0.82rem; font-weight: 900; color: var(--primary); margin-top: 0.4rem; }
+    .ach-info h4 { font-size: 1.1rem; font-weight: 900; }
+    .ach-info p { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); margin-top: 0.2rem; }
+    .ach-status { font-size: 0.8rem; font-weight: 800; color: var(--primary); margin-top: 0.35rem; }
 
-    /* Islamic Section */
+    /* Islamic Hub */
     .islamic-hero {
       background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
       color: #ffffff;
       border-radius: var(--radius-lg);
-      padding: 2.4rem 2rem;
-      margin-bottom: 2rem;
-      position: relative;
-      overflow: hidden;
+      padding: 2.2rem 1.8rem;
+      margin-bottom: 1.8rem;
       box-shadow: var(--shadow-md);
     }
-    .islamic-hero::after {
-      content: "۞";
-      position: absolute;
-      left: 15px;
-      bottom: -35px;
-      font-size: 180px;
-      opacity: 0.1;
-      font-family: var(--font-quran);
-      pointer-events: none;
-    }
-    .islamic-hero h2 { font-size: 2.2rem; font-weight: 900; margin-bottom: 0.4rem; }
-    .islamic-hero p { font-size: 1.05rem; opacity: 0.95; max-width: 720px; font-weight: 700; }
+    .islamic-hero h2 { font-size: 2.1rem; font-weight: 900; margin-bottom: 0.4rem; }
+    .islamic-hero p { font-size: 1rem; opacity: 0.95; max-width: 720px; font-weight: 700; }
 
     .quran-audio-player-bar {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.2rem 1.6rem;
-      margin-bottom: 1.6rem;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1.5rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -891,67 +846,67 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .audio-meta { display: flex; align-items: center; gap: 0.85rem; }
+    .audio-meta { display: flex; align-items: center; gap: 0.75rem; }
     .audio-meta-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
       background: #0d9488;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
     }
-    .audio-reciter-name { font-weight: 900; font-size: 1.05rem; }
-    .audio-now-playing { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+    .audio-reciter-name { font-weight: 900; font-size: 1rem; }
+    .audio-now-playing { font-size: 0.82rem; font-weight: 700; color: var(--muted); }
 
     .quran-container {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.2rem;
+      padding: 2rem;
       box-shadow: var(--shadow-sm);
     }
 
     .quran-basmala {
       text-align: center;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
       font-family: var(--font-quran);
       color: #065f46;
-      margin: 1.6rem 0 2.2rem 0;
+      margin: 1.4rem 0 2rem 0;
       font-weight: 700;
     }
     [data-theme="dark"] .quran-basmala { color: #34d399; }
 
     .quran-text-flow {
-      max-width: 980px;
+      max-width: 960px;
       margin: 0 auto;
       text-align: justify;
-      line-height: 2.55;
+      line-height: 2.5;
       font-family: var(--font-quran);
-      font-size: 1.7rem;
+      font-size: 1.65rem;
       user-select: text;
     }
 
     .ayah-inline {
       display: inline;
-      padding: 3px 6px;
+      padding: 2px 5px;
       border-radius: 6px;
-      transition: background-color 0.25s ease;
+      transition: background-color 0.2s ease;
       cursor: pointer;
     }
-    .ayah-inline:hover { background-color: rgba(5, 150, 105, 0.15); }
+    .ayah-inline:hover { background-color: rgba(5, 150, 105, 0.12); }
     .ayah-inline.active-audio-ayah {
-      background-color: rgba(5, 150, 105, 0.28);
-      border-bottom: 3px solid var(--primary);
+      background-color: rgba(5, 150, 105, 0.22);
+      border-bottom: 2px solid var(--primary);
     }
 
     .ayah-bracket {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: #0d9488;
       font-weight: 700;
       margin: 0 0.35rem;
@@ -961,18 +916,18 @@
     /* Hadith Cards */
     .hadith-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      margin-bottom: 1.35rem;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
       box-shadow: var(--shadow-sm);
     }
     .hadith-matn {
       font-family: var(--font-quran);
-      font-size: 1.45rem;
-      line-height: 2.3;
+      font-size: 1.4rem;
+      line-height: 2.2;
       color: var(--text);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
     .hadith-footer {
       display: flex;
@@ -980,20 +935,20 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.6rem;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: var(--text-secondary);
-      border-top: 2px dashed var(--border);
-      padding-top: 0.85rem;
+      border-top: 1px dashed var(--border);
+      padding-top: 0.75rem;
     }
 
     /* Community & Visitors */
     .community-box {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
-      border: 2px solid var(--border);
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(5, 150, 105, 0.08) 100%);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.4rem;
-      margin: 2.8rem 0;
+      padding: 2.2rem;
+      margin: 2.5rem 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -1003,67 +958,67 @@
 
     .visitor-badge-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1rem 1.6rem;
+      padding: 0.9rem 1.5rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
       box-shadow: var(--shadow-sm);
     }
     .visitor-num-val {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       font-weight: 900;
       color: var(--primary);
     }
     .visitor-lbl {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 800;
       color: var(--text-secondary);
     }
 
-    /* Footer & Owner Message */
+    /* Footer */
     footer.main-footer {
       background: var(--surface);
-      border-top: 2px solid var(--border);
+      border-top: 1px solid var(--border);
       margin-top: auto;
-      padding: 3.2rem 0 1.6rem 0;
+      padding: 3rem 0 1.5rem 0;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.2rem;
-      margin-bottom: 2.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.5rem;
     }
 
-    .footer-col h4 { font-size: 1.25rem; font-weight: 900; margin-bottom: 1rem; }
-    .footer-col p { font-size: 0.95rem; font-weight: 700; color: var(--text-secondary); line-height: 1.75; }
+    .footer-col h4 { font-size: 1.2rem; font-weight: 900; margin-bottom: 0.85rem; }
+    .footer-col p { font-size: 0.92rem; font-weight: 700; color: var(--text-secondary); line-height: 1.7; }
 
     .owner-special-badge {
       background: var(--bg);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.5rem;
+      padding: 1.35rem;
       box-shadow: var(--shadow-sm);
     }
     .owner-special-badge .owner-name {
       font-weight: 900;
       color: var(--primary);
-      font-size: 1.15rem;
-      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
     }
-    .owner-special-badge p { font-size: 0.92rem; font-weight: 700; color: var(--text-secondary); line-height: 1.65; }
+    .owner-special-badge p { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); line-height: 1.6; }
 
     .footer-bottom-bar {
-      border-top: 2px solid var(--border);
-      padding-top: 1.6rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 800;
       color: var(--muted);
     }
@@ -1075,11 +1030,11 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 66px;
+      height: 64px;
       background: var(--surface);
-      border-top: 2px solid var(--border);
+      border-top: 1px solid var(--border);
       z-index: 500;
-      box-shadow: 0 -4px 16px rgba(0,0,0,0.08);
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
       padding-bottom: env(safe-area-inset-bottom);
     }
     .mobile-nav-inner {
@@ -1097,20 +1052,20 @@
       align-items: center;
       gap: 0.2rem;
       font-size: 0.75rem;
-      font-weight: 900;
+      font-weight: 800;
       cursor: pointer;
       flex: 1;
       padding: 0.3rem;
     }
     .m-nav-item.active { color: var(--primary); }
-    .m-nav-item svg { width: 22px; height: 22px; fill: currentColor; }
+    .m-nav-item svg { width: 20px; height: 20px; fill: currentColor; }
 
     /* Modals & Forms */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(5px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -1119,61 +1074,61 @@
     }
     .modal-overlay.active { display: flex; animation: modalFade 0.2s ease-out; }
     @keyframes modalFade {
-      from { opacity: 0; transform: scale(0.96); }
+      from { opacity: 0; transform: scale(0.97); }
       to { opacity: 1; transform: scale(1); }
     }
     .modal-card {
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       width: 100%;
-      max-width: 520px;
+      max-width: 500px;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 2rem;
+      padding: 1.8rem;
       box-shadow: var(--shadow-lg);
     }
     .modal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
     }
-    .modal-header h3 { font-size: 1.4rem; font-weight: 900; }
+    .modal-header h3 { font-size: 1.3rem; font-weight: 900; }
     .modal-close-btn {
       background: none;
       border: none;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       cursor: pointer;
       color: var(--muted);
-      font-weight: 900;
+      font-weight: 800;
     }
 
-    .form-group { margin-bottom: 1.25rem; }
+    .form-group { margin-bottom: 1.15rem; }
     .form-group label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 800;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
       color: var(--text-secondary);
     }
     .form-control {
       width: 100%;
-      padding: 0.75rem 1rem;
+      padding: 0.7rem 0.95rem;
       border-radius: var(--radius-md);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       background: var(--bg);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--text);
       outline: none;
       transition: var(--transition);
     }
     .form-control:focus { border-color: var(--primary); }
-    .form-row { display: flex; gap: 1rem; }
+    .form-row { display: flex; gap: 0.85rem; }
     .form-row .form-group { flex: 1; }
 
-    /* Auth Gate Screen */
+    /* Auth Screen */
     #auth-screen-overlay {
       position: fixed;
       inset: 0;
@@ -1189,55 +1144,55 @@
     }
     .auth-box {
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
       background: var(--surface);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.2rem;
+      padding: 2rem;
       box-shadow: var(--shadow-lg);
       text-align: center;
     }
     .auth-box-logo {
-      width: 56px;
-      height: 56px;
-      margin: 0 auto 1rem auto;
-      border-radius: 18px;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 0.85rem auto;
+      border-radius: 16px;
       background: var(--primary-light);
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .auth-box-logo svg {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       fill: var(--primary);
     }
     .auth-box h2 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 900;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.3rem;
     }
     .auth-box p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--text-secondary);
       font-weight: 700;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
     }
     .auth-toggle-tab {
       display: flex;
       background: var(--bg);
-      border: 2px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 4px;
-      margin-bottom: 1.4rem;
+      padding: 3px;
+      margin-bottom: 1.35rem;
     }
     .auth-toggle-btn {
       flex: 1;
       border: none;
       background: none;
-      padding: 0.55rem;
-      font-weight: 900;
-      font-size: 0.92rem;
+      padding: 0.5rem;
+      font-weight: 800;
+      font-size: 0.9rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
       color: var(--muted);
@@ -1266,21 +1221,21 @@
       z-index: 10000;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
       pointer-events: none;
     }
     .toast-msg {
       pointer-events: auto;
       background: var(--surface);
       color: var(--text);
-      border: 2px solid var(--border);
-      border-right: 6px solid var(--primary);
-      padding: 0.9rem 1.4rem;
+      border: 1px solid var(--border);
+      border-right: 5px solid var(--primary);
+      padding: 0.85rem 1.35rem;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-lg);
-      font-size: 0.95rem;
-      font-weight: 900;
-      min-width: 290px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      min-width: 280px;
       animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .toast-msg.error { border-right-color: var(--danger); }
@@ -1289,19 +1244,19 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 960px) {
       .nav-menu { display: none; }
       .mobile-nav-bar { display: block; }
       body { padding-bottom: 70px; }
       .live-clock-badge { display: none; }
     }
     @media (max-width: 600px) {
-      .youth-hero { padding: 1.4rem; }
-      .hero-content h1 { font-size: 1.65rem; }
+      .youth-hero { padding: 1.35rem; }
+      .hero-content h1 { font-size: 1.6rem; }
       .charts-grid { grid-template-columns: 1fr; }
-      .cal-cell { min-height: 60px; padding: 0.25rem; }
+      .cal-cell { min-height: 55px; padding: 0.25rem; }
       .quran-text-flow { font-size: 1.45rem; line-height: 2.25; }
-      .youth-hub-hero h2 { font-size: 1.85rem; }
+      .youth-hub-hero h2 { font-size: 1.75rem; }
     }
   </style>
 </head>
@@ -1315,7 +1270,7 @@
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
       <h2 id="auth-heading" class="heavy-title">تسجيل الدخول للنظام</h2>
-      <p id="auth-subheading">أدخل اسمك وكلمة المرور للوصول لحسابك وحفظ عاداتك</p>
+      <p id="auth-subheading">أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة</p>
 
       <div class="auth-toggle-tab">
         <button type="button" class="auth-toggle-btn active" id="btn-mode-login" onclick="setAuthMode('login')">تسجيل الدخول</button>
@@ -1324,12 +1279,12 @@
 
       <form id="auth-form" onsubmit="handleAuthSubmit(event)">
         <div class="form-group" style="text-align:right">
-          <label>اسم المستخدم (الاسم):</label>
+          <label>اسم المستخدم:</label>
           <input type="text" id="auth-username" class="form-control" required placeholder="اكتب اسمك..." autocomplete="username" />
         </div>
 
         <div class="form-group" style="text-align:right">
-          <label>كلمة المرور (الباسورد):</label>
+          <label>كلمة المرور:</label>
           <input type="password" id="auth-password" class="form-control" required placeholder="أدخل كلمة المرور..." autocomplete="current-password" />
         </div>
 
@@ -1350,11 +1305,11 @@
       <ul class="nav-menu">
         <li class="nav-item"><button class="active" onclick="switchTab('dashboard')">الرئيسية</button></li>
         <li class="nav-item"><button onclick="switchTab('habits')">العادات</button></li>
-        <li class="nav-item youth-highlight"><button onclick="switchTab('youth')">⚡ طوّر نفسك</button></li>
+        <li class="nav-item"><button onclick="switchTab('youth')">⚡ طوّر نفسك</button></li>
         <li class="nav-item"><button onclick="switchTab('calendar')">التقويم</button></li>
         <li class="nav-item"><button onclick="switchTab('analytics')">التحليلات</button></li>
         <li class="nav-item"><button onclick="switchTab('achievements')">الإنجازات</button></li>
-        <li class="nav-item islamic-tab"><button onclick="switchTab('islamic')">📖 القرآن والحديث</button></li>
+        <li class="nav-item"><button onclick="switchTab('islamic')">📖 القرآن والحديث</button></li>
         <li class="nav-item"><button onclick="switchTab('settings')">الإعدادات</button></li>
       </ul>
 
@@ -1375,7 +1330,7 @@
         </a>
 
         <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع">
-          <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+          <svg style="width:18px;height:18px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
         </button>
       </div>
     </div>
@@ -1388,7 +1343,7 @@
         <div class="hero-content">
           <div class="hero-quote-badge" id="daily-youth-quote">⚡ نافس نفسك بتاعت إمبارح.. ومتشغلش بالك بغيرك</div>
           <h1 id="hero-greeting" class="heavy-title">أهلاً بك، يا بطل 👋</h1>
-          <p id="hero-date-txt" style="color:var(--text-secondary);font-size:0.95rem;font-weight:800">جاري تحضير البيانات اليومية...</p>
+          <p id="hero-date-txt" style="color:var(--text-secondary);font-size:0.95rem;font-weight:700">جاري تحضير البيانات اليومية...</p>
         </div>
 
         <div class="rank-card">
@@ -1441,7 +1396,7 @@
         <button class="btn btn-primary" onclick="openHabitModal()">+ عادة جديدة</button>
       </div>
 
-      <div style="display:flex;gap:0.75rem;margin-bottom:1.4rem;flex-wrap:wrap">
+      <div style="display:flex;gap:0.65rem;margin-bottom:1.35rem;flex-wrap:wrap">
         <button class="btn btn-secondary" onclick="filterHabits('all')">الكل</button>
         <button class="btn btn-secondary" onclick="filterHabits('active')">النشطة</button>
         <button class="btn btn-secondary" onclick="filterHabits('paused')">المتوقفة</button>
@@ -1461,7 +1416,7 @@
         <div class="tool-box-card">
           <div>
             <h3 class="heavy-title">⏱️ متأجلهاش ليه؟ (ابدأ 5 دقائق بس)</h3>
-            <p>مكسل تبدأ؟ اتعاهد مع نفسك تقعد 5 دقايق بس على المذاكرة أو الشغل. لو حسيت إنك لسه مش قادر وقف، لكن 90% من المرات هتكمل.</p>
+            <p>مكسل تبدأ؟ اتعاهد مع نفسك تقعد 5 دقايق بس على المذاكرة أو الشغل. لو حسيت إنك مش قادر وقف، لكن الأغلب إنك هتكمل وتكسر حاجز البداية.</p>
           </div>
           <div class="timer-display-big" id="timer-5min-display">05:00</div>
           <div style="display:flex;gap:0.5rem">
@@ -1473,7 +1428,7 @@
         <div class="tool-box-card">
           <div>
             <h3 class="heavy-title">🎯 جلسة تركيز عميق (Focus Session)</h3>
-            <p>اقفل كل الإشعارات، وارمي الموبايل في أوضة تانية، وركز على حاجة واحدة تنجزها من غير أي تشتيت.</p>
+            <p>اقفل كل الإشعارات، وابعد الموبايل تماماً، وركز على حاجة واحدة تنجزها من غير أي تشتيت نهائي.</p>
           </div>
           <div class="timer-display-big" id="timer-focus-display">25:00</div>
           <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
@@ -1486,7 +1441,7 @@
         <div class="tool-box-card">
           <div>
             <h3 class="heavy-title">💡 رسالة من الواقع للشباب</h3>
-            <p style="font-size:1.1rem;font-weight:900;color:var(--text);margin:1.2rem 0;line-height:1.7" id="youth-quote-box">
+            <p style="font-size:1.05rem;font-weight:800;color:var(--text);margin:1.2rem 0;line-height:1.7" id="youth-quote-box">
               "الالتزام مش معناه إنك متقعش نهائي.. معناه إنك أول ما تقع، متقعدش تلوم نفسك وتضيع باقي الأسبوع، بل تقوم فوراً وتبدأ من جديد."
             </p>
           </div>
@@ -1496,7 +1451,7 @@
 
       <div class="section-toolbar">
         <div class="toolbar-title heavy-title">
-          <span>🧠 مبادئ عملية تبني بيها نفسك (بدون كلام تنمية بشرية مبالغ فيه)</span>
+          <span>🧠 مبادئ عملية تبني بيها نفسك (واقعية ومباشرة)</span>
         </div>
       </div>
 
@@ -1523,7 +1478,7 @@
           <div>
             <span class="lesson-cat-tag">الشغل والمستقبل</span>
             <h4>ابني مهارة تخليك مطلوب</h4>
-            <p>الوقت اللي بتضيعه في المقارنات مع غيرك على السوشيال استثمره في إنك تتعلم مهارة حقيقية (برمجة، لغة، تسويق، حرفة). الخبرة بتتراكم من الشغل الحقيقي.</p>
+            <p>الوقت اللي بتضيعه في المقارنات مع غيرك استثمره في إنك تتعلم مهارة حقيقية. الخبرة العملية والقيمة الحقيقية بتتراكم مع الوقت والتجربة.</p>
           </div>
           <div class="lesson-action-box">خطوة عملية: ساعة يومياً في تعلم مهارة هتعملك مسار مهني بعد سنة.</div>
         </div>
@@ -1550,7 +1505,7 @@
           <div>
             <span class="lesson-cat-tag">الوعي المالي</span>
             <h4>اتعلم تدير فلوسك من بدري</h4>
-            <p>مش كل قرش بيجيلك لازم تصرفه، ومش كل حاجة تعجبك لازم تشتريها. وفر جزء للطوارئ، واتعلم تستثمر في كتب وكورسات تفيدك بعدين.</p>
+            <p>مش كل قرش بيجيلك لازم تصرفه، ومش كل حاجة تعجبك لازم تشتريها. وفر جزء للطوارئ، واتعلم تستثمر في نفسك وكتب وكورسات تفيدك بعدين.</p>
           </div>
           <div class="lesson-action-box">خطوة عملية: اكتب مصاريفك أسبوع وشوف الفلوس بتطير في إيه.</div>
         </div>
@@ -1617,7 +1572,7 @@
         <p>المصحف الشريف كاملاً (114 سورة) مع تلاوة صوتية مباركة بصوت الشيخ مشاري راشد العفاسي، وأحاديث نبوية صحيحة مسندة دون أي إعلانات.</p>
       </div>
 
-      <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <div style="display:flex;gap:0.65rem;margin-bottom:1.4rem;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="switchIslamicView('quran')">📖 المصحف الشريف</button>
         <button class="btn btn-secondary" onclick="switchIslamicView('hadith')">📜 الحديث الشريف</button>
         <button class="btn btn-secondary" onclick="switchIslamicView('bookmarks')">⭐ المحفوظات</button>
@@ -1642,11 +1597,11 @@
         <div class="quran-container">
           <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.5rem">
             <div>
-              <label style="font-weight:900;margin-left:0.5rem">اختر السورة (114 سورة كاملة):</label>
+              <label style="font-weight:800;margin-left:0.5rem">اختر السورة (114 سورة كاملة):</label>
               <select id="quran-surah-select" class="form-control" style="width:auto;display:inline-block" onchange="loadSurah(this.value)">
                 </select>
             </div>
-            <div style="display:flex;gap:0.5rem;align-items:center;">
+            <div style="display:flex;gap:0.4rem;align-items:center;">
               <button class="btn btn-secondary" onclick="adjustQuranFont(-2)">A-</button>
               <button class="btn btn-secondary" onclick="adjustQuranFont(2)">A+</button>
               <button class="btn btn-secondary" onclick="resumeLastReadSurah()">📌 آخر موضع</button>
@@ -1677,7 +1632,7 @@
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));gap:1.5rem">
         <div class="chart-box">
           <h3 class="heavy-title">الملف الشخصي والهدف</h3>
           <div class="form-group">
@@ -1693,15 +1648,15 @@
 
         <div class="chart-box">
           <h3 class="heavy-title">النسخ الاحتياطي وحماية الحساب</h3>
-          <p style="font-size:0.9rem;font-weight:700;color:var(--text-secondary);margin-bottom:1.2rem">
-            بياناتك مشفرة ومحفوظة بحسابك بالاسم والباسورد محلياً بنسبة 100% داخل المتصفح.
+          <p style="font-size:0.88rem;font-weight:700;color:var(--text-secondary);margin-bottom:1.15rem">
+            بياناتك مشفرة ومحفوظة بحسابك بالاسم والباسورد محلياً بنسبة 100% داخل المتصفح، ولا تضيع مع التحديثات.
           </p>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap">
+          <div style="display:flex;gap:0.65rem;flex-wrap:wrap">
             <button class="btn btn-primary" onclick="exportDataJSON()">تصدير نسخة احتياطية (JSON)</button>
             <button class="btn btn-secondary" onclick="document.getElementById('import-file-input').click()">استيراد نسخة</button>
             <input type="file" id="import-file-input" style="display:none" accept=".json" onchange="importDataJSON(event)" />
           </div>
-          <div style="margin-top:1.5rem;border-top:2px dashed var(--border);padding-top:1rem">
+          <div style="margin-top:1.5rem;border-top:1px dashed var(--border);padding-top:1rem">
             <button class="btn btn-danger" onclick="confirmResetAllData()">حذف حسابي والبيانات بالكامل</button>
           </div>
         </div>
@@ -1710,14 +1665,14 @@
 
     <div class="community-box">
       <div>
-        <h3 class="heavy-title" style="font-size:1.55rem;margin-bottom:0.4rem">أنت لست وحدك في رحلة التغيير ✨</h3>
-        <p style="color:var(--text-secondary);font-size:0.98rem;max-width:720px;font-weight:700">
+        <h3 class="heavy-title" style="font-size:1.45rem;margin-bottom:0.35rem">أنت لست وحدك في رحلة التغيير ✨</h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;max-width:700px;font-weight:700">
           مجتمع من الشباب والأشخاص الطموحين الذين اختاروا أن يبدأوا التغيير اليومي بخطوات ثابتة ومستمرة نحو القمة.
         </p>
       </div>
 
       <div class="visitor-badge-card">
-        <div style="font-size:2.2rem">👥</div>
+        <div style="font-size:2rem">👥</div>
         <div>
           <div class="visitor-num-val heavy-title" id="visitor-count-display">--</div>
           <div class="visitor-lbl">تفاعلات وزيارات متصلة بالنظام</div>
@@ -1738,7 +1693,7 @@
         </div>
         <div class="footer-col">
           <h4 class="heavy-title">روابط سريعة</h4>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;font-size:0.95rem;font-weight:800">
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;font-size:0.92rem;font-weight:800">
             <li><a href="javascript:void(0)" onclick="switchTab('dashboard')">الرئيسية</a></li>
             <li><a href="javascript:void(0)" onclick="switchTab('habits')">قائمة العادات</a></li>
             <li><a href="javascript:void(0)" onclick="switchTab('youth')">طوّر نفسك ⚡</a></li>
@@ -1751,7 +1706,7 @@
           <div class="owner-special-badge">
             <div class="owner-name heavy-title">أخوكم محمد عادل</div>
             <p>هذا الموقع مقدم لوجه الله تعالى، ولا نطلب منكم أي اشتراكات أو أموال. نسألكم صالح الدعاء.</p>
-            <div style="display:flex;gap:0.6rem;margin-top:0.85rem">
+            <div style="display:flex;gap:0.6rem;margin-top:0.75rem">
               <a href="https://www.instagram.com/muadelofficial/" target="_blank" rel="noopener noreferrer" class="social-btn-3d instagram" aria-label="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </a>
@@ -1764,7 +1719,7 @@
       </div>
 
       <div class="footer-bottom-bar">
-        <span>الإصدار 5.0 — قسم الشباب والانضباط وتطوير الذات — مجاني بالكامل لوجه الله تعالى</span>
+        <span>الإصدار 5.1 — حفظ دائم وتصميم متوازن — مجاني بالكامل لوجه الله تعالى</span>
         <span>حفظ محلي آمن 100% بدون خوادم خارجية أو تتبع إعلاني</span>
       </div>
     </div>
@@ -1867,10 +1822,10 @@
 
   <script>
     /* ==========================================================
-       0. USER AUTHENTICATION & MULTI-USER STORAGE
+       0. PERMANENT MASTER MULTI-USER STORAGE & AUTO-MIGRATION
        ========================================================== */
-    const DB_KEY = 'SMART_HABIT_USERS_DB_V5';
-    const ACTIVE_USER_KEY = 'SMART_HABIT_ACTIVE_USERNAME_V5';
+    const MASTER_USERS_DB_KEY = 'SMART_HABIT_MASTER_USERS_DB';
+    const ACTIVE_SESSION_KEY = 'SMART_HABIT_ACTIVE_SESSION';
 
     let currentAuthMode = 'login';
     let currentUser = null;
@@ -1882,7 +1837,6 @@
     let isSurahAudioPlaying = false;
     const quranAudioPlayer = document.getElementById('quran-audio-player');
 
-    // Timer Variables
     let timer5MinInterval = null;
     let timer5MinSeconds = 300;
     let is5MinRunning = false;
@@ -1911,20 +1865,59 @@
       "ابدأ حتى لو مش جاهز 100%.. الحركة بتجيب شغف واستمرار."
     ];
 
-    function getAllUsers() {
+    // Automatic migration to ensure NO users are ever lost from prior versions
+    function getMasterDB() {
+      let db = {};
+      const legacyKeys = [
+        'SMART_HABIT_USERS_DB_V5',
+        'SMART_HABIT_USERS_DB_V4',
+        'SMART_HABIT_TRACKER_V3',
+        'SMART_HABIT_TRACKER_V2',
+        'SMART_HABIT_TRACKER_V1'
+      ];
+
+      legacyKeys.forEach(k => {
+        try {
+          const raw = localStorage.getItem(k);
+          if (raw) {
+            const parsed = JSON.parse(raw);
+            if (parsed && typeof parsed === 'object') {
+              if (parsed.habits && !parsed.username) {
+                // Recover single-user legacy store
+                const fallbackName = parsed.profile?.name || 'المستخدم';
+                db[fallbackName] = db[fallbackName] || {
+                  username: fallbackName,
+                  passHash: 'h_123456',
+                  createdAt: new Date().toISOString(),
+                  habits: parsed.habits,
+                  completions: parsed.completions || {},
+                  profile: parsed.profile || { name: fallbackName, goal: 'بناء انضباط مستمر' },
+                  settings: parsed.settings || { theme: 'light', sound: 'on', quranFontSize: 26 },
+                  bookmarks: parsed.bookmarks || { quran: [], hadith: [] },
+                  lastRead: parsed.lastRead || { surah: 1, ayah: 1 },
+                  visitsCount: 10
+                };
+              } else {
+                Object.assign(db, parsed);
+              }
+            }
+          }
+        } catch (e) {}
+      });
+
       try {
-        const raw = localStorage.getItem(DB_KEY);
-        return raw ? JSON.parse(raw) : {};
-      } catch (e) {
-        return {};
-      }
+        const masterRaw = localStorage.getItem(MASTER_USERS_DB_KEY);
+        if (masterRaw) Object.assign(db, JSON.parse(masterRaw));
+      } catch (e) {}
+
+      return db;
     }
 
-    function saveUsersDB(db) {
+    function saveMasterDB(db) {
       try {
-        localStorage.setItem(DB_KEY, JSON.stringify(db));
+        localStorage.setItem(MASTER_USERS_DB_KEY, JSON.stringify(db));
       } catch (e) {
-        showToast('تعذر حفظ قاعدة بيانات المستخدمين', 'error');
+        showToast('تعذر حفظ البيانات في المتصفح', 'error');
       }
     }
 
@@ -1943,7 +1936,7 @@
       document.getElementById('btn-mode-login').classList.toggle('active', mode === 'login');
       document.getElementById('btn-mode-register').classList.toggle('active', mode === 'register');
       document.getElementById('auth-heading').textContent = mode === 'login' ? 'تسجيل الدخول للنظام' : 'إنشاء حساب جديد لحفظ البيانات';
-      document.getElementById('auth-subheading').textContent = mode === 'login' ? 'أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة' : 'أنشئ حسابك الخاص بكلمة مرور لحفظ عاداتك وتطوير نفسك دائماً';
+      document.getElementById('auth-subheading').textContent = mode === 'login' ? 'أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة' : 'أنشئ حسابك الخاص بكلمة مرور لحفظ عاداتك دائماً دون فقدان';
       document.getElementById('auth-submit-btn').textContent = mode === 'login' ? 'دخول للنظام 🚀' : 'إنشاء الحساب وبدء الرحلة ✨';
     }
 
@@ -1957,15 +1950,15 @@
         return;
       }
 
-      const users = getAllUsers();
+      const db = getMasterDB();
       const hashed = hashPassword(pass);
 
       if (currentAuthMode === 'register') {
-        if (users[username]) {
-          showToast('هذا الاسم مسجل بالفعل! يمكنك تسجيل الدخول به', 'error');
+        if (db[username]) {
+          showToast('هذا الاسم مسجل مسبقاً! يمكنك تسجيل الدخول به', 'error');
           return;
         }
-        users[username] = {
+        db[username] = {
           username,
           passHash: hashed,
           createdAt: new Date().toISOString(),
@@ -1977,24 +1970,24 @@
           lastRead: { surah: 1, ayah: 1 },
           visitsCount: 1
         };
-        saveUsersDB(users);
-        showToast('تم إنشاء حسابك بنجاح تام! أهلاً بك 🎉');
+        saveMasterDB(db);
+        showToast('تم إنشاء حسابك بنجاح! أهلاً بك 🎉');
       } else {
-        if (!users[username]) {
+        if (!db[username]) {
           showToast('اسم المستخدم غير مسجل، يرجى إنشاء حساب جديد أولاً', 'error');
           return;
         }
-        if (users[username].passHash !== hashed) {
+        if (db[username].passHash !== hashed) {
           showToast('كلمة المرور غير صحيحة!', 'error');
           return;
         }
-        users[username].visitsCount = (users[username].visitsCount || 1) + 1;
-        saveUsersDB(users);
+        db[username].visitsCount = (db[username].visitsCount || 1) + 1;
+        saveMasterDB(db);
         showToast(`مرحباً بعودتك يا ${username} 👋`);
       }
 
-      localStorage.setItem(ACTIVE_USER_KEY, username);
-      currentUser = users[username];
+      localStorage.setItem(ACTIVE_SESSION_KEY, username);
+      currentUser = db[username];
       document.getElementById('auth-screen-overlay').classList.remove('active');
       document.getElementById('auth-form').reset();
 
@@ -2003,7 +1996,7 @@
 
     function handleLogout() {
       if (confirm("هل تريد تسجيل الخروج من حسابك؟")) {
-        localStorage.removeItem(ACTIVE_USER_KEY);
+        localStorage.removeItem(ACTIVE_SESSION_KEY);
         currentUser = null;
         document.getElementById('auth-screen-overlay').classList.add('active');
         showToast('تم تسجيل الخروج بنجاح');
@@ -2012,7 +2005,7 @@
 
     function initUserSession() {
       if (!currentUser) return;
-      if (currentUser.settings.theme === 'dark') {
+      if (currentUser.settings?.theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
       } else {
         document.documentElement.removeAttribute('data-theme');
@@ -2032,9 +2025,9 @@
 
     function syncCurrentUserData() {
       if (!currentUser) return;
-      const users = getAllUsers();
-      users[currentUser.username] = currentUser;
-      saveUsersDB(users);
+      const db = getMasterDB();
+      db[currentUser.username] = currentUser;
+      saveMasterDB(db);
     }
 
     /* ==========================================================
@@ -2055,19 +2048,19 @@
     function fireConfetti() {
       const colors = ['#059669', '#4f46e5', '#d97706', '#dc2626', '#0284c7'];
       confettiParticles = [];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 70; i++) {
         confettiParticles.push({
           x: confettiCanvas.width / 2,
           y: confettiCanvas.height / 2,
-          w: Math.random() * 9 + 5,
-          h: Math.random() * 7 + 4,
+          w: Math.random() * 8 + 4,
+          h: Math.random() * 6 + 4,
           color: colors[Math.floor(Math.random() * colors.length)],
-          vx: (Math.random() - 0.5) * 18,
-          vy: (Math.random() - 0.7) * 18,
-          gravity: 0.38,
+          vx: (Math.random() - 0.5) * 16,
+          vy: (Math.random() - 0.7) * 16,
+          gravity: 0.35,
           opacity: 1,
           rot: Math.random() * 360,
-          rotSpeed: (Math.random() - 0.5) * 12
+          rotSpeed: (Math.random() - 0.5) * 10
         });
       }
       if (confettiAnimId) cancelAnimationFrame(confettiAnimId);
@@ -2108,7 +2101,7 @@
     }
 
     function playAppSound(type) {
-      if (!currentUser || currentUser.settings.sound !== 'on') return;
+      if (!currentUser || currentUser.settings?.sound !== 'on') return;
       try {
         initWebAudio();
         if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -2122,10 +2115,10 @@
           osc.type = 'triangle';
           osc.frequency.setValueAtTime(659.25, now);
           osc.frequency.setValueAtTime(880.00, now + 0.08);
-          gain.gain.setValueAtTime(0.12, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
           osc.start(now);
-          osc.stop(now + 0.3);
+          osc.stop(now + 0.28);
         }
       } catch (e) {}
     }
@@ -2145,7 +2138,7 @@
         toast.style.opacity = '0';
         toast.style.transform = 'translateX(-20px)';
         setTimeout(() => toast.remove(), 250);
-      }, 3200);
+      }, 3000);
     }
 
     /* ==========================================================
@@ -2278,9 +2271,9 @@
 
       if (list.length === 0) {
         container.innerHTML = `
-          <div style="grid-column:1/-1;text-align:center;padding:3rem 1rem;background:var(--surface);border-radius:var(--radius-lg);border:2px dashed var(--border)">
-            <p style="font-size:1.15rem;font-weight:900;">لا توجد عادات مسجلة حالياً.</p>
-            <button class="btn btn-primary" style="margin-top:1rem" onclick="openHabitModal()">+ إضافة عادة الآن</button>
+          <div style="grid-column:1/-1;text-align:center;padding:2.5rem 1rem;background:var(--surface);border-radius:var(--radius-lg);border:1px dashed var(--border)">
+            <p style="font-size:1.1rem;font-weight:900;">لا توجد عادات مسجلة حالياً.</p>
+            <button class="btn btn-primary" style="margin-top:0.85rem" onclick="openHabitModal()">+ إضافة عادة الآن</button>
           </div>
         `;
         return;
@@ -2305,7 +2298,7 @@
                 <div class="habit-title heavy-title">${escapeHTML(habit.name)}</div>
                 <div class="habit-meta-tag">${escapeHTML(habit.category)}</div>
               </div>
-              <button class="modal-close-btn" style="font-size:1.3rem" onclick="editHabit('${habit.id}')" title="تعديل">⋮</button>
+              <button class="modal-close-btn" style="font-size:1.25rem" onclick="editHabit('${habit.id}')" title="تعديل">⋮</button>
             </div>
 
             <p class="habit-card-desc">${escapeHTML(habit.desc || 'الالتزام اليومي المستمر نحو القمة')}</p>
@@ -2390,7 +2383,7 @@
     }
 
     /* ==========================================================
-       4. YOUTH MOTIVATION ENGINE (Real Timers & Dynamic Quotes)
+       4. YOUTH MOTIVATION ENGINE
        ========================================================== */
     function updateYouthHubTimeMessage() {
       const hour = new Date().getHours();
@@ -2401,7 +2394,7 @@
       if (hour >= 4 && hour < 12) {
         badge.textContent = "صباح الخير والهمة ☀️";
         heroMsg.textContent = "ابدأ يومك بحاجة واحدة مهمة وخلصها قبل أي حاجة";
-        heroSub.textContent = "أول ساعة بعد الصحيان بتحدد مسار يومك كله. ابعد عن الموبايل، اشرب مية، وصلي الفجر، وانزل شوف اللي وراك بعزيمة.";
+        heroSub.textContent = "أول ساعة بعد الصحيان بتحدد مسار يومك كله. ابعد عن الموبايل، اشرب مية، وصلي الفجر، وشوف اللي وراك بتركيز.";
       } else if (hour >= 12 && hour < 18) {
         badge.textContent = "فترة الظهيرة والعمل ⚡";
         heroMsg.textContent = "مكملين.. متسيبش اليوم يفلت منك في المشتتات";
@@ -2420,7 +2413,6 @@
       showToast('تم تحديث رسالة اليوم 💡');
     }
 
-    // 5-Minute Anti-procrastination Timer
     function toggle5MinTimer() {
       const btn = document.getElementById('btn-5min-toggle');
       if (is5MinRunning) {
@@ -2440,7 +2432,7 @@
             btn.textContent = 'ابدأ الـ 5 دقائق 🚀';
             fireConfetti();
             playAppSound('check');
-            showToast('عاش يا بطل! خلصت الـ 5 دقايق.. جاهز تكمل؟ 🔥');
+            showToast('عاش يا بطل! خلصت الـ 5 دقايق.. كمل ولا توقف؟ 🔥');
           }
         }, 1000);
       }
@@ -2460,7 +2452,6 @@
       document.getElementById('timer-5min-display').textContent = `${m}:${s}`;
     }
 
-    // Focus Session Timer
     function setFocusTime(minutes) {
       clearInterval(focusTimerInterval);
       isFocusRunning = false;
@@ -2501,7 +2492,7 @@
     }
 
     /* ==========================================================
-       5. CALENDAR & CANVAS CHARTS
+       5. CALENDAR & CANVAS CHARTS (REBUILT & ALIGNED)
        ========================================================== */
     function renderCalendar() {
       if (!currentUser) return;
@@ -2545,7 +2536,7 @@
         }
 
         cell.innerHTML = `
-          <div style="font-weight:900;font-size:0.92rem">${d}</div>
+          <div style="font-weight:900;font-size:0.88rem">${d}</div>
           <div class="cal-cell-dots">
             ${Array.from({ length: Math.min(completed, 6) }).map(() => '<span class="cal-cell-dot"></span>').join('')}
           </div>
@@ -2570,11 +2561,13 @@
       if (!canvas || !currentUser) return;
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = canvas.parentElement.clientWidth * dpr;
+      
+      const containerWidth = canvas.parentElement.clientWidth;
+      canvas.width = containerWidth * dpr;
       canvas.height = 260 * dpr;
       ctx.scale(dpr, dpr);
 
-      const w = canvas.parentElement.clientWidth;
+      const w = containerWidth;
       const h = 260;
       ctx.clearRect(0, 0, w, h);
 
@@ -2601,24 +2594,47 @@
         }
       }
 
-      const barWidth = 34;
-      const gap = (w - (barWidth * 7)) / 8;
+      // Draw subtle grid lines
+      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--border').trim();
+      ctx.lineWidth = 1;
+      [0.25, 0.5, 0.75, 1].forEach(ratio => {
+        const lineY = 40 + (1 - ratio) * 150;
+        ctx.beginPath();
+        ctx.moveTo(30, lineY);
+        ctx.lineTo(w - 30, lineY);
+        ctx.stroke();
+      });
+
+      const barWidth = 32;
+      const gap = (w - 60 - (barWidth * 7)) / 6;
 
       rates.forEach((rate, idx) => {
-        const x = gap + idx * (barWidth + gap);
-        const barH = (rate / 100) * (h - 65);
-        const y = h - 35 - barH;
+        const x = 30 + idx * (barWidth + gap);
+        const maxH = 150;
+        const barH = Math.max(4, (rate / 100) * maxH);
+        const y = 40 + (maxH - barH);
 
-        ctx.fillStyle = rate === 100 ? '#059669' : '#4f46e5';
+        // Draw pillar background track
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg').trim();
         ctx.beginPath();
-        ctx.roundRect(x, y, barWidth, barH, [8, 8, 0, 0]);
+        ctx.roundRect(x, 40, barWidth, maxH, [6, 6, 6, 6]);
         ctx.fill();
 
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
-        ctx.font = '900 13px Cairo';
+        // Draw active bar fill
+        ctx.fillStyle = rate === 100 ? '#059669' : (rate > 0 ? '#4f46e5' : 'rgba(100,116,139,0.2)');
+        ctx.beginPath();
+        ctx.roundRect(x, y, barWidth, barH, [6, 6, 6, 6]);
+        ctx.fill();
+
+        // Labels
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-secondary').trim();
+        ctx.font = '800 11px Cairo';
         ctx.textAlign = 'center';
-        ctx.fillText(`${rate}%`, x + barWidth / 2, y - 6);
-        ctx.fillText(days[idx], x + barWidth / 2, h - 12);
+        ctx.fillText(`${rate}%`, x + barWidth / 2, y - 8);
+
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
+        ctx.font = '900 12px Cairo';
+        ctx.fillText(days[idx], x + barWidth / 2, 220);
       });
     }
 
@@ -2627,11 +2643,13 @@
       if (!canvas || !currentUser) return;
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
-      canvas.width = canvas.parentElement.clientWidth * dpr;
+      
+      const containerWidth = canvas.parentElement.clientWidth;
+      canvas.width = containerWidth * dpr;
       canvas.height = 260 * dpr;
       ctx.scale(dpr, dpr);
 
-      const w = canvas.parentElement.clientWidth;
+      const w = containerWidth;
       const h = 260;
       ctx.clearRect(0, 0, w, h);
 
@@ -2643,9 +2661,9 @@
 
       let start = 0;
       const colors = ['#059669', '#4f46e5', '#d97706', '#dc2626', '#0284c7'];
-      const cx = w / 3;
+      const cx = w * 0.35;
       const cy = h / 2;
-      const rad = 78;
+      const rad = 72;
 
       cats.forEach((c, idx) => {
         const slice = (counts[c] / total) * 2 * Math.PI;
@@ -2658,11 +2676,11 @@
         start += slice;
 
         const legY = 50 + idx * 26;
-        ctx.fillRect(w / 2 + 30, legY - 12, 14, 14);
+        ctx.fillRect(w * 0.65, legY - 10, 12, 12);
         ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
-        ctx.font = '900 13px Cairo';
+        ctx.font = '800 12px Cairo';
         ctx.textAlign = 'right';
-        ctx.fillText(`${c} (${counts[c]})`, w - 20, legY);
+        ctx.fillText(`${c} (${counts[c]})`, w - 25, legY);
       });
     }
 
@@ -2768,7 +2786,7 @@
       currentPlayingIndex = 0;
 
       const container = document.getElementById('quran-text-flow');
-      container.innerHTML = '<div style="text-align:center;padding:2rem;font-weight:900;color:var(--muted)">جاري تحميل السورة الكريمة...</div>';
+      container.innerHTML = '<div style="text-align:center;padding:2rem;font-weight:800;color:var(--muted)">جاري تحميل السورة الكريمة...</div>';
 
       const basmala = document.getElementById('quran-basmala-title');
       basmala.style.display = (surahNum === 1 || surahNum === 9) ? 'none' : 'block';
@@ -2790,7 +2808,7 @@
           }));
           renderSurahVerses(currentAyahsData);
         } else {
-          throw new Error('Fallback needed');
+          throw new Error('Fallback');
         }
       } catch (err) {
         container.innerHTML = `
@@ -2871,7 +2889,7 @@
 
     function adjustQuranFont(delta) {
       if (!currentUser) return;
-      currentUser.settings.quranFontSize = Math.min(38, Math.max(18, currentUser.settings.quranFontSize + delta));
+      currentUser.settings.quranFontSize = Math.min(38, Math.max(18, (currentUser.settings.quranFontSize || 26) + delta));
       document.getElementById('quran-text-flow').style.fontSize = `${currentUser.settings.quranFontSize}px`;
       syncCurrentUserData();
     }
@@ -3123,6 +3141,7 @@
       const next = cur === 'dark' ? 'light' : 'dark';
       if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
       else document.documentElement.removeAttribute('data-theme');
+      currentUser.settings = currentUser.settings || {};
       currentUser.settings.theme = next;
       syncCurrentUserData();
       if (document.getElementById('tab-analytics').classList.contains('active')) renderAnalytics();
@@ -3185,10 +3204,10 @@
     function confirmResetAllData() {
       if (!currentUser) return;
       if (confirm(`هل أنت متأكد من حذف الحساب "${currentUser.username}" وكافة عاداته نهائياً؟`)) {
-        const users = getAllUsers();
-        delete users[currentUser.username];
-        saveUsersDB(users);
-        localStorage.removeItem(ACTIVE_USER_KEY);
+        const db = getMasterDB();
+        delete db[currentUser.username];
+        saveMasterDB(db);
+        localStorage.removeItem(ACTIVE_SESSION_KEY);
         location.reload();
       }
     }
@@ -3210,12 +3229,13 @@
       setInterval(tick, 1000);
     }
 
+    /* Start Session on Page Load */
     window.addEventListener('DOMContentLoaded', () => {
-      const activeName = localStorage.getItem(ACTIVE_USER_KEY);
-      const users = getAllUsers();
+      const db = getMasterDB();
+      const activeName = localStorage.getItem(ACTIVE_SESSION_KEY);
 
-      if (activeName && users[activeName]) {
-        currentUser = users[activeName];
+      if (activeName && db[activeName]) {
+        currentUser = db[activeName];
         document.getElementById('auth-screen-overlay').classList.remove('active');
         initUserSession();
       } else {
