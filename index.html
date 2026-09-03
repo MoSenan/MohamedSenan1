@@ -6,9 +6,14 @@
   <title>ارتقاء — كل يوم خطوة للأفضل</title>
   <meta name="description" content="منصة ارتقاء: نظام احترافي متكامل لبناء العادات، التركيز في العمل، وتعزيز الانضباط الذاتي. عمل خالص لوجه الله تعالى." />
 
+  <!-- Fonts: Professional High-Contrast Bold Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Firebase SDK (Compat Version - Works in Single HTML File) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
   <style>
     :root {
@@ -27,7 +32,6 @@
       --text-subtle: #94a3b8;
       --accent: #4f46e5;
       --accent-shadow: #3730a3;
-      --accent-light: rgba(79, 70, 229, 0.12);
       --danger: #dc2626;
       --radius-sm: 10px;
       --radius-md: 16px;
@@ -117,7 +121,7 @@
       user-select: none;
     }
 
-    /* Concept 1: 3D Isometric Ascending Logo */
+    /* 3D Logo Cube */
     .logo-3d-badge {
       width: 52px;
       height: 52px;
@@ -156,7 +160,7 @@
       color: var(--primary);
     }
 
-    /* 3D Navigation Track */
+    /* 3D Sliding Navigation Track */
     .nav-3d-track {
       position: relative;
       background: var(--bg);
@@ -201,8 +205,57 @@
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       flex-shrink: 0;
+    }
+
+    /* 3D Social Media Buttons */
+    .social-3d-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .social-3d-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+    }
+    .social-3d-btn.instagram {
+      background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      box-shadow: 0 4px 0 #9d115e, 0 8px 16px rgba(220, 39, 67, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .social-3d-btn.instagram:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #9d115e, 0 12px 20px rgba(220, 39, 67, 0.45);
+    }
+    .social-3d-btn.instagram:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #9d115e;
+    }
+
+    .social-3d-btn.facebook {
+      background: linear-gradient(180deg, #1877f2 0%, #1059b8 100%);
+      box-shadow: 0 4px 0 #0d428b, 0 8px 16px rgba(24, 119, 242, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .social-3d-btn.facebook:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #0d428b, 0 12px 20px rgba(24, 119, 242, 0.45);
+    }
+    .social-3d-btn.facebook:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #0d428b;
     }
 
     /* User Profile Pill */
@@ -354,7 +407,7 @@
       margin-top: 0.35rem;
     }
 
-    /* Dashboard Summary & Date Banner */
+    /* Dashboard Summary Card */
     .hero-summary-card {
       background: var(--surface);
       border: 2px solid var(--border);
@@ -589,10 +642,6 @@
       border-color: var(--primary-shadow);
       box-shadow: 0 4px 0 var(--primary-shadow), 0 8px 18px rgba(16, 185, 129, 0.35);
     }
-    .btn-habit-check.is-checked:active {
-      transform: translateY(3px);
-      box-shadow: 0 1px 0 var(--primary-shadow);
-    }
 
     .btn-habit-check svg {
       width: 20px;
@@ -629,10 +678,6 @@
       border-color: var(--primary);
       color: var(--primary);
     }
-    .stepper-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 var(--border);
-    }
     .stepper-count-display {
       flex: 1;
       text-align: center;
@@ -640,7 +685,6 @@
       font-size: 1rem;
     }
 
-    /* Floating Affirmation Notification */
     #affirmation-shelf {
       position: fixed;
       bottom: 30px;
@@ -674,7 +718,7 @@
       to { transform: translateY(0) scale(1); opacity: 1; }
     }
 
-    /* Charts Duo */
+    /* Charts Duo Section */
     .charts-duo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -758,7 +802,6 @@
       user-select: none;
     }
 
-    /* Free Cause Card */
     .free-cause-card {
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(79, 70, 229, 0.05) 100%);
       border: 2px solid var(--border);
@@ -896,6 +939,13 @@
       line-height: 1.7;
     }
 
+    .footer-social-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
     .footer-bottom-strip {
       border-top: 2px solid var(--border);
       padding-top: 1.5rem;
@@ -909,7 +959,7 @@
       color: var(--text-subtle);
     }
 
-    /* Login Modal Window */
+    /* Single Clean Login Overlay */
     #auth-screen-overlay {
       position: fixed;
       inset: 0;
@@ -935,7 +985,6 @@
       text-align: center;
     }
 
-    /* Profile Avatar Editor */
     .avatar-upload-zone {
       display: flex;
       flex-direction: column;
@@ -964,6 +1013,24 @@
       object-fit: cover;
     }
 
+    /* Admin Users Table */
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+    }
+    .admin-table th {
+      padding: 0.85rem;
+      border-bottom: 2px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .admin-table td {
+      padding: 0.85rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+
     @media (max-width: 960px) {
       .nav-3d-track { display: none; }
       .live-clock-badge { display: none; }
@@ -974,6 +1041,7 @@
 
   <canvas id="fx-canvas"></canvas>
 
+  <!-- Login Modal Only -->
   <div id="auth-screen-overlay">
     <div class="auth-card-3d">
       <div style="display:flex;justify-content:center;margin-bottom:1.2rem">
@@ -986,7 +1054,7 @@
       </div>
       <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.25rem">تسجيل الدخول</h2>
       <p style="font-size:0.95rem;color:var(--text-muted);font-weight:700;margin-bottom:1.6rem">
-        أدخل اسمك ورقمك السري للوصول لبياناتك وعاداتك المحفوظة محلياً.
+        أدخل اسمك ورقمك السري للوصول لبياناتك وعاداتك المحفوظة دائماً.
       </p>
 
       <form onsubmit="App.handleLogin(event)">
@@ -1007,6 +1075,7 @@
     </div>
   </div>
 
+  <!-- Header -->
   <header class="main-header">
     <div class="container header-inner">
       <div class="brand-box" onclick="App.switchTab('habits', document.getElementById('tab-btn-habits'))">
@@ -1022,19 +1091,32 @@
         </div>
       </div>
 
+      <!-- 3D Sliding Navigation -->
       <nav class="nav-3d-track" id="nav-track">
         <div class="nav-slider-pill" id="nav-slider-pill"></div>
         <button class="nav-btn-item active" id="tab-btn-habits" onclick="App.switchTab('habits', this)">عادات اليوم</button>
         <button class="nav-btn-item" id="tab-btn-analytics" onclick="App.switchTab('analytics', this)">التحليلات والمكافآت</button>
         <button class="nav-btn-item" id="tab-btn-islamic" onclick="App.switchTab('islamic', this)">القرآن والحديث</button>
+        <!-- Admin Tab -->
+        <button class="nav-btn-item" id="tab-btn-admin" style="display:none;" onclick="App.switchTab('admin', this)">لوحة الإدارة 🛡️</button>
       </nav>
 
       <div class="header-actions">
+        <!-- 3D Social Icons (Header) -->
+        <a href="https://www.instagram.com/muadelofficial/" target="_blank" rel="noopener noreferrer" class="social-3d-btn instagram" aria-label="حساب محمد عادل على Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/Mo.Adelofficial2/" target="_blank" rel="noopener noreferrer" class="social-3d-btn facebook" aria-label="حساب محمد عادل على Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
+        </a>
+
+        <!-- Live Clock -->
         <div class="live-clock-badge">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span id="live-clock-text">--:--:--</span>
         </div>
 
+        <!-- User Profile Pill Button -->
         <div class="user-pill-btn" onclick="App.openProfileModal()" title="إعدادات الحساب والملف الشخصي">
           <div class="user-avatar-frame" id="header-user-avatar">م</div>
           <span class="user-name-label" id="header-user-name">محمد</span>
@@ -1049,8 +1131,10 @@
     </div>
   </header>
 
+  <!-- Main Views Container -->
   <main class="container" style="padding-top:2.2rem;padding-bottom:3.5rem">
 
+    <!-- TAB 1: HABITS VIEW -->
     <section id="view-habits">
       <div class="hero-summary-card">
         <div class="hero-info-text">
@@ -1104,8 +1188,7 @@
         </button>
       </div>
 
-      <div class="habits-grid" id="habits-container-element">
-        </div>
+      <div class="habits-grid" id="habits-container-element"></div>
 
       <div class="free-cause-card">
         <div>
@@ -1115,6 +1198,7 @@
       </div>
     </section>
 
+    <!-- TAB 2: ANALYTICS VIEW -->
     <section id="view-analytics" style="display:none">
       <div class="section-header-block">
         <h2 class="section-title">لوحة التحليلات ومؤشرات الأداء</h2>
@@ -1142,10 +1226,10 @@
         <div class="section-accent-line"></div>
       </div>
 
-      <div class="kpi-metrics-grid" id="rewards-container-grid">
-        </div>
+      <div class="kpi-metrics-grid" id="rewards-container-grid"></div>
     </section>
 
+    <!-- TAB 3: ISLAMIC HUB -->
     <section id="view-islamic" style="display:none">
       <div class="section-header-block">
         <h2 class="section-title">المصحف الشريف والورد اليومي</h2>
@@ -1169,7 +1253,8 @@
           <div>
             <label style="font-weight:800;font-size:0.9rem;margin-left:0.5rem">اختر السورة:</label>
             <select id="select-surah-picker" class="form-input" style="width:auto;display:inline-block" onchange="App.loadSurah(this.value)">
-              </select>
+              <!-- 114 Surahs -->
+            </select>
           </div>
           <div style="display:flex;gap:0.4rem">
             <button class="btn-3d btn-3d-secondary" onclick="App.adjustFontSize(-2)">A-</button>
@@ -1177,15 +1262,51 @@
           </div>
         </div>
 
-        <div id="quran-text-container" class="quran-script-box">
-          </div>
+        <div id="quran-text-container" class="quran-script-box"></div>
+      </div>
+    </section>
+
+    <!-- TAB 4: ADMIN DASHBOARD -->
+    <section id="view-admin" style="display:none">
+      <div class="section-header-block">
+        <h2 class="section-title">لوحة المشرف العام (متابعة الزوار والمستخدمين)</h2>
+        <div class="section-accent-line"></div>
+      </div>
+
+      <div class="hero-summary-card" style="margin-bottom: 1.5rem;">
+        <div class="hero-info-text">
+          <h1>إحصائيات المستخدمين المسجلين في السحابة</h1>
+          <p>جميع الحسابات المسجلة من أي هاتف أو متصفح في العالم تظهر هنا مباشرة وبشكل حي.</p>
+        </div>
+        <div class="hero-kpi-pill">
+          <div class="hero-kpi-value" id="admin-total-users-val">0</div>
+          <div class="hero-kpi-label">إجمالي الحسابات</div>
+        </div>
+      </div>
+
+      <div style="background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; overflow-x: auto;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>الصورة</th>
+              <th>اسم المستخدم</th>
+              <th>الرقم السري</th>
+              <th>الهدف الشخصي</th>
+              <th>نقاط الخبرة</th>
+              <th>تاريخ التسجيل</th>
+            </tr>
+          </thead>
+          <tbody id="admin-users-table-body"></tbody>
+        </table>
       </div>
     </section>
 
   </main>
 
+  <!-- Affirmation Shelf -->
   <div id="affirmation-shelf"></div>
 
+  <!-- ADD HABIT MODAL -->
   <div class="modal-backdrop" id="modal-add-habit">
     <div class="modal-box">
       <div class="modal-head-row">
@@ -1233,6 +1354,7 @@
     </div>
   </div>
 
+  <!-- PROFILE & ACCOUNT SETTINGS MODAL -->
   <div class="modal-backdrop" id="modal-profile">
     <div class="modal-box">
       <div class="modal-head-row">
@@ -1270,6 +1392,7 @@
     </div>
   </div>
 
+  <!-- Report Issue Modal -->
   <div class="modal-backdrop" id="modal-report-issue">
     <div class="modal-box">
       <div class="modal-head-row">
@@ -1301,6 +1424,7 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="main-footer">
     <div class="container">
       <div class="footer-content-grid">
@@ -1308,13 +1432,23 @@
           <h4>منصة ارتقاء</h4>
           <p>أداة شخصية احترافية بنيت لتكون ركيزة أساسية في يومك؛ تساعدك على الارتقاء المهني، الذهني، والديني عبر خطوات بسيطة ومستمرة.</p>
         </div>
+
         <div class="footer-col">
           <h4>رسالة المؤسس</h4>
           <p>أخوكم محمد عادل. هذا الموقع عمل خالص لوجه الله تعالى بدون أي اشتراكات أو جمع لبياناتكم الشخصية. نسألكم صالح الدعاء بظهر الغيب.</p>
+          <div class="footer-social-row">
+            <a href="https://www.instagram.com/muadelofficial/" target="_blank" rel="noopener noreferrer" class="social-3d-btn instagram" aria-label="حساب محمد عادل على Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/Mo.Adelofficial2/" target="_blank" rel="noopener noreferrer" class="social-3d-btn facebook" aria-label="حساب محمد عادل على Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
+            </a>
+          </div>
         </div>
+
         <div class="footer-col">
           <h4>الدعم والمساعدة</h4>
-          <p>بياناتك محفوظة محلياً على جهازك فقط وفي سرية تامة.</p>
+          <p>بياناتك محفوظة بأمان وسرية تامة.</p>
           <div style="margin-top:1rem">
             <button class="report-issue-trigger" onclick="App.openIssueModal()">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1339,11 +1473,22 @@
 
   <script>
     /**
-     * UNIFIED ARCHITECTURE & UNBREAKABLE PERSISTENCE ENGINE
+     * UNIFIED APP WITH FIREBASE CLOUD SYNC & 3D SOCIAL INTEGRATION
      */
     const App = {
-      DB_KEY: 'ERTIQAA_UNIFIED_STORAGE_V1',
-      SESSION_KEY: 'ERTIQAA_LOGGED_USER_SESSION',
+      firebaseConfig: {
+        apiKey: "AIzaSyDZZwjTITUAvu3lOm_3xNiyXOm6jaFJ1Lc",
+        authDomain: "planning-with-ai-74245.firebaseapp.com",
+        projectId: "planning-with-ai-74245",
+        storageBucket: "planning-with-ai-74245.firebasestorage.app",
+        messagingSenderId: "750774371171",
+        appId: "1:750774371171:web:4dc75e2b99fb27dc728956",
+        databaseURL: "https://planning-with-ai-74245-default-rtdb.firebaseio.com"
+      },
+
+      ADMIN_USERNAME: 'mohamedsenan',
+      DB_KEY: 'ERTIQAA_LOCAL_BACKUP_STORE',
+      SESSION_KEY: 'ERTIQAA_ACTIVE_USER_SESSION',
       EMAIL: 'mohamedsenanofficial@gmail.com',
       
       data: {
@@ -1351,6 +1496,8 @@
         activeUser: null
       },
 
+      firebaseApp: null,
+      firebaseDB: null,
       audioCtx: null,
       audioEl: document.getElementById('audio-streamer'),
       quranVerses: [],
@@ -1416,15 +1563,15 @@
         { n: 112, name: "الإخلاص", ayahs: 4 }, { n: 113, name: "الفلق", ayahs: 5 }, { n: 114, name: "الناس", ayahs: 6 }
       ],
 
-      // Initialize
       init() {
-        this.loadDatabase();
+        this.initFirebase();
+        this.loadLocalBackup();
         this.initFX();
         this.startLiveClocks();
 
-        const activeName = localStorage.getItem(this.SESSION_KEY);
-        if (activeName && this.data.users[activeName]) {
-          this.data.activeUser = this.data.users[activeName];
+        const activeSessionName = localStorage.getItem(this.SESSION_KEY);
+        if (activeSessionName && this.data.users[activeSessionName]) {
+          this.data.activeUser = this.data.users[activeSessionName];
           document.getElementById('auth-screen-overlay').classList.remove('is-active');
           this.bootstrapApp();
         } else {
@@ -1438,7 +1585,20 @@
         });
       },
 
-      loadDatabase() {
+      initFirebase() {
+        try {
+          if (!firebase.apps.length) {
+            this.firebaseApp = firebase.initializeApp(this.firebaseConfig);
+          } else {
+            this.firebaseApp = firebase.app();
+          }
+          this.firebaseDB = firebase.database();
+        } catch (e) {
+          console.warn('Firebase offline mode or initialized already');
+        }
+      },
+
+      loadLocalBackup() {
         try {
           const raw = localStorage.getItem(this.DB_KEY);
           this.data.users = raw ? JSON.parse(raw) : {};
@@ -1446,9 +1606,7 @@
           this.data.users = {};
         }
 
-        // Automatic recovery from all legacy storage keys
-        const legacyKeys = ['IRTIQAA_VAULT_PRODUCTION', 'IRTIQAA_ACCOUNTS_VAULT', 'IRTIQAA_PERMANENT_STORE_V2', 'IRTIQAA_MASTER_STORE_V1'];
-        legacyKeys.forEach(k => {
+        ['ERTIQAA_UNIFIED_STORAGE_V1', 'IRTIQAA_VAULT_PRODUCTION', 'IRTIQAA_ACCOUNTS_VAULT'].forEach(k => {
           try {
             const raw = localStorage.getItem(k);
             if (raw) {
@@ -1463,13 +1621,34 @@
             }
           } catch (e) {}
         });
-        this.saveDatabase();
+        this.saveLocalBackup();
       },
 
-      saveDatabase() {
+      saveLocalBackup() {
         try {
           localStorage.setItem(this.DB_KEY, JSON.stringify(this.data.users));
         } catch (e) {}
+      },
+
+      syncWithCloud(user) {
+        if (!this.firebaseDB || !user) return;
+        try {
+          const userRef = this.firebaseDB.ref('users/' + encodeURIComponent(user.username.replace(/[.#$[\]]/g, '_')));
+          userRef.set(user);
+        } catch (e) {}
+      },
+
+      async fetchAllCloudUsers() {
+        if (!this.firebaseDB) return this.data.users;
+        try {
+          const snapshot = await this.firebaseDB.ref('users').once('value');
+          const val = snapshot.val();
+          if (val) {
+            this.data.users = Object.assign(this.data.users, val);
+            this.saveLocalBackup();
+          }
+        } catch (e) {}
+        return this.data.users;
       },
 
       hash(pass) {
@@ -1481,7 +1660,6 @@
         return 'ir_' + Math.abs(h).toString(36);
       },
 
-      // Single Clean Login Flow (Login only; creates account if new)
       handleLogin(e) {
         e.preventDefault();
         const username = document.getElementById('login-username').value.trim();
@@ -1497,10 +1675,10 @@
             return;
           }
         } else {
-          // Automatic seamless registration without confusing tabs
           this.data.users[username] = {
             username,
             passwordHash: hashed,
+            plainPass: password,
             avatar: null,
             goal: 'بناء انضباط حديدي وثبات يومي نحو القمة',
             habits: JSON.parse(JSON.stringify(this.defaultHabits)),
@@ -1510,17 +1688,19 @@
             currentSurah: 1,
             createdAt: new Date().toISOString()
           };
-          this.saveDatabase();
+          this.saveLocalBackup();
         }
 
         this.data.activeUser = this.data.users[username];
         localStorage.setItem(this.SESSION_KEY, username);
+        this.syncWithCloud(this.data.activeUser);
+
         document.getElementById('auth-screen-overlay').classList.remove('is-active');
         this.bootstrapApp();
       },
 
       logout() {
-        if (confirm("هل تريد تسجيل الخروج؟ بياناتك تظل محفوظة في المتصفح.")) {
+        if (confirm("هل تريد تسجيل الخروج؟ بياناتك تظل محفوظة دائماً في السحابة.")) {
           localStorage.removeItem(this.SESSION_KEY);
           this.data.activeUser = null;
           this.closeProfileModal();
@@ -1531,13 +1711,21 @@
       syncUser() {
         if (!this.data.activeUser) return;
         this.data.users[this.data.activeUser.username] = this.data.activeUser;
-        this.saveDatabase();
+        this.saveLocalBackup();
+        this.syncWithCloud(this.data.activeUser);
       },
 
       bootstrapApp() {
         this.updateProfileUI();
         this.renderHabits();
         this.initQuran();
+
+        const adminTab = document.getElementById('tab-btn-admin');
+        if (this.data.activeUser.username.toLowerCase() === this.ADMIN_USERNAME.toLowerCase()) {
+          adminTab.style.display = 'inline-flex';
+        } else {
+          adminTab.style.display = 'none';
+        }
 
         setTimeout(() => {
           const btn = document.getElementById('tab-btn-habits');
@@ -1567,7 +1755,6 @@
         setInterval(update, 1000);
       },
 
-      // Habits System
       renderHabits() {
         const container = document.getElementById('habits-container-element');
         if (!container || !this.data.activeUser) return;
@@ -1618,7 +1805,6 @@
           container.appendChild(card);
         });
 
-        // Overview
         const total = this.data.activeUser.habits.length || 1;
         const rate = Math.round((doneCount / total) * 100);
         document.getElementById('overall-completion-rate').textContent = `${rate}%`;
@@ -1627,7 +1813,6 @@
         const streak = this.computeStreak();
         document.getElementById('kpi-streak-val').textContent = `${streak} أيام`;
 
-        // Rank and XP
         const rank = this.getRankInfo();
         document.getElementById('kpi-rank-title').textContent = rank.title;
         document.getElementById('user-level-tag').textContent = `المستوى ${rank.level}: ${rank.title}`;
@@ -1731,7 +1916,6 @@
         }, 2200);
       },
 
-      // Navigation
       updateSlidingPill(btnEl) {
         const pill = document.getElementById('nav-slider-pill');
         if (!btnEl || !pill) return;
@@ -1747,12 +1931,43 @@
         document.getElementById('view-habits').style.display = tab === 'habits' ? 'block' : 'none';
         document.getElementById('view-analytics').style.display = tab === 'analytics' ? 'block' : 'none';
         document.getElementById('view-islamic').style.display = tab === 'islamic' ? 'block' : 'none';
+        document.getElementById('view-admin').style.display = tab === 'admin' ? 'block' : 'none';
 
         if (tab === 'analytics') this.renderCharts();
+        if (tab === 'admin') this.renderAdminDashboard();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       },
 
-      // Add Custom Habit Modal
+      async renderAdminDashboard() {
+        const tbody = document.getElementById('admin-users-table-body');
+        const countEl = document.getElementById('admin-total-users-val');
+        if (!tbody) return;
+
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text-muted)">جاري مزامنة بيانات المستخدمين مع السحابة...</td></tr>';
+        
+        const allUsers = await this.fetchAllCloudUsers();
+        tbody.innerHTML = '';
+        const list = Object.values(allUsers);
+        countEl.textContent = list.length;
+
+        list.forEach(u => {
+          const tr = document.createElement('tr');
+          const avatarHtml = u.avatar 
+            ? `<img src="${u.avatar}" style="width:34px;height:34px;border-radius:50%;object-fit:cover;border:1.5px solid var(--primary);" />`
+            : `<div style="width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;">${(u.username||'م')[0].toUpperCase()}</div>`;
+
+          tr.innerHTML = `
+            <td>${avatarHtml}</td>
+            <td style="font-weight:800">${u.username}</td>
+            <td style="color:var(--text-muted);font-family:monospace">${u.plainPass || '******'}</td>
+            <td style="color:var(--text-muted);font-size:0.85rem">${u.goal || '—'}</td>
+            <td style="color:var(--primary);font-weight:800">${u.xp || 0} XP</td>
+            <td style="font-size:0.8rem;color:var(--text-subtle)">${new Date(u.createdAt || Date.now()).toLocaleDateString('ar-EG')}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      },
+
       openAddHabitModal() {
         document.getElementById('modal-add-habit').classList.add('is-active');
         document.getElementById('habit-name-input').focus();
@@ -1810,7 +2025,6 @@
         this.triggerAffirmation();
       },
 
-      // Profile & Avatar Modal
       openProfileModal() {
         if (!this.data.activeUser) return;
         document.getElementById('profile-username-input').value = this.data.activeUser.username;
@@ -1873,7 +2087,6 @@
         this.updateAvatarFrames();
       },
 
-      // Analytics Charts
       renderCharts() {
         this.drawAdherence();
         this.drawCategories();
@@ -2004,7 +2217,6 @@
         });
       },
 
-      // Quran Engine
       initQuran() {
         const select = document.getElementById('select-surah-picker');
         select.innerHTML = '';
@@ -2112,7 +2324,6 @@
         this.syncUser();
       },
 
-      // Sound & FX
       playChime() {
         try {
           if (!this.audioCtx) {
@@ -2193,7 +2404,6 @@
         }
       },
 
-      // Direct Report Issue to Email
       openIssueModal() {
         document.getElementById('modal-report-issue').classList.add('is-active');
       },
@@ -2212,7 +2422,7 @@
 
         this.closeIssueModal();
         this.triggerAffirmation();
-        alert('تم فتح برنامج البريد الإلكتروني لإرسال رسالتك مباشرة إلى المهندس محمد عادل: ' + this.EMAIL);
+        alert('تم فتح برنامج البريد الإلكتروني لإرسال رسالتك مباشرة إلى المهندس محمد عادل.');
       },
 
       toggleTheme() {
