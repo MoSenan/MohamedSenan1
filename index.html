@@ -6,12 +6,12 @@
   <title>ارتقاء — كل يوم خطوة للأفضل</title>
   <meta name="description" content="منصة ارتقاء: نظام احترافي متكامل لبناء العادات، التركيز في العمل، وتعزيز الانضباط الذاتي. عمل خالص لوجه الله تعالى." />
 
-  <!-- Fonts: Professional High-Contrast Bold Arabic -->
+  <!-- الخطوط العربية الرسمية المعتمدة -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@700;800;900&family=IBM+Plex+Sans+Arabic:wght@600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Firebase SDK (Compat Version - Works in Single HTML File) -->
+  <!-- حزمة Firebase السحابية التوافقية -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -685,6 +685,7 @@
       font-size: 1rem;
     }
 
+    /* Floating Affirmation Notification */
     #affirmation-shelf {
       position: fixed;
       bottom: 30px;
@@ -718,7 +719,7 @@
       to { transform: translateY(0) scale(1); opacity: 1; }
     }
 
-    /* Charts Duo Section */
+    /* Charts Section */
     .charts-duo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -959,7 +960,7 @@
       color: var(--text-subtle);
     }
 
-    /* Single Clean Login Overlay */
+    /* Authentication Modal Switcher (Login / Register) */
     #auth-screen-overlay {
       position: fixed;
       inset: 0;
@@ -983,6 +984,32 @@
       padding: 2.5rem;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
       text-align: center;
+    }
+
+    .auth-tab-switch {
+      display: flex;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: 1.4rem;
+    }
+    .auth-tab-btn {
+      flex: 1;
+      border: none;
+      background: none;
+      padding: 0.6rem;
+      font-weight: 800;
+      font-size: 0.92rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .auth-tab-btn.active {
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
     }
 
     .avatar-upload-zone {
@@ -1041,7 +1068,7 @@
 
   <canvas id="fx-canvas"></canvas>
 
-  <!-- Login Modal Only -->
+  <!-- Login & Register Modal -->
   <div id="auth-screen-overlay">
     <div class="auth-card-3d">
       <div style="display:flex;justify-content:center;margin-bottom:1.2rem">
@@ -1052,8 +1079,15 @@
           </svg>
         </div>
       </div>
-      <h2 style="font-size:2rem;font-weight:900;margin-bottom:0.25rem">تسجيل الدخول</h2>
-      <p style="font-size:0.95rem;color:var(--text-muted);font-weight:700;margin-bottom:1.6rem">
+      
+      <!-- 3D Selector between Login and Register -->
+      <div class="auth-tab-switch">
+        <button type="button" class="auth-tab-btn active" id="btn-auth-mode-login" onclick="App.switchAuthMode('login')">تسجيل الدخول</button>
+        <button type="button" class="auth-tab-btn" id="btn-auth-mode-register" onclick="App.switchAuthMode('register')">سجل الآن (حساب جديد)</button>
+      </div>
+
+      <h2 id="auth-modal-title" style="font-size:1.85rem;font-weight:900;margin-bottom:0.25rem">تسجيل الدخول</h2>
+      <p id="auth-modal-sub" style="font-size:0.95rem;color:var(--text-muted);font-weight:700;margin-bottom:1.6rem">
         أدخل اسمك ورقمك السري للوصول لبياناتك وعاداتك المحفوظة دائماً.
       </p>
 
@@ -1068,8 +1102,8 @@
           <input type="password" id="login-password" class="form-input" required placeholder="أدخل الرقم السري..." autocomplete="current-password" />
         </div>
 
-        <button type="submit" class="btn-3d btn-3d-primary" style="width:100%;margin-top:0.6rem">
-          تسجيل الدخول
+        <button type="submit" id="auth-submit-btn" class="btn-3d btn-3d-primary" style="width:100%;margin-top:0.6rem">
+          تسجيل الدخول 🔑
         </button>
       </form>
     </div>
@@ -1487,10 +1521,13 @@
       },
 
       ADMIN_USERNAME: 'mohamedsenan',
-      DB_KEY: 'ERTIQAA_LOCAL_BACKUP_STORE',
+      DB_KEY: 'ERTIQAA_ETERNAL_VAULT_V1',
+      BACKUP_DB_KEY: 'ERTIQAA_MIRROR_VAULT_V1',
       SESSION_KEY: 'ERTIQAA_ACTIVE_USER_SESSION',
       EMAIL: 'mohamedsenanofficial@gmail.com',
       
+      authMode: 'login', // 'login' or 'register'
+
       data: {
         users: {},
         activeUser: null
@@ -1565,7 +1602,7 @@
 
       init() {
         this.initFirebase();
-        this.loadLocalBackup();
+        this.loadEternalVault();
         this.initFX();
         this.startLiveClocks();
 
@@ -1594,47 +1631,56 @@
           }
           this.firebaseDB = firebase.database();
         } catch (e) {
-          console.warn('Firebase offline mode or initialized already');
+          console.warn('Firebase initialized in fallback mode');
         }
       },
 
-      loadLocalBackup() {
-        try {
-          const raw = localStorage.getItem(this.DB_KEY);
-          this.data.users = raw ? JSON.parse(raw) : {};
-        } catch (e) {
-          this.data.users = {};
-        }
+      loadEternalVault() {
+        let vault = {};
+        // Scan all historical storage keys to never lose any accounts
+        const allKeys = [
+          this.DB_KEY,
+          this.BACKUP_DB_KEY,
+          'ERTIQAA_LOCAL_BACKUP_STORE',
+          'ERTIQAA_UNIFIED_STORAGE_V1',
+          'IRTIQAA_VAULT_PRODUCTION',
+          'IRTIQAA_ACCOUNTS_VAULT'
+        ];
 
-        ['ERTIQAA_UNIFIED_STORAGE_V1', 'IRTIQAA_VAULT_PRODUCTION', 'IRTIQAA_ACCOUNTS_VAULT'].forEach(k => {
+        allKeys.forEach(key => {
           try {
-            const raw = localStorage.getItem(k);
+            const raw = localStorage.getItem(key);
             if (raw) {
               const parsed = JSON.parse(raw);
               if (parsed && typeof parsed === 'object') {
                 Object.keys(parsed).forEach(u => {
-                  if (!this.data.users[u] && parsed[u]?.habits) {
-                    this.data.users[u] = parsed[u];
+                  if (!vault[u] || Object.keys(vault[u].completions || {}).length <= Object.keys(parsed[u].completions || {}).length) {
+                    vault[u] = parsed[u];
                   }
                 });
               }
             }
           } catch (e) {}
         });
-        this.saveLocalBackup();
+
+        this.data.users = vault;
+        this.persistEternalVault();
       },
 
-      saveLocalBackup() {
+      persistEternalVault() {
         try {
-          localStorage.setItem(this.DB_KEY, JSON.stringify(this.data.users));
+          const serialized = JSON.stringify(this.data.users);
+          localStorage.setItem(this.DB_KEY, serialized);
+          localStorage.setItem(this.BACKUP_DB_KEY, serialized); // Duplicate redundant backup
         } catch (e) {}
       },
 
-      syncWithCloud(user) {
+      async syncWithCloud(user) {
         if (!this.firebaseDB || !user) return;
         try {
-          const userRef = this.firebaseDB.ref('users/' + encodeURIComponent(user.username.replace(/[.#$[\]]/g, '_')));
-          userRef.set(user);
+          const sanitizedUsername = encodeURIComponent(user.username.replace(/[.#$[\]]/g, '_'));
+          const userRef = this.firebaseDB.ref('users/' + sanitizedUsername);
+          await userRef.set(user);
         } catch (e) {}
       },
 
@@ -1645,7 +1691,7 @@
           const val = snapshot.val();
           if (val) {
             this.data.users = Object.assign(this.data.users, val);
-            this.saveLocalBackup();
+            this.persistEternalVault();
           }
         } catch (e) {}
         return this.data.users;
@@ -1660,6 +1706,26 @@
         return 'ir_' + Math.abs(h).toString(36);
       },
 
+      switchAuthMode(mode) {
+        this.authMode = mode;
+        document.getElementById('btn-auth-mode-login').classList.toggle('active', mode === 'login');
+        document.getElementById('btn-auth-mode-register').classList.toggle('active', mode === 'register');
+        
+        const title = document.getElementById('auth-modal-title');
+        const sub = document.getElementById('auth-modal-sub');
+        const btn = document.getElementById('auth-submit-btn');
+
+        if (mode === 'login') {
+          title.textContent = 'تسجيل الدخول';
+          sub.textContent = 'أدخل اسمك ورقمك السري للوصول لبياناتك وعاداتك المحفوظة دائماً.';
+          btn.textContent = 'تسجيل الدخول 🔑';
+        } else {
+          title.textContent = 'سجل الآن في ارتقاء';
+          sub.textContent = 'أنشئ حسابك الجديد بكلمة مرور لحفظ تقدمك وعاداتك مدى الحياة بدون أي حذف.';
+          btn.textContent = 'سجل حسابك وابدأ 🚀';
+        }
+      },
+
       handleLogin(e) {
         e.preventDefault();
         const username = document.getElementById('login-username').value.trim();
@@ -1669,12 +1735,13 @@
 
         const hashed = this.hash(password);
 
-        if (this.data.users[username]) {
-          if (this.data.users[username].passwordHash !== hashed) {
-            alert('كلمة المرور غير صحيحة!');
+        if (this.authMode === 'register') {
+          if (this.data.users[username]) {
+            alert('هذا الاسم مسجل بالفعل! اضغط على "تسجيل الدخول" للدخول إلى حسابك.');
+            this.switchAuthMode('login');
             return;
           }
-        } else {
+          // New User Registration
           this.data.users[username] = {
             username,
             passwordHash: hashed,
@@ -1688,7 +1755,18 @@
             currentSurah: 1,
             createdAt: new Date().toISOString()
           };
-          this.saveLocalBackup();
+          this.persistEternalVault();
+        } else {
+          // Login Mode
+          if (!this.data.users[username]) {
+            alert('هذا الاسم غير مسجل بعد! اضغط على "سجل الآن" لإنشاء حسابك في ثوانٍ.');
+            this.switchAuthMode('register');
+            return;
+          }
+          if (this.data.users[username].passwordHash !== hashed) {
+            alert('كلمة المرور غير صحيحة!');
+            return;
+          }
         }
 
         this.data.activeUser = this.data.users[username];
@@ -1700,7 +1778,7 @@
       },
 
       logout() {
-        if (confirm("هل تريد تسجيل الخروج؟ بياناتك تظل محفوظة دائماً في السحابة.")) {
+        if (confirm("هل تريد تسجيل الخروج؟ بياناتك تظل محفوظة دائماً في السحابة والمتصفح.")) {
           localStorage.removeItem(this.SESSION_KEY);
           this.data.activeUser = null;
           this.closeProfileModal();
@@ -1711,7 +1789,7 @@
       syncUser() {
         if (!this.data.activeUser) return;
         this.data.users[this.data.activeUser.username] = this.data.activeUser;
-        this.saveLocalBackup();
+        this.persistEternalVault();
         this.syncWithCloud(this.data.activeUser);
       },
 
