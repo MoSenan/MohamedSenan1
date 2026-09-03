@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>نظام العادات الذكي | Smart Habit Tracker & Youth Hub</title>
-  <meta name="description" content="منصة عربية متكاملة لمتابعة العادات اليومية، وتطوير الذات والانضباط للشباب، وقراءة القرآن الكريم والاستماع إليه كاملاً." />
+  <title>ارتقاء — كل يوم خطوة للأفضل</title>
+  <meta name="description" content="منصة ارتقاء: نظام متكامل لبناء الانضباط الذاتي، تنظيم ساعات النوم، تطوير المهارات وساعات العمل العميق، مع ورد القرآن الكريم والحديث الشريف." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,52 +12,49 @@
 
   <style>
     :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --primary-light: rgba(16, 185, 129, 0.08);
+      --navy: #0f172a;
+      --navy-elevated: #1e293b;
       --bg: #f8fafc;
       --surface: #ffffff;
-      --surface-elevated: #ffffff;
-      --border: #e2e8f0;
-      --border-hover: #cbd5e1;
-      --text: #0f172a;
-      --text-secondary: #475569;
-      --muted: #64748b;
-      --primary: #059669;
-      --primary-hover: #047857;
-      --primary-light: #ecfdf5;
-      --accent: #4f46e5;
-      --accent-hover: #4338ca;
-      --accent-light: #eef2ff;
+      --surface-border: #e2e8f0;
+      --surface-border-strong: #cbd5e1;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #94a3b8;
+      --accent: #3b82f6;
+      --accent-light: rgba(59, 130, 246, 0.08);
       --warning: #d97706;
       --danger: #dc2626;
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
       --radius-full: 9999px;
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08);
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 6px 18px -4px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 14px 28px -6px rgba(15, 23, 42, 0.09);
       --font-main: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-quran: 'Amiri', serif;
-      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     [data-theme="dark"] {
-      --bg: #090d16;
+      --bg: #0b1120;
       --surface: #111827;
-      --surface-elevated: #1f2937;
-      --border: #1f2937;
-      --border-hover: #374151;
-      --text: #f8fafc;
-      --text-secondary: #cbd5e1;
-      --muted: #94a3b8;
+      --surface-elevated: #1e293b;
+      --surface-border: #1f2937;
+      --surface-border-strong: #374151;
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-subtle: #64748b;
       --primary: #10b981;
       --primary-hover: #34d399;
-      --primary-light: rgba(16, 185, 129, 0.15);
-      --accent: #6366f1;
-      --accent-hover: #818cf8;
-      --accent-light: rgba(99, 102, 241, 0.15);
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.6);
+      --primary-light: rgba(16, 185, 129, 0.12);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 6px 18px -4px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 14px 28px -6px rgba(0, 0, 0, 0.65);
     }
 
     * {
@@ -71,7 +68,7 @@
     body {
       font-family: var(--font-main);
       background-color: var(--bg);
-      color: var(--text);
+      color: var(--text-main);
       line-height: 1.6;
       direction: rtl;
       min-height: 100vh;
@@ -79,24 +76,20 @@
       flex-direction: column;
       overflow-x: hidden;
       font-weight: 700;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       width: 100%;
-      max-width: 1320px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 1.25rem;
+      padding: 0 1.5rem;
     }
 
-    .heavy-title {
-      font-weight: 900 !important;
-      letter-spacing: -0.3px;
-    }
-
-    /* Clean, Professional Header */
+    /* Professional Navigation Header */
     header.main-header {
       background: var(--surface);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--surface-border);
       position: sticky;
       top: 0;
       z-index: 300;
@@ -107,129 +100,133 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 74px;
-      gap: 1rem;
+      height: 76px;
+      gap: 1.5rem;
     }
 
-    .brand-logo {
+    /* 3D Curved Bevel Icon Logo */
+    .brand-container {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      font-weight: 900;
-      font-size: 1.35rem;
-      color: var(--primary);
+      gap: 0.9rem;
       cursor: pointer;
-      flex-shrink: 0;
     }
-    .brand-logo svg {
-      width: 32px;
-      height: 32px;
-      fill: var(--primary);
+
+    .logo-3d-box {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #10b981 0%, #065f46 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(16, 185, 129, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-weight: 900;
+      font-size: 1.45rem;
+      line-height: 1.15;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .brand-tagline {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0px;
     }
 
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.4rem;
       list-style: none;
     }
 
     .nav-item button {
       background: transparent;
       border: 1px solid transparent;
-      padding: 0.55rem 0.9rem;
+      padding: 0.55rem 1.05rem;
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       font-weight: 800;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.35rem;
       transition: var(--transition);
     }
 
     .nav-item button:hover {
-      color: var(--primary);
-      background: var(--primary-light);
+      color: var(--text-main);
+      background: var(--bg);
     }
 
     .nav-item button.active {
       color: var(--primary);
       background: var(--primary-light);
-      border-color: rgba(5, 150, 105, 0.2);
+      border-color: rgba(16, 185, 129, 0.25);
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.75rem;
       flex-shrink: 0;
     }
 
-    .user-auth-pill {
+    .user-badge-pill {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.6rem;
       background: var(--bg);
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-full);
-      padding: 0.3rem 0.75rem;
+      padding: 0.35rem 0.85rem;
     }
-    .user-avatar-badge {
-      width: 28px;
-      height: 28px;
+
+    .user-avatar-initial {
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      background: var(--primary);
+      background: var(--navy);
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 900;
     }
-    .user-name-text {
+    [data-theme="dark"] .user-avatar-initial {
+      background: var(--primary);
+      color: #0b1120;
+    }
+
+    .user-name-label {
       font-size: 0.88rem;
-      font-weight: 900;
-      color: var(--text);
+      font-weight: 800;
       max-width: 110px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .btn-logout-small {
-      background: none;
-      border: none;
-      color: var(--danger);
-      font-size: 0.8rem;
-      font-weight: 800;
-      cursor: pointer;
-      padding: 0.2rem 0.4rem;
-      border-radius: var(--radius-sm);
-    }
-    .btn-logout-small:hover {
-      background: rgba(220, 38, 38, 0.1);
-    }
-
-    .live-clock-badge {
-      font-size: 0.85rem;
-      font-weight: 800;
-      padding: 0.4rem 0.8rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-full);
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
 
     .icon-btn {
       background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 38px;
-      height: 38px;
+      border: 1px solid var(--surface-border);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -240,153 +237,326 @@
     .icon-btn:hover {
       border-color: var(--primary);
       color: var(--primary);
-      background: var(--primary-light);
     }
 
-    /* 3D Social Icons */
-    .social-btn-3d {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      transition: transform 180ms ease;
-      cursor: pointer;
-    }
-    .social-btn-3d:hover { transform: translateY(-2px); }
-    .social-btn-3d svg { width: 18px; height: 18px; fill: currentColor; }
-    .social-btn-3d.instagram {
-      background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
-      box-shadow: 0 3px 8px rgba(220, 39, 67, 0.3);
-    }
-    .social-btn-3d.facebook {
-      background: linear-gradient(180deg, #1877f2 0%, #0d5cb6 100%);
-      box-shadow: 0 3px 8px rgba(24, 119, 242, 0.3);
+    /* Clean Section Headings with Architectural Baseline Bar */
+    .section-header-block {
+      margin-bottom: 1.75rem;
+      position: relative;
     }
 
-    /* Tab Switcher */
-    .tab-content {
-      display: none;
-      padding: 1.8rem 0 3.5rem 0;
-    }
-    .tab-content.active {
-      display: block;
-      animation: tabFadeIn 0.22s ease-out;
-    }
-    @keyframes tabFadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--text-main);
+      display: inline-block;
+      letter-spacing: -0.3px;
     }
 
-    /* Youth Hero Banner */
-    .youth-hero {
-      background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(79, 70, 229, 0.06) 100%);
-      border: 1px solid var(--border);
+    .section-accent-line {
+      width: 48px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: var(--radius-full);
+      margin-top: 0.45rem;
+    }
+
+    /* Overview Hero Card */
+    .hero-summary-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-lg);
       padding: 2rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 1.5rem;
-      box-shadow: var(--shadow-sm);
     }
 
-    .hero-content h1 {
+    .hero-info-text h1 {
+      font-size: 1.95rem;
+      font-weight: 900;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+
+    .hero-info-text p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .hero-kpi-pill {
+      background: var(--bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.75rem;
+      text-align: center;
+    }
+
+    .hero-kpi-value {
       font-size: 2rem;
       font-weight: 900;
-      margin-bottom: 0.3rem;
-    }
-    .hero-quote-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.92rem;
-      font-weight: 800;
       color: var(--primary);
-      background: var(--surface);
-      padding: 0.35rem 0.85rem;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--border);
-      margin-bottom: 0.75rem;
+      line-height: 1.1;
     }
 
-    .rank-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 0.9rem 1.6rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+    .hero-kpi-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 800;
     }
-    .rank-icon-wrapper {
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
-      background: var(--accent-light);
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.65rem;
-    }
-    .rank-meta .rank-lvl { font-size: 0.8rem; font-weight: 800; color: var(--muted); }
-    .rank-meta .rank-title { font-size: 1.2rem; font-weight: 900; color: var(--text); }
 
-    /* KPI Metrics */
-    .kpi-grid {
+    /* KPI Grid Cards */
+    .kpi-metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 1.15rem;
-      margin-bottom: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.2rem;
     }
 
-    .kpi-card {
+    .metric-card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-md);
-      padding: 1.35rem;
+      padding: 1.4rem;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
     }
-    .kpi-card:hover {
+    .metric-card:hover {
+      border-color: var(--surface-border-strong);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
-    .kpi-title { font-size: 0.85rem; font-weight: 800; color: var(--text-secondary); margin-bottom: 0.35rem; }
-    .kpi-value { font-size: 1.95rem; font-weight: 900; color: var(--text); }
-    .kpi-subtitle { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-top: 0.25rem; }
-
-    /* Action Buttons */
-    .section-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.35rem;
     }
 
-    .toolbar-title {
-      font-size: 1.35rem;
+    .metric-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .metric-num {
+      font-size: 2rem;
       font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      color: var(--text-main);
     }
 
+    .metric-sub {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-subtle);
+      margin-top: 0.25rem;
+    }
+
+    /* Habits Grid */
+    .habits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.35rem;
+    }
+
+    .habit-item-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 1.45rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+    .habit-item-card:hover {
+      border-color: var(--surface-border-strong);
+    }
+
+    .habit-item-card.is-completed {
+      border-color: rgba(16, 185, 129, 0.4);
+      background: linear-gradient(180deg, var(--surface) 0%, rgba(16, 185, 129, 0.03) 100%);
+    }
+
+    .habit-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.6rem;
+    }
+
+    .habit-tag {
+      font-size: 0.75rem;
+      font-weight: 900;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: var(--bg);
+      color: var(--text-muted);
+      border: 1px solid var(--surface-border);
+    }
+
+    .habit-title-text {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .habit-desc-text {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .habit-advice-box {
+      background: var(--bg);
+      border-right: 3px solid var(--primary);
+      padding: 0.6rem 0.85rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .habit-progress-track {
+      height: 7px;
+      background: var(--surface-border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+    }
+
+    .habit-progress-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: var(--radius-full);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .habit-metric-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Checkmark Action Button */
+    .btn-habit-check {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 900;
+      font-size: 0.95rem;
+      border: 1px solid var(--surface-border);
+      background: var(--bg);
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+    .btn-habit-check:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .btn-habit-check.is-checked {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.28);
+    }
+
+    .btn-habit-check svg {
+      width: 19px;
+      height: 19px;
+      stroke: currentColor;
+      stroke-width: 3.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Numeric Stepper */
+    .stepper-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      width: 100%;
+    }
+    .stepper-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--surface-border);
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      font-weight: 900;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .stepper-btn:hover {
+      border-color: var(--primary);
+      background: var(--surface);
+    }
+    .stepper-count-display {
+      flex: 1;
+      text-align: center;
+      font-weight: 900;
+      font-size: 0.95rem;
+    }
+
+    /* Floating Affirmation Toast Notification */
+    #affirmation-shelf {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      pointer-events: none;
+    }
+
+    .affirmation-card {
+      pointer-events: auto;
+      background: var(--navy);
+      color: #ffffff;
+      border: 1px solid var(--surface-border);
+      border-right: 5px solid var(--primary);
+      padding: 0.85rem 1.4rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: 0.95rem;
+      font-weight: 900;
+      min-width: 260px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      animation: toastSlide 0.25s ease-out;
+    }
+    @keyframes toastSlide {
+      from { transform: translateY(12px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.45rem;
-      padding: 0.65rem 1.4rem;
+      gap: 0.5rem;
+      padding: 0.65rem 1.35rem;
       border-radius: var(--radius-md);
       font-weight: 800;
       font-size: 0.95rem;
@@ -395,623 +565,228 @@
       transition: var(--transition);
       user-select: none;
     }
+
     .btn-primary {
       background: var(--primary);
       color: #ffffff;
-      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.25);
     }
     .btn-primary:hover {
       background: var(--primary-hover);
-      transform: translateY(-1px);
     }
 
     .btn-secondary {
       background: var(--surface);
-      border-color: var(--border);
-      color: var(--text);
+      border-color: var(--surface-border);
+      color: var(--text-main);
     }
     .btn-secondary:hover {
       background: var(--bg);
-      border-color: var(--border-hover);
-    }
-    .btn-accent {
-      background: var(--accent);
-      color: #ffffff;
-    }
-    .btn-accent:hover { background: var(--accent-hover); }
-    .btn-danger { background: var(--danger); color: white; }
-
-    /* Habit Cards */
-    .habits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.25rem;
+      border-color: var(--surface-border-strong);
     }
 
-    .habit-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.35rem;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition);
-    }
-    .habit-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary);
-    }
-
-    .habit-card.is-completed {
-      border-color: rgba(5, 150, 105, 0.35);
-      background: linear-gradient(180deg, var(--surface) 0%, rgba(5, 150, 105, 0.04) 100%);
-    }
-
-    .habit-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.85rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .habit-icon-box {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      flex-shrink: 0;
-    }
-
-    .habit-info { flex: 1; }
-    .habit-title { font-size: 1.18rem; font-weight: 900; color: var(--text); line-height: 1.3; }
-    .habit-meta-tag { font-size: 0.78rem; font-weight: 800; color: var(--muted); margin-top: 0.15rem; }
-
-    .habit-card-desc {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text-secondary);
-      margin-bottom: 1.15rem;
-      line-height: 1.55;
-    }
-
-    .habit-progress-track {
-      height: 8px;
-      background: var(--border);
-      border-radius: var(--radius-full);
-      overflow: hidden;
-      margin-bottom: 0.6rem;
-    }
-    .habit-progress-bar {
-      height: 100%;
-      background: var(--primary);
-      border-radius: var(--radius-full);
-      transition: width 0.3s ease;
-    }
-
-    .habit-status-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--text-secondary);
-      margin-bottom: 1.15rem;
-    }
-
-    .streak-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: #b45309;
-      background: #fef3c7;
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-full);
-    }
-    [data-theme="dark"] .streak-badge { background: #78350f; color: #fef08a; }
-
-    .btn-check-habit {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: var(--radius-md);
-      font-weight: 800;
-      font-size: 0.95rem;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      color: var(--text);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: var(--transition);
-    }
-    .btn-check-habit:hover {
-      border-color: var(--primary);
-      background: var(--primary-light);
-      color: var(--primary);
-    }
-
-    .btn-check-habit.checked {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 3px 10px rgba(5, 150, 105, 0.3);
-    }
-
-    .check-svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 3.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .stepper-control {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      width: 100%;
-    }
-    .stepper-btn {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--border);
-      background: var(--bg);
-      border-radius: var(--radius-sm);
-      font-weight: 900;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-    }
-    .stepper-btn:hover { border-color: var(--primary); background: var(--surface-elevated); }
-    .stepper-display {
-      flex: 1;
-      text-align: center;
-      font-weight: 800;
-      font-size: 0.95rem;
-    }
-
-    /* Youth Hub */
-    .youth-hub-hero {
-      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #064e3b 100%);
-      color: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      margin-bottom: 1.8rem;
-      box-shadow: var(--shadow-md);
-    }
-    .youth-hub-hero h2 {
-      font-size: 2.1rem;
-      font-weight: 900;
-      margin-bottom: 0.4rem;
-    }
-    .youth-hub-hero p {
-      font-size: 1.05rem;
-      opacity: 0.95;
-      max-width: 760px;
-      font-weight: 700;
-      line-height: 1.7;
-    }
-    .time-period-badge {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(8px);
-      padding: 0.3rem 0.8rem;
-      border-radius: var(--radius-full);
-      font-size: 0.82rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      color: #fef08a;
-    }
-
-    .interactive-tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 1.35rem;
-      margin-bottom: 2rem;
-    }
-
-    .tool-box-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .tool-box-card h3 {
-      font-size: 1.2rem;
-      font-weight: 900;
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-    .tool-box-card p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.15rem;
-    }
-
-    .timer-display-big {
-      font-size: 2.5rem;
-      font-weight: 900;
-      text-align: center;
-      color: var(--primary);
-      margin: 0.85rem 0;
-      font-variant-numeric: tabular-nums;
-      background: var(--bg);
-      border-radius: var(--radius-md);
-      padding: 0.4rem;
-      border: 1px solid var(--border);
-    }
-
-    .lessons-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 2rem;
-    }
-
-    .lesson-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.4rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .lesson-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .lesson-cat-tag {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--accent);
-      background: var(--accent-light);
-      padding: 0.2rem 0.6rem;
-      border-radius: var(--radius-full);
-      display: inline-block;
-      margin-bottom: 0.65rem;
-      width: fit-content;
-    }
-    .lesson-card h4 {
-      font-size: 1.1rem;
-      font-weight: 900;
-      margin-bottom: 0.45rem;
-    }
-    .lesson-card p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 0.9rem;
-    }
-    .lesson-action-box {
-      background: var(--bg);
-      border: 1px dashed var(--border);
-      border-radius: var(--radius-sm);
-      padding: 0.65rem;
-      font-size: 0.82rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    /* Calendar Grid */
-    .calendar-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .cal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.4rem;
-    }
-    .cal-title { font-size: 1.4rem; font-weight: 900; }
-    .cal-days-grid-head {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      text-align: center;
-      font-weight: 800;
-      color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 0.75rem;
-    }
-    .cal-cells-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 0.5rem;
-    }
-    .cal-cell {
-      min-height: 85px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--bg);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .cal-cell:hover { border-color: var(--primary); transform: scale(1.01); }
-    .cal-cell.is-today { border: 2px solid var(--primary); }
-    .cal-cell.is-perfect {
-      background: rgba(5, 150, 105, 0.12);
-      border-color: var(--primary);
-    }
-    .cal-cell-dots { display: flex; gap: 3px; flex-wrap: wrap; }
-    .cal-cell-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-
-    /* Charts Section */
-    .charts-grid {
+    /* Canvas Charts */
+    .charts-duo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
-    .chart-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .chart-box h3 { font-size: 1.15rem; font-weight: 900; margin-bottom: 1.2rem; }
-    .canvas-wrapper { position: relative; width: 100%; height: 260px; }
 
-    /* Achievements */
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-      gap: 1.25rem;
-    }
-    .achievement-card {
+    .chart-panel-card {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-lg);
-      padding: 1.35rem;
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-    .achievement-card.locked { opacity: 0.5; filter: grayscale(1); }
-    .ach-icon-wrapper {
-      width: 58px;
-      height: 58px;
-      border-radius: var(--radius-md);
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-    .ach-info h4 { font-size: 1.1rem; font-weight: 900; }
-    .ach-info p { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); margin-top: 0.2rem; }
-    .ach-status { font-size: 0.8rem; font-weight: 800; color: var(--primary); margin-top: 0.35rem; }
-
-    /* Islamic Hub */
-    .islamic-hero {
-      background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
-      color: #ffffff;
-      border-radius: var(--radius-lg);
-      padding: 2.2rem 1.8rem;
-      margin-bottom: 1.8rem;
-      box-shadow: var(--shadow-md);
-    }
-    .islamic-hero h2 { font-size: 2.1rem; font-weight: 900; margin-bottom: 0.4rem; }
-    .islamic-hero p { font-size: 1rem; opacity: 0.95; max-width: 720px; font-weight: 700; }
-
-    .quran-audio-player-bar {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.1rem 1.4rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      padding: 1.75rem;
       box-shadow: var(--shadow-sm);
     }
 
-    .audio-meta { display: flex; align-items: center; gap: 0.75rem; }
-    .audio-meta-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: #0d9488;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .chart-panel-card h3 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      margin-bottom: 1.25rem;
     }
-    .audio-reciter-name { font-weight: 900; font-size: 1rem; }
-    .audio-now-playing { font-size: 0.82rem; font-weight: 700; color: var(--muted); }
 
-    .quran-container {
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 250px;
+    }
+
+    /* Islamic Quran & Recitation Hub */
+    .quran-wrapper {
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-lg);
       padding: 2rem;
       box-shadow: var(--shadow-sm);
     }
 
-    .quran-basmala {
-      text-align: center;
-      font-size: 2.2rem;
-      font-family: var(--font-quran);
-      color: #065f46;
-      margin: 1.4rem 0 2rem 0;
-      font-weight: 700;
+    .quran-audio-strip {
+      background: var(--bg);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
-    [data-theme="dark"] .quran-basmala { color: #34d399; }
 
-    .quran-text-flow {
-      max-width: 960px;
+    .quran-script-box {
+      max-width: 900px;
       margin: 0 auto;
       text-align: justify;
-      line-height: 2.5;
+      line-height: 2.6;
       font-family: var(--font-quran);
       font-size: 1.65rem;
-      user-select: text;
     }
 
-    .ayah-inline {
+    .ayah-word {
       display: inline;
       padding: 2px 5px;
-      border-radius: 6px;
-      transition: background-color 0.2s ease;
+      border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.2s ease;
     }
-    .ayah-inline:hover { background-color: rgba(5, 150, 105, 0.12); }
-    .ayah-inline.active-audio-ayah {
-      background-color: rgba(5, 150, 105, 0.22);
+    .ayah-word:hover {
+      background-color: var(--primary-light);
+    }
+    .ayah-word.current-reciting {
+      background-color: rgba(16, 185, 129, 0.22);
       border-bottom: 2px solid var(--primary);
     }
 
-    .ayah-bracket {
+    .ayah-symbol {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      color: #0d9488;
+      color: var(--primary);
       font-weight: 700;
+      font-size: 1.2rem;
       margin: 0 0.35rem;
       user-select: none;
     }
 
-    /* Hadith Cards */
-    .hadith-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .hadith-matn {
-      font-family: var(--font-quran);
-      font-size: 1.4rem;
-      line-height: 2.2;
-      color: var(--text);
-      margin-bottom: 1rem;
-    }
-    .hadith-footer {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.6rem;
+    /* Report an Issue Modal & Trigger */
+    .report-issue-trigger {
       font-size: 0.85rem;
       font-weight: 800;
-      color: var(--text-secondary);
-      border-top: 1px dashed var(--border);
-      padding-top: 0.75rem;
-    }
-
-    /* Community & Visitors */
-    .community-box {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08) 0%, rgba(5, 150, 105, 0.08) 100%);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
-      margin: 2.5rem 0;
-      display: flex;
-      flex-wrap: wrap;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
+      gap: 0.4rem;
+      transition: var(--transition);
+      background: none;
+      border: none;
+    }
+    .report-issue-trigger:hover {
+      color: var(--danger);
     }
 
-    .visitor-badge-card {
+    /* Modal System */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1rem;
+    }
+    .modal-backdrop.is-active {
+      display: flex;
+    }
+
+    .modal-box {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 0.9rem 1.5rem;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 480px;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .modal-head-row {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.9rem;
-      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.25rem;
     }
-    .visitor-num-val {
-      font-size: 1.7rem;
+
+    .modal-head-row h3 {
+      font-size: 1.3rem;
       font-weight: 900;
-      color: var(--primary);
     }
-    .visitor-lbl {
-      font-size: 0.82rem;
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-subtle);
+      cursor: pointer;
+    }
+
+    .form-field {
+      margin-bottom: 1.15rem;
+    }
+    .form-field label {
+      display: block;
+      font-size: 0.88rem;
       font-weight: 800;
-      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.7rem 0.95rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--surface-border);
+      background: var(--bg);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition);
+    }
+    .form-input:focus {
+      border-color: var(--primary);
     }
 
     /* Footer */
     footer.main-footer {
       background: var(--surface);
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--surface-border);
       margin-top: auto;
-      padding: 3rem 0 1.5rem 0;
+      padding: 3rem 0 2rem 0;
     }
 
-    .footer-grid {
+    .footer-content-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2rem;
       margin-bottom: 2.5rem;
     }
 
-    .footer-col h4 { font-size: 1.2rem; font-weight: 900; margin-bottom: 0.85rem; }
-    .footer-col p { font-size: 0.92rem; font-weight: 700; color: var(--text-secondary); line-height: 1.7; }
-
-    .owner-special-badge {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 1.35rem;
-      box-shadow: var(--shadow-sm);
-    }
-    .owner-special-badge .owner-name {
+    .footer-col h4 {
+      font-size: 1.15rem;
       font-weight: 900;
-      color: var(--primary);
-      font-size: 1.1rem;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.85rem;
     }
-    .owner-special-badge p { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); line-height: 1.6; }
 
-    .footer-bottom-bar {
-      border-top: 1px solid var(--border);
+    .footer-col p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-bottom-strip {
+      border-top: 1px solid var(--surface-border);
       padding-top: 1.5rem;
       display: flex;
       flex-wrap: wrap;
@@ -1020,116 +795,11 @@
       gap: 1rem;
       font-size: 0.85rem;
       font-weight: 800;
-      color: var(--muted);
+      color: var(--text-subtle);
     }
 
-    /* Mobile Bottom Navigation */
-    .mobile-nav-bar {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 64px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      z-index: 500;
-      box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
-      padding-bottom: env(safe-area-inset-bottom);
-    }
-    .mobile-nav-inner {
-      display: flex;
-      height: 100%;
-      align-items: center;
-      justify-content: space-around;
-    }
-    .m-nav-item {
-      background: none;
-      border: none;
-      color: var(--muted);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-      font-size: 0.75rem;
-      font-weight: 800;
-      cursor: pointer;
-      flex: 1;
-      padding: 0.3rem;
-    }
-    .m-nav-item.active { color: var(--primary); }
-    .m-nav-item svg { width: 20px; height: 20px; fill: currentColor; }
-
-    /* Modals & Forms */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(5px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
-    .modal-overlay.active { display: flex; animation: modalFade 0.2s ease-out; }
-    @keyframes modalFade {
-      from { opacity: 0; transform: scale(0.97); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .modal-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      width: 100%;
-      max-width: 500px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 1.8rem;
-      box-shadow: var(--shadow-lg);
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.35rem;
-    }
-    .modal-header h3 { font-size: 1.3rem; font-weight: 900; }
-    .modal-close-btn {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--muted);
-      font-weight: 800;
-    }
-
-    .form-group { margin-bottom: 1.15rem; }
-    .form-group label {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 800;
-      margin-bottom: 0.4rem;
-      color: var(--text-secondary);
-    }
-    .form-control {
-      width: 100%;
-      padding: 0.7rem 0.95rem;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: var(--bg);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text);
-      outline: none;
-      transition: var(--transition);
-    }
-    .form-control:focus { border-color: var(--primary); }
-    .form-row { display: flex; gap: 0.85rem; }
-    .form-row .form-group { flex: 1; }
-
-    /* Auth Screen */
-    #auth-screen-overlay {
+    /* Onboarding Instant Sign-in Overlay */
+    #quick-start-overlay {
       position: fixed;
       inset: 0;
       background: var(--bg);
@@ -1139,157 +809,48 @@
       justify-content: center;
       padding: 1.5rem;
     }
-    #auth-screen-overlay.active {
+    #quick-start-overlay.is-visible {
       display: flex;
     }
-    .auth-box {
+
+    .quick-start-panel {
       width: 100%;
-      max-width: 420px;
+      max-width: 440px;
       background: var(--surface);
-      border: 1px solid var(--border);
+      border: 1px solid var(--surface-border);
       border-radius: var(--radius-lg);
-      padding: 2rem;
+      padding: 2.4rem;
       box-shadow: var(--shadow-lg);
       text-align: center;
-    }
-    .auth-box-logo {
-      width: 52px;
-      height: 52px;
-      margin: 0 auto 0.85rem auto;
-      border-radius: 16px;
-      background: var(--primary-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .auth-box-logo svg {
-      width: 30px;
-      height: 30px;
-      fill: var(--primary);
-    }
-    .auth-box h2 {
-      font-size: 1.5rem;
-      font-weight: 900;
-      margin-bottom: 0.3rem;
-    }
-    .auth-box p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      font-weight: 700;
-      margin-bottom: 1.35rem;
-    }
-    .auth-toggle-tab {
-      display: flex;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 3px;
-      margin-bottom: 1.35rem;
-    }
-    .auth-toggle-btn {
-      flex: 1;
-      border: none;
-      background: none;
-      padding: 0.5rem;
-      font-weight: 800;
-      font-size: 0.9rem;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      color: var(--muted);
-      transition: var(--transition);
-    }
-    .auth-toggle-btn.active {
-      background: var(--surface);
-      color: var(--primary);
-      box-shadow: var(--shadow-sm);
-    }
-
-    #confetti-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    }
-
-    #toast-shelf {
-      position: fixed;
-      bottom: 24px;
-      left: 24px;
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      pointer-events: none;
-    }
-    .toast-msg {
-      pointer-events: auto;
-      background: var(--surface);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-right: 5px solid var(--primary);
-      padding: 0.85rem 1.35rem;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      font-size: 0.92rem;
-      font-weight: 800;
-      min-width: 280px;
-      animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .toast-msg.error { border-right-color: var(--danger); }
-    @keyframes slideIn {
-      from { transform: translateX(-100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
     }
 
     @media (max-width: 960px) {
       .nav-menu { display: none; }
-      .mobile-nav-bar { display: block; }
-      body { padding-bottom: 70px; }
-      .live-clock-badge { display: none; }
-    }
-    @media (max-width: 600px) {
-      .youth-hero { padding: 1.35rem; }
-      .hero-content h1 { font-size: 1.6rem; }
-      .charts-grid { grid-template-columns: 1fr; }
-      .cal-cell { min-height: 55px; padding: 0.25rem; }
-      .quran-text-flow { font-size: 1.45rem; line-height: 2.25; }
-      .youth-hub-hero h2 { font-size: 1.75rem; }
     }
   </style>
 </head>
 <body>
 
-  <canvas id="confetti-canvas"></canvas>
-
-  <div id="auth-screen-overlay" class="active">
-    <div class="auth-box">
-      <div class="auth-box-logo">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <h2 id="auth-heading" class="heavy-title">تسجيل الدخول للنظام</h2>
-      <p id="auth-subheading">أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة</p>
-
-      <div class="auth-toggle-tab">
-        <button type="button" class="auth-toggle-btn active" id="btn-mode-login" onclick="setAuthMode('login')">تسجيل الدخول</button>
-        <button type="button" class="auth-toggle-btn" id="btn-mode-register" onclick="setAuthMode('register')">إنشاء حساب جديد</button>
-      </div>
-
-      <form id="auth-form" onsubmit="handleAuthSubmit(event)">
-        <div class="form-group" style="text-align:right">
-          <label>اسم المستخدم:</label>
-          <input type="text" id="auth-username" class="form-control" required placeholder="اكتب اسمك..." autocomplete="username" />
+  <div id="quick-start-overlay">
+    <div class="quick-start-panel">
+      <div style="display:flex;justify-content:center;margin-bottom:1rem">
+        <div class="logo-3d-box" style="width:56px;height:56px">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
         </div>
+      </div>
+      <h2 style="font-size:1.7rem;font-weight:900;margin-bottom:0.4rem">ارتقاء</h2>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.6rem">سجل اسمك الآن للبدء. بياناتك تُحفظ على جهازك فقط وفي سرية كاملة وبدون إنشاء حسابات معقدة.</p>
 
-        <div class="form-group" style="text-align:right">
-          <label>كلمة المرور:</label>
-          <input type="password" id="auth-password" class="form-control" required placeholder="أدخل كلمة المرور..." autocomplete="current-password" />
+      <form onsubmit="handleQuickStart(event)">
+        <div class="form-field" style="text-align:right">
+          <label>اسمك الكريم للبدء:</label>
+          <input type="text" id="quick-user-name" class="form-input" required placeholder="اكتب اسمك..." autocomplete="name" />
         </div>
-
-        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:0.5rem" id="auth-submit-btn">
-          دخول للنظام 🚀
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:0.8rem;font-weight:900">
+          ابدأ رحلة ارتقاء
         </button>
       </form>
     </div>
@@ -1297,870 +858,403 @@
 
   <header class="main-header">
     <div class="container header-inner">
-      <div class="brand-logo" onclick="switchTab('dashboard')">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <span>نظام العادات الذكي</span>
+      <div class="brand-container" onclick="switchMainTab('habits')">
+        <div class="logo-3d-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <span class="brand-name">ارتقاء</span>
+          <span class="brand-tagline">كل يوم خطوة للأفضل</span>
+        </div>
       </div>
 
       <ul class="nav-menu">
-        <li class="nav-item"><button class="active" onclick="switchTab('dashboard')">الرئيسية</button></li>
-        <li class="nav-item"><button onclick="switchTab('habits')">العادات</button></li>
-        <li class="nav-item"><button onclick="switchTab('youth')">⚡ طوّر نفسك</button></li>
-        <li class="nav-item"><button onclick="switchTab('calendar')">التقويم</button></li>
-        <li class="nav-item"><button onclick="switchTab('analytics')">التحليلات</button></li>
-        <li class="nav-item"><button onclick="switchTab('achievements')">الإنجازات</button></li>
-        <li class="nav-item"><button onclick="switchTab('islamic')">📖 القرآن والحديث</button></li>
-        <li class="nav-item"><button onclick="switchTab('settings')">الإعدادات</button></li>
+        <li class="nav-item"><button class="active" id="nav-btn-habits" onclick="switchMainTab('habits')">عادات اليوم</button></li>
+        <li class="nav-item"><button id="nav-btn-analytics" onclick="switchMainTab('analytics')">التحليلات ومستوى التقدم</button></li>
+        <li class="nav-item"><button id="nav-btn-islamic" onclick="switchMainTab('islamic')">القرآن والحديث</button></li>
       </ul>
 
       <div class="header-actions">
-        <div class="user-auth-pill" id="user-auth-pill">
-          <div class="user-avatar-badge" id="user-avatar-char">م</div>
-          <span class="user-name-text" id="header-user-name">محمد</span>
-          <button class="btn-logout-small" onclick="handleLogout()" title="تسجيل الخروج">خروج</button>
+        <div class="user-badge-pill">
+          <div class="user-avatar-initial" id="header-user-avatar">م</div>
+          <span class="user-name-label" id="header-user-name">محمد</span>
         </div>
 
-        <div class="live-clock-badge" id="live-clock">--:--:--</div>
-
-        <a href="https://www.instagram.com/muadelofficial/" target="_blank" rel="noopener noreferrer" class="social-btn-3d instagram" title="Instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/Mo.Adelofficial2/" target="_blank" rel="noopener noreferrer" class="social-btn-3d facebook" title="Facebook" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
-        </a>
-
-        <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع">
-          <svg style="width:18px;height:18px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
+        <button class="icon-btn" onclick="toggleThemeMode()" title="تبديل الوضع">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+          </svg>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" style="padding-top:2rem;padding-bottom:3.5rem">
 
-    <section id="tab-dashboard" class="tab-content active">
-      <div class="youth-hero">
-        <div class="hero-content">
-          <div class="hero-quote-badge" id="daily-youth-quote">⚡ نافس نفسك بتاعت إمبارح.. ومتشغلش بالك بغيرك</div>
-          <h1 id="hero-greeting" class="heavy-title">أهلاً بك، يا بطل 👋</h1>
-          <p id="hero-date-txt" style="color:var(--text-secondary);font-size:0.95rem;font-weight:700">جاري تحضير البيانات اليومية...</p>
+    <section id="view-habits">
+      <div class="hero-summary-card">
+        <div class="hero-info-text">
+          <h1 id="user-greeting-txt">مرحباً بك</h1>
+          <p>خطواتك اليومية الصغيرة تصنع فارقاً حقيقياً في مستقبلك وراحة بالك.</p>
         </div>
-
-        <div class="rank-card">
-          <div class="rank-icon-wrapper" id="rank-badge-icon">🛡️</div>
-          <div class="rank-meta">
-            <div class="rank-lvl" id="rank-level-label">المستوى 1</div>
-            <div class="rank-title heavy-title" id="rank-title-display">فارس البدايات</div>
-          </div>
+        <div class="hero-kpi-pill">
+          <div class="hero-kpi-value" id="overall-completion-rate">0%</div>
+          <div class="hero-kpi-label">نسبة الإنجاز اليوم</div>
         </div>
       </div>
 
-      <div class="kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-title">العادات النشطة</div>
-          <div class="kpi-value heavy-title" id="kpi-active-habits">0</div>
-          <div class="kpi-subtitle">جاهزة للإنجاز اليوم</div>
+      <div class="kpi-metrics-grid">
+        <div class="metric-card">
+          <div class="metric-title">العادات المكتملة</div>
+          <div class="metric-num" id="kpi-done-count">0</div>
+          <div class="metric-sub">عادات تم وضع علامة الصح لها</div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-title">المكتملة اليوم</div>
-          <div class="kpi-value heavy-title" id="kpi-today-done">0</div>
-          <div class="kpi-subtitle">تم وضع علامة الصح ✓</div>
+        <div class="metric-card">
+          <div class="metric-title">سلسلة الالتزام</div>
+          <div class="metric-num" id="kpi-streak-val">0 أيام</div>
+          <div class="metric-sub">ثبات مستمر بدون انقطاع</div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-title">السلسلة الحالية (Streak)</div>
-          <div class="kpi-value heavy-title" id="kpi-current-streak">0 أيام</div>
-          <div class="kpi-subtitle">أفضل سلسلة: <span id="kpi-best-streak">0</span></div>
-        </div>
-        <div class="kpi-card">
-          <div class="kpi-title">نسبة إنجاز اليوم</div>
-          <div class="kpi-value heavy-title" id="kpi-today-rate">0%</div>
-          <div class="kpi-subtitle">الأيام المثالية: <span id="kpi-perfect-days">0</span></div>
+        <div class="metric-card">
+          <div class="metric-title">الرتبة والانضباط</div>
+          <div class="metric-num" style="font-size:1.4rem" id="kpi-rank-title">مبتدئ واعد</div>
+          <div class="metric-sub">مكافأة ارتقاء التالية: وسام الالتزام الأسبوعي</div>
         </div>
       </div>
 
-      <div class="section-toolbar">
-        <div class="toolbar-title heavy-title">
-          <span>⚡ عادات اليوم المسجلة</span>
-        </div>
-        <button class="btn btn-primary" onclick="openHabitModal()">+ إضافة عادة جديدة</button>
+      <div class="section-header-block">
+        <h2 class="section-title">عادات اليوم المسجلة</h2>
+        <div class="section-accent-line"></div>
       </div>
 
-      <div id="today-habits-container" class="habits-grid"></div>
+      <div class="habits-grid" id="habits-container-element">
+        </div>
     </section>
 
-    <section id="tab-habits" class="tab-content">
-      <div class="section-toolbar">
-        <div class="toolbar-title heavy-title">
-          <span>📋 قائمة العادات والروتين اليومي</span>
+    <section id="view-analytics" style="display:none">
+      <div class="section-header-block">
+        <h2 class="section-title">لوحة التحليلات ومؤشرات الأداء</h2>
+        <div class="section-accent-line"></div>
+      </div>
+
+      <div class="charts-duo-grid">
+        <div class="chart-panel-card">
+          <h3>نسبة الالتزام اليومي خلال آخر 7 أيام</h3>
+          <div class="canvas-container">
+            <canvas id="canvas-7days-chart"></canvas>
+          </div>
         </div>
-        <button class="btn btn-primary" onclick="openHabitModal()">+ عادة جديدة</button>
+
+        <div class="chart-panel-card">
+          <h3>توزيع العادات حسب المجالات الأساسية</h3>
+          <div class="canvas-container">
+            <canvas id="canvas-categories-chart"></canvas>
+          </div>
+        </div>
       </div>
 
-      <div style="display:flex;gap:0.65rem;margin-bottom:1.35rem;flex-wrap:wrap">
-        <button class="btn btn-secondary" onclick="filterHabits('all')">الكل</button>
-        <button class="btn btn-secondary" onclick="filterHabits('active')">النشطة</button>
-        <button class="btn btn-secondary" onclick="filterHabits('paused')">المتوقفة</button>
+      <div class="section-header-block">
+        <h2 class="section-title">مكافآت ارتقاء والإنجازات</h2>
+        <div class="section-accent-line"></div>
       </div>
 
-      <div id="all-habits-container" class="habits-grid"></div>
+      <div class="kpi-metrics-grid" id="rewards-container-grid">
+        </div>
     </section>
 
-    <section id="tab-youth" class="tab-content">
-      <div class="youth-hub-hero">
-        <span class="time-period-badge" id="youth-time-badge">رسالة الوقت الحالي</span>
-        <h2 class="heavy-title" id="youth-dynamic-hero-msg">محدش هيغيّر حياتك بدالك.. ابدأ بنفسك النهارده</h2>
-        <p id="youth-dynamic-hero-sub">الانضباط لما يغيب الحماس هو اللي بيصنع الفرق. مش لازم تبهر الدنيا، المهم متفضلش مكانك وتكون أحسن من إمبارح بخطوة واحدة بس.</p>
+    <section id="view-islamic" style="display:none">
+      <div class="section-header-block">
+        <h2 class="section-title">المصحف الشريف والورد اليومي</h2>
+        <div class="section-accent-line"></div>
       </div>
 
-      <div class="interactive-tools-grid">
-        <div class="tool-box-card">
+      <div class="quran-wrapper">
+        <div class="quran-audio-strip">
           <div>
-            <h3 class="heavy-title">⏱️ متأجلهاش ليه؟ (ابدأ 5 دقائق بس)</h3>
-            <p>مكسل تبدأ؟ اتعاهد مع نفسك تقعد 5 دقايق بس على المذاكرة أو الشغل. لو حسيت إنك مش قادر وقف، لكن الأغلب إنك هتكمل وتكسر حاجز البداية.</p>
-          </div>
-          <div class="timer-display-big" id="timer-5min-display">05:00</div>
-          <div style="display:flex;gap:0.5rem">
-            <button class="btn btn-primary" style="flex:1" id="btn-5min-toggle" onclick="toggle5MinTimer()">ابدأ الـ 5 دقائق 🚀</button>
-            <button class="btn btn-secondary" onclick="reset5MinTimer()">إعادة ضبط</button>
-          </div>
-        </div>
-
-        <div class="tool-box-card">
-          <div>
-            <h3 class="heavy-title">🎯 جلسة تركيز عميق (Focus Session)</h3>
-            <p>اقفل كل الإشعارات، وابعد الموبايل تماماً، وركز على حاجة واحدة تنجزها من غير أي تشتيت نهائي.</p>
-          </div>
-          <div class="timer-display-big" id="timer-focus-display">25:00</div>
-          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-            <button class="btn btn-secondary" style="flex:1" onclick="setFocusTime(25)">25 دقيقة</button>
-            <button class="btn btn-secondary" style="flex:1" onclick="setFocusTime(50)">50 دقيقة</button>
-            <button class="btn btn-accent" style="width:100%" id="btn-focus-toggle" onclick="toggleFocusTimer()">تشغيل جلسة التركيز ▶</button>
-          </div>
-        </div>
-
-        <div class="tool-box-card">
-          <div>
-            <h3 class="heavy-title">💡 رسالة من الواقع للشباب</h3>
-            <p style="font-size:1.05rem;font-weight:800;color:var(--text);margin:1.2rem 0;line-height:1.7" id="youth-quote-box">
-              "الالتزام مش معناه إنك متقعش نهائي.. معناه إنك أول ما تقع، متقعدش تلوم نفسك وتضيع باقي الأسبوع، بل تقوم فوراً وتبدأ من جديد."
-            </p>
-          </div>
-          <button class="btn btn-secondary" onclick="generateNewYouthQuote()">اقتباس تاني 🎲</button>
-        </div>
-      </div>
-
-      <div class="section-toolbar">
-        <div class="toolbar-title heavy-title">
-          <span>🧠 مبادئ عملية تبني بيها نفسك (واقعية ومباشرة)</span>
-        </div>
-      </div>
-
-      <div class="lessons-cards-grid">
-        <div class="lesson-card">
-          <div>
-            <span class="lesson-cat-tag">الانضباط الحقيقي</span>
-            <h4>متستناش الشغف عشان تبدأ</h4>
-            <p>الشغف شعور بيروح وييجي، ومحدش بيكون عنده طاقة كل يوم الصبح. الانضباط يعني تعمل اللي وراك حتى وأنت ملكش مزاج، لأن النتيجة تستاهل التعب.</p>
-          </div>
-          <div class="lesson-action-box">خطوة عملية: حدد مهمة واحدة ثقيلة وابدأ فيها الصبح أول حاجة.</div>
-        </div>
-
-        <div class="lesson-card">
-          <div>
-            <span class="lesson-cat-tag">تقليل المشتتات</span>
-            <h4>موبايلك أداة مش مكان تعيش جواه</h4>
-            <p>السكرولينج المستمر بيسرق طاقتك وتركيزك قبل ما يسرق وقتك. قبل ما تفتح أي سوشيال ميديا اسأل نفسك: أنا داخل عشان هدف محدد ولا بهرب من اللي ورايا؟</p>
-          </div>
-          <div class="lesson-action-box">خطوة عملية: خلي أول نص ساعة بعد الصحيان بدون موبايل.</div>
-        </div>
-
-        <div class="lesson-card">
-          <div>
-            <span class="lesson-cat-tag">الشغل والمستقبل</span>
-            <h4>ابني مهارة تخليك مطلوب</h4>
-            <p>الوقت اللي بتضيعه في المقارنات مع غيرك استثمره في إنك تتعلم مهارة حقيقية. الخبرة العملية والقيمة الحقيقية بتتراكم مع الوقت والتجربة.</p>
-          </div>
-          <div class="lesson-action-box">خطوة عملية: ساعة يومياً في تعلم مهارة هتعملك مسار مهني بعد سنة.</div>
-        </div>
-
-        <div class="lesson-card">
-          <div>
-            <span class="lesson-cat-tag">الصحة والرياضة</span>
-            <h4>جسمك هو رأس مالك</h4>
-            <p>مش لازم تروح الجيم ساعتين كل يوم. نص ساعة حركة، مشي سريع، تمرين خفيف في البيت مع شرب مية منتظم بيغيروا طاقتك النفسية والذهنية تماماً.</p>
-          </div>
-          <div class="lesson-action-box">خطوة عملية: 20 دقيقة حركة يومياً أفضل من انتظار الجيم المثالي.</div>
-        </div>
-
-        <div class="lesson-card">
-          <div>
-            <span class="lesson-cat-tag">التعامل مع الانتكاسات</span>
-            <h4>يوم بايظ مش معناه حياة فاشلة</h4>
-            <p>لو قصرت في يوم ومكملتش عاداتك، متقولش "خلاص هبدأ السبت الجاي". ارجع من نفس اللحظة. الاستمرار هو إنك متسيبش الغلطة تجر أسبوع كامل وراها.</p>
-          </div>
-          <div class="lesson-action-box">خطوة عملية: سجل أي عادة واحدة باقية قبل ما تنام وقوم متفائل.</div>
-        </div>
-
-        <div class="lesson-card">
-          <div>
-            <span class="lesson-cat-tag">الوعي المالي</span>
-            <h4>اتعلم تدير فلوسك من بدري</h4>
-            <p>مش كل قرش بيجيلك لازم تصرفه، ومش كل حاجة تعجبك لازم تشتريها. وفر جزء للطوارئ، واتعلم تستثمر في نفسك وكتب وكورسات تفيدك بعدين.</p>
-          </div>
-          <div class="lesson-action-box">خطوة عملية: اكتب مصاريفك أسبوع وشوف الفلوس بتطير في إيه.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tab-calendar" class="tab-content">
-      <div class="calendar-card">
-        <div class="cal-header">
-          <button class="btn btn-secondary" onclick="changeCalMonth(-1)">الشهر السابق</button>
-          <div class="cal-title heavy-title" id="cal-month-title">--</div>
-          <button class="btn btn-secondary" onclick="changeCalMonth(1)">الشهر التالي</button>
-        </div>
-
-        <div class="cal-days-grid-head">
-          <div>السبت</div>
-          <div>الأحد</div>
-          <div>الإثنين</div>
-          <div>الثلاثاء</div>
-          <div>الأربعاء</div>
-          <div>الخميس</div>
-          <div>الجمعة</div>
-        </div>
-
-        <div class="cal-cells-grid" id="calendar-cells"></div>
-      </div>
-    </section>
-
-    <section id="tab-analytics" class="tab-content">
-      <div class="section-toolbar">
-        <div class="toolbar-title heavy-title">
-          <span>📈 لوحة التحليلات والرسوم البيانية</span>
-        </div>
-      </div>
-
-      <div class="charts-grid">
-        <div class="chart-box">
-          <h3 class="heavy-title">نسبة الالتزام خلال آخر 7 أيام</h3>
-          <div class="canvas-wrapper">
-            <canvas id="chart-weekly-adherence"></canvas>
-          </div>
-        </div>
-        <div class="chart-box">
-          <h3 class="heavy-title">توزيع العادات حسب المجالات</h3>
-          <div class="canvas-wrapper">
-            <canvas id="chart-categories-dist"></canvas>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tab-achievements" class="tab-content">
-      <div class="section-toolbar">
-        <div class="toolbar-title heavy-title">
-          <span>🏆 سلم الرتب والأوسمة التقديرية</span>
-        </div>
-      </div>
-      <div class="achievements-grid" id="achievements-container"></div>
-    </section>
-
-    <section id="tab-islamic" class="tab-content">
-      <div class="islamic-hero">
-        <h2 class="heavy-title">القسم الإسلامي — القرآن الكريم والحديث الشريف</h2>
-        <p>المصحف الشريف كاملاً (114 سورة) مع تلاوة صوتية مباركة بصوت الشيخ مشاري راشد العفاسي، وأحاديث نبوية صحيحة مسندة دون أي إعلانات.</p>
-      </div>
-
-      <div style="display:flex;gap:0.65rem;margin-bottom:1.4rem;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="switchIslamicView('quran')">📖 المصحف الشريف</button>
-        <button class="btn btn-secondary" onclick="switchIslamicView('hadith')">📜 الحديث الشريف</button>
-        <button class="btn btn-secondary" onclick="switchIslamicView('bookmarks')">⭐ المحفوظات</button>
-      </div>
-
-      <div id="islamic-quran-view">
-        <div class="quran-audio-player-bar">
-          <div class="audio-meta">
-            <div class="audio-meta-icon">🔊</div>
-            <div>
-              <div class="audio-reciter-name">الشيخ مشاري راشد العفاسي</div>
-              <div class="audio-now-playing" id="audio-playing-label">جاهز للاستماع والتلاوة</div>
-            </div>
+            <div style="font-weight:900;font-size:1.05rem">التلاوة الصوتية المتزامنة</div>
+            <div style="font-size:0.82rem;color:var(--text-muted)">بصوت الشيخ مشاري راشد العفاسي</div>
           </div>
           <div style="display:flex;align-items:center;gap:0.5rem">
-            <button class="btn btn-secondary" onclick="playPreviousAyahAudio()">⏮ السابق</button>
-            <button class="btn btn-primary" id="btn-audio-toggle" onclick="toggleQuranAudio()">تشغيل التلاوة ▶</button>
-            <button class="btn btn-secondary" onclick="playNextAyahAudio()">التالي ⏭</button>
+            <button class="btn btn-secondary" onclick="stepAyahRecitation(-1)">السابق</button>
+            <button class="btn btn-primary" id="btn-quran-audio" onclick="toggleQuranRecitation()">تشغيل التلاوة</button>
+            <button class="btn btn-secondary" onclick="stepAyahRecitation(1)">التالي</button>
           </div>
         </div>
 
-        <div class="quran-container">
-          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.5rem">
-            <div>
-              <label style="font-weight:800;margin-left:0.5rem">اختر السورة (114 سورة كاملة):</label>
-              <select id="quran-surah-select" class="form-control" style="width:auto;display:inline-block" onchange="loadSurah(this.value)">
-                </select>
-            </div>
-            <div style="display:flex;gap:0.4rem;align-items:center;">
-              <button class="btn btn-secondary" onclick="adjustQuranFont(-2)">A-</button>
-              <button class="btn btn-secondary" onclick="adjustQuranFont(2)">A+</button>
-              <button class="btn btn-secondary" onclick="resumeLastReadSurah()">📌 آخر موضع</button>
-            </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+          <div>
+            <label style="font-weight:800;font-size:0.9rem;margin-left:0.5rem">اختر السورة:</label>
+            <select id="select-surah-picker" class="form-input" style="width:auto;display:inline-block" onchange="loadQuranSurah(this.value)">
+              </select>
           </div>
-
-          <div id="quran-display-area">
-            <div class="quran-basmala" id="quran-basmala-title">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-            <div class="quran-text-flow" id="quran-text-flow"></div>
+          <div style="display:flex;gap:0.4rem">
+            <button class="btn btn-secondary" onclick="adjustScriptSize(-2)">A-</button>
+            <button class="btn btn-secondary" onclick="adjustScriptSize(2)">A+</button>
           </div>
         </div>
-      </div>
 
-      <div id="islamic-hadith-view" style="display:none">
-        <div id="hadith-list-container"></div>
-      </div>
-
-      <div id="islamic-bookmarks-view" style="display:none">
-        <h3 class="heavy-title" style="margin-bottom:1rem">الأحاديث المحفوظة</h3>
-        <div id="saved-bookmarks-container"></div>
+        <div id="quran-text-container" class="quran-script-box">
+          </div>
       </div>
     </section>
-
-    <section id="tab-settings" class="tab-content">
-      <div class="section-toolbar">
-        <div class="toolbar-title heavy-title">
-          <span>⚙️ الإعدادات وحفظ البيانات</span>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));gap:1.5rem">
-        <div class="chart-box">
-          <h3 class="heavy-title">الملف الشخصي والهدف</h3>
-          <div class="form-group">
-            <label>اسم المستخدم الحالي:</label>
-            <input type="text" id="setting-user-name" class="form-control" readonly style="opacity:0.8;cursor:not-allowed" />
-          </div>
-          <div class="form-group">
-            <label>هدفك الشهري الأكبر:</label>
-            <input type="text" id="setting-user-goal" class="form-control" />
-          </div>
-          <button class="btn btn-primary" onclick="saveUserProfile()">حفظ التعديلات</button>
-        </div>
-
-        <div class="chart-box">
-          <h3 class="heavy-title">النسخ الاحتياطي وحماية الحساب</h3>
-          <p style="font-size:0.88rem;font-weight:700;color:var(--text-secondary);margin-bottom:1.15rem">
-            بياناتك مشفرة ومحفوظة بحسابك بالاسم والباسورد محلياً بنسبة 100% داخل المتصفح، ولا تضيع مع التحديثات.
-          </p>
-          <div style="display:flex;gap:0.65rem;flex-wrap:wrap">
-            <button class="btn btn-primary" onclick="exportDataJSON()">تصدير نسخة احتياطية (JSON)</button>
-            <button class="btn btn-secondary" onclick="document.getElementById('import-file-input').click()">استيراد نسخة</button>
-            <input type="file" id="import-file-input" style="display:none" accept=".json" onchange="importDataJSON(event)" />
-          </div>
-          <div style="margin-top:1.5rem;border-top:1px dashed var(--border);padding-top:1rem">
-            <button class="btn btn-danger" onclick="confirmResetAllData()">حذف حسابي والبيانات بالكامل</button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="community-box">
-      <div>
-        <h3 class="heavy-title" style="font-size:1.45rem;margin-bottom:0.35rem">أنت لست وحدك في رحلة التغيير ✨</h3>
-        <p style="color:var(--text-secondary);font-size:0.95rem;max-width:700px;font-weight:700">
-          مجتمع من الشباب والأشخاص الطموحين الذين اختاروا أن يبدأوا التغيير اليومي بخطوات ثابتة ومستمرة نحو القمة.
-        </p>
-      </div>
-
-      <div class="visitor-badge-card">
-        <div style="font-size:2rem">👥</div>
-        <div>
-          <div class="visitor-num-val heavy-title" id="visitor-count-display">--</div>
-          <div class="visitor-lbl">تفاعلات وزيارات متصلة بالنظام</div>
-        </div>
-      </div>
-    </div>
 
   </main>
 
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4 class="heavy-title">نظام العادات الذكي</h4>
-          <p>
-            تطبيق عربي أصيل ومجاني بالكامل لمساعدتك على بناء العادات الحميدة ومتابعة التقدم اليومي، مع الاستماع للقرآن الكريم والتدبر في الحديث الشريف.
-          </p>
-        </div>
-        <div class="footer-col">
-          <h4 class="heavy-title">روابط سريعة</h4>
-          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;font-size:0.92rem;font-weight:800">
-            <li><a href="javascript:void(0)" onclick="switchTab('dashboard')">الرئيسية</a></li>
-            <li><a href="javascript:void(0)" onclick="switchTab('habits')">قائمة العادات</a></li>
-            <li><a href="javascript:void(0)" onclick="switchTab('youth')">طوّر نفسك ⚡</a></li>
-            <li><a href="javascript:void(0)" onclick="switchTab('islamic')">القرآن والحديث الشريف</a></li>
-            <li><a href="javascript:void(0)" onclick="switchTab('settings')">النسخ الاحتياطي</a></li>
-          </ul>
-        </div>
+  <div id="affirmation-shelf"></div>
 
-        <div class="footer-col">
-          <div class="owner-special-badge">
-            <div class="owner-name heavy-title">أخوكم محمد عادل</div>
-            <p>هذا الموقع مقدم لوجه الله تعالى، ولا نطلب منكم أي اشتراكات أو أموال. نسألكم صالح الدعاء.</p>
-            <div style="display:flex;gap:0.6rem;margin-top:0.75rem">
-              <a href="https://www.instagram.com/muadelofficial/" target="_blank" rel="noopener noreferrer" class="social-btn-3d instagram" aria-label="Instagram">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-              </a>
-              <a href="https://www.facebook.com/Mo.Adelofficial2/" target="_blank" rel="noopener noreferrer" class="social-btn-3d facebook" aria-label="Facebook">
-                <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
+  <div class="modal-backdrop" id="modal-report-issue">
+    <div class="modal-box">
+      <div class="modal-head-row">
+        <h3>الإبلاغ عن مشكلة أو اقتراح</h3>
+        <button class="modal-close-btn" onclick="closeIssueModal()">&times;</button>
       </div>
-
-      <div class="footer-bottom-bar">
-        <span>الإصدار 5.1 — حفظ دائم وتصميم متوازن — مجاني بالكامل لوجه الله تعالى</span>
-        <span>حفظ محلي آمن 100% بدون خوادم خارجية أو تتبع إعلاني</span>
-      </div>
-    </div>
-  </footer>
-
-  <nav class="mobile-nav-bar">
-    <div class="mobile-nav-inner">
-      <button class="m-nav-item active" onclick="switchTab('dashboard')">
-        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-        <span>الرئيسية</span>
-      </button>
-      <button class="m-nav-item" onclick="switchTab('habits')">
-        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-        <span>العادات</span>
-      </button>
-      <button class="m-nav-item" onclick="switchTab('youth')">
-        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        <span>طوّر نفسك</span>
-      </button>
-      <button class="m-nav-item" onclick="switchTab('islamic')">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        <span>القرآن</span>
-      </button>
-      <button class="m-nav-item" onclick="switchTab('settings')">
-        <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-        <span>الإعدادات</span>
-      </button>
-    </div>
-  </nav>
-
-  <div id="habit-modal" class="modal-overlay">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3 id="modal-habit-title" class="heavy-title">إضافة عادة جديدة</h3>
-        <button class="modal-close-btn" onclick="closeHabitModal()">&times;</button>
-      </div>
-      <form id="habit-form" onsubmit="saveHabitForm(event)">
-        <input type="hidden" id="form-habit-id" />
-        <div class="form-group">
-          <label>اسم العادة (مطلوب)</label>
-          <input type="text" id="form-habit-name" class="form-control" required placeholder="مثال: قيام الليل، قراءة 30 صفحة، تمرين صباحي..." />
-        </div>
-        <div class="form-group">
-          <label>الدافع أو النية</label>
-          <textarea id="form-habit-desc" class="form-control" rows="2" placeholder="اكتب دافعك القوي للاستمرار..."></textarea>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>نوع العادة</label>
-            <select id="form-habit-type" class="form-control" onchange="toggleHabitTypeFields(this.value)">
-              <option value="boolean">نعم / لا (علامة صح مباشرة)</option>
-              <option value="numeric">رقمية (معدود)</option>
-              <option value="duration">مدة زمنية (بالدقائق)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>التصنيف</label>
-            <select id="form-habit-category" class="form-control">
-              <option value="الروحانيات">الروحانيات</option>
-              <option value="الصحة">الصحة</option>
-              <option value="الرياضة">الرياضة</option>
-              <option value="التعلم">التعلم</option>
-              <option value="الإنتاجية">الإنتاجية</option>
-              <option value="أخرى">أخرى</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-row" id="form-target-row" style="display:none">
-          <div class="form-group">
-            <label>الهدف اليومي</label>
-            <input type="number" id="form-habit-target" class="form-control" min="1" value="1" />
-          </div>
-          <div class="form-group">
-            <label>الوحدة</label>
-            <input type="text" id="form-habit-unit" class="form-control" placeholder="كوب، صفحة، دقيقة..." />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>الأيقونة</label>
-          <select id="form-habit-icon" class="form-control">
-            <option value="📖">📖 قراءة وقرآن</option>
-            <option value="🕌">🕌 صلاة وعبادة</option>
-            <option value="💧">💧 ماء وصحة</option>
-            <option value="🏃">🏃 رياضة ولياقة</option>
-            <option value="🧠">🧠 تعلم وتركيز</option>
-            <option value="💼">💼 عمل وإنجاز</option>
-            <option value="🌙">🌙 نوم وراحة</option>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.25rem">نحن حريصون على تحسين منصة ارتقاء باستمرار لتكون عوناً حقيقياً لك. اكتب ملاحظتك وسنعمل على تطويرها فوراً.</p>
+      <form onsubmit="handleSendIssue(event)">
+        <div class="form-field">
+          <label>نوع الملاحظة:</label>
+          <select id="issue-type" class="form-input">
+            <option value="مشكلة تقنية في الموقع">مشكلة تقنية في الموقع</option>
+            <option value="اقتراح عادة أو ميزة جديدة">اقتراح عادة أو ميزة جديدة</option>
+            <option value="ملاحظة في الخطوط أو التصميم">ملاحظة في الخطوط أو التصميم</option>
+            <option value="أخرى">أخرى</option>
           </select>
         </div>
-        <div style="display:flex;justify-content:flex-end;gap:0.75rem;margin-top:1.5rem">
-          <button type="button" class="btn btn-secondary" onclick="closeHabitModal()">إلغاء</button>
-          <button type="submit" class="btn btn-primary">حفظ العادة</button>
+        <div class="form-field">
+          <label>التفاصيل:</label>
+          <textarea id="issue-details" class="form-input" rows="4" required placeholder="اكتب ما واجهته أو ما تود إضافته..."></textarea>
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:0.6rem">
+          <button type="button" class="btn btn-secondary" onclick="closeIssueModal()">إلغاء</button>
+          <button type="submit" class="btn btn-primary">إرسال الملاحظة</button>
         </div>
       </form>
     </div>
   </div>
 
-  <div id="toast-shelf"></div>
-  <audio id="quran-audio-player" preload="none"></audio>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-content-grid">
+        <div class="footer-col">
+          <h4>منصة ارتقاء</h4>
+          <p>أداة شخصية احترافية بنيت لتكون ركيزة أساسية في يومك؛ تساعدك على الارتقاء المهني، الذهني، والديني عبر خطوات بسيطة ومستمرة.</p>
+        </div>
+        <div class="footer-col">
+          <h4>رسالة المؤسس</h4>
+          <p>أخوكم محمد عادل. هذا الموقع عمل خالص لوجه الله تعالى بدون أي اشتراكات أو جمع لبياناتكم الشخصية. نسألكم صالح الدعاء بظهر الغيب.</p>
+        </div>
+        <div class="footer-col">
+          <h4>الدعم والمساعدة</h4>
+          <p>بياناتك محفوظة محلياً على متصفحك ولا يمكن لأي طرف الاطلاع عليها.</p>
+          <div style="margin-top:1rem">
+            <button class="report-issue-trigger" onclick="openIssueModal()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              <span>الإبلاغ عن مشكلة أو اقتراح</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-strip">
+        <span>ارتقاء — كل يوم خطوة للأفضل</span>
+        <span>حفظ محلي مستقل 100%</span>
+      </div>
+    </div>
+  </footer>
+
+  <audio id="audio-streamer" preload="none"></audio>
 
   <script>
     /* ==========================================================
-       0. PERMANENT MASTER MULTI-USER STORAGE & AUTO-MIGRATION
+       0. PERSISTENCE & DATA CORE (Local & Private)
        ========================================================== */
-    const MASTER_USERS_DB_KEY = 'SMART_HABIT_MASTER_USERS_DB';
-    const ACTIVE_SESSION_KEY = 'SMART_HABIT_ACTIVE_SESSION';
+    const STORAGE_KEY = 'IRTIQAA_MASTER_STORE_V1';
 
-    let currentAuthMode = 'login';
-    let currentUser = null;
-    let audioCtx = null;
-    let currentCalDate = new Date();
-
-    let currentAyahsData = [];
-    let currentPlayingIndex = 0;
-    let isSurahAudioPlaying = false;
-    const quranAudioPlayer = document.getElementById('quran-audio-player');
-
-    let timer5MinInterval = null;
-    let timer5MinSeconds = 300;
-    let is5MinRunning = false;
-
-    let focusTimerInterval = null;
-    let focusTimerSeconds = 1500;
-    let isFocusRunning = false;
-
-    const DEFAULT_HABITS = [
-      { id: 'hab_fajr', name: 'صلاة الفجر حاضراً', desc: 'بداية اليوم بنور وطاقة ربانية لا تنقطع', type: 'boolean', category: 'الروحانيات', icon: '🕌', target: 1, unit: 'مرة', status: 'active' },
-      { id: 'hab_quran', name: 'ورد القرآن الكريم', desc: 'تلاوة جزء أو سورة بتدبر وسكينة', type: 'boolean', category: 'الروحانيات', icon: '📖', target: 1, unit: 'مرة', status: 'active' },
-      { id: 'hab_water', name: 'شرب 3 لتر ماء', desc: 'صفاء الذهن وترطيب الجسم المستمر', type: 'numeric', category: 'الصحة', icon: '💧', target: 8, unit: 'أكواب', status: 'active' },
-      { id: 'hab_exercise', name: 'تمرين رياضي مكثف', desc: '30 دقيقة لياقة وقوة بدنية', type: 'duration', category: 'الرياضة', icon: '🏃', target: 30, unit: 'دقيقة', status: 'active' },
-      { id: 'hab_deep_work', name: 'ساعة تركيز عميق', desc: 'عمل بدون مشتتات أو وسائل تواصل', type: 'duration', category: 'الإنتاجية', icon: '🧠', target: 60, unit: 'دقيقة', status: 'active' }
+    // Affirmation words for micro-interactions
+    const AFFIRMATIONS = [
+      "عاش يا بطل",
+      "كمّل، خطوة ثابتة",
+      "وحش، استمر",
+      "ثبات عالي",
+      "عاش جداً",
+      "الانضباط بيبان في النتيجة",
+      "الله ينور عليك",
+      "خطوة كمان للهدف"
     ];
 
-    const YOUTH_REALISTIC_QUOTES = [
-      "محدش هيتحرك بدالك.. مستقبلك بيتبني بالقرارات البسيطة اللي بتاخدها كل يوم.",
-      "مش لازم تكون الأفضل النهارده، المهم تكون أحسن من نفسك بتاعة إمبارح.",
-      "الانضباط لما يغيب الحماس هو الفارق الحقيقي بين اللي بيتمنى واللي بيوصل.",
-      "ساعة واحدة بدون سوشيال ميديا ومشتتات كفيلة تغير إنتاجية يومك كله.",
-      "الالتزام مش معناه إنك متقعش.. معناه إنك تقوم فوراً وتكمل بعد ما تقع.",
-      "العادات السيئة مش بتسرق عمرك مرة واحدة، دي بتسرقه على دفعات صغيرة وأنت مش حاسس.",
-      "المذاكرة أو الشغل مش دايماً فيهم متعة، بس النتائج اللي بتوصلها تستاهل كل دقيقة تعب.",
-      "الراحة جزء من الخطة عشان تكمل، مش ذنب تقعد تجلد في نفسك علشانه.",
-      "ابدأ حتى لو مش جاهز 100%.. الحركة بتجيب شغف واستمرار."
+    // Core Habits: Real-life adult discipline
+    const INITIAL_HABITS = [
+      {
+        id: 'hab_deep_work',
+        title: 'ساعتين عمل عميق وتركيز',
+        category: 'الشغل والمشاريع',
+        desc: 'إنجاز المهام الكبرى بدون تشتت أو سوشيال ميديا.',
+        advice: 'نصيحة: ابدأ بأصعب مهمة في أول ساعات الصباح والذهن صافي.',
+        type: 'duration',
+        target: 120,
+        unit: 'دقيقة'
+      },
+      {
+        id: 'hab_skill_course',
+        title: 'مذاكرة كورس أو مهارة مهنية',
+        category: 'التطوير والدراسة',
+        desc: '45 دقيقة يومياً لبناء خبرة عملية تجعل منك شخصاً مطلوباً.',
+        advice: 'نصيحة: لخص ما تتعلمه وطبقه عملياً بدل المشاهدة السلبية.',
+        type: 'duration',
+        target: 45,
+        unit: 'دقيقة'
+      },
+      {
+        id: 'hab_podcast_reading',
+        title: 'بودكاست معرفي أو قراءة كتاب',
+        category: 'تغذية العقل',
+        desc: 'قراءة 15 صفحة أو الاستماع لحوار متخصص.',
+        advice: 'نصيحة: استمع أثناء المشي أو المواصلات لاستغلال الوقت الضائع.',
+        type: 'boolean',
+        target: 1,
+        unit: 'مرة'
+      },
+      {
+        id: 'hab_sleep_schedule',
+        title: 'نوم مبكر ومنتظم قبل 11:30 مساءً',
+        category: 'النوم والطاقة',
+        desc: 'ضبط الساعة البيولوجية للاستيقاظ بنشاط كامل.',
+        advice: 'نصيحة: ابعد شاشات الهاتف عن السرير بـ 30 دقيقة قبل النوم.',
+        type: 'boolean',
+        target: 1,
+        unit: 'مرة'
+      },
+      {
+        id: 'hab_fajr_quran',
+        title: 'صلاة الفجر والورد القرآني',
+        category: 'الروحانيات والسكينة',
+        desc: 'بداية اليوم بركعتين وتلاوة صفحتين بتدبر.',
+        advice: 'نصيحة: هيئ نيتك من الليل لتبدأ يومك ببركة وهدوء داخلي.',
+        type: 'boolean',
+        target: 1,
+        unit: 'مرة'
+      },
+      {
+        id: 'hab_hydration_movement',
+        title: 'شرب 3 لتر ماء وحركة بدنية',
+        category: 'الصحة والنشاط',
+        desc: 'المحافظة على طاقة الجسم وتنشيط الدورة الدموية.',
+        advice: 'نصيحة: اجعل زجاجة الماء دائماً أمام عينيك على مكتب العمل.',
+        type: 'numeric',
+        target: 8,
+        unit: 'أكواب'
+      }
     ];
 
-    // Automatic migration to ensure NO users are ever lost from prior versions
-    function getMasterDB() {
-      let db = {};
-      const legacyKeys = [
-        'SMART_HABIT_USERS_DB_V5',
-        'SMART_HABIT_USERS_DB_V4',
-        'SMART_HABIT_TRACKER_V3',
-        'SMART_HABIT_TRACKER_V2',
-        'SMART_HABIT_TRACKER_V1'
-      ];
+    let appState = {
+      user: null,
+      habits: INITIAL_HABITS,
+      completions: {}, // { "YYYY-MM-DD": { [id]: number } }
+      scriptFontSize: 26,
+      currentSurah: 1
+    };
 
-      legacyKeys.forEach(k => {
-        try {
-          const raw = localStorage.getItem(k);
-          if (raw) {
-            const parsed = JSON.parse(raw);
-            if (parsed && typeof parsed === 'object') {
-              if (parsed.habits && !parsed.username) {
-                // Recover single-user legacy store
-                const fallbackName = parsed.profile?.name || 'المستخدم';
-                db[fallbackName] = db[fallbackName] || {
-                  username: fallbackName,
-                  passHash: 'h_123456',
-                  createdAt: new Date().toISOString(),
-                  habits: parsed.habits,
-                  completions: parsed.completions || {},
-                  profile: parsed.profile || { name: fallbackName, goal: 'بناء انضباط مستمر' },
-                  settings: parsed.settings || { theme: 'light', sound: 'on', quranFontSize: 26 },
-                  bookmarks: parsed.bookmarks || { quran: [], hadith: [] },
-                  lastRead: parsed.lastRead || { surah: 1, ayah: 1 },
-                  visitsCount: 10
-                };
-              } else {
-                Object.assign(db, parsed);
-              }
-            }
-          }
-        } catch (e) {}
-      });
+    let audioContext = null;
+    let audioVerses = [];
+    let currentVerseIdx = 0;
+    let isReciting = false;
+    const audioElement = document.getElementById('audio-streamer');
 
+    function loadStore() {
       try {
-        const masterRaw = localStorage.getItem(MASTER_USERS_DB_KEY);
-        if (masterRaw) Object.assign(db, JSON.parse(masterRaw));
-      } catch (e) {}
-
-      return db;
-    }
-
-    function saveMasterDB(db) {
-      try {
-        localStorage.setItem(MASTER_USERS_DB_KEY, JSON.stringify(db));
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          appState = Object.assign(appState, parsed);
+        }
       } catch (e) {
-        showToast('تعذر حفظ البيانات في المتصفح', 'error');
+        console.warn('Store load fallback');
       }
     }
 
-    function hashPassword(pass) {
-      let hash = 0;
-      for (let i = 0; i < pass.length; i++) {
-        const char = pass.charCodeAt(i);
-        hash = ((hash << 5) - hash) + char;
-        hash |= 0;
-      }
-      return 'h_' + Math.abs(hash).toString(36);
-    }
-
-    function setAuthMode(mode) {
-      currentAuthMode = mode;
-      document.getElementById('btn-mode-login').classList.toggle('active', mode === 'login');
-      document.getElementById('btn-mode-register').classList.toggle('active', mode === 'register');
-      document.getElementById('auth-heading').textContent = mode === 'login' ? 'تسجيل الدخول للنظام' : 'إنشاء حساب جديد لحفظ البيانات';
-      document.getElementById('auth-subheading').textContent = mode === 'login' ? 'أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة' : 'أنشئ حسابك الخاص بكلمة مرور لحفظ عاداتك دائماً دون فقدان';
-      document.getElementById('auth-submit-btn').textContent = mode === 'login' ? 'دخول للنظام 🚀' : 'إنشاء الحساب وبدء الرحلة ✨';
-    }
-
-    function handleAuthSubmit(e) {
-      e.preventDefault();
-      const username = document.getElementById('auth-username').value.trim();
-      const pass = document.getElementById('auth-password').value;
-
-      if (!username || !pass) {
-        showToast('يرجى كتابة الاسم وكلمة المرور', 'error');
-        return;
-      }
-
-      const db = getMasterDB();
-      const hashed = hashPassword(pass);
-
-      if (currentAuthMode === 'register') {
-        if (db[username]) {
-          showToast('هذا الاسم مسجل مسبقاً! يمكنك تسجيل الدخول به', 'error');
-          return;
-        }
-        db[username] = {
-          username,
-          passHash: hashed,
-          createdAt: new Date().toISOString(),
-          habits: DEFAULT_HABITS,
-          completions: {},
-          profile: { name: username, goal: 'بناء انضباط حديدي وثبات يومي نحو القمة' },
-          settings: { theme: 'light', sound: 'on', quranFontSize: 26 },
-          bookmarks: { quran: [], hadith: [] },
-          lastRead: { surah: 1, ayah: 1 },
-          visitsCount: 1
-        };
-        saveMasterDB(db);
-        showToast('تم إنشاء حسابك بنجاح! أهلاً بك 🎉');
-      } else {
-        if (!db[username]) {
-          showToast('اسم المستخدم غير مسجل، يرجى إنشاء حساب جديد أولاً', 'error');
-          return;
-        }
-        if (db[username].passHash !== hashed) {
-          showToast('كلمة المرور غير صحيحة!', 'error');
-          return;
-        }
-        db[username].visitsCount = (db[username].visitsCount || 1) + 1;
-        saveMasterDB(db);
-        showToast(`مرحباً بعودتك يا ${username} 👋`);
-      }
-
-      localStorage.setItem(ACTIVE_SESSION_KEY, username);
-      currentUser = db[username];
-      document.getElementById('auth-screen-overlay').classList.remove('active');
-      document.getElementById('auth-form').reset();
-
-      initUserSession();
-    }
-
-    function handleLogout() {
-      if (confirm("هل تريد تسجيل الخروج من حسابك؟")) {
-        localStorage.removeItem(ACTIVE_SESSION_KEY);
-        currentUser = null;
-        document.getElementById('auth-screen-overlay').classList.add('active');
-        showToast('تم تسجيل الخروج بنجاح');
-      }
-    }
-
-    function initUserSession() {
-      if (!currentUser) return;
-      if (currentUser.settings?.theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-      }
-
-      document.getElementById('header-user-name').textContent = currentUser.username;
-      document.getElementById('user-avatar-char').textContent = currentUser.username.charAt(0).toUpperCase();
-
-      updateProfileUI();
-      renderDashboard();
-      initQuranDirectory();
-      renderHadiths(AUTHENTIC_HADITHS_DATA);
-      renderAchievements();
-      startLiveClock();
-      updateYouthHubTimeMessage();
-    }
-
-    function syncCurrentUserData() {
-      if (!currentUser) return;
-      const db = getMasterDB();
-      db[currentUser.username] = currentUser;
-      saveMasterDB(db);
-    }
-
-    /* ==========================================================
-       1. CANVAS CONFETTI & SOUND SYNTH
-       ========================================================== */
-    const confettiCanvas = document.getElementById('confetti-canvas');
-    const confettiCtx = confettiCanvas.getContext('2d');
-    let confettiParticles = [];
-    let confettiAnimId = null;
-
-    function resizeConfetti() {
-      confettiCanvas.width = window.innerWidth;
-      confettiCanvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeConfetti);
-    resizeConfetti();
-
-    function fireConfetti() {
-      const colors = ['#059669', '#4f46e5', '#d97706', '#dc2626', '#0284c7'];
-      confettiParticles = [];
-      for (let i = 0; i < 70; i++) {
-        confettiParticles.push({
-          x: confettiCanvas.width / 2,
-          y: confettiCanvas.height / 2,
-          w: Math.random() * 8 + 4,
-          h: Math.random() * 6 + 4,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          vx: (Math.random() - 0.5) * 16,
-          vy: (Math.random() - 0.7) * 16,
-          gravity: 0.35,
-          opacity: 1,
-          rot: Math.random() * 360,
-          rotSpeed: (Math.random() - 0.5) * 10
-        });
-      }
-      if (confettiAnimId) cancelAnimationFrame(confettiAnimId);
-      renderConfettiLoop();
-    }
-
-    function renderConfettiLoop() {
-      confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-      let alive = false;
-      confettiParticles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vy += p.gravity;
-        p.opacity -= 0.015;
-        p.rot += p.rotSpeed;
-        if (p.opacity > 0) {
-          alive = true;
-          confettiCtx.save();
-          confettiCtx.translate(p.x, p.y);
-          confettiCtx.rotate((p.rot * Math.PI) / 180);
-          confettiCtx.globalAlpha = p.opacity;
-          confettiCtx.fillStyle = p.color;
-          confettiCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-          confettiCtx.restore();
-        }
-      });
-      if (alive) {
-        confettiAnimId = requestAnimationFrame(renderConfettiLoop);
-      } else {
-        confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
-      }
-    }
-
-    function initWebAudio() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-    }
-
-    function playAppSound(type) {
-      if (!currentUser || currentUser.settings?.sound !== 'on') return;
+    function saveStore() {
       try {
-        initWebAudio();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const now = audioCtx.currentTime;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-
-        if (type === 'check') {
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(659.25, now);
-          osc.frequency.setValueAtTime(880.00, now + 0.08);
-          gain.gain.setValueAtTime(0.1, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
-          osc.start(now);
-          osc.stop(now + 0.28);
-        }
-      } catch (e) {}
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        console.warn('Store save fallback');
+      }
     }
 
-    function getTodayString() {
+    function getTodayKey() {
       const d = new Date();
       return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
     }
 
-    function showToast(msg, type = 'success') {
-      const shelf = document.getElementById('toast-shelf');
-      const toast = document.createElement('div');
-      toast.className = `toast-msg ${type}`;
-      toast.textContent = msg;
-      shelf.appendChild(toast);
+    /* Sound Synthesis (Light chime) */
+    function playChimeSound() {
+      try {
+        if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioContext.state === 'suspended') audioContext.resume();
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        const now = audioContext.currentTime;
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(659.25, now);
+        osc.frequency.setValueAtTime(880.00, now + 0.08);
+        gain.gain.setValueAtTime(0.08, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      } catch (e) {}
+    }
+
+    /* Floating Affirmation Display */
+    function triggerAffirmation() {
+      playChimeSound();
+      const shelf = document.getElementById('affirmation-shelf');
+      const card = document.createElement('div');
+      card.className = 'affirmation-card';
+      const randomWord = AFFIRMATIONS[Math.floor(Math.random() * AFFIRMATIONS.length)];
+      card.innerHTML = `<span>✓</span> <span>${randomWord}</span>`;
+      shelf.appendChild(card);
       setTimeout(() => {
-        toast.style.opacity = '0';
-        toast.style.transform = 'translateX(-20px)';
-        setTimeout(() => toast.remove(), 250);
-      }, 3000);
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(-10px)';
+        card.style.transition = 'all 0.25s ease';
+        setTimeout(() => card.remove(), 250);
+      }, 2200);
     }
 
     /* ==========================================================
-       2. HABIT STREAKS & RANKS
+       1. HABIT METRICS & ACTIONS
        ========================================================== */
-    function calculateHabitStreak(habitId) {
-      if (!currentUser) return 0;
+    function calculateStreak() {
       let streak = 0;
       let d = new Date();
-      const todayStr = getTodayString();
-      const habit = currentUser.habits.find(h => h.id === habitId);
-      if (!habit) return 0;
+      const today = getTodayKey();
+      const active = appState.habits;
+      if (active.length === 0) return 0;
 
-      const todayVal = currentUser.completions[todayStr]?.[habitId] || 0;
-      let isDoneToday = habit.type === 'boolean' ? todayVal >= 1 : todayVal >= habit.target;
-      if (!isDoneToday) d.setDate(d.getDate() - 1);
+      // Check today first
+      let todayDone = true;
+      active.forEach(h => {
+        const val = appState.completions[today]?.[h.id] || 0;
+        if (val < h.target) todayDone = false;
+      });
+
+      if (!todayDone) d.setDate(d.getDate() - 1);
 
       while (true) {
-        const dateKey = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-        const val = currentUser.completions[dateKey]?.[habitId] || 0;
-        let done = habit.type === 'boolean' ? val >= 1 : val >= habit.target;
-        if (done) {
+        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+        const dayRecord = appState.completions[key];
+        if (!dayRecord) break;
+        let dayComplete = true;
+        active.forEach(h => {
+          if ((dayRecord[h.id] || 0) < h.target) dayComplete = false;
+        });
+        if (dayComplete) {
           streak++;
           d.setDate(d.getDate() - 1);
         } else {
@@ -2170,522 +1264,244 @@
       return streak;
     }
 
-    function getStreakMetrics() {
-      if (!currentUser) return { current: 0, best: 0 };
-      const active = currentUser.habits.filter(h => h.status === 'active');
-      if (active.length === 0) return { current: 0, best: 0 };
-      const streaks = active.map(h => calculateHabitStreak(h.id));
-      const maxStreak = Math.max(...streaks, 0);
-      return { current: maxStreak, best: maxStreak };
-    }
-
-    function getTodayProgress() {
-      if (!currentUser) return { active: 0, done: 0, rate: 0 };
-      const today = getTodayString();
-      const active = currentUser.habits.filter(h => h.status === 'active');
-      if (active.length === 0) return { active: 0, done: 0, rate: 0 };
-
-      let done = 0;
-      active.forEach(h => {
-        const val = currentUser.completions[today]?.[h.id] || 0;
-        if (h.type === 'boolean' && val >= 1) done++;
-        else if (h.type !== 'boolean' && val >= h.target) done++;
-      });
-      return { active: active.length, done, rate: Math.round((done / active.length) * 100) };
-    }
-
-    function calculatePerfectDays() {
-      if (!currentUser) return 0;
-      let perfect = 0;
-      const dates = Object.keys(currentUser.completions);
-      const active = currentUser.habits.filter(h => h.status === 'active');
-      if (active.length === 0) return 0;
-
-      dates.forEach(d => {
-        let allDone = true;
-        active.forEach(h => {
-          const val = currentUser.completions[d]?.[h.id] || 0;
-          if (h.type === 'boolean' && val < 1) allDone = false;
-          if (h.type !== 'boolean' && val < h.target) allDone = false;
-        });
-        if (allDone) perfect++;
-      });
-      return perfect;
-    }
-
-    function updateYouthRank(streak) {
-      const badgeIcon = document.getElementById('rank-badge-icon');
-      const lvlLabel = document.getElementById('rank-level-label');
-      const titleDisplay = document.getElementById('rank-title-display');
-
-      if (streak >= 30) {
-        badgeIcon.textContent = '👑';
-        lvlLabel.textContent = 'المستوى 5 (القمة)';
-        titleDisplay.textContent = 'أسطورة الالتزام';
-      } else if (streak >= 14) {
-        badgeIcon.textContent = '⚡';
-        lvlLabel.textContent = 'المستوى 4';
-        titleDisplay.textContent = 'قائد الاستمرارية';
-      } else if (streak >= 7) {
-        badgeIcon.textContent = '⚔️';
-        lvlLabel.textContent = 'المستوى 3';
-        titleDisplay.textContent = 'فارس العزيمة';
-      } else if (streak >= 3) {
-        badgeIcon.textContent = '🔥';
-        lvlLabel.textContent = 'المستوى 2';
-        titleDisplay.textContent = 'شعلة الطموح';
-      } else {
-        badgeIcon.textContent = '🛡️';
-        lvlLabel.textContent = 'المستوى 1';
-        titleDisplay.textContent = 'فارس البدايات';
-      }
-    }
-
-    /* ==========================================================
-       3. DASHBOARD & HABITS RENDERING
-       ========================================================== */
-    function renderDashboard() {
-      if (!currentUser) return;
-      const prog = getTodayProgress();
-      const streaks = getStreakMetrics();
-      const perfect = calculatePerfectDays();
-
-      document.getElementById('kpi-active-habits').textContent = prog.active;
-      document.getElementById('kpi-today-done').textContent = prog.done;
-      document.getElementById('kpi-current-streak').textContent = `${streaks.current} أيام`;
-      document.getElementById('kpi-best-streak').textContent = `${streaks.best}`;
-      document.getElementById('kpi-today-rate').textContent = `${prog.rate}%`;
-      document.getElementById('kpi-perfect-days').textContent = perfect;
-
-      updateYouthRank(streaks.current);
-      renderHabitsList('today-habits-container', true);
-    }
-
-    function renderHabitsList(containerId, isTodayOnly = false) {
-      const container = document.getElementById(containerId);
-      if (!container || !currentUser) return;
+    function renderHabitsView() {
+      const container = document.getElementById('habits-container-element');
       container.innerHTML = '';
+      const today = getTodayKey();
+      let completedCount = 0;
 
-      let list = currentUser.habits;
-      if (isTodayOnly) list = list.filter(h => h.status === 'active');
+      appState.habits.forEach(habit => {
+        const currentVal = appState.completions[today]?.[habit.id] || 0;
+        const isDone = currentVal >= habit.target;
+        if (isDone) completedCount++;
 
-      if (list.length === 0) {
-        container.innerHTML = `
-          <div style="grid-column:1/-1;text-align:center;padding:2.5rem 1rem;background:var(--surface);border-radius:var(--radius-lg);border:1px dashed var(--border)">
-            <p style="font-size:1.1rem;font-weight:900;">لا توجد عادات مسجلة حالياً.</p>
-            <button class="btn btn-primary" style="margin-top:0.85rem" onclick="openHabitModal()">+ إضافة عادة الآن</button>
-          </div>
-        `;
-        return;
-      }
-
-      const today = getTodayString();
-
-      list.forEach(habit => {
-        const val = currentUser.completions[today]?.[habit.id] || 0;
-        const streak = calculateHabitStreak(habit.id);
-        const isDone = habit.type === 'boolean' ? val >= 1 : val >= habit.target;
-        const pct = Math.min(100, Math.round((val / habit.target) * 100));
-
+        const pct = Math.min(100, Math.round((currentVal / habit.target) * 100));
         const card = document.createElement('div');
-        card.className = `habit-card ${isDone ? 'is-completed' : ''}`;
+        card.className = `habit-item-card ${isDone ? 'is-completed' : ''}`;
 
         card.innerHTML = `
           <div>
-            <div class="habit-top">
-              <div class="habit-icon-box">${habit.icon}</div>
-              <div class="habit-info">
-                <div class="habit-title heavy-title">${escapeHTML(habit.name)}</div>
-                <div class="habit-meta-tag">${escapeHTML(habit.category)}</div>
-              </div>
-              <button class="modal-close-btn" style="font-size:1.25rem" onclick="editHabit('${habit.id}')" title="تعديل">⋮</button>
+            <div class="habit-header-row">
+              <span class="habit-tag">${habit.category}</span>
             </div>
-
-            <p class="habit-card-desc">${escapeHTML(habit.desc || 'الالتزام اليومي المستمر نحو القمة')}</p>
+            <h3 class="habit-title-text">${habit.title}</h3>
+            <p class="habit-desc-text">${habit.desc}</p>
+            <div class="habit-advice-box">${habit.advice}</div>
 
             <div class="habit-progress-track">
-              <div class="habit-progress-bar" style="width: ${pct}%"></div>
+              <div class="habit-progress-bar" style="width:${pct}%"></div>
             </div>
 
-            <div class="habit-status-row">
-              <span>${val} / ${habit.target} ${escapeHTML(habit.unit || '')}</span>
-              <span class="streak-badge">🔥 ${streak} يوم</span>
+            <div class="habit-metric-info">
+              <span>الإنجاز: ${currentVal} من ${habit.target} ${habit.unit}</span>
+              <span style="color:${isDone ? 'var(--primary)' : 'var(--text-muted)'}">${isDone ? 'مكتمل بنجاح' : pct + '%'}</span>
             </div>
           </div>
 
           <div>
             ${habit.type === 'boolean' ? `
-              <button class="btn-check-habit ${isDone ? 'checked' : ''}" onclick="toggleHabitCheck('${habit.id}')">
-                <svg class="check-svg" viewBox="0 0 24 24">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-                <span>${isDone ? 'تم الإنجاز بنجاح' : 'ضع علامة الصح'}</span>
+              <button class="btn-habit-check ${isDone ? 'is-checked' : ''}" onclick="toggleHabitStatus('${habit.id}')">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>${isDone ? 'تم الإنجاز' : 'تسجيل الإنجاز'}</span>
               </button>
             ` : `
-              <div class="stepper-control">
-                <button class="stepper-btn" onclick="stepHabitValue('${habit.id}', -1)">-</button>
-                <div class="stepper-display">${val} ${escapeHTML(habit.unit || '')}</div>
-                <button class="stepper-btn" onclick="stepHabitValue('${habit.id}', 1)">+</button>
+              <div class="stepper-row">
+                <button class="stepper-btn" onclick="stepHabitValue('${habit.id}', -15)">-</button>
+                <div class="stepper-count-display">${currentVal} ${habit.unit}</div>
+                <button class="stepper-btn" onclick="stepHabitValue('${habit.id}', 15)">+</button>
               </div>
             `}
           </div>
         `;
         container.appendChild(card);
       });
+
+      // Update KPIs
+      const rate = Math.round((completedCount / appState.habits.length) * 100) || 0;
+      document.getElementById('overall-completion-rate').textContent = `${rate}%`;
+      document.getElementById('kpi-done-count').textContent = `${completedCount} / ${appState.habits.length}`;
+
+      const streak = calculateStreak();
+      document.getElementById('kpi-streak-val').textContent = `${streak} أيام`;
+
+      // Psychological Rank
+      let rank = "مبتدئ واعد";
+      if (streak >= 30) rank = "رمز الاستمرارية";
+      else if (streak >= 14) rank = "قائد الانضباط";
+      else if (streak >= 7) rank = "ثابت على المسار";
+      else if (streak >= 3) rank = "شعلة البداية";
+      document.getElementById('kpi-rank-title').textContent = rank;
     }
 
-    function toggleHabitCheck(habitId) {
-      if (!currentUser) return;
-      const today = getTodayString();
-      if (!currentUser.completions[today]) currentUser.completions[today] = {};
-
-      const current = currentUser.completions[today][habitId] || 0;
-      if (current >= 1) {
-        currentUser.completions[today][habitId] = 0;
-        showToast('تم إلغاء تحديد العادة');
+    function toggleHabitStatus(id) {
+      const today = getTodayKey();
+      if (!appState.completions[today]) appState.completions[today] = {};
+      const cur = appState.completions[today][id] || 0;
+      if (cur >= 1) {
+        appState.completions[today][id] = 0;
       } else {
-        currentUser.completions[today][habitId] = 1;
-        playAppSound('check');
-        fireConfetti();
-        showToast('عاش يا بطل! تم تسجيل الإنجاز في حسابك بنجاح 🔥');
+        appState.completions[today][id] = 1;
+        triggerAffirmation();
       }
-      syncCurrentUserData();
-      renderDashboard();
-      if (document.getElementById('tab-habits').classList.contains('active')) {
-        renderHabitsList('all-habits-container');
-      }
-      checkMilestones();
+      saveStore();
+      renderHabitsView();
     }
 
-    function stepHabitValue(habitId, delta) {
-      if (!currentUser) return;
-      const today = getTodayString();
-      if (!currentUser.completions[today]) currentUser.completions[today] = {};
-
-      const habit = currentUser.habits.find(h => h.id === habitId);
+    function stepHabitValue(id, delta) {
+      const today = getTodayKey();
+      if (!appState.completions[today]) appState.completions[today] = {};
+      const habit = appState.habits.find(h => h.id === id);
       if (!habit) return;
-
-      let cur = (currentUser.completions[today][habitId] || 0) + delta;
-      cur = Math.max(0, cur);
-      currentUser.completions[today][habitId] = cur;
-
-      if (cur >= habit.target && delta > 0) {
-        playAppSound('check');
-        fireConfetti();
-        showToast(`أحسنت! حققت هدف ${habit.name} اليومي 🎯`);
+      let val = (appState.completions[today][id] || 0) + delta;
+      val = Math.max(0, val);
+      appState.completions[today][id] = val;
+      if (val >= habit.target && delta > 0) {
+        triggerAffirmation();
       }
-      syncCurrentUserData();
-      renderDashboard();
-      if (document.getElementById('tab-habits').classList.contains('active')) {
-        renderHabitsList('all-habits-container');
-      }
-      checkMilestones();
+      saveStore();
+      renderHabitsView();
     }
 
     /* ==========================================================
-       4. YOUTH MOTIVATION ENGINE
+       2. REFINED CHARTS (Canvas Native & Visual Balance)
        ========================================================== */
-    function updateYouthHubTimeMessage() {
-      const hour = new Date().getHours();
-      const badge = document.getElementById('youth-time-badge');
-      const heroMsg = document.getElementById('youth-dynamic-hero-msg');
-      const heroSub = document.getElementById('youth-dynamic-hero-sub');
-
-      if (hour >= 4 && hour < 12) {
-        badge.textContent = "صباح الخير والهمة ☀️";
-        heroMsg.textContent = "ابدأ يومك بحاجة واحدة مهمة وخلصها قبل أي حاجة";
-        heroSub.textContent = "أول ساعة بعد الصحيان بتحدد مسار يومك كله. ابعد عن الموبايل، اشرب مية، وصلي الفجر، وشوف اللي وراك بتركيز.";
-      } else if (hour >= 12 && hour < 18) {
-        badge.textContent = "فترة الظهيرة والعمل ⚡";
-        heroMsg.textContent = "مكملين.. متسيبش اليوم يفلت منك في المشتتات";
-        heroSub.textContent = "حتى لو نص اليوم الأول ماكانش مثالي، لسه عندك نص اليوم التاني تقدر تنجز فيه وتصلح الخطة.";
-      } else {
-        badge.textContent = "فترة المساء والمراجعة 🌙";
-        heroMsg.textContent = "راجع يومك بهدوء.. وبكرة فرصة جديدة تبدأ من مكان أحسن";
-        heroSub.textContent = "مش مهم إن اليوم مكنش كامل 100%، المهم تكون عملت اللي عليك وتعرف إيه اللي هتحسنه بكرة بإذن الله.";
-      }
-    }
-
-    function generateNewYouthQuote() {
-      const box = document.getElementById('youth-quote-box');
-      const quote = YOUTH_REALISTIC_QUOTES[Math.floor(Math.random() * YOUTH_REALISTIC_QUOTES.length)];
-      box.textContent = `"${quote}"`;
-      showToast('تم تحديث رسالة اليوم 💡');
-    }
-
-    function toggle5MinTimer() {
-      const btn = document.getElementById('btn-5min-toggle');
-      if (is5MinRunning) {
-        clearInterval(timer5MinInterval);
-        is5MinRunning = false;
-        btn.textContent = 'استئناف الـ 5 دقائق ▶';
-      } else {
-        is5MinRunning = true;
-        btn.textContent = 'إيقاف مؤقت ⏸';
-        timer5MinInterval = setInterval(() => {
-          if (timer5MinSeconds > 0) {
-            timer5MinSeconds--;
-            update5MinDisplay();
-          } else {
-            clearInterval(timer5MinInterval);
-            is5MinRunning = false;
-            btn.textContent = 'ابدأ الـ 5 دقائق 🚀';
-            fireConfetti();
-            playAppSound('check');
-            showToast('عاش يا بطل! خلصت الـ 5 دقايق.. كمل ولا توقف؟ 🔥');
-          }
-        }, 1000);
-      }
-    }
-
-    function reset5MinTimer() {
-      clearInterval(timer5MinInterval);
-      is5MinRunning = false;
-      timer5MinSeconds = 300;
-      update5MinDisplay();
-      document.getElementById('btn-5min-toggle').textContent = 'ابدأ الـ 5 دقائق 🚀';
-    }
-
-    function update5MinDisplay() {
-      const m = String(Math.floor(timer5MinSeconds / 60)).padStart(2, '0');
-      const s = String(timer5MinSeconds % 60).padStart(2, '0');
-      document.getElementById('timer-5min-display').textContent = `${m}:${s}`;
-    }
-
-    function setFocusTime(minutes) {
-      clearInterval(focusTimerInterval);
-      isFocusRunning = false;
-      focusTimerSeconds = minutes * 60;
-      updateFocusDisplay();
-      document.getElementById('btn-focus-toggle').textContent = `تشغيل جلسة ${minutes} دقيقة ▶`;
-    }
-
-    function toggleFocusTimer() {
-      const btn = document.getElementById('btn-focus-toggle');
-      if (isFocusRunning) {
-        clearInterval(focusTimerInterval);
-        isFocusRunning = false;
-        btn.textContent = 'استئناف الجلسة ▶';
-      } else {
-        isFocusRunning = true;
-        btn.textContent = 'إيقاف مؤقت ⏸';
-        focusTimerInterval = setInterval(() => {
-          if (focusTimerSeconds > 0) {
-            focusTimerSeconds--;
-            updateFocusDisplay();
-          } else {
-            clearInterval(focusTimerInterval);
-            isFocusRunning = false;
-            btn.textContent = 'جلسة تركيز جديدة 🎯';
-            fireConfetti();
-            playAppSound('check');
-            showToast('إنجاز عظيم! أنهيت جلسة التركيز العميق بنجاح 👏');
-          }
-        }, 1000);
-      }
-    }
-
-    function updateFocusDisplay() {
-      const m = String(Math.floor(focusTimerSeconds / 60)).padStart(2, '0');
-      const s = String(focusTimerSeconds % 60).padStart(2, '0');
-      document.getElementById('timer-focus-display').textContent = `${m}:${s}`;
-    }
-
-    /* ==========================================================
-       5. CALENDAR & CANVAS CHARTS (REBUILT & ALIGNED)
-       ========================================================== */
-    function renderCalendar() {
-      if (!currentUser) return;
-      const year = currentCalDate.getFullYear();
-      const month = currentCalDate.getMonth();
-      const months = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
-      document.getElementById('cal-month-title').textContent = `${months[month]} ${year}`;
-
-      const grid = document.getElementById('calendar-cells');
-      grid.innerHTML = '';
-
-      const firstDay = new Date(year, month, 1).getDay();
-      let offset = (firstDay + 1) % 7;
-      const daysCount = new Date(year, month + 1, 0).getDate();
-      const today = getTodayString();
-      const active = currentUser.habits.filter(h => h.status === 'active');
-
-      for (let i = 0; i < offset; i++) {
-        const dummy = document.createElement('div');
-        dummy.style.opacity = '0';
-        grid.appendChild(dummy);
-      }
-
-      for (let d = 1; d <= daysCount; d++) {
-        const dateKey = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-        const cell = document.createElement('div');
-        cell.className = 'cal-cell';
-        if (dateKey === today) cell.classList.add('is-today');
-
-        let completed = 0;
-        if (active.length > 0 && currentUser.completions[dateKey]) {
-          active.forEach(h => {
-            const v = currentUser.completions[dateKey][h.id] || 0;
-            if (h.type === 'boolean' && v >= 1) completed++;
-            if (h.type !== 'boolean' && v >= h.target) completed++;
-          });
-        }
-
-        if (active.length > 0 && completed === active.length) {
-          cell.classList.add('is-perfect');
-        }
-
-        cell.innerHTML = `
-          <div style="font-weight:900;font-size:0.88rem">${d}</div>
-          <div class="cal-cell-dots">
-            ${Array.from({ length: Math.min(completed, 6) }).map(() => '<span class="cal-cell-dot"></span>').join('')}
-          </div>
-        `;
-        cell.onclick = () => showToast(`إنجاز يوم ${dateKey}: ${completed} من أصل ${active.length} عادة`);
-        grid.appendChild(cell);
-      }
-    }
-
-    function changeCalMonth(delta) {
-      currentCalDate.setMonth(currentCalDate.getMonth() + delta);
-      renderCalendar();
-    }
-
-    function renderAnalytics() {
+    function renderCharts() {
       drawAdherenceChart();
-      drawCategoryChart();
+      drawCategoriesChart();
+      renderRewards();
     }
 
     function drawAdherenceChart() {
-      const canvas = document.getElementById('chart-weekly-adherence');
-      if (!canvas || !currentUser) return;
+      const canvas = document.getElementById('canvas-7days-chart');
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
-      
-      const containerWidth = canvas.parentElement.clientWidth;
-      canvas.width = containerWidth * dpr;
-      canvas.height = 260 * dpr;
+      const w = canvas.parentElement.clientWidth;
+      const h = 250;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
       ctx.scale(dpr, dpr);
-
-      const w = containerWidth;
-      const h = 260;
       ctx.clearRect(0, 0, w, h);
 
       const days = [];
       const rates = [];
-      const active = currentUser.habits.filter(h => h.status === 'active');
+      const totalHabits = appState.habits.length;
 
       for (let i = 6; i >= 0; i--) {
         const d = new Date();
         d.setDate(d.getDate() - i);
-        const dateKey = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+        const key = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
         days.push(String(d.getDate()).padStart(2,'0'));
-
-        if (active.length === 0) {
-          rates.push(0);
-        } else {
-          let done = 0;
-          active.forEach(h => {
-            const v = currentUser.completions[dateKey]?.[h.id] || 0;
-            if (h.type === 'boolean' && v >= 1) done++;
-            if (h.type !== 'boolean' && v >= h.target) done++;
-          });
-          rates.push(Math.round((done / active.length) * 100));
-        }
+        let done = 0;
+        appState.habits.forEach(h => {
+          if ((appState.completions[key]?.[h.id] || 0) >= h.target) done++;
+        });
+        rates.push(Math.round((done / totalHabits) * 100));
       }
 
-      // Draw subtle grid lines
-      ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--border').trim();
-      ctx.lineWidth = 1;
-      [0.25, 0.5, 0.75, 1].forEach(ratio => {
-        const lineY = 40 + (1 - ratio) * 150;
-        ctx.beginPath();
-        ctx.moveTo(30, lineY);
-        ctx.lineTo(w - 30, lineY);
-        ctx.stroke();
-      });
-
-      const barWidth = 32;
-      const gap = (w - 60 - (barWidth * 7)) / 6;
+      const barWidth = 30;
+      const sidePad = 40;
+      const gap = (w - (sidePad * 2) - (barWidth * 7)) / 6;
 
       rates.forEach((rate, idx) => {
-        const x = 30 + idx * (barWidth + gap);
-        const maxH = 150;
-        const barH = Math.max(4, (rate / 100) * maxH);
-        const y = 40 + (maxH - barH);
+        const x = sidePad + idx * (barWidth + gap);
+        const maxBarH = 140;
+        const barH = Math.max(6, (rate / 100) * maxBarH);
+        const y = 40 + (maxBarH - barH);
 
-        // Draw pillar background track
+        // Pillar Track
         ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg').trim();
         ctx.beginPath();
-        ctx.roundRect(x, 40, barWidth, maxH, [6, 6, 6, 6]);
+        ctx.roundRect(x, 40, barWidth, maxBarH, [6, 6, 6, 6]);
         ctx.fill();
 
-        // Draw active bar fill
-        ctx.fillStyle = rate === 100 ? '#059669' : (rate > 0 ? '#4f46e5' : 'rgba(100,116,139,0.2)');
+        // Active Bar
+        ctx.fillStyle = rate === 100 ? '#10b981' : (rate > 0 ? '#3b82f6' : 'rgba(148,163,184,0.3)');
         ctx.beginPath();
         ctx.roundRect(x, y, barWidth, barH, [6, 6, 6, 6]);
         ctx.fill();
 
-        // Labels
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-secondary').trim();
+        // Rate Label
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-muted').trim();
         ctx.font = '800 11px Cairo';
         ctx.textAlign = 'center';
-        ctx.fillText(`${rate}%`, x + barWidth / 2, y - 8);
+        ctx.fillText(`${rate}%`, x + barWidth / 2, y - 6);
 
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
+        // Day Label
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
         ctx.font = '900 12px Cairo';
-        ctx.fillText(days[idx], x + barWidth / 2, 220);
+        ctx.fillText(days[idx], x + barWidth / 2, 210);
       });
     }
 
-    function drawCategoryChart() {
-      const canvas = document.getElementById('chart-categories-dist');
-      if (!canvas || !currentUser) return;
+    function drawCategoriesChart() {
+      const canvas = document.getElementById('canvas-categories-chart');
+      if (!canvas) return;
       const ctx = canvas.getContext('2d');
       const dpr = window.devicePixelRatio || 1;
-      
-      const containerWidth = canvas.parentElement.clientWidth;
-      canvas.width = containerWidth * dpr;
-      canvas.height = 260 * dpr;
+      const w = canvas.parentElement.clientWidth;
+      const h = 250;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
       ctx.scale(dpr, dpr);
-
-      const w = containerWidth;
-      const h = 260;
       ctx.clearRect(0, 0, w, h);
 
       const counts = {};
-      currentUser.habits.forEach(h => counts[h.category] = (counts[h.category] || 0) + 1);
-      const cats = Object.keys(counts);
-      const total = currentUser.habits.length;
+      appState.habits.forEach(h => counts[h.category] = (counts[h.category] || 0) + 1);
+      const categories = Object.keys(counts);
+      const total = appState.habits.length;
       if (total === 0) return;
 
-      let start = 0;
-      const colors = ['#059669', '#4f46e5', '#d97706', '#dc2626', '#0284c7'];
+      const colors = ['#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#06b6d4', '#ec4899'];
+      let startAngle = 0;
       const cx = w * 0.35;
       const cy = h / 2;
-      const rad = 72;
+      const radius = 68;
 
-      cats.forEach((c, idx) => {
-        const slice = (counts[c] / total) * 2 * Math.PI;
+      categories.forEach((cat, idx) => {
+        const sliceAngle = (counts[cat] / total) * 2 * Math.PI;
         ctx.fillStyle = colors[idx % colors.length];
         ctx.beginPath();
         ctx.moveTo(cx, cy);
-        ctx.arc(cx, cy, rad, start, start + slice);
+        ctx.arc(cx, cy, radius, startAngle, startAngle + sliceAngle);
         ctx.closePath();
         ctx.fill();
-        start += slice;
+        startAngle += sliceAngle;
 
-        const legY = 50 + idx * 26;
+        // Legend
+        const legY = 40 + idx * 26;
         ctx.fillRect(w * 0.65, legY - 10, 12, 12);
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-main').trim();
         ctx.font = '800 12px Cairo';
         ctx.textAlign = 'right';
-        ctx.fillText(`${c} (${counts[c]})`, w - 25, legY);
+        ctx.fillText(`${cat} (${counts[cat]})`, w - 20, legY);
+      });
+    }
+
+    function renderRewards() {
+      const grid = document.getElementById('rewards-container-grid');
+      grid.innerHTML = '';
+      const rewards = [
+        { title: 'بداية الارتقاء', desc: 'تسجيل أول عادة في النظام بنجاح' },
+        { title: 'ثبات الـ 3 أيام', desc: 'الالتزام بدون أي انقطاع لثلاثة أيام' },
+        { title: 'أسبوع الانضباط', desc: 'إتمام 7 أيام كاملة من العمل المستمر' },
+        { title: 'شهر التمكين', desc: 'الوصول لـ 30 يوماً وبناء عادة راسخة' }
+      ];
+
+      rewards.forEach((r, idx) => {
+        const card = document.createElement('div');
+        card.className = 'metric-card';
+        card.innerHTML = `
+          <div class="metric-title">مكافأة المستوى ${idx + 1}</div>
+          <div style="font-size:1.15rem;font-weight:900;color:var(--text-main);margin-bottom:0.25rem">${r.title}</div>
+          <div class="metric-sub">${r.desc}</div>
+        `;
+        grid.appendChild(card);
       });
     }
 
     /* ==========================================================
-       6. COMPLETE 114 SURAHS QURAN & RECITATION ENGINE
+       3. 114 SURAHS QURAN & RECITATION HUB
        ========================================================== */
     const SURAH_DIRECTORY_114 = [
       { n: 1, name: "الفاتحة", ayahs: 7 }, { n: 2, name: "البقرة", ayahs: 286 }, { n: 3, name: "آل عمران", ayahs: 200 },
@@ -2728,41 +1544,8 @@
       { n: 112, name: "الإخلاص", ayahs: 4 }, { n: 113, name: "الفلق", ayahs: 5 }, { n: 114, name: "الناس", ayahs: 6 }
     ];
 
-    const BUILTIN_QURAN_VERSES = {
-      1: [
-        { num: 1, text: "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/1.mp3" },
-        { num: 2, text: "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/2.mp3" },
-        { num: 3, text: "الرَّحْمَٰنِ الرَّحِيمِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/3.mp3" },
-        { num: 4, text: "مَالِكِ يَوْمِ الدِّينِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/4.mp3" },
-        { num: 5, text: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/5.mp3" },
-        { num: 6, text: "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6.mp3" },
-        { num: 7, text: "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/7.mp3" }
-      ],
-      112: [
-        { num: 1, text: "قُلْ هُوَ اللَّهُ أَحَدٌ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6221.mp3" },
-        { num: 2, text: "اللَّهُ الصَّمَدُ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6222.mp3" },
-        { num: 3, text: "لَمْ يَلِدْ وَلَمْ يُولَدْ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6223.mp3" },
-        { num: 4, text: "وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6224.mp3" }
-      ],
-      113: [
-        { num: 1, text: "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6225.mp3" },
-        { num: 2, text: "مِن شَرِّ مَا خَلَقَ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6226.mp3" },
-        { num: 3, text: "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6227.mp3" },
-        { num: 4, text: "وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6228.mp3" },
-        { num: 5, text: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6229.mp3" }
-      ],
-      114: [
-        { num: 1, text: "قُلْ أَعُوذُ بِرَبِّ النَّاسِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6230.mp3" },
-        { num: 2, text: "مَلِكِ النَّاسِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6231.mp3" },
-        { num: 3, text: "إِلَٰهِ النَّاسِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6232.mp3" },
-        { num: 4, text: "مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6233.mp3" },
-        { num: 5, text: "الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6234.mp3" },
-        { num: 6, text: "مِنَ الْجِنَّةِ وَالنَّاسِ", audio: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/6235.mp3" }
-      ]
-    };
-
-    function initQuranDirectory() {
-      const select = document.getElementById('quran-surah-select');
+    function initSurahDirectory() {
+      const select = document.getElementById('select-surah-picker');
       select.innerHTML = '';
       SURAH_DIRECTORY_114.forEach(s => {
         const opt = document.createElement('option');
@@ -2770,480 +1553,191 @@
         opt.textContent = `${s.n}. سورة ${s.name} (${s.ayahs} آية)`;
         select.appendChild(opt);
       });
-      loadSurah(currentUser?.lastRead?.surah || 1);
+      loadQuranSurah(appState.currentSurah || 1);
     }
 
-    async function loadSurah(surahNum) {
-      if (!currentUser) return;
+    async function loadQuranSurah(surahNum) {
       surahNum = parseInt(surahNum, 10);
-      currentUser.lastRead.surah = surahNum;
-      syncCurrentUserData();
+      appState.currentSurah = surahNum;
+      saveStore();
 
-      const surahObj = SURAH_DIRECTORY_114.find(s => s.n === surahNum);
-      document.getElementById('audio-playing-label').textContent = `سورة ${surahObj.name}`;
+      pauseRecitation();
+      currentVerseIdx = 0;
 
-      pauseQuranAudio();
-      currentPlayingIndex = 0;
-
-      const container = document.getElementById('quran-text-flow');
-      container.innerHTML = '<div style="text-align:center;padding:2rem;font-weight:800;color:var(--muted)">جاري تحميل السورة الكريمة...</div>';
-
-      const basmala = document.getElementById('quran-basmala-title');
-      basmala.style.display = (surahNum === 1 || surahNum === 9) ? 'none' : 'block';
-
-      if (BUILTIN_QURAN_VERSES[surahNum]) {
-        currentAyahsData = BUILTIN_QURAN_VERSES[surahNum];
-        renderSurahVerses(currentAyahsData);
-        return;
-      }
+      const container = document.getElementById('quran-text-container');
+      container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">جاري تحميل السورة الكريمة...</div>';
 
       try {
-        const resp = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.alafasy`);
-        const json = await resp.json();
-        if (json.code === 200 && json.data && json.data.ayahs) {
-          currentAyahsData = json.data.ayahs.map(a => ({
+        const res = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/ar.alafasy`);
+        const json = await res.json();
+        if (json.code === 200 && json.data?.ayahs) {
+          audioVerses = json.data.ayahs.map(a => ({
             num: a.numberInSurah,
             text: a.text,
             audio: a.audio
           }));
-          renderSurahVerses(currentAyahsData);
+          renderVersesScript();
         } else {
           throw new Error('Fallback');
         }
       } catch (err) {
-        container.innerHTML = `
-          <div style="text-align:center;padding:2rem;color:var(--text-secondary);font-weight:800">
-            <p>تم حفظ السورة في الفهرس. يرجى الاتصال بالإنترنت لسماع التلاوة المباشرة بصوت الشيخ مشاري العفاسي.</p>
-          </div>
-        `;
+        container.innerHTML = '<div style="text-align:center;padding:2rem;color:var(--text-muted)">يرجى الاتصال بالإنترنت لتحميل تلاوة ونصوص هذه السورة الكريمة.</div>';
       }
     }
 
-    function renderSurahVerses(ayahs) {
-      const container = document.getElementById('quran-text-flow');
+    function renderVersesScript() {
+      const container = document.getElementById('quran-text-container');
       container.innerHTML = '';
-      ayahs.forEach((ayah, idx) => {
-        const span = document.createElement('span');
-        span.className = 'ayah-inline';
-        span.id = `ayah-item-${idx}`;
-        span.textContent = ayah.text;
-        span.onclick = () => playAyahByIndex(idx);
+      container.style.fontSize = `${appState.scriptFontSize}px`;
 
-        const bracket = document.createElement('span');
-        bracket.className = 'ayah-bracket';
-        bracket.textContent = ` ﴿${ayah.num}﴾ `;
+      audioVerses.forEach((v, idx) => {
+        const span = document.createElement('span');
+        span.className = 'ayah-word';
+        span.id = `ayah-node-${idx}`;
+        span.textContent = v.text;
+        span.onclick = () => playVerseByIndex(idx);
+
+        const sym = document.createElement('span');
+        sym.className = 'ayah-symbol';
+        sym.textContent = ` ﴿${v.num}﴾ `;
 
         container.appendChild(span);
-        container.appendChild(bracket);
+        container.appendChild(sym);
       });
     }
 
-    function toggleQuranAudio() {
-      if (isSurahAudioPlaying) pauseQuranAudio();
-      else playAyahByIndex(currentPlayingIndex);
+    function toggleQuranRecitation() {
+      if (isReciting) pauseRecitation();
+      else playVerseByIndex(currentVerseIdx);
     }
 
-    function playAyahByIndex(index) {
-      if (!currentAyahsData || currentAyahsData.length === 0) return;
-      if (index >= currentAyahsData.length) {
-        pauseQuranAudio();
-        showToast('تمت تلاوة السورة المباركة كاملة بحمد الله');
+    function playVerseByIndex(idx) {
+      if (!audioVerses || audioVerses.length === 0) return;
+      if (idx >= audioVerses.length) {
+        pauseRecitation();
         return;
       }
+      currentVerseIdx = idx;
+      const v = audioVerses[idx];
 
-      currentPlayingIndex = index;
-      const ayah = currentAyahsData[index];
-
-      document.querySelectorAll('.ayah-inline').forEach(el => el.classList.remove('active-audio-ayah'));
-      const activeEl = document.getElementById(`ayah-item-${index}`);
-      if (activeEl) {
-        activeEl.classList.add('active-audio-ayah');
-        activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.querySelectorAll('.ayah-word').forEach(el => el.classList.remove('current-reciting'));
+      const activeNode = document.getElementById(`ayah-node-${idx}`);
+      if (activeNode) {
+        activeNode.classList.add('current-reciting');
+        activeNode.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
 
-      quranAudioPlayer.src = ayah.audio;
-      quranAudioPlayer.play().then(() => {
-        isSurahAudioPlaying = true;
-        document.getElementById('btn-audio-toggle').textContent = 'إيقاف مؤقت ⏸';
-        document.getElementById('audio-playing-label').textContent = `تلاوة الآية رقم ${ayah.num}`;
-      }).catch(err => console.warn('Playback error', err));
+      audioElement.src = v.audio;
+      audioElement.play().then(() => {
+        isReciting = true;
+        document.getElementById('btn-quran-audio').textContent = 'إيقاف مؤقت';
+      }).catch(() => {});
 
-      quranAudioPlayer.onended = () => {
-        playAyahByIndex(currentPlayingIndex + 1);
-      };
+      audioElement.onended = () => playVerseByIndex(currentVerseIdx + 1);
     }
 
-    function pauseQuranAudio() {
-      quranAudioPlayer.pause();
-      isSurahAudioPlaying = false;
-      document.getElementById('btn-audio-toggle').textContent = 'تشغيل التلاوة ▶';
+    function pauseRecitation() {
+      audioElement.pause();
+      isReciting = false;
+      document.getElementById('btn-quran-audio').textContent = 'تشغيل التلاوة';
     }
 
-    function playNextAyahAudio() {
-      if (currentPlayingIndex < currentAyahsData.length - 1) playAyahByIndex(currentPlayingIndex + 1);
-    }
-
-    function playPreviousAyahAudio() {
-      if (currentPlayingIndex > 0) playAyahByIndex(currentPlayingIndex - 1);
-    }
-
-    function adjustQuranFont(delta) {
-      if (!currentUser) return;
-      currentUser.settings.quranFontSize = Math.min(38, Math.max(18, (currentUser.settings.quranFontSize || 26) + delta));
-      document.getElementById('quran-text-flow').style.fontSize = `${currentUser.settings.quranFontSize}px`;
-      syncCurrentUserData();
-    }
-
-    function resumeLastReadSurah() {
-      if (!currentUser) return;
-      const s = currentUser.lastRead?.surah || 1;
-      document.getElementById('quran-surah-select').value = s;
-      loadSurah(s);
-      showToast(`تم الانتقال لآخر موضع (سورة ${SURAH_DIRECTORY_114.find(item => item.n === s)?.name})`);
-    }
-
-    /* ==========================================================
-       7. HADITH SECTION
-       ========================================================== */
-    const AUTHENTIC_HADITHS_DATA = [
-      { id: 1, matn: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى.", source: "صحيح البخاري", number: 1, grade: "صحيح متفق عليه" },
-      { id: 2, matn: "أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ تَعَالَى أَدْوَمُهَا وَإِنْ قَلَّ.", source: "صحيح مسلم", number: 783, grade: "صحيح" },
-      { id: 3, matn: "المُؤْمِنُ القَوِيُّ، خَيْرٌ وَأَحَبُّ إلى اللهِ مِنَ المُؤْمِنِ الضَّعِيفِ، وفي كُلٍّ خَيْرٌ، احْرِصْ علَى ما يَنْفَعُكَ، وَاسْتَعِنْ باللَّهِ وَلَا تَعْجَزْ.", source: "صحيح مسلم", number: 2664, grade: "صحيح" },
-      { id: 4, matn: "كَلِمَتَانِ خَفِيفَتَانِ عَلَى اللِّسَانِ، ثَقِيلَتَانِ فِي الْمِيزَانِ، حَبِيبَتَانِ إِلَى الرَّحْمَنِ: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ.", source: "صحيح البخاري", number: 6682, grade: "صحيح" }
-    ];
-
-    function renderHadiths(list) {
-      const container = document.getElementById('hadith-list-container');
-      container.innerHTML = '';
-      list.forEach(h => {
-        const card = document.createElement('div');
-        card.className = 'hadith-card';
-        card.innerHTML = `
-          <div class="hadith-matn">« ${escapeHTML(h.matn)} »</div>
-          <div class="hadith-footer">
-            <span>📚 ${escapeHTML(h.source)} (رقم ${h.number}) — <strong>${h.grade}</strong></span>
-            <div style="display:flex;gap:0.5rem">
-              <button class="btn btn-secondary" style="padding:0.35rem 0.75rem;font-size:0.85rem" onclick="copyHadith('${escapeHTML(h.matn)}', '${escapeHTML(h.source)}')">نسخ</button>
-              <button class="btn btn-secondary" style="padding:0.35rem 0.75rem;font-size:0.85rem" onclick="bookmarkHadith(${h.id})">⭐ حفظ</button>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function copyHadith(matn, src) {
-      navigator.clipboard.writeText(`«${matn}» [المصدر: ${src}]`);
-      showToast('تم نسخ نص الحديث الشريف بنجاح');
-    }
-
-    function bookmarkHadith(id) {
-      if (!currentUser) return;
-      const h = AUTHENTIC_HADITHS_DATA.find(item => item.id === id);
-      if (!h) return;
-      if (!currentUser.bookmarks.hadith.some(b => b.id === id)) {
-        currentUser.bookmarks.hadith.push(h);
-        syncCurrentUserData();
-        showToast('تم حفظ الحديث في المفضلة ⭐');
-      } else {
-        showToast('الحديث محفوظ مسبقاً');
+    function stepAyahRecitation(delta) {
+      const next = currentVerseIdx + delta;
+      if (next >= 0 && next < audioVerses.length) {
+        playVerseByIndex(next);
       }
     }
 
-    function switchIslamicView(view) {
-      document.getElementById('islamic-quran-view').style.display = view === 'quran' ? 'block' : 'none';
-      document.getElementById('islamic-hadith-view').style.display = view === 'hadith' ? 'block' : 'none';
-      document.getElementById('islamic-bookmarks-view').style.display = view === 'bookmarks' ? 'block' : 'none';
-      if (view === 'bookmarks') renderBookmarksView();
-    }
-
-    function renderBookmarksView() {
-      const container = document.getElementById('saved-bookmarks-container');
-      container.innerHTML = '';
-      if (!currentUser || currentUser.bookmarks.hadith.length === 0) {
-        container.innerHTML = '<p style="color:var(--text-secondary);padding:1.5rem 0;font-weight:800">لم تحفظ أي أحاديث بعد.</p>';
-        return;
-      }
-      currentUser.bookmarks.hadith.forEach(h => {
-        const c = document.createElement('div');
-        c.className = 'hadith-card';
-        c.innerHTML = `
-          <div class="hadith-matn">« ${escapeHTML(h.matn)} »</div>
-          <div class="hadith-footer">
-            <span>${escapeHTML(h.source)}</span>
-            <button class="btn btn-danger" style="padding:0.3rem 0.6rem;font-size:0.85rem" onclick="deleteHadithBookmark(${h.id})">حذف</button>
-          </div>
-        `;
-        container.appendChild(c);
-      });
-    }
-
-    function deleteHadithBookmark(id) {
-      if (!currentUser) return;
-      currentUser.bookmarks.hadith = currentUser.bookmarks.hadith.filter(b => b.id !== id);
-      syncCurrentUserData();
-      renderBookmarksView();
-      showToast('تم حذف الحديث من المحفوظات');
+    function adjustScriptSize(delta) {
+      appState.scriptFontSize = Math.min(36, Math.max(20, (appState.scriptFontSize || 26) + delta));
+      document.getElementById('quran-text-container').style.fontSize = `${appState.scriptFontSize}px`;
+      saveStore();
     }
 
     /* ==========================================================
-       8. ACHIEVEMENTS SYSTEM
-       ========================================================== */
-    const ACHIEVEMENTS_LIST = [
-      { id: 'start', title: 'بداية القوة', desc: 'أول خطوة في خطتك لبناء العادات', check: () => (currentUser?.habits?.length || 0) >= 1 },
-      { id: 'first_done', title: 'أول انتصار', desc: 'تسجيل أول علامة صح بحسابك', check: () => Object.keys(currentUser?.completions || {}).length >= 1 },
-      { id: 'streak_3', title: 'شعلة الطموح', desc: 'استمرار لـ 3 أيام متتالية دون انقطاع', check: () => getStreakMetrics().current >= 3 },
-      { id: 'streak_7', title: 'فارس العزيمة', desc: 'سلسلة 7 أيام متتالية من الانضباط', check: () => getStreakMetrics().current >= 7 },
-      { id: 'perfect', title: 'اليوم الخارق', desc: 'إتمام 100% من جميع العادات النشطة', check: () => calculatePerfectDays() >= 1 },
-      { id: 'streak_30', title: 'أسطورة الالتزام', desc: '30 يوماً من الثبات وبناء الذات', check: () => getStreakMetrics().current >= 30 }
-    ];
-
-    function checkMilestones() {
-      renderAchievements();
-    }
-
-    function renderAchievements() {
-      const container = document.getElementById('achievements-container');
-      if (!container || !currentUser) return;
-      container.innerHTML = '';
-      ACHIEVEMENTS_LIST.forEach(a => {
-        const unlocked = a.check();
-        const card = document.createElement('div');
-        card.className = `achievement-card ${unlocked ? '' : 'locked'}`;
-        card.innerHTML = `
-          <div class="ach-icon-wrapper">${unlocked ? '🏅' : '🔒'}</div>
-          <div class="ach-info">
-            <h4 class="heavy-title">${a.title}</h4>
-            <p>${a.desc}</p>
-            <div class="ach-status">${unlocked ? 'مكتسب بنجاح ✓' : 'قيد التقدم'}</div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    /* ==========================================================
-       9. TABS & MODALS
-       ========================================================== */
-    function switchTab(tabId) {
-      playAppSound('check');
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      const target = document.getElementById(`tab-${tabId}`);
-      if (target) target.classList.add('active');
-
+       4. NAVIGATION & SINGLE ACCESS ONBOARDING
+       ========================================================= */
+    function switchMainTab(tab) {
       document.querySelectorAll('.nav-item button').forEach(b => b.classList.remove('active'));
-      const deskBtn = Array.from(document.querySelectorAll('.nav-item button')).find(b => b.getAttribute('onclick')?.includes(tabId));
-      if (deskBtn) deskBtn.classList.add('active');
+      document.getElementById('view-habits').style.display = tab === 'habits' ? 'block' : 'none';
+      document.getElementById('view-analytics').style.display = tab === 'analytics' ? 'block' : 'none';
+      document.getElementById('view-islamic').style.display = tab === 'islamic' ? 'block' : 'none';
 
-      document.querySelectorAll('.m-nav-item').forEach(b => b.classList.remove('active'));
-      const mobBtn = Array.from(document.querySelectorAll('.m-nav-item')).find(b => b.getAttribute('onclick')?.includes(tabId));
-      if (mobBtn) mobBtn.classList.add('active');
+      const navBtn = document.getElementById(`nav-btn-${tab}`);
+      if (navBtn) navBtn.classList.add('active');
 
-      if (tabId === 'calendar') renderCalendar();
-      if (tabId === 'analytics') renderAnalytics();
-      if (tabId === 'habits') renderHabitsList('all-habits-container');
-      if (tabId === 'achievements') renderAchievements();
-      if (tabId === 'dashboard') renderDashboard();
-      if (tabId === 'youth') updateYouthHubTimeMessage();
-
+      if (tab === 'analytics') renderCharts();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function openHabitModal(id = null) {
-      const form = document.getElementById('habit-form');
-      form.reset();
-      document.getElementById('form-habit-id').value = '';
-      document.getElementById('modal-habit-title').textContent = 'إضافة عادة جديدة';
-      toggleHabitTypeFields('boolean');
-
-      if (id && currentUser) {
-        const h = currentUser.habits.find(item => item.id === id);
-        if (h) {
-          document.getElementById('modal-habit-title').textContent = 'تعديل العادة';
-          document.getElementById('form-habit-id').value = h.id;
-          document.getElementById('form-habit-name').value = h.name;
-          document.getElementById('form-habit-desc').value = h.desc || '';
-          document.getElementById('form-habit-type').value = h.type;
-          document.getElementById('form-habit-category').value = h.category;
-          document.getElementById('form-habit-target').value = h.target;
-          document.getElementById('form-habit-unit').value = h.unit;
-          document.getElementById('form-habit-icon').value = h.icon;
-          toggleHabitTypeFields(h.type);
-        }
-      }
-      document.getElementById('habit-modal').classList.add('active');
-    }
-
-    function closeHabitModal() {
-      document.getElementById('habit-modal').classList.remove('active');
-    }
-
-    function toggleHabitTypeFields(type) {
-      document.getElementById('form-target-row').style.display = type === 'boolean' ? 'none' : 'flex';
-    }
-
-    function saveHabitForm(e) {
+    function handleQuickStart(e) {
       e.preventDefault();
-      if (!currentUser) return;
-      const id = document.getElementById('form-habit-id').value;
-      const name = document.getElementById('form-habit-name').value.trim();
-      const desc = document.getElementById('form-habit-desc').value.trim();
-      const type = document.getElementById('form-habit-type').value;
-      const category = document.getElementById('form-habit-category').value;
-      const icon = document.getElementById('form-habit-icon').value;
-      const target = type === 'boolean' ? 1 : parseInt(document.getElementById('form-habit-target').value, 10) || 1;
-      const unit = type === 'boolean' ? 'مرة' : (document.getElementById('form-habit-unit').value.trim() || 'وحدة');
-
-      if (id) {
-        const h = currentUser.habits.find(item => item.id === id);
-        if (h) {
-          Object.assign(h, { name, desc, type, category, icon, target, unit });
-          showToast('تم تعديل العادة بنجاح');
-        }
-      } else {
-        currentUser.habits.push({
-          id: 'hab_' + Date.now(),
-          name,
-          desc,
-          type,
-          category,
-          icon,
-          target,
-          unit,
-          status: 'active'
-        });
-        showToast('تمت إضافة العادة الجديدة بنجاح');
-      }
-
-      syncCurrentUserData();
-      closeHabitModal();
-      renderDashboard();
-      renderHabitsList('all-habits-container');
+      const name = document.getElementById('quick-user-name').value.trim();
+      if (!name) return;
+      appState.user = { name };
+      saveStore();
+      document.getElementById('quick-start-overlay').classList.remove('is-visible');
+      applyUserIdentity();
     }
 
-    function editHabit(id) { openHabitModal(id); }
+    function applyUserIdentity() {
+      const name = appState.user?.name || 'يا بطل';
+      document.getElementById('header-user-name').textContent = name;
+      document.getElementById('header-user-avatar').textContent = name.charAt(0).toUpperCase();
+      document.getElementById('user-greeting-txt').textContent = `أهلاً بك يا ${name}`;
+    }
 
-    function filterHabits(status) {
-      if (!currentUser) return;
-      const container = document.getElementById('all-habits-container');
-      container.innerHTML = '';
-      let list = currentUser.habits;
-      if (status !== 'all') list = list.filter(h => h.status === status);
-      renderHabitsList('all-habits-container');
+    function toggleThemeMode() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+      if (document.getElementById('view-analytics').style.display !== 'none') {
+        renderCharts();
+      }
+    }
+
+    /* Report Issue Handling */
+    function openIssueModal() {
+      document.getElementById('modal-report-issue').classList.add('is-active');
+    }
+    function closeIssueModal() {
+      document.getElementById('modal-report-issue').classList.remove('is-active');
+    }
+    function handleSendIssue(e) {
+      e.preventDefault();
+      closeIssueModal();
+      triggerAffirmation();
+      const shelf = document.getElementById('affirmation-shelf');
+      const card = document.createElement('div');
+      card.className = 'affirmation-card';
+      card.innerHTML = `<span>✓</span> <span>شكراً لك! تم استلام ملاحظتك بنجاح</span>`;
+      shelf.appendChild(card);
+      setTimeout(() => card.remove(), 2500);
     }
 
     /* ==========================================================
-       10. SETTINGS & PROFILE
+       5. INITIALIZATION
        ========================================================== */
-    function toggleTheme() {
-      if (!currentUser) return;
-      const cur = document.documentElement.getAttribute('data-theme');
-      const next = cur === 'dark' ? 'light' : 'dark';
-      if (next === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-      else document.documentElement.removeAttribute('data-theme');
-      currentUser.settings = currentUser.settings || {};
-      currentUser.settings.theme = next;
-      syncCurrentUserData();
-      if (document.getElementById('tab-analytics').classList.contains('active')) renderAnalytics();
-    }
-
-    function saveUserProfile() {
-      if (!currentUser) return;
-      const goal = document.getElementById('setting-user-goal').value.trim();
-      if (goal) currentUser.profile.goal = goal;
-      syncCurrentUserData();
-      updateProfileUI();
-      showToast('تم حفظ التعديلات بنجاح');
-    }
-
-    function updateProfileUI() {
-      if (!currentUser) return;
-      document.getElementById('hero-greeting').textContent = `أهلاً بك، يا ${currentUser.username} 👋`;
-      document.getElementById('setting-user-name').value = currentUser.username;
-      document.getElementById('setting-user-goal').value = currentUser.profile.goal || '';
-      document.getElementById('visitor-count-display').textContent = (currentUser.visitsCount || 1).toLocaleString('ar-EG');
-    }
-
-    function exportDataJSON() {
-      if (!currentUser) return;
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentUser, null, 2));
-      const a = document.createElement('a');
-      a.setAttribute("href", dataStr);
-      a.setAttribute("download", `habits-backup-${currentUser.username}-${getTodayString()}.json`);
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      showToast('تم تصدير النسخة الاحتياطية بنجاح 📁');
-    }
-
-    function importDataJSON(e) {
-      if (!currentUser) return;
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        try {
-          const parsed = JSON.parse(ev.target.result);
-          if (parsed.habits && parsed.completions) {
-            currentUser.habits = parsed.habits;
-            currentUser.completions = parsed.completions;
-            currentUser.bookmarks = parsed.bookmarks || currentUser.bookmarks;
-            syncCurrentUserData();
-            renderDashboard();
-            showToast('تم استيراد البيانات إلى حسابك بنجاح! 🎉');
-          } else {
-            showToast('ملف النسخة الاحتياطية غير صالح', 'error');
-          }
-        } catch (err) {
-          showToast('حدث خطأ أثناء قراءة الملف', 'error');
-        }
-      };
-      reader.readAsText(file);
-    }
-
-    function confirmResetAllData() {
-      if (!currentUser) return;
-      if (confirm(`هل أنت متأكد من حذف الحساب "${currentUser.username}" وكافة عاداته نهائياً؟`)) {
-        const db = getMasterDB();
-        delete db[currentUser.username];
-        saveMasterDB(db);
-        localStorage.removeItem(ACTIVE_SESSION_KEY);
-        location.reload();
-      }
-    }
-
-    function escapeHTML(str) {
-      if (!str) return '';
-      return String(str).replace(/[&<>'"]/g, t => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[t] || t));
-    }
-
-    function startLiveClock() {
-      const clockEl = document.getElementById('live-clock');
-      const heroDateEl = document.getElementById('hero-date-txt');
-      function tick() {
-        const now = new Date();
-        clockEl.textContent = now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
-        heroDateEl.textContent = now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-      }
-      tick();
-      setInterval(tick, 1000);
-    }
-
-    /* Start Session on Page Load */
     window.addEventListener('DOMContentLoaded', () => {
-      const db = getMasterDB();
-      const activeName = localStorage.getItem(ACTIVE_SESSION_KEY);
+      loadStore();
 
-      if (activeName && db[activeName]) {
-        currentUser = db[activeName];
-        document.getElementById('auth-screen-overlay').classList.remove('active');
-        initUserSession();
+      if (!appState.user) {
+        document.getElementById('quick-start-overlay').classList.add('is-visible');
       } else {
-        document.getElementById('auth-screen-overlay').classList.add('active');
+        applyUserIdentity();
       }
 
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeHabitModal();
+      renderHabitsView();
+      initSurahDirectory();
+
+      window.addEventListener('resize', () => {
+        if (document.getElementById('view-analytics').style.display !== 'none') {
+          renderCharts();
+        }
       });
     });
   </script>
