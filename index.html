@@ -116,15 +116,16 @@
     .brand-box {
       display: flex;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.8rem;
       cursor: pointer;
       user-select: none;
+      flex-shrink: 0;
     }
 
     /* 3D Logo Cube */
     .logo-3d-badge {
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       background: linear-gradient(135deg, #10b981 0%, #047857 100%);
       border-radius: 14px;
       display: flex;
@@ -147,7 +148,7 @@
     }
 
     .brand-title {
-      font-size: 1.65rem;
+      font-size: 1.6rem;
       font-weight: 900;
       line-height: 1.1;
       color: var(--text);
@@ -155,12 +156,12 @@
     }
 
     .brand-tagline {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--primary);
     }
 
-    /* 3D Sliding Navigation Track */
+    /* 3D Sliding Navigation Track (Desktop) */
     .nav-3d-track {
       position: relative;
       background: var(--bg);
@@ -211,8 +212,8 @@
 
     /* 3D Social Media Buttons */
     .social-3d-btn {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: var(--radius-md);
       display: inline-flex;
       align-items: center;
@@ -225,8 +226,8 @@
       flex-shrink: 0;
     }
     .social-3d-btn svg {
-      width: 20px;
-      height: 20px;
+      width: 19px;
+      height: 19px;
       fill: currentColor;
       filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
     }
@@ -262,11 +263,11 @@
     .user-pill-btn {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
       background: var(--bg);
       border: 2px solid var(--border);
       border-radius: var(--radius-full);
-      padding: 0.3rem 0.85rem;
+      padding: 0.3rem 0.75rem;
       cursor: pointer;
       transition: var(--transition);
     }
@@ -296,9 +297,9 @@
     }
 
     .user-name-label {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 800;
-      max-width: 110px;
+      max-width: 100px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -369,8 +370,8 @@
       background: var(--surface);
       border: 2px solid var(--border);
       color: var(--text);
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -391,10 +392,10 @@
 
     /* Section Architecture Header */
     .section-header-block {
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
     .section-title {
-      font-size: 1.55rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: var(--text);
       letter-spacing: -0.3px;
@@ -412,7 +413,7 @@
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.2rem;
+      padding: 2rem;
       margin-bottom: 2rem;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
       display: flex;
@@ -422,8 +423,13 @@
       gap: 1.5rem;
     }
 
+    .hero-info-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
     .hero-info-text h1 {
-      font-size: 2.1rem;
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
       font-weight: 800;
       margin-bottom: 0.35rem;
       color: var(--text);
@@ -469,12 +475,12 @@
       background: var(--bg);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 0.9rem 2.2rem;
+      padding: 0.9rem 2rem;
       text-align: center;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+      min-width: 140px;
     }
     .hero-kpi-value {
-      font-size: 2.4rem;
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
       font-weight: 900;
       color: var(--primary);
       line-height: 1.1;
@@ -488,8 +494,8 @@
     /* KPI Metrics Cards */
     .kpi-metrics-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+      gap: 1.15rem;
       margin-bottom: 2.25rem;
     }
 
@@ -497,7 +503,7 @@
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.4rem;
+      padding: 1.25rem;
       box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
       transition: var(--transition);
     }
@@ -506,35 +512,35 @@
       transform: translateY(-2px);
     }
     .metric-title {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 0.35rem;
     }
     .metric-num {
-      font-size: 2.1rem;
+      font-size: 1.85rem;
       font-weight: 900;
       color: var(--text);
     }
     .metric-sub {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: var(--text-subtle);
       margin-top: 0.25rem;
     }
 
-    /* Habits Cards */
+    /* Habits Cards Grid */
     .habits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 1.4rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
+      gap: 1.25rem;
     }
 
     .habit-item-card {
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.6rem;
+      padding: 1.4rem;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
@@ -570,19 +576,19 @@
     }
 
     .habit-title-text {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 800;
       color: var(--text);
       margin-bottom: 0.35rem;
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .habit-desc-text {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--text-muted);
       line-height: 1.55;
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.2rem;
     }
 
     .habit-progress-track {
@@ -605,7 +611,7 @@
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--text-muted);
-      margin-bottom: 1.35rem;
+      margin-bottom: 1.25rem;
     }
 
     /* 3D Check Action Button */
@@ -685,11 +691,10 @@
       font-size: 1rem;
     }
 
-    /* Floating Affirmation Notification */
     #affirmation-shelf {
       position: fixed;
-      bottom: 30px;
-      left: 30px;
+      bottom: 85px;
+      left: 20px;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -703,15 +708,15 @@
       color: #ffffff;
       border: 2px solid rgba(255, 255, 255, 0.15);
       border-right: 6px solid var(--primary);
-      padding: 0.95rem 1.6rem;
+      padding: 0.85rem 1.4rem;
       border-radius: var(--radius-md);
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      min-width: 260px;
+      min-width: 240px;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       animation: toastIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     @keyframes toastIn {
@@ -722,7 +727,7 @@
     /* Charts Section */
     .charts-duo-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
       gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
@@ -731,11 +736,11 @@
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.8rem;
+      padding: 1.5rem;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
     }
     .chart-panel-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 800;
       margin-bottom: 1.25rem;
     }
@@ -751,7 +756,7 @@
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.2rem;
+      padding: 1.5rem;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
     }
 
@@ -759,8 +764,8 @@
       background: var(--bg);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 1.1rem 1.6rem;
-      margin-bottom: 1.75rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -774,12 +779,12 @@
       text-align: justify;
       line-height: 2.65;
       font-family: var(--font-quran);
-      font-size: 1.7rem;
+      font-size: clamp(1.4rem, 4vw, 1.7rem);
     }
 
     .ayah-word {
       display: inline;
-      padding: 2px 5px;
+      padding: 2px 4px;
       border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.2s ease;
@@ -798,7 +803,7 @@
       justify-content: center;
       color: var(--primary);
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       margin: 0 0.35rem;
       user-select: none;
     }
@@ -807,8 +812,8 @@
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(79, 70, 229, 0.05) 100%);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.8rem 2.2rem;
-      margin: 2.5rem 0;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -816,13 +821,13 @@
       gap: 1rem;
     }
     .free-cause-card h4 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 800;
       color: var(--primary);
       margin-bottom: 0.2rem;
     }
     .free-cause-card p {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--text-muted);
       max-width: 780px;
@@ -850,8 +855,10 @@
       border-radius: var(--radius-lg);
       width: 100%;
       max-width: 500px;
-      padding: 2.2rem;
+      padding: 1.8rem;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .modal-head-row {
@@ -861,7 +868,7 @@
       margin-bottom: 1.4rem;
     }
     .modal-head-row h3 {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
     }
     .modal-close-btn {
@@ -919,23 +926,23 @@
       background: var(--surface);
       border-top: 2px solid var(--border);
       margin-top: auto;
-      padding: 3rem 0 2rem 0;
+      padding: 2.5rem 0 1.5rem 0;
     }
 
     .footer-content-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: 1.75rem;
+      margin-bottom: 2rem;
     }
 
     .footer-col h4 {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       margin-bottom: 0.75rem;
     }
     .footer-col p {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.7;
     }
@@ -949,18 +956,18 @@
 
     .footer-bottom-strip {
       border-top: 2px solid var(--border);
-      padding-top: 1.5rem;
+      padding-top: 1.25rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 1rem;
-      font-size: 0.85rem;
+      gap: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--text-subtle);
     }
 
-    /* Authentication Modal Switcher (Login / Register) */
+    /* Auth Modal */
     #auth-screen-overlay {
       position: fixed;
       inset: 0;
@@ -969,7 +976,7 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: 1rem;
     }
     #auth-screen-overlay.is-active {
       display: flex;
@@ -977,11 +984,11 @@
 
     .auth-card-3d {
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 2.5rem;
+      padding: 2rem 1.5rem;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
       text-align: center;
     }
@@ -991,16 +998,16 @@
       background: var(--bg);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 4px;
-      margin-bottom: 1.4rem;
+      padding: 3px;
+      margin-bottom: 1.25rem;
     }
     .auth-tab-btn {
       flex: 1;
       border: none;
       background: none;
-      padding: 0.6rem;
+      padding: 0.55rem;
       font-weight: 800;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       border-radius: var(--radius-sm);
       cursor: pointer;
       color: var(--text-muted);
@@ -1016,19 +1023,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
     }
     .profile-big-avatar {
-      width: 90px;
-      height: 90px;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
       background: var(--navy);
       color: #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 900;
       overflow: hidden;
       border: 3px solid var(--primary);
@@ -1045,22 +1052,146 @@
       width: 100%;
       border-collapse: collapse;
       text-align: right;
+      min-width: 580px;
     }
     .admin-table th {
-      padding: 0.85rem;
+      padding: 0.75rem;
       border-bottom: 2px solid var(--border);
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     .admin-table td {
-      padding: 0.85rem;
+      padding: 0.75rem;
       border-bottom: 1px solid var(--border);
-      font-size: 0.92rem;
+      font-size: 0.88rem;
     }
 
+    /* Mobile Bottom Navigation (Visible on Screens <= 960px) */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: var(--surface);
+      border-top: 2px solid var(--border);
+      z-index: 500;
+      box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.08);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    .mobile-bottom-nav-inner {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 0.5rem;
+    }
+    .m-nav-btn {
+      background: none;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      flex: 1;
+      padding: 0.35rem 0.2rem;
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+    }
+    .m-nav-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      fill: none;
+    }
+    .m-nav-btn.active {
+      color: var(--primary);
+    }
+
+    /* Mobile Responsive Fine-Tuning */
     @media (max-width: 960px) {
-      .nav-3d-track { display: none; }
-      .live-clock-badge { display: none; }
+      body {
+        padding-bottom: 74px; /* Space for Mobile Bottom Nav */
+      }
+      .nav-3d-track {
+        display: none;
+      }
+      .live-clock-badge {
+        display: none;
+      }
+      .mobile-bottom-nav {
+        display: block;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 1rem;
+      }
+      .header-inner {
+        height: 72px;
+        gap: 0.6rem;
+      }
+      .brand-title {
+        font-size: 1.4rem;
+      }
+      .brand-tagline {
+        display: none;
+      }
+      .logo-3d-badge {
+        width: 44px;
+        height: 44px;
+      }
+      .social-3d-btn {
+        width: 36px;
+        height: 36px;
+      }
+      .social-3d-btn svg {
+        width: 17px;
+        height: 17px;
+      }
+      .btn-3d-icon {
+        width: 36px;
+        height: 36px;
+      }
+      .user-pill-btn {
+        padding: 0.2rem 0.6rem;
+      }
+      .user-avatar-frame {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+      }
+      .user-name-label {
+        max-width: 75px;
+        font-size: 0.82rem;
+      }
+      .hero-summary-card {
+        padding: 1.4rem;
+      }
+      .hero-kpi-pill {
+        width: 100%;
+      }
+      .btn-3d {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+      #affirmation-shelf {
+        left: 10px;
+        right: 10px;
+        bottom: 75px;
+      }
+      .affirmation-card {
+        min-width: unset;
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -1071,9 +1202,9 @@
   <!-- Login & Register Modal -->
   <div id="auth-screen-overlay">
     <div class="auth-card-3d">
-      <div style="display:flex;justify-content:center;margin-bottom:1.2rem">
-        <div class="logo-3d-badge" style="width:62px;height:62px">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <div style="display:flex;justify-content:center;margin-bottom:1rem">
+        <div class="logo-3d-badge" style="width:58px;height:58px">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 17L17 7" />
             <path d="M7 7h10v10" />
           </svg>
@@ -1086,8 +1217,8 @@
         <button type="button" class="auth-tab-btn" id="btn-auth-mode-register" onclick="App.switchAuthMode('register')">سجل الآن (حساب جديد)</button>
       </div>
 
-      <h2 id="auth-modal-title" style="font-size:1.85rem;font-weight:900;margin-bottom:0.25rem">تسجيل الدخول</h2>
-      <p id="auth-modal-sub" style="font-size:0.95rem;color:var(--text-muted);font-weight:700;margin-bottom:1.6rem">
+      <h2 id="auth-modal-title" style="font-size:1.75rem;font-weight:900;margin-bottom:0.25rem">تسجيل الدخول</h2>
+      <p id="auth-modal-sub" style="font-size:0.9rem;color:var(--text-muted);font-weight:700;margin-bottom:1.4rem">
         أدخل اسمك ورقمك السري للوصول لبياناتك وعاداتك المحفوظة دائماً.
       </p>
 
@@ -1102,7 +1233,7 @@
           <input type="password" id="login-password" class="form-input" required placeholder="أدخل الرقم السري..." autocomplete="current-password" />
         </div>
 
-        <button type="submit" id="auth-submit-btn" class="btn-3d btn-3d-primary" style="width:100%;margin-top:0.6rem">
+        <button type="submit" id="auth-submit-btn" class="btn-3d btn-3d-primary" style="width:100%;margin-top:0.5rem">
           تسجيل الدخول 🔑
         </button>
       </form>
@@ -1125,7 +1256,7 @@
         </div>
       </div>
 
-      <!-- 3D Sliding Navigation -->
+      <!-- 3D Sliding Navigation (Desktop) -->
       <nav class="nav-3d-track" id="nav-track">
         <div class="nav-slider-pill" id="nav-slider-pill"></div>
         <button class="nav-btn-item active" id="tab-btn-habits" onclick="App.switchTab('habits', this)">عادات اليوم</button>
@@ -1136,7 +1267,7 @@
       </nav>
 
       <div class="header-actions">
-        <!-- 3D Social Icons (Header) -->
+        <!-- 3D Social Icons -->
         <a href="https://www.instagram.com/muadelofficial/" target="_blank" rel="noopener noreferrer" class="social-3d-btn instagram" aria-label="حساب محمد عادل على Instagram" title="Instagram">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
@@ -1144,7 +1275,7 @@
           <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
         </a>
 
-        <!-- Live Clock -->
+        <!-- Live Clock (Desktop) -->
         <div class="live-clock-badge">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           <span id="live-clock-text">--:--:--</span>
@@ -1166,7 +1297,7 @@
   </header>
 
   <!-- Main Views Container -->
-  <main class="container" style="padding-top:2.2rem;padding-bottom:3.5rem">
+  <main class="container" style="padding-top:1.8rem;padding-bottom:3rem">
 
     <!-- TAB 1: HABITS VIEW -->
     <section id="view-habits">
@@ -1212,7 +1343,7 @@
         </div>
       </div>
 
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.6rem">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1.4rem;flex-wrap:wrap;gap:0.75rem">
         <div class="section-header-block" style="margin-bottom:0">
           <h2 class="section-title">عادات اليوم المسجلة</h2>
           <div class="section-accent-line"></div>
@@ -1273,17 +1404,17 @@
       <div class="quran-wrapper">
         <div class="quran-audio-strip">
           <div>
-            <div style="font-weight:800;font-size:1.1rem">التلاوة الصوتية المتزامنة</div>
+            <div style="font-weight:800;font-size:1.05rem">التلاوة الصوتية المتزامنة</div>
             <div style="font-size:0.85rem;color:var(--text-muted)">بصوت الشيخ مشاري راشد العفاسي</div>
           </div>
-          <div style="display:flex;align-items:center;gap:0.5rem">
+          <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">
             <button class="btn-3d btn-3d-secondary" onclick="App.stepAyah(-1)">السابق</button>
             <button class="btn-3d btn-3d-primary" id="btn-quran-audio" onclick="App.toggleQuran()">تشغيل التلاوة</button>
             <button class="btn-3d btn-3d-secondary" onclick="App.stepAyah(1)">التالي</button>
           </div>
         </div>
 
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.6rem;flex-wrap:wrap;gap:1rem">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.75rem">
           <div>
             <label style="font-weight:800;font-size:0.9rem;margin-left:0.5rem">اختر السورة:</label>
             <select id="select-surah-picker" class="form-input" style="width:auto;display:inline-block" onchange="App.loadSurah(this.value)">
@@ -1318,7 +1449,7 @@
         </div>
       </div>
 
-      <div style="background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; overflow-x: auto;">
+      <div style="background: var(--surface); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; overflow-x: auto;">
         <table class="admin-table">
           <thead>
             <tr>
@@ -1336,6 +1467,28 @@
     </section>
 
   </main>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-bottom-nav-inner">
+      <button class="m-nav-btn active" id="m-btn-habits" onclick="App.switchTab('habits', document.getElementById('tab-btn-habits'))">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>عاداتي</span>
+      </button>
+      <button class="m-nav-btn" id="m-btn-analytics" onclick="App.switchTab('analytics', document.getElementById('tab-btn-analytics'))">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <span>التحليلات</span>
+      </button>
+      <button class="m-nav-btn" id="m-btn-islamic" onclick="App.switchTab('islamic', document.getElementById('tab-btn-islamic'))">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <span>القرآن</span>
+      </button>
+      <button class="m-nav-btn" id="m-btn-admin" style="display:none;" onclick="App.switchTab('admin', document.getElementById('tab-btn-admin'))">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>الإدارة</span>
+      </button>
+    </div>
+  </nav>
 
   <!-- Affirmation Shelf -->
   <div id="affirmation-shelf"></div>
@@ -1440,6 +1593,7 @@
         <div class="form-field">
           <label>نوع الملاحظة:</label>
           <select id="issue-type" class="form-input">
+            <option value="مشكلة في التناسق مع الموبايل">مشكلة في التناسق مع الموبايل</option>
             <option value="مشكلة في حفظ البيانات">مشكلة في حفظ البيانات</option>
             <option value="خطأ تقني في العداد أو الواجهة">خطأ تقني في العداد أو الواجهة</option>
             <option value="اقتراح تطوير في واجهة ارتقاء">اقتراح تطوير في واجهة ارتقاء</option>
@@ -1637,7 +1791,6 @@
 
       loadEternalVault() {
         let vault = {};
-        // Scan all historical storage keys to never lose any accounts
         const allKeys = [
           this.DB_KEY,
           this.BACKUP_DB_KEY,
@@ -1671,7 +1824,7 @@
         try {
           const serialized = JSON.stringify(this.data.users);
           localStorage.setItem(this.DB_KEY, serialized);
-          localStorage.setItem(this.BACKUP_DB_KEY, serialized); // Duplicate redundant backup
+          localStorage.setItem(this.BACKUP_DB_KEY, serialized);
         } catch (e) {}
       },
 
@@ -1741,7 +1894,6 @@
             this.switchAuthMode('login');
             return;
           }
-          // New User Registration
           this.data.users[username] = {
             username,
             passwordHash: hashed,
@@ -1757,7 +1909,6 @@
           };
           this.persistEternalVault();
         } else {
-          // Login Mode
           if (!this.data.users[username]) {
             alert('هذا الاسم غير مسجل بعد! اضغط على "سجل الآن" لإنشاء حسابك في ثوانٍ.');
             this.switchAuthMode('register');
@@ -1799,10 +1950,13 @@
         this.initQuran();
 
         const adminTab = document.getElementById('tab-btn-admin');
+        const mAdminBtn = document.getElementById('m-btn-admin');
         if (this.data.activeUser.username.toLowerCase() === this.ADMIN_USERNAME.toLowerCase()) {
-          adminTab.style.display = 'inline-flex';
+          if (adminTab) adminTab.style.display = 'inline-flex';
+          if (mAdminBtn) mAdminBtn.style.display = 'flex';
         } else {
-          adminTab.style.display = 'none';
+          if (adminTab) adminTab.style.display = 'none';
+          if (mAdminBtn) mAdminBtn.style.display = 'none';
         }
 
         setTimeout(() => {
@@ -2002,10 +2156,17 @@
       },
 
       switchTab(tab, btn) {
+        // Desktop Tabs
         document.querySelectorAll('.nav-btn-item').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        if (btn) btn.classList.add('active');
         this.updateSlidingPill(btn);
 
+        // Mobile Bottom Nav Sync
+        document.querySelectorAll('.m-nav-btn').forEach(b => b.classList.remove('active'));
+        const mBtn = document.getElementById(`m-btn-${tab}`);
+        if (mBtn) mBtn.classList.add('active');
+
+        // View sections
         document.getElementById('view-habits').style.display = tab === 'habits' ? 'block' : 'none';
         document.getElementById('view-analytics').style.display = tab === 'analytics' ? 'block' : 'none';
         document.getElementById('view-islamic').style.display = tab === 'islamic' ? 'block' : 'none';
@@ -2198,8 +2359,8 @@
           rates.push(Math.round((done / total) * 100));
         }
 
-        const barWidth = 32;
-        const sidePad = 36;
+        const barWidth = 30;
+        const sidePad = 25;
         const gap = (w - (sidePad * 2) - (barWidth * 7)) / 6;
 
         rates.forEach((rate, idx) => {
@@ -2250,7 +2411,7 @@
         let startAngle = 0;
         const cx = w * 0.35;
         const cy = h / 2;
-        const radius = 68;
+        const radius = Math.min(w * 0.22, 68);
 
         categories.forEach((cat, idx) => {
           const sliceAngle = (counts[cat] / total) * 2 * Math.PI;
@@ -2265,9 +2426,9 @@
           const legY = 40 + idx * 26;
           ctx.fillRect(w * 0.65, legY - 10, 12, 12);
           ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text').trim();
-          ctx.font = '700 12px IBM Plex Sans Arabic';
+          ctx.font = '700 11px IBM Plex Sans Arabic';
           ctx.textAlign = 'right';
-          ctx.fillText(`${cat} (${counts[cat]})`, w - 20, legY);
+          ctx.fillText(`${cat} (${counts[cat]})`, w - 15, legY);
         });
       },
       renderRewards() {
