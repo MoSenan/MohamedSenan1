@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>نظام العادات الذكي | Smart Habit Tracker</title>
-  <meta name="description" content="المنصة العربية المتكاملة لبناء العادات، تعزيز الانضباط، وتلاوة القرآن الكريم مع نظام حماية وحفظ البيانات محلياً بالاسم وكلمة المرور." />
+  <title>نظام العادات الذكي | Smart Habit Tracker & Youth Hub</title>
+  <meta name="description" content="منصة عربية متكاملة لمتابعة العادات اليومية، وتطوير الذات والانضباط للشباب، وقراءة القرآن الكريم والاستماع إليه كاملاً." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,6 +66,7 @@
       padding: 0;
       -webkit-tap-highlight-color: transparent;
       -webkit-font-smoothing: antialiased;
+      text-decoration: none !important;
     }
 
     body {
@@ -88,7 +89,6 @@
       padding: 0 1.25rem;
     }
 
-    /* Heavy Bold Typography Utilities */
     .heavy-title {
       font-weight: 900 !important;
       letter-spacing: -0.5px;
@@ -96,7 +96,7 @@
 
     /* Header & Navigation */
     header.main-header {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(14px);
       border-bottom: 2px solid var(--border);
       position: sticky;
@@ -105,7 +105,7 @@
       box-shadow: var(--shadow-sm);
     }
     [data-theme="dark"] header.main-header {
-      background: rgba(15, 23, 42, 0.92);
+      background: rgba(15, 23, 42, 0.94);
     }
 
     .header-inner {
@@ -141,7 +141,7 @@
     .nav-item button {
       background: transparent;
       border: none;
-      padding: 0.65rem 1.1rem;
+      padding: 0.65rem 1rem;
       border-radius: var(--radius-md);
       font-size: 0.95rem;
       font-weight: 800;
@@ -156,6 +156,16 @@
     .nav-item button:hover, .nav-item button.active {
       color: var(--primary);
       background: var(--primary-light);
+    }
+
+    .nav-item.youth-highlight button {
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1.5px solid rgba(79, 70, 229, 0.25);
+    }
+    .nav-item.youth-highlight button.active, .nav-item.youth-highlight button:hover {
+      background: var(--accent);
+      color: #fff;
     }
 
     .nav-item.islamic-tab button {
@@ -262,7 +272,6 @@
       color: white;
       transition: transform 180ms ease, box-shadow 180ms ease;
       cursor: pointer;
-      text-decoration: none;
     }
     .social-btn-3d:hover { transform: translateY(-2px) scale(1.05); }
     .social-btn-3d svg { width: 22px; height: 22px; fill: currentColor; }
@@ -289,7 +298,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Ultra-Bold Youth Hero Banner */
+    /* Dashboard Hero Banner */
     .youth-hero {
       background: linear-gradient(135deg, rgba(5, 150, 105, 0.12) 0%, rgba(79, 70, 229, 0.1) 100%);
       border: 2px solid var(--border);
@@ -351,7 +360,7 @@
     .rank-meta .rank-lvl { font-size: 0.85rem; font-weight: 800; color: var(--muted); }
     .rank-meta .rank-title { font-size: 1.35rem; font-weight: 900; color: var(--text); }
 
-    /* KPI Metrics Grid */
+    /* KPI Grid */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -428,9 +437,18 @@
       background: var(--bg);
       border-color: var(--border-dark);
     }
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.32);
+    }
+    .btn-accent:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
     .btn-danger { background: var(--danger); color: white; }
 
-    /* Habit Cards */
+    /* Habits Cards */
     .habits-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -593,6 +611,143 @@
       font-size: 1rem;
     }
 
+    /* =========================================================
+       YOUTH MOTIVATION HUB (طوّر نفسك) SPECIFIC STYLES
+       ========================================================= */
+    .youth-hub-hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #064e3b 100%);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2.2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+    .youth-hub-hero h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+    .youth-hub-hero p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      max-width: 780px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+    .time-period-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 900;
+      margin-bottom: 0.75rem;
+      color: #fef08a;
+    }
+
+    .interactive-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .tool-box-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .tool-box-card h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tool-box-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .timer-display-big {
+      font-size: 2.8rem;
+      font-weight: 900;
+      text-align: center;
+      color: var(--primary);
+      margin: 1rem 0;
+      font-variant-numeric: tabular-nums;
+      background: var(--bg);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      border: 2px solid var(--border);
+    }
+
+    .lessons-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.35rem;
+      margin-bottom: 2rem;
+    }
+
+    .lesson-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .lesson-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .lesson-cat-tag {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-full);
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+    .lesson-card h4 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+    .lesson-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .lesson-action-box {
+      background: var(--bg);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
     /* Calendar Grid */
     .calendar-card {
       background: var(--surface);
@@ -698,7 +853,7 @@
     .ach-info p { font-size: 0.88rem; font-weight: 700; color: var(--text-secondary); margin-top: 0.25rem; }
     .ach-status { font-size: 0.82rem; font-weight: 900; color: var(--primary); margin-top: 0.4rem; }
 
-    /* Islamic Hub */
+    /* Islamic Section */
     .islamic-hero {
       background: linear-gradient(135deg, #064e3b 0%, #047857 100%);
       color: #ffffff;
@@ -1018,7 +1173,7 @@
     .form-row { display: flex; gap: 1rem; }
     .form-row .form-group { flex: 1; }
 
-    /* Auth Gate Screen (Dedicated Login & Register Screen) */
+    /* Auth Gate Screen */
     #auth-screen-overlay {
       position: fixed;
       inset: 0;
@@ -1094,7 +1249,6 @@
       box-shadow: var(--shadow-sm);
     }
 
-    /* Confetti Canvas */
     #confetti-canvas {
       position: fixed;
       top: 0;
@@ -1105,7 +1259,6 @@
       z-index: 9999;
     }
 
-    /* Toast */
     #toast-shelf {
       position: fixed;
       bottom: 24px;
@@ -1148,6 +1301,7 @@
       .charts-grid { grid-template-columns: 1fr; }
       .cal-cell { min-height: 60px; padding: 0.25rem; }
       .quran-text-flow { font-size: 1.45rem; line-height: 2.25; }
+      .youth-hub-hero h2 { font-size: 1.85rem; }
     }
   </style>
 </head>
@@ -1160,7 +1314,7 @@
       <div class="auth-box-logo">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
-      <h2 id="auth-heading">تسجيل الدخول للنظام</h2>
+      <h2 id="auth-heading" class="heavy-title">تسجيل الدخول للنظام</h2>
       <p id="auth-subheading">أدخل اسمك وكلمة المرور للوصول لحسابك وحفظ عاداتك</p>
 
       <div class="auth-toggle-tab">
@@ -1196,9 +1350,10 @@
       <ul class="nav-menu">
         <li class="nav-item"><button class="active" onclick="switchTab('dashboard')">الرئيسية</button></li>
         <li class="nav-item"><button onclick="switchTab('habits')">العادات</button></li>
+        <li class="nav-item youth-highlight"><button onclick="switchTab('youth')">⚡ طوّر نفسك</button></li>
         <li class="nav-item"><button onclick="switchTab('calendar')">التقويم</button></li>
         <li class="nav-item"><button onclick="switchTab('analytics')">التحليلات</button></li>
-        <li class="nav-item"><button onclick="switchTab('achievements')">الإنجازات والرتب</button></li>
+        <li class="nav-item"><button onclick="switchTab('achievements')">الإنجازات</button></li>
         <li class="nav-item islamic-tab"><button onclick="switchTab('islamic')">📖 القرآن والحديث</button></li>
         <li class="nav-item"><button onclick="switchTab('settings')">الإعدادات</button></li>
       </ul>
@@ -1219,7 +1374,7 @@
           <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.688 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
         </a>
 
-        <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع الليلي">
+        <button class="icon-btn" onclick="toggleTheme()" title="تبديل الوضع">
           <svg style="width:20px;height:20px;fill:currentColor" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
         </button>
       </div>
@@ -1231,7 +1386,7 @@
     <section id="tab-dashboard" class="tab-content active">
       <div class="youth-hero">
         <div class="hero-content">
-          <div class="hero-quote-badge" id="daily-youth-quote">⚡ الانضباط اليومي يصنع المعجزات ويقودك للقمة</div>
+          <div class="hero-quote-badge" id="daily-youth-quote">⚡ نافس نفسك بتاعت إمبارح.. ومتشغلش بالك بغيرك</div>
           <h1 id="hero-greeting" class="heavy-title">أهلاً بك، يا بطل 👋</h1>
           <p id="hero-date-txt" style="color:var(--text-secondary);font-size:0.95rem;font-weight:800">جاري تحضير البيانات اليومية...</p>
         </div>
@@ -1293,6 +1448,113 @@
       </div>
 
       <div id="all-habits-container" class="habits-grid"></div>
+    </section>
+
+    <section id="tab-youth" class="tab-content">
+      <div class="youth-hub-hero">
+        <span class="time-period-badge" id="youth-time-badge">رسالة الوقت الحالي</span>
+        <h2 class="heavy-title" id="youth-dynamic-hero-msg">محدش هيغيّر حياتك بدالك.. ابدأ بنفسك النهارده</h2>
+        <p id="youth-dynamic-hero-sub">الانضباط لما يغيب الحماس هو اللي بيصنع الفرق. مش لازم تبهر الدنيا، المهم متفضلش مكانك وتكون أحسن من إمبارح بخطوة واحدة بس.</p>
+      </div>
+
+      <div class="interactive-tools-grid">
+        <div class="tool-box-card">
+          <div>
+            <h3 class="heavy-title">⏱️ متأجلهاش ليه؟ (ابدأ 5 دقائق بس)</h3>
+            <p>مكسل تبدأ؟ اتعاهد مع نفسك تقعد 5 دقايق بس على المذاكرة أو الشغل. لو حسيت إنك لسه مش قادر وقف، لكن 90% من المرات هتكمل.</p>
+          </div>
+          <div class="timer-display-big" id="timer-5min-display">05:00</div>
+          <div style="display:flex;gap:0.5rem">
+            <button class="btn btn-primary" style="flex:1" id="btn-5min-toggle" onclick="toggle5MinTimer()">ابدأ الـ 5 دقائق 🚀</button>
+            <button class="btn btn-secondary" onclick="reset5MinTimer()">إعادة ضبط</button>
+          </div>
+        </div>
+
+        <div class="tool-box-card">
+          <div>
+            <h3 class="heavy-title">🎯 جلسة تركيز عميق (Focus Session)</h3>
+            <p>اقفل كل الإشعارات، وارمي الموبايل في أوضة تانية، وركز على حاجة واحدة تنجزها من غير أي تشتيت.</p>
+          </div>
+          <div class="timer-display-big" id="timer-focus-display">25:00</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <button class="btn btn-secondary" style="flex:1" onclick="setFocusTime(25)">25 دقيقة</button>
+            <button class="btn btn-secondary" style="flex:1" onclick="setFocusTime(50)">50 دقيقة</button>
+            <button class="btn btn-accent" style="width:100%" id="btn-focus-toggle" onclick="toggleFocusTimer()">تشغيل جلسة التركيز ▶</button>
+          </div>
+        </div>
+
+        <div class="tool-box-card">
+          <div>
+            <h3 class="heavy-title">💡 رسالة من الواقع للشباب</h3>
+            <p style="font-size:1.1rem;font-weight:900;color:var(--text);margin:1.2rem 0;line-height:1.7" id="youth-quote-box">
+              "الالتزام مش معناه إنك متقعش نهائي.. معناه إنك أول ما تقع، متقعدش تلوم نفسك وتضيع باقي الأسبوع، بل تقوم فوراً وتبدأ من جديد."
+            </p>
+          </div>
+          <button class="btn btn-secondary" onclick="generateNewYouthQuote()">اقتباس تاني 🎲</button>
+        </div>
+      </div>
+
+      <div class="section-toolbar">
+        <div class="toolbar-title heavy-title">
+          <span>🧠 مبادئ عملية تبني بيها نفسك (بدون كلام تنمية بشرية مبالغ فيه)</span>
+        </div>
+      </div>
+
+      <div class="lessons-cards-grid">
+        <div class="lesson-card">
+          <div>
+            <span class="lesson-cat-tag">الانضباط الحقيقي</span>
+            <h4>متستناش الشغف عشان تبدأ</h4>
+            <p>الشغف شعور بيروح وييجي، ومحدش بيكون عنده طاقة كل يوم الصبح. الانضباط يعني تعمل اللي وراك حتى وأنت ملكش مزاج، لأن النتيجة تستاهل التعب.</p>
+          </div>
+          <div class="lesson-action-box">خطوة عملية: حدد مهمة واحدة ثقيلة وابدأ فيها الصبح أول حاجة.</div>
+        </div>
+
+        <div class="lesson-card">
+          <div>
+            <span class="lesson-cat-tag">تقليل المشتتات</span>
+            <h4>موبايلك أداة مش مكان تعيش جواه</h4>
+            <p>السكرولينج المستمر بيسرق طاقتك وتركيزك قبل ما يسرق وقتك. قبل ما تفتح أي سوشيال ميديا اسأل نفسك: أنا داخل عشان هدف محدد ولا بهرب من اللي ورايا؟</p>
+          </div>
+          <div class="lesson-action-box">خطوة عملية: خلي أول نص ساعة بعد الصحيان بدون موبايل.</div>
+        </div>
+
+        <div class="lesson-card">
+          <div>
+            <span class="lesson-cat-tag">الشغل والمستقبل</span>
+            <h4>ابني مهارة تخليك مطلوب</h4>
+            <p>الوقت اللي بتضيعه في المقارنات مع غيرك على السوشيال استثمره في إنك تتعلم مهارة حقيقية (برمجة، لغة، تسويق، حرفة). الخبرة بتتراكم من الشغل الحقيقي.</p>
+          </div>
+          <div class="lesson-action-box">خطوة عملية: ساعة يومياً في تعلم مهارة هتعملك مسار مهني بعد سنة.</div>
+        </div>
+
+        <div class="lesson-card">
+          <div>
+            <span class="lesson-cat-tag">الصحة والرياضة</span>
+            <h4>جسمك هو رأس مالك</h4>
+            <p>مش لازم تروح الجيم ساعتين كل يوم. نص ساعة حركة، مشي سريع، تمرين خفيف في البيت مع شرب مية منتظم بيغيروا طاقتك النفسية والذهنية تماماً.</p>
+          </div>
+          <div class="lesson-action-box">خطوة عملية: 20 دقيقة حركة يومياً أفضل من انتظار الجيم المثالي.</div>
+        </div>
+
+        <div class="lesson-card">
+          <div>
+            <span class="lesson-cat-tag">التعامل مع الانتكاسات</span>
+            <h4>يوم بايظ مش معناه حياة فاشلة</h4>
+            <p>لو قصرت في يوم ومكملتش عاداتك، متقولش "خلاص هبدأ السبت الجاي". ارجع من نفس اللحظة. الاستمرار هو إنك متسيبش الغلطة تجر أسبوع كامل وراها.</p>
+          </div>
+          <div class="lesson-action-box">خطوة عملية: سجل أي عادة واحدة باقية قبل ما تنام وقوم متفائل.</div>
+        </div>
+
+        <div class="lesson-card">
+          <div>
+            <span class="lesson-cat-tag">الوعي المالي</span>
+            <h4>اتعلم تدير فلوسك من بدري</h4>
+            <p>مش كل قرش بيجيلك لازم تصرفه، ومش كل حاجة تعجبك لازم تشتريها. وفر جزء للطوارئ، واتعلم تستثمر في كتب وكورسات تفيدك بعدين.</p>
+          </div>
+          <div class="lesson-action-box">خطوة عملية: اكتب مصاريفك أسبوع وشوف الفلوس بتطير في إيه.</div>
+        </div>
+      </div>
     </section>
 
     <section id="tab-calendar" class="tab-content">
@@ -1479,6 +1741,7 @@
           <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;font-size:0.95rem;font-weight:800">
             <li><a href="javascript:void(0)" onclick="switchTab('dashboard')">الرئيسية</a></li>
             <li><a href="javascript:void(0)" onclick="switchTab('habits')">قائمة العادات</a></li>
+            <li><a href="javascript:void(0)" onclick="switchTab('youth')">طوّر نفسك ⚡</a></li>
             <li><a href="javascript:void(0)" onclick="switchTab('islamic')">القرآن والحديث الشريف</a></li>
             <li><a href="javascript:void(0)" onclick="switchTab('settings')">النسخ الاحتياطي</a></li>
           </ul>
@@ -1501,7 +1764,7 @@
       </div>
 
       <div class="footer-bottom-bar">
-        <span>الإصدار 4.0 الاحترافي مع نظام الحسابات المحلي — مجاني بالكامل لوجه الله تعالى</span>
+        <span>الإصدار 5.0 — قسم الشباب والانضباط وتطوير الذات — مجاني بالكامل لوجه الله تعالى</span>
         <span>حفظ محلي آمن 100% بدون خوادم خارجية أو تتبع إعلاني</span>
       </div>
     </div>
@@ -1517,9 +1780,9 @@
         <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
         <span>العادات</span>
       </button>
-      <button class="m-nav-item" onclick="switchTab('calendar')">
-        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
-        <span>التقويم</span>
+      <button class="m-nav-item" onclick="switchTab('youth')">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <span>طوّر نفسك</span>
       </button>
       <button class="m-nav-item" onclick="switchTab('islamic')">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1606,8 +1869,8 @@
     /* ==========================================================
        0. USER AUTHENTICATION & MULTI-USER STORAGE
        ========================================================== */
-    const DB_KEY = 'SMART_HABIT_USERS_DB_V4';
-    const ACTIVE_USER_KEY = 'SMART_HABIT_ACTIVE_USERNAME_V4';
+    const DB_KEY = 'SMART_HABIT_USERS_DB_V5';
+    const ACTIVE_USER_KEY = 'SMART_HABIT_ACTIVE_USERNAME_V5';
 
     let currentAuthMode = 'login';
     let currentUser = null;
@@ -1619,7 +1882,15 @@
     let isSurahAudioPlaying = false;
     const quranAudioPlayer = document.getElementById('quran-audio-player');
 
-    // Default template for a newly created user account
+    // Timer Variables
+    let timer5MinInterval = null;
+    let timer5MinSeconds = 300;
+    let is5MinRunning = false;
+
+    let focusTimerInterval = null;
+    let focusTimerSeconds = 1500;
+    let isFocusRunning = false;
+
     const DEFAULT_HABITS = [
       { id: 'hab_fajr', name: 'صلاة الفجر حاضراً', desc: 'بداية اليوم بنور وطاقة ربانية لا تنقطع', type: 'boolean', category: 'الروحانيات', icon: '🕌', target: 1, unit: 'مرة', status: 'active' },
       { id: 'hab_quran', name: 'ورد القرآن الكريم', desc: 'تلاوة جزء أو سورة بتدبر وسكينة', type: 'boolean', category: 'الروحانيات', icon: '📖', target: 1, unit: 'مرة', status: 'active' },
@@ -1628,12 +1899,16 @@
       { id: 'hab_deep_work', name: 'ساعة تركيز عميق', desc: 'عمل بدون مشتتات أو وسائل تواصل', type: 'duration', category: 'الإنتاجية', icon: '🧠', target: 60, unit: 'دقيقة', status: 'active' }
     ];
 
-    const YOUTH_QUOTES = [
-      "⚡ الانضباط اليومي هو الجسر الحقيقي بين أمنياتك وواقعك.",
-      "🔥 لا تنتظر الشغف لتبدأ، ابدأ وسوف يلحق بك الشغف.",
-      "🎯 العادات الصغيرة المستمرة تهزم الطفرات الكبيرة المتقطعة.",
-      "🚀 مستقبلك يتشكل بما تفعله اليوم، وليس بما تخطط لفعله غداً.",
-      "🛡️ الانضباط ليس تقييداً لحريتك، بل هو الطريق الوحيد لامتلاك ذاتك."
+    const YOUTH_REALISTIC_QUOTES = [
+      "محدش هيتحرك بدالك.. مستقبلك بيتبني بالقرارات البسيطة اللي بتاخدها كل يوم.",
+      "مش لازم تكون الأفضل النهارده، المهم تكون أحسن من نفسك بتاعة إمبارح.",
+      "الانضباط لما يغيب الحماس هو الفارق الحقيقي بين اللي بيتمنى واللي بيوصل.",
+      "ساعة واحدة بدون سوشيال ميديا ومشتتات كفيلة تغير إنتاجية يومك كله.",
+      "الالتزام مش معناه إنك متقعش.. معناه إنك تقوم فوراً وتكمل بعد ما تقع.",
+      "العادات السيئة مش بتسرق عمرك مرة واحدة، دي بتسرقه على دفعات صغيرة وأنت مش حاسس.",
+      "المذاكرة أو الشغل مش دايماً فيهم متعة، بس النتائج اللي بتوصلها تستاهل كل دقيقة تعب.",
+      "الراحة جزء من الخطة عشان تكمل، مش ذنب تقعد تجلد في نفسك علشانه.",
+      "ابدأ حتى لو مش جاهز 100%.. الحركة بتجيب شغف واستمرار."
     ];
 
     function getAllUsers() {
@@ -1654,7 +1929,6 @@
     }
 
     function hashPassword(pass) {
-      // Clean, rapid client-side hashing representation
       let hash = 0;
       for (let i = 0; i < pass.length; i++) {
         const char = pass.charCodeAt(i);
@@ -1669,7 +1943,7 @@
       document.getElementById('btn-mode-login').classList.toggle('active', mode === 'login');
       document.getElementById('btn-mode-register').classList.toggle('active', mode === 'register');
       document.getElementById('auth-heading').textContent = mode === 'login' ? 'تسجيل الدخول للنظام' : 'إنشاء حساب جديد لحفظ البيانات';
-      document.getElementById('auth-subheading').textContent = mode === 'login' ? 'أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة' : 'أنشئ حسابك الخاص بكلمة مرور لحفظ عاداتك دائماً';
+      document.getElementById('auth-subheading').textContent = mode === 'login' ? 'أدخل اسمك وكلمة المرور للوصول لعاداتك المحفوظة' : 'أنشئ حسابك الخاص بكلمة مرور لحفظ عاداتك وتطوير نفسك دائماً';
       document.getElementById('auth-submit-btn').textContent = mode === 'login' ? 'دخول للنظام 🚀' : 'إنشاء الحساب وبدء الرحلة ✨';
     }
 
@@ -1691,7 +1965,6 @@
           showToast('هذا الاسم مسجل بالفعل! يمكنك تسجيل الدخول به', 'error');
           return;
         }
-        // Create new user record
         users[username] = {
           username,
           passHash: hashed,
@@ -1707,7 +1980,6 @@
         saveUsersDB(users);
         showToast('تم إنشاء حسابك بنجاح تام! أهلاً بك 🎉');
       } else {
-        // Login mode
         if (!users[username]) {
           showToast('اسم المستخدم غير مسجل، يرجى إنشاء حساب جديد أولاً', 'error');
           return;
@@ -1721,7 +1993,6 @@
         showToast(`مرحباً بعودتك يا ${username} 👋`);
       }
 
-      // Set active session
       localStorage.setItem(ACTIVE_USER_KEY, username);
       currentUser = users[username];
       document.getElementById('auth-screen-overlay').classList.remove('active');
@@ -1747,7 +2018,6 @@
         document.documentElement.removeAttribute('data-theme');
       }
 
-      // Update Header Profile
       document.getElementById('header-user-name').textContent = currentUser.username;
       document.getElementById('user-avatar-char').textContent = currentUser.username.charAt(0).toUpperCase();
 
@@ -1757,6 +2027,7 @@
       renderHadiths(AUTHENTIC_HADITHS_DATA);
       renderAchievements();
       startLiveClock();
+      updateYouthHubTimeMessage();
     }
 
     function syncCurrentUserData() {
@@ -1767,7 +2038,7 @@
     }
 
     /* ==========================================================
-       1. PURE CANVAS CONFETTI ENGINE
+       1. CANVAS CONFETTI & SOUND SYNTH
        ========================================================== */
     const confettiCanvas = document.getElementById('confetti-canvas');
     const confettiCtx = confettiCanvas.getContext('2d');
@@ -1830,9 +2101,6 @@
       }
     }
 
-    /* ==========================================================
-       2. SOUND SYNTHESIS ENGINE
-       ========================================================== */
     function initWebAudio() {
       if (!audioCtx) {
         audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -1881,7 +2149,7 @@
     }
 
     /* ==========================================================
-       3. HABIT STREAKS & RANKS
+       2. HABIT STREAKS & RANKS
        ========================================================== */
     function calculateHabitStreak(habitId) {
       if (!currentUser) return 0;
@@ -1981,7 +2249,7 @@
     }
 
     /* ==========================================================
-       4. DASHBOARD & HABIT RENDERING
+       3. DASHBOARD & HABITS RENDERING
        ========================================================== */
     function renderDashboard() {
       if (!currentUser) return;
@@ -1998,9 +2266,6 @@
 
       updateYouthRank(streaks.current);
       renderHabitsList('today-habits-container', true);
-
-      const randQuote = YOUTH_QUOTES[Math.floor(Math.random() * YOUTH_QUOTES.length)];
-      document.getElementById('daily-youth-quote').textContent = randQuote;
     }
 
     function renderHabitsList(containerId, isTodayOnly = false) {
@@ -2089,7 +2354,7 @@
         currentUser.completions[today][habitId] = 1;
         playAppSound('check');
         fireConfetti();
-        showToast('كفو! تم إنجاز العادة بنجاح وحفظها بحسابك 🔥');
+        showToast('عاش يا بطل! تم تسجيل الإنجاز في حسابك بنجاح 🔥');
       }
       syncCurrentUserData();
       renderDashboard();
@@ -2122,6 +2387,117 @@
         renderHabitsList('all-habits-container');
       }
       checkMilestones();
+    }
+
+    /* ==========================================================
+       4. YOUTH MOTIVATION ENGINE (Real Timers & Dynamic Quotes)
+       ========================================================== */
+    function updateYouthHubTimeMessage() {
+      const hour = new Date().getHours();
+      const badge = document.getElementById('youth-time-badge');
+      const heroMsg = document.getElementById('youth-dynamic-hero-msg');
+      const heroSub = document.getElementById('youth-dynamic-hero-sub');
+
+      if (hour >= 4 && hour < 12) {
+        badge.textContent = "صباح الخير والهمة ☀️";
+        heroMsg.textContent = "ابدأ يومك بحاجة واحدة مهمة وخلصها قبل أي حاجة";
+        heroSub.textContent = "أول ساعة بعد الصحيان بتحدد مسار يومك كله. ابعد عن الموبايل، اشرب مية، وصلي الفجر، وانزل شوف اللي وراك بعزيمة.";
+      } else if (hour >= 12 && hour < 18) {
+        badge.textContent = "فترة الظهيرة والعمل ⚡";
+        heroMsg.textContent = "مكملين.. متسيبش اليوم يفلت منك في المشتتات";
+        heroSub.textContent = "حتى لو نص اليوم الأول ماكانش مثالي، لسه عندك نص اليوم التاني تقدر تنجز فيه وتصلح الخطة.";
+      } else {
+        badge.textContent = "فترة المساء والمراجعة 🌙";
+        heroMsg.textContent = "راجع يومك بهدوء.. وبكرة فرصة جديدة تبدأ من مكان أحسن";
+        heroSub.textContent = "مش مهم إن اليوم مكنش كامل 100%، المهم تكون عملت اللي عليك وتعرف إيه اللي هتحسنه بكرة بإذن الله.";
+      }
+    }
+
+    function generateNewYouthQuote() {
+      const box = document.getElementById('youth-quote-box');
+      const quote = YOUTH_REALISTIC_QUOTES[Math.floor(Math.random() * YOUTH_REALISTIC_QUOTES.length)];
+      box.textContent = `"${quote}"`;
+      showToast('تم تحديث رسالة اليوم 💡');
+    }
+
+    // 5-Minute Anti-procrastination Timer
+    function toggle5MinTimer() {
+      const btn = document.getElementById('btn-5min-toggle');
+      if (is5MinRunning) {
+        clearInterval(timer5MinInterval);
+        is5MinRunning = false;
+        btn.textContent = 'استئناف الـ 5 دقائق ▶';
+      } else {
+        is5MinRunning = true;
+        btn.textContent = 'إيقاف مؤقت ⏸';
+        timer5MinInterval = setInterval(() => {
+          if (timer5MinSeconds > 0) {
+            timer5MinSeconds--;
+            update5MinDisplay();
+          } else {
+            clearInterval(timer5MinInterval);
+            is5MinRunning = false;
+            btn.textContent = 'ابدأ الـ 5 دقائق 🚀';
+            fireConfetti();
+            playAppSound('check');
+            showToast('عاش يا بطل! خلصت الـ 5 دقايق.. جاهز تكمل؟ 🔥');
+          }
+        }, 1000);
+      }
+    }
+
+    function reset5MinTimer() {
+      clearInterval(timer5MinInterval);
+      is5MinRunning = false;
+      timer5MinSeconds = 300;
+      update5MinDisplay();
+      document.getElementById('btn-5min-toggle').textContent = 'ابدأ الـ 5 دقائق 🚀';
+    }
+
+    function update5MinDisplay() {
+      const m = String(Math.floor(timer5MinSeconds / 60)).padStart(2, '0');
+      const s = String(timer5MinSeconds % 60).padStart(2, '0');
+      document.getElementById('timer-5min-display').textContent = `${m}:${s}`;
+    }
+
+    // Focus Session Timer
+    function setFocusTime(minutes) {
+      clearInterval(focusTimerInterval);
+      isFocusRunning = false;
+      focusTimerSeconds = minutes * 60;
+      updateFocusDisplay();
+      document.getElementById('btn-focus-toggle').textContent = `تشغيل جلسة ${minutes} دقيقة ▶`;
+    }
+
+    function toggleFocusTimer() {
+      const btn = document.getElementById('btn-focus-toggle');
+      if (isFocusRunning) {
+        clearInterval(focusTimerInterval);
+        isFocusRunning = false;
+        btn.textContent = 'استئناف الجلسة ▶';
+      } else {
+        isFocusRunning = true;
+        btn.textContent = 'إيقاف مؤقت ⏸';
+        focusTimerInterval = setInterval(() => {
+          if (focusTimerSeconds > 0) {
+            focusTimerSeconds--;
+            updateFocusDisplay();
+          } else {
+            clearInterval(focusTimerInterval);
+            isFocusRunning = false;
+            btn.textContent = 'جلسة تركيز جديدة 🎯';
+            fireConfetti();
+            playAppSound('check');
+            showToast('إنجاز عظيم! أنهيت جلسة التركيز العميق بنجاح 👏');
+          }
+        }, 1000);
+      }
+    }
+
+    function updateFocusDisplay() {
+      const m = String(Math.floor(focusTimerSeconds / 60)).padStart(2, '0');
+      const s = String(focusTimerSeconds % 60).padStart(2, '0');
+      document.getElementById('timer-focus-display').textContent = `${m}:${s}`;
     }
 
     /* ==========================================================
@@ -2650,6 +3026,7 @@
       if (tabId === 'habits') renderHabitsList('all-habits-container');
       if (tabId === 'achievements') renderAchievements();
       if (tabId === 'dashboard') renderDashboard();
+      if (tabId === 'youth') updateYouthHubTimeMessage();
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -2833,7 +3210,6 @@
       setInterval(tick, 1000);
     }
 
-    /* Check Active Session on Start */
     window.addEventListener('DOMContentLoaded', () => {
       const activeName = localStorage.getItem(ACTIVE_USER_KEY);
       const users = getAllUsers();
